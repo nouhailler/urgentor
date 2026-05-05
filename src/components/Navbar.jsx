@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { loadSettings } from '../hooks/useSettings'
+import HelpPanel from './HelpPanel'
 
 export default function Navbar() {
   const location = useLocation()
   const settings = loadSettings()
   const hasAnyKey = Object.values(settings).some(p => p?.key?.trim())
   const isSettings = location.pathname === '/parametres'
+  const [helpOpen, setHelpOpen] = useState(false)
 
   return (
+    <>
     <nav
       style={{
         backgroundColor: '#0a0a1a',
@@ -61,6 +65,25 @@ export default function Navbar() {
             📂 Gérer
           </Link>
 
+          {/* Bouton Aide contextuelle */}
+          <button
+            onClick={() => setHelpOpen(o => !o)}
+            title="Aide"
+            style={{
+              color: helpOpen ? '#CC0000' : '#9ca3af',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              minHeight: '40px',
+              minWidth: '40px'
+            }}
+            className="p-2 rounded hover:bg-gray-800 transition-colors flex items-center justify-center"
+          >
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={helpOpen ? 2.5 : 2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+
           {/* Icône Paramètres */}
           <Link
             to="/parametres"
@@ -103,5 +126,8 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+
+    <HelpPanel open={helpOpen} onClose={() => setHelpOpen(false)} />
+  </>
   )
 }
