@@ -1,18 +1,106 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import NRBCBadge from './NRBCBadge'
 import DiagramVisuel from './DiagramVisuel'
+import SpeakButton from './SpeakButton'
 import { getCategorieById } from '../data/categories'
 import { useNotes } from '../hooks/useNotes'
 
-function Section({ title, children, color = '#2a2a4a', borderColor }) {
+// ── Textes de lecture pour chaque section ────────────────────────────────────
+
+function ttsActionsImmediates(fiche) {
+  if (!fiche.actionsImmédiates?.length) return null
+  return `Actions immédiates. ${fiche.actionsImmédiates.map((a, i) => `${i + 1}. ${a}`).join('. ')}.`
+}
+
+function ttsScriptAlerte(fiche) {
+  if (!fiche.scriptAlerte) return null
+  let t = `Script d'alerte. Appelez le ${fiche.scriptAlerte.numero}. ${fiche.scriptAlerte.quoiDire ?? ''}.`
+  if (fiche.scriptAlerte.informationsAFournir?.length)
+    t += ` Informations à communiquer: ${fiche.scriptAlerte.informationsAFournir.join('. ')}.`
+  return t
+}
+
+function ttsSecurite(fiche) {
+  if (!fiche.securiteAvantAction) return null
+  let t = `Sécurité avant action. ${fiche.securiteAvantAction.regleUniverselle ?? ''}.`
+  if (fiche.securiteAvantAction.risquesPourIntervenant?.length)
+    t += ` Risques: ${fiche.securiteAvantAction.risquesPourIntervenant.join('. ')}.`
+  if (fiche.securiteAvantAction.equipementsRequis?.length)
+    t += ` Équipements requis: ${fiche.securiteAvantAction.equipementsRequis.join('. ')}.`
+  return t
+}
+
+function ttsProcedure(fiche) {
+  if (!fiche.procedureAction?.length) return null
+  return `Procédure d'action. ${fiche.procedureAction.map(e => `Étape ${e.etape}: ${e.action}`).join('. ')}.`
+}
+
+function ttsDiagnostic(fiche) {
+  if (!fiche.diagnosticRapide) return null
+  let t = `Diagnostic rapide.`
+  if (fiche.diagnosticRapide.visuels?.length)        t += ` Signes visuels: ${fiche.diagnosticRapide.visuels.join(', ')}.`
+  if (fiche.diagnosticRapide.auditifs?.length)       t += ` Signes auditifs: ${fiche.diagnosticRapide.auditifs.join(', ')}.`
+  if (fiche.diagnosticRapide.comportementaux?.length) t += ` Comportements: ${fiche.diagnosticRapide.comportementaux.join(', ')}.`
+  return t
+}
+
+function ttsArbres(fiche) {
+  if (!fiche.arbresDecision?.length) return null
+  return `Arbre de décision. ${fiche.arbresDecision.map(a => `Si ${a.condition}, alors ${a.alors}`).join('. ')}.`
+}
+
+function ttsNotesCritiques(fiche) {
+  if (!fiche.notesCritiques?.length) return null
+  return `Notes critiques. ${fiche.notesCritiques.join('. ')}.`
+}
+
+function ttsPointsControle(fiche) {
+  if (!fiche.pointsControle?.length) return null
+  return `Points de contrôle. ${fiche.pointsControle.join('. ')}.`
+}
+
+function ttsEscalade(fiche) {
+  if (!fiche.conditionsArretEscalade?.length) return null
+  return `Conditions d'escalade. ${fiche.conditionsArretEscalade.join('. ')}.`
+}
+
+function ttsActivation(fiche) {
+  if (!fiche.conditionsActivation) return null
+  return `Conditions d'activation. ${fiche.conditionsActivation}`
+}
+
+function ttsSecoursTardent(fiche) {
+  const s = fiche.siSecoursTardent
+  if (!s) return null
+  let t = `Si les secours tardent.`
+  if (s.contexte) t += ` ${s.contexte}.`
+  if (s.actions?.length) t += ` Actions possibles. ${s.actions.map((a, i) => `${i + 1}. ${a}`).join('. ')}.`
+  if (s.ressourcesImprovises?.length) t += ` Ressources de fortune: ${s.ressourcesImprovises.join('. ')}.`
+  if (s.signesAggravation?.length) t += ` Signes d'aggravation à surveiller: ${s.signesAggravation.join('. ')}.`
+  if (s.limitesSansSecours) t += ` Limites sans prise en charge médicale: ${s.limitesSansSecours}.`
+  return t
+}
+
+// ── Composants utilitaires ────────────────────────────────────────────────────
+
+function SectionHeader({ title, speakText, speakColor, style = {} }) {
+  return (
+    <div className="flex items-center justify-between gap-2 mb-3">
+      <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '16px', letterSpacing: '1px', margin: 0, ...style }} className="uppercase">
+        {title}
+      </h2>
+      {speakText && <SpeakButton text={speakText} color={speakColor} />}
+    </div>
+  )
+}
+
+function Section({ title, children, color = '#2a2a4a', borderColor, speakText, speakColor }) {
   return (
     <div
       style={{ backgroundColor: color, borderLeft: borderColor ? `4px solid ${borderColor}` : undefined }}
       className="rounded-lg p-5"
     >
-      <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-        {title}
-      </h2>
+      <SectionHeader title={title} speakText={speakText} speakColor={speakColor ?? borderColor} />
       {children}
     </div>
   )
@@ -32,6 +120,8 @@ function EtapeItem({ etape, action }) {
   )
 }
 
+// ── Composant principal ───────────────────────────────────────────────────────
+
 export default function FicheDetail({ fiche }) {
   const categorie = getCategorieById(fiche.categorie)
   const isNRBC = fiche.categorie === 'nrbc'
@@ -45,13 +135,7 @@ export default function FicheDetail({ fiche }) {
       {isDangerous && (
         <div
           className="bandeau-danger rounded-lg px-5 py-4 text-center font-bold"
-          style={{
-            backgroundColor: '#CC0000',
-            color: '#FFFFFF',
-            fontFamily: 'Oswald, sans-serif',
-            fontSize: '16px',
-            letterSpacing: '1px'
-          }}
+          style={{ backgroundColor: '#CC0000', color: '#FFFFFF', fontFamily: 'Oswald, sans-serif', fontSize: '16px', letterSpacing: '1px' }}
         >
           ⚠️ INTERVENTION RÉSERVÉE AUX PERSONNELS FORMÉS ET ÉQUIPÉS ⚠️
         </div>
@@ -94,17 +178,15 @@ export default function FicheDetail({ fiche }) {
 
       {/* Conditions d'activation */}
       {fiche.conditionsActivation && (
-        <Section title="🎯 Conditions d'activation" borderColor="#F39C12">
+        <Section title="🎯 Conditions d'activation" borderColor="#F39C12"
+          speakText={ttsActivation(fiche)} speakColor="#F39C12">
           <p style={{ color: '#e0e0e0', fontSize: '15px', lineHeight: '1.6' }}>{fiche.conditionsActivation}</p>
         </Section>
       )}
 
       {/* Infos produit NRBC */}
       {isNRBC && fiche.nrbc && (
-        <div
-          style={{ backgroundColor: '#1a1000', border: '2px solid #FFD700' }}
-          className="rounded-lg p-5"
-        >
+        <div style={{ backgroundColor: '#1a1000', border: '2px solid #FFD700' }} className="rounded-lg p-5">
           <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#FFD700', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
             ☢️ Informations NRBC
           </h2>
@@ -123,10 +205,7 @@ export default function FicheDetail({ fiche }) {
 
       {/* Infos produit chimique */}
       {(isChimique || (isNRBC && fiche.chimique)) && fiche.chimique && (
-        <div
-          style={{ backgroundColor: '#150028', border: '2px solid #8B00FF' }}
-          className="rounded-lg p-5"
-        >
+        <div style={{ backgroundColor: '#150028', border: '2px solid #8B00FF' }} className="rounded-lg p-5">
           <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#8B00FF', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
             ☣️ Données chimiques
           </h2>
@@ -165,7 +244,8 @@ export default function FicheDetail({ fiche }) {
 
       {/* Diagnostic rapide */}
       {fiche.diagnosticRapide && (
-        <Section title="🔍 Diagnostic rapide" borderColor="#F39C12">
+        <Section title="🔍 Diagnostic rapide" borderColor="#F39C12"
+          speakText={ttsDiagnostic(fiche)} speakColor="#F39C12">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <DiagCol icone="👁" label="Visuels" items={fiche.diagnosticRapide.visuels} />
             <DiagCol icone="👂" label="Auditifs" items={fiche.diagnosticRapide.auditifs} />
@@ -177,9 +257,9 @@ export default function FicheDetail({ fiche }) {
       {/* Sécurité avant action */}
       {fiche.securiteAvantAction && (
         <div style={{ backgroundColor: '#2a1500', border: '2px solid #FF6B35' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#FF6B35', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-            ⚠️ Sécurité avant action
-          </h2>
+          <SectionHeader title="⚠️ Sécurité avant action"
+            speakText={ttsSecurite(fiche)} speakColor="#FF6B35"
+            style={{ color: '#FF6B35' }} />
           <div
             style={{ backgroundColor: '#1a0a00', borderLeft: '4px solid #FF6B35', fontSize: '15px', color: '#f0e0d0' }}
             className="rounded p-4 mb-4 font-semibold"
@@ -216,9 +296,9 @@ export default function FicheDetail({ fiche }) {
       {/* Script d'alerte */}
       {fiche.scriptAlerte && (
         <div style={{ backgroundColor: '#0a0a1a', border: '2px solid #CC0000' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-            📞 Script d'alerte
-          </h2>
+          <SectionHeader title="📞 Script d'alerte"
+            speakText={ttsScriptAlerte(fiche)} speakColor="#CC0000"
+            style={{ color: '#CC0000' }} />
           <div style={{ backgroundColor: '#1a0010', borderRadius: '8px', padding: '12px 16px', marginBottom: '12px' }}>
             <div style={{ color: '#FF6B35', fontFamily: 'IBM Plex Mono, monospace', fontSize: '22px', fontWeight: 700, letterSpacing: '2px' }}>
               {fiche.scriptAlerte.numero}
@@ -248,9 +328,9 @@ export default function FicheDetail({ fiche }) {
       {/* Actions immédiates */}
       {fiche.actionsImmédiates && (
         <div style={{ backgroundColor: '#1a0000', border: '3px solid #CC0000' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '18px', letterSpacing: '2px', marginBottom: '12px' }} className="uppercase">
-            ⚡ Actions immédiates — 3 minutes max
-          </h2>
+          <SectionHeader title="⚡ Actions immédiates — 3 minutes max"
+            speakText={ttsActionsImmediates(fiche)} speakColor="#CC0000"
+            style={{ color: '#CC0000', fontSize: '18px', letterSpacing: '2px' }} />
           <ol className="space-y-2">
             {fiche.actionsImmédiates.map((action, i) => (
               <li key={i} style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 600 }} className="flex gap-3 items-start">
@@ -264,7 +344,8 @@ export default function FicheDetail({ fiche }) {
 
       {/* Procédure d'action */}
       {fiche.procedureAction && (
-        <Section title="📋 Procédure d'action" borderColor="#CC0000">
+        <Section title="📋 Procédure d'action" borderColor="#CC0000"
+          speakText={ttsProcedure(fiche)} speakColor="#CC0000">
           <div className="flex flex-col gap-3">
             {fiche.procedureAction.map((e) => (
               <EtapeItem key={e.etape} etape={e.etape} action={e.action} />
@@ -295,7 +376,8 @@ export default function FicheDetail({ fiche }) {
 
       {/* Arbre de décision */}
       {fiche.arbresDecision?.length > 0 && (
-        <Section title="🌿 Arbre de décision" borderColor="#F39C12">
+        <Section title="🌿 Arbre de décision" borderColor="#F39C12"
+          speakText={ttsArbres(fiche)} speakColor="#F39C12">
           <DiagramVisuel arbresDecision={fiche.arbresDecision} />
         </Section>
       )}
@@ -303,9 +385,9 @@ export default function FicheDetail({ fiche }) {
       {/* Notes critiques */}
       {fiche.notesCritiques?.length > 0 && (
         <div style={{ backgroundColor: '#1a0a00', border: '2px solid #FF6B35' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#FF6B35', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-            🔴 Notes critiques
-          </h2>
+          <SectionHeader title="🔴 Notes critiques"
+            speakText={ttsNotesCritiques(fiche)} speakColor="#FF6B35"
+            style={{ color: '#FF6B35' }} />
           <ul className="space-y-2">
             {fiche.notesCritiques.map((note, i) => (
               <li key={i} style={{ color: '#f0d0b0', fontSize: '15px', borderLeft: '3px solid #FF6B35', paddingLeft: '12px' }}>
@@ -318,7 +400,8 @@ export default function FicheDetail({ fiche }) {
 
       {/* Points de contrôle */}
       {fiche.pointsControle?.length > 0 && (
-        <Section title="✅ Points de contrôle" borderColor="#2ECC71">
+        <Section title="✅ Points de contrôle" borderColor="#2ECC71"
+          speakText={ttsPointsControle(fiche)} speakColor="#2ECC71">
           <ul className="space-y-2">
             {fiche.pointsControle.map((pt, i) => (
               <li key={i} style={{ color: '#b0e0c0', fontSize: '15px' }} className="flex gap-2 items-start">
@@ -332,7 +415,8 @@ export default function FicheDetail({ fiche }) {
 
       {/* Conditions d'arrêt / escalade */}
       {fiche.conditionsArretEscalade?.length > 0 && (
-        <Section title="⬆️ Escalade" borderColor="#F39C12">
+        <Section title="⬆️ Escalade" borderColor="#F39C12"
+          speakText={ttsEscalade(fiche)} speakColor="#F39C12">
           <ul className="space-y-2">
             {fiche.conditionsArretEscalade.map((c, i) => (
               <li key={i} style={{ color: '#e0d080', fontSize: '15px' }} className="flex gap-2">
@@ -359,23 +443,19 @@ export default function FicheDetail({ fiche }) {
       {/* ── SI LES SECOURS TARDENT ───────────────────────────────── */}
       {fiche.siSecoursTardent && (
         <div
-          style={{
-            backgroundColor: '#1a1200',
-            border: '2px solid #F39C12',
-            boxShadow: '0 0 20px rgba(243,156,18,0.15)'
-          }}
+          style={{ backgroundColor: '#1a1200', border: '2px solid #F39C12', boxShadow: '0 0 20px rgba(243,156,18,0.15)' }}
           className="rounded-lg p-5"
         >
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#F39C12', fontSize: '18px', letterSpacing: '1px', marginBottom: '6px' }} className="uppercase flex items-center gap-2">
-            🕐 Si les secours tardent — Zone isolée
-          </h2>
+          <SectionHeader title="🕐 Si les secours tardent — Zone isolée"
+            speakText={ttsSecoursTardent(fiche)} speakColor="#F39C12"
+            style={{ color: '#F39C12', fontSize: '18px', letterSpacing: '1px' }} />
+
           {fiche.siSecoursTardent.contexte && (
             <p style={{ color: '#c0a060', fontSize: '14px', marginBottom: '16px', fontStyle: 'italic' }}>
               {fiche.siSecoursTardent.contexte}
             </p>
           )}
 
-          {/* Actions de dernier recours */}
           {fiche.siSecoursTardent.actions?.length > 0 && (
             <div className="mb-4">
               <div style={{ color: '#F39C12', fontSize: '12px', marginBottom: '8px' }} className="uppercase tracking-wider">
@@ -393,7 +473,6 @@ export default function FicheDetail({ fiche }) {
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Ressources improvisées */}
             {fiche.siSecoursTardent.ressourcesImprovises?.length > 0 && (
               <div>
                 <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">🧰 Ressources de fortune</div>
@@ -407,7 +486,6 @@ export default function FicheDetail({ fiche }) {
               </div>
             )}
 
-            {/* Signes d'aggravation */}
             {fiche.siSecoursTardent.signesAggravation?.length > 0 && (
               <div>
                 <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">⚠️ Signes d'aggravation</div>
@@ -422,7 +500,6 @@ export default function FicheDetail({ fiche }) {
             )}
           </div>
 
-          {/* Limites sans secours */}
           {fiche.siSecoursTardent.limitesSansSecours && (
             <div style={{ backgroundColor: '#2a1a00', borderLeft: '3px solid #F39C12', marginTop: '14px' }} className="rounded p-3">
               <div style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '4px' }} className="uppercase tracking-wider">Limites sans prise en charge médicale</div>
@@ -432,7 +509,6 @@ export default function FicheDetail({ fiche }) {
             </div>
           )}
 
-          {/* Avertissement dernier recours */}
           <div style={{ backgroundColor: '#111', border: '1px solid #444', color: '#888', fontSize: '12px', lineHeight: 1.6, marginTop: '12px' }} className="rounded p-3">
             ⚠️ {fiche.siSecoursTardent.avertissement ?? "Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Tout doit être fait pour obtenir une assistance médicale."}
           </div>
@@ -455,6 +531,8 @@ export default function FicheDetail({ fiche }) {
     </article>
   )
 }
+
+// ── Sous-composants ───────────────────────────────────────────────────────────
 
 function NotesZone({ ficheId }) {
   const { text, save, savedAt } = useNotes(ficheId)

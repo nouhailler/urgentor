@@ -69,6 +69,11 @@ code, .code-chimique, .seuil-ppm {
   font-family: 'IBM Plex Mono', monospace;
 }
 
+@keyframes speak-wave {
+  from { transform: scaleY(0.4); opacity: 0.6; }
+  to   { transform: scaleY(1);   opacity: 1;   }
+}
+
 @keyframes blink-warning {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
