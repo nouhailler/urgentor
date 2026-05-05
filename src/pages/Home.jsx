@@ -5,7 +5,7 @@ import FicheCard from '../components/FicheCard'
 import { CATEGORIES } from '../data/categories'
 
 export default function Home() {
-  const { fichesFiltrees, query, setQuery, categorieActive, setCategorieActive } = useFiches()
+  const { fichesFiltrees, allFiches, query, setQuery, categorieActive, setCategorieActive } = useFiches()
 
   const toggleCategorie = (id) => {
     setCategorieActive(prev => prev === id ? null : id)
@@ -25,7 +25,7 @@ export default function Home() {
 
       {/* Recherche */}
       <div className="mb-5">
-        <SearchBar value={query} onChange={setQuery} />
+        <SearchBar value={query} onChange={setQuery} allFiches={allFiches} />
       </div>
 
       {/* Filtres catégories */}
