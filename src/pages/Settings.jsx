@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useSettings, PROVIDERS } from '../hooks/useSettings'
 import { useOpenRouterModels, formatLastFetch } from '../hooks/useOpenRouterModels'
+import { useFiches } from '../hooks/useFiches'
 
 /* ── Icônes fournisseurs ─────────────────────────────────────────── */
 const PROVIDER_ICONS = {
@@ -354,6 +356,151 @@ function ProviderHeader({ providerId, config, isConfigured }) {
   )
 }
 
+/* ── Import de fiches ────────────────────────────────────────────── */
+function ImportFichesSection() {
+  const { importFiches, allFiches, isCustom } = useFiches()
+  const fileRef = useRef()
+  const [status, setStatus] = useState(null) // null | { ok, message, count? }
+  const [dragging, setDragging] = useState(false)
+
+  const processFile = (file) => {
+    if (!file || !file.name.endsWith('.json')) {
+      setStatus({ ok: false, message: 'Le fichier doit être au format .json' })
+      return
+    }
+    const reader = new FileReader()
+    reader.onload = (ev) => {
+      try {
+        const added = importFiches(ev.target.result)
+        if (added === 0) {
+          setStatus({ ok: false, message: 'Aucune nouvelle fiche — toutes déjà présentes (doublon d\'id).' })
+        } else {
+          setStatus({ ok: true, count: added, message: `${added} fiche${added > 1 ? 's' : ''} importée${added > 1 ? 's' : ''} avec succès` })
+        }
+      } catch (err) {
+        setStatus({ ok: false, message: `Fichier invalide : ${err.message}` })
+      }
+    }
+    reader.readAsText(file)
+    if (fileRef.current) fileRef.current.value = ''
+  }
+
+  const handleFile = (e) => processFile(e.target.files?.[0])
+
+  const handleDrop = (e) => {
+    e.preventDefault()
+    setDragging(false)
+    processFile(e.dataTransfer.files?.[0])
+  }
+
+  const customCount = allFiches.filter(f => isCustom(f.id)).length
+
+  return (
+    <div
+      style={{ backgroundColor: '#16213e', border: '1px solid #1e3a2a', borderLeft: '4px solid #2ECC71' }}
+      className="rounded-lg p-5"
+    >
+      {/* Titre */}
+      <div className="flex items-center justify-between mb-1">
+        <div style={{ fontFamily: 'Oswald, sans-serif', color: '#2ECC71', fontSize: '18px', letterSpacing: '1px' }}>
+          📥 IMPORTER DES FICHES
+        </div>
+        {customCount > 0 && (
+          <Link
+            to="/gestion"
+            style={{ color: '#2ECC71', fontSize: '12px', textDecoration: 'none', opacity: 0.7 }}
+            className="hover:opacity-100 transition-opacity"
+          >
+            {customCount} fiche{customCount > 1 ? 's' : ''} →
+          </Link>
+        )}
+      </div>
+      <p style={{ color: '#9ca3af', fontSize: '13px', marginBottom: '16px' }}>
+        Importez un fichier JSON exporté depuis un autre appareil ou préparé sur desktop.
+      </p>
+
+      {/* Zone de drop + bouton */}
+      <input
+        ref={fileRef}
+        type="file"
+        accept=".json,application/json"
+        onChange={handleFile}
+        className="hidden"
+      />
+      <div
+        onClick={() => fileRef.current?.click()}
+        onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={handleDrop}
+        style={{
+          border: `2px dashed ${dragging ? '#2ECC71' : '#1e3a2a'}`,
+          backgroundColor: dragging ? '#0a2a0a' : '#0d1a0d',
+          borderRadius: '10px',
+          padding: '28px 16px',
+          cursor: 'pointer',
+          transition: 'all 0.2s',
+          textAlign: 'center',
+        }}
+      >
+        {/* Icône upload */}
+        <div style={{ color: dragging ? '#2ECC71' : '#2ECC71', opacity: dragging ? 1 : 0.5, marginBottom: '10px' }}>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto' }}>
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <div style={{ color: '#2ECC71', fontFamily: 'Oswald, sans-serif', fontSize: '16px', letterSpacing: '1px', marginBottom: '4px' }}>
+          {dragging ? 'Déposez ici' : 'Sélectionner un fichier JSON'}
+        </div>
+        <div style={{ color: '#555', fontSize: '12px' }}>
+          Touchez pour parcourir · ou glissez-déposez un fichier .json
+        </div>
+      </div>
+
+      {/* Feedback */}
+      {status && (
+        <div
+          style={{
+            backgroundColor: status.ok ? '#0a2a0a' : '#2a0000',
+            border: `1px solid ${status.ok ? '#2ECC71' : '#CC0000'}`,
+            color: status.ok ? '#2ECC71' : '#ff8080',
+            fontSize: '14px',
+            marginTop: '12px',
+          }}
+          className="rounded p-3 flex items-start gap-2"
+        >
+          <span>{status.ok ? '✓' : '✗'}</span>
+          <div className="flex-1">
+            {status.message}
+            {status.ok && (
+              <Link
+                to="/gestion"
+                style={{ color: '#2ECC71', display: 'block', fontSize: '12px', marginTop: '4px', opacity: 0.8 }}
+              >
+                → Voir dans Gestion des fiches
+              </Link>
+            )}
+          </div>
+          <button
+            onClick={() => setStatus(null)}
+            style={{ color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', opacity: 0.6, padding: '0 2px' }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Rappel format */}
+      <div style={{ color: '#444', fontSize: '12px', marginTop: '12px', lineHeight: 1.6 }}>
+        Format accepté : tableau JSON <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>[{'{...}'}]</code> ou fiche unique <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>{'{...}'}</code>.
+        Chaque fiche doit avoir les champs <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>id</code> et <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>titre</code>.
+        Les fiches déjà présentes (même id) sont ignorées.
+      </div>
+    </div>
+  )
+}
+
 /* ── Page principale ─────────────────────────────────────────────── */
 export default function Settings() {
   const { settings, updateProvider, configuredProviders } = useSettings()
@@ -388,6 +535,9 @@ export default function Settings() {
       </div>
 
       <div className="flex flex-col gap-4">
+        {/* Import en premier — usage prioritaire sur mobile */}
+        <ImportFichesSection />
+
         <StaticProviderSection
           providerId="anthropic"
           config={PROVIDERS.anthropic}
