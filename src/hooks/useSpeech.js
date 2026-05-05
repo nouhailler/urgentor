@@ -1,17 +1,41 @@
 import { useState, useCallback, useEffect } from 'react'
 
-// Module-level: une seule section parle à la fois
-let stopPrevious = null
-let iosTimer = null
+// ── Cache des voix chargé dès que disponible (Android Chrome async) ──────────
+let cachedVoices = []
 
-function clearIOSTimer() {
-  if (iosTimer) { clearInterval(iosTimer); iosTimer = null }
+function loadVoices() {
+  const v = window.speechSynthesis?.getVoices() ?? []
+  if (v.length) cachedVoices = v
 }
 
-// iOS bug : speechSynthesis se met en pause après ~15s
-function startIOSTimer() {
-  clearIOSTimer()
-  iosTimer = setInterval(() => {
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+  loadVoices() // synchrone sur iOS/Safari et desktop
+  // Android Chrome charge les voix de manière asynchrone via cet événement
+  window.speechSynthesis.addEventListener('voiceschanged', loadVoices)
+}
+
+function getFrenchVoice() {
+  if (!cachedVoices.length) loadVoices() // dernier recours si l'event n'a pas encore tiré
+  // Priorité : voix fr-FR, sinon fr-*, sinon null (le navigateur choisira)
+  return (
+    cachedVoices.find(v => v.lang === 'fr-FR') ??
+    cachedVoices.find(v => v.lang.startsWith('fr')) ??
+    null
+  )
+}
+
+// ── Module-level : une seule section parle à la fois ─────────────────────────
+let stopPrevious = null
+let keepAliveTimer = null
+
+function clearKeepAlive() {
+  if (keepAliveTimer) { clearInterval(keepAliveTimer); keepAliveTimer = null }
+}
+
+// Contournement du bug de pause sur iOS ET certains Android WebView (~15s)
+function startKeepAlive() {
+  clearKeepAlive()
+  keepAliveTimer = setInterval(() => {
     if (window.speechSynthesis?.paused && window.speechSynthesis?.speaking) {
       window.speechSynthesis.resume()
     }
@@ -32,7 +56,7 @@ export function useSpeech() {
 
     // Couper le précédent s'il y en a un
     if (stopPrevious) stopPrevious()
-    clearIOSTimer()
+    clearKeepAlive()
     window.speechSynthesis.cancel()
 
     const utterance = new SpeechSynthesisUtterance(text)
@@ -41,9 +65,8 @@ export function useSpeech() {
     utterance.pitch = 1
     utterance.volume = 1
 
-    // Chercher une voix française disponible
-    const voices = window.speechSynthesis.getVoices()
-    const frVoice = voices.find(v => v.lang.startsWith('fr'))
+    // Voix française si disponible (iOS sync, Android async via voiceschanged)
+    const frVoice = getFrenchVoice()
     if (frVoice) utterance.voice = frVoice
 
     // Guard contre les appels doubles (cancel déclenche parfois onerror + onend)
@@ -51,7 +74,7 @@ export function useSpeech() {
     const finish = () => {
       if (finished) return
       finished = true
-      clearIOSTimer()
+      clearKeepAlive()
       setIsSpeaking(false)
       if (stopPrevious === localStop) stopPrevious = null
     }
@@ -70,14 +93,14 @@ export function useSpeech() {
     stopPrevious = localStop
     setIsSpeaking(true)
     window.speechSynthesis.speak(utterance)
-    startIOSTimer()
+    startKeepAlive()
   }, [isSpeaking])
 
   // Nettoyage si le composant est démonté pendant la lecture
   useEffect(() => {
     return () => {
       if (isSpeaking) {
-        clearIOSTimer()
+        clearKeepAlive()
         window.speechSynthesis?.cancel()
       }
     }
