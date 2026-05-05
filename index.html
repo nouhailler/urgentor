@@ -2,13 +2,29 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23CC0000'/><path d='M45 20h10v25h25v10H55v25H45V55H20V45h25z' fill='white'/></svg>" />
+
+    <!-- Icône -->
+    <link rel="icon" type="image/svg+xml" href="/urgentor-icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Viewport mobile — viewport-fit=cover pour les encoches iPhone -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA / Mobile -->
     <meta name="theme-color" content="#CC0000" />
-    <meta name="description" content="Urgentor — Fiches de premiers secours opérationnelles. NRBC, chimique, incendie, secours à personne." />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Urgentor" />
+    <meta name="application-name" content="Urgentor" />
+
+    <!-- SEO / partage -->
+    <meta name="description" content="Urgentor — Fiches de premiers secours opérationnelles. NRBC, chimique, incendie, secours à personne. Utilisable hors ligne." />
+    <meta name="keywords" content="premiers secours, urgence, PSC1, NRBC, incendie, hémorragie, malaise" />
+
+    <!-- Empêche le zoom auto sur iOS lors du focus d'un input -->
+    <meta name="format-detection" content="telephone=no" />
+
     <title>Urgentor — Premiers Secours</title>
   </head>
   <body>

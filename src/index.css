@@ -15,6 +15,8 @@
 
 * {
   box-sizing: border-box;
+  /* Supprime le flash bleu/gris au tap sur mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -24,12 +26,39 @@ body {
   background: #0f0f1a;
   color: #f0f0f0;
   min-height: 100vh;
+  /* Scroll fluide sur iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Évite les rebonds de scroll sur iOS au niveau du body */
+  overscroll-behavior: none;
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh; /* dynamic viewport height — gère la barre d'adresse mobile */
   display: flex;
   flex-direction: column;
+  /* Safe areas pour les encoches/barre de navigation (iPhone X+, Android) */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Taille minimale de zone tactile 44px (recommandation Apple/Google) */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Scroll fluide dans les conteneurs scrollables */
+textarea, select, [data-scrollable] {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Empêche la sélection de texte accidentelle sur les éléments interactifs */
+button, [role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 h1, h2, h3, .titre-fiche {

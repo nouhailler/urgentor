@@ -9,8 +9,12 @@ export default function Navbar() {
 
   return (
     <nav
-      style={{ backgroundColor: '#0a0a1a', borderBottom: '2px solid #CC0000' }}
-      className="sticky top-0 z-50 px-4 py-3"
+      style={{
+        backgroundColor: '#0a0a1a',
+        borderBottom: '2px solid #CC0000',
+        paddingTop: 'calc(0.75rem + env(safe-area-inset-top))'
+      }}
+      className="sticky top-0 z-50 px-4 pb-3"
     >
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
         {/* Logo */}
