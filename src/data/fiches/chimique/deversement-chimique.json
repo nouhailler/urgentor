@@ -1,0 +1,152 @@
+{
+  "id": "deversement-chimique",
+  "titre": "Déversement de Produit Chimique Liquide",
+  "categorie": "chimique",
+  "sousCategorie": "liquide-corrosif",
+  "tags": ["déversement", "corrosif", "toxique", "acide", "base", "confinement", "décontamination"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS",
+
+  "objectif": "Confiner un déversement de produit chimique liquide, protéger les personnes et l'environnement, gérer les victimes contaminées.",
+
+  "conditionsActivation": "Flaques de liquide suspect, odeur chimique, victime présentant brûlures ou irritations cutanées, récipient brisé ou renversé.",
+
+  "chimique": {
+    "produit": "Acide sulfurique (H₂SO₄), Acide chlorhydrique (HCl), Soude (NaOH), Solvants (acétone, toluène)",
+    "formePhysique": "liquide",
+    "voiesExposition": ["contact cutané", "inhalation de vapeurs", "contact oculaire", "ingestion accidentelle"],
+    "symptomesIntoxication": ["Brûlures cutanées ou oculaires", "Irritation des voies respiratoires", "Larmoiement", "Toux, difficultés à respirer"],
+    "seuilOlfactif": "Acide HCl : 1 ppm détectable — H₂SO₄ : difficile à détecter (peu volatil froid)",
+    "seuilDanger": "HCl : 5 ppm (VLEP-8h) — H₂SO₄ : 0.05 mg/m³",
+    "seuilLCLO": "HCl : 3000 ppm — NaOH : brûlures immédiates à toute concentration",
+    "epiMinimum": "Gants nitrile épais, lunettes étanches, tablier résistant aux produits chimiques, masque FFP3 minimum",
+    "incompatibilites": ["Acides + bases (réaction exothermique violente)", "Acides + métaux (dégagement H₂ inflammable)", "Solvants + sources d'ignition"]
+  },
+
+  "diagnosticRapide": {
+    "visuels": ["Flaque colorée ou fumante au sol", "Dégagements de vapeurs blanches ou colorées", "Victimes avec brûlures rouges/blanches"],
+    "auditifs": ["Sifflement réaction acide/base", "Victimes qui crient brûlures"],
+    "comportementaux": ["Personnes qui fuient la zone", "Victimes se frottant les yeux", "Toux généralisée"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Brûlures cutanées et oculaires par contact", "Intoxication par inhalation de vapeurs", "Réaction chimique dangereuse si mélange"],
+    "equipementsRequis": ["EPI chimique : combinaison, gants nitrile, lunettes étanches, masque FFP3 ou ARI", "Ne jamais intervenir sans EPI adapté"],
+    "regleUniverselle": "Identifier le produit AVANT d'intervenir. Un produit inconnu = traitement NRBC.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "zonesIntervention": {
+    "zoneRouge": "Zone du déversement — combinaison chimique + ARI obligatoires",
+    "zoneOrange": "Périmètre 20-50 m — EPI protection, décontamination des victimes",
+    "zoneVerte": "Au-delà — poste de commandement, prise en charge médicale victimes décontaminées"
+  },
+
+  "scriptAlerte": {
+    "numero": "18 (pompiers) + 15 (SAMU) + responsable sécurité",
+    "quoiDire": "Je suis [NOM], au [ADRESSE]. Déversement de [PRODUIT si connu] — quantité estimée [X] L. [X] victimes. Nous avons évacué la zone. FDS disponible sur site.",
+    "informationsAFournir": ["Nom du produit (étiquette, FDS)", "Quantité déversée", "Nombre de victimes et symptômes", "Risque de propagation vers égouts"]
+  },
+
+  "actionsImmédiates": [
+    "IDENTIFIER le produit — consulter l'étiquette et FDS",
+    "ÉVACUER la zone — vent dans le dos",
+    "NE PAS marcher dans le déversement",
+    "APPELER le 18 avec le nom du produit"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Observer depuis la distance — identifier le produit (étiquette, pictogramme)"},
+    {"etape": 2, "action": "Évaluer les victimes : combien, état, localisation"},
+    {"etape": 3, "action": "Alerter le 18 et le responsable sécurité — donner le nom du produit"},
+    {"etape": 4, "action": "Évacuer toutes les personnes dans la direction opposée au vent"},
+    {"etape": 5, "action": "Mettre l'EPI adapté avant toute approche de la zone chaude"},
+    {"etape": 6, "action": "Confiner si possible sans risque : absorbant (sable, sciure), barrière anti-épandage"},
+    {"etape": 7, "action": "NE PAS utiliser d'eau sur acide concentré (réaction exothermique violente)"},
+    {"etape": 8, "action": "Décontaminer les victimes en zone tiède : déshabillage + rinçage eau abondante 15 min"},
+    {"etape": 9, "action": "Prévenir la propagation aux égouts — tampons d'égout si accessible"}
+  ],
+
+  "decontamination": {
+    "requise": true,
+    "protocole": "Déshabillage total immédiat (élimine 80% contamination) — rinçage eau courante abondante 15 minutes — NE PAS frotter",
+    "pointDecontamination": "Zone tiède — avant prise en charge médicale",
+    "gestionVetements": "Sacs hermétiques fermés — étiquetés DANGER — traitement déchet chimique"
+  },
+
+  "arbresDecision": [
+    {
+      "condition": "Produit identifié — acide fort (H₂SO₄, HCl, HNO₃)",
+      "alors": "EPI chimique — ne pas ajouter d'eau sur l'acide concentré — absorber avec sable ou neutralisant spécifique"
+    },
+    {
+      "condition": "Produit identifié — base forte (NaOH, KOH)",
+      "alors": "EPI chimique — rinçage abondant à l'eau pour les victimes — absorber et neutraliser avec acide dilué si formé"
+    },
+    {
+      "condition": "Produit NON identifié",
+      "alors": "Traiter comme NRBC — zone 100 m — EPI niveau 3 — attendre CMIR — ne pas entrer"
+    },
+    {
+      "condition": "Victime avec projection oculaire",
+      "alors": "Rinçage immédiat et abondant à l'eau pendant 15 minutes minimum — irrigation en continu — 15 en urgence"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS ajouter d'eau sur de l'acide sulfurique concentré — réaction exothermique violente avec projection",
+    "Produit non identifié = traitement NRBC par précaution",
+    "Une victime non décontaminée contamines les soignants",
+    "La soude (NaOH) brûle sans douleur immédiate — les dégâts sont sous-estimés",
+    "Ne pas induire un vomissement si ingestion — appeler le 15 pour conduite à tenir"
+  ],
+
+  "pointsControle": [
+    "Produit identifié et FDS consultée",
+    "Zone évacuée et balisée",
+    "18 et 15 alertés",
+    "Victimes décontaminées avant prise en charge médicale",
+    "Propagation aux égouts évitée si possible"
+  ],
+
+  "conditionsArretEscalade": [
+    "Produit inconnu ou quantité importante → attendre CMIR/équipes spécialisées",
+    "Victimes multiples → 15 immédiat, plan blanc si nécessaire",
+    "Risque de réaction chimique secondaire → évacuation élargie"
+  ],
+
+  "ressourcesNecessaires": [
+    "EPI chimique (combinaison + gants + lunettes + masque ARI ou FFP3)",
+    "Fiches de données de sécurité (FDS) du produit",
+    "Kit absorbant (sable, sciure, absorbant chimique)",
+    "Matériel de décontamination (eau, savon, sacs hermétiques)",
+    "Ruban de balisage"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si le SDIS et le SAMU sont à plus de 30-60 min et des victimes présentent des symptômes",
+    "actions": [
+      "Décontamination en priorité absolue : déshabillage total + rinçage eau tiède abondante SANS INTERRUPTION pendant 15-20 min minimum",
+      "Pour les yeux : rinçage continu jusqu'à l'arrivée des secours — une bouteille d'eau en flux continu",
+      "Absorber le déversement avec sable, sciure ou terre pour stopper la propagation",
+      "Ventiler la zone en ouvrant les fenêtres côté vent",
+      "Ne jamais induire de vomissement en cas d'ingestion"
+    ],
+    "ressourcesImprovises": [
+      "Vinaigre blanc dilué (1/3 vinaigre, 2/3 eau) pour neutraliser une base forte sur peau uniquement — JAMAIS sur muqueuses ni sur brûlures ouvertes",
+      "Bicarbonate de soude dissous (1 cuillère/litre d'eau) pour neutraliser un acide léger sur peau uniquement — JAMAIS dans les yeux ni ingéré",
+      "Sable / litière pour chat / terre : absorbants de fortune efficaces pour confiner le déversement"
+    ],
+    "signesAggravation": [
+      "Brûlures qui s'approfondissent malgré rinçage (acide puissant)",
+      "Difficultés respiratoires croissantes (vapeurs toxiques inhalées)",
+      "Perte de connaissance (intoxication systémique)"
+    ],
+    "limitesSansSecours": "Le rinçage à l'eau est LA mesure la plus efficace disponible sans équipement médical — son efficacité dépend directement de la durée et du débit. Sans antidote spécifique et sans prise en charge médicale, seul le rinçage prolongé peut limiter les lésions.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ INTERVENTION RÉSERVÉE AUX PERSONNELS FORMÉS ET ÉQUIPÉS. Sans EPI adapté : évacuer et attendre les secours."
+}

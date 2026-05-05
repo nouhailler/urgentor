@@ -1,0 +1,134 @@
+{
+  "id": "noyade",
+  "titre": "Noyade — Asphyxie Aquatique",
+  "categorie": "secours-personne",
+  "sousCategorie": "asphyxie",
+  "tags": ["noyade", "asphyxie", "eau", "extraction", "RCP", "hypothermie"],
+  "niveauDanger": "critique",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Extraire une victime de l'eau en sécurité et réaliser les gestes de survie adaptés à la noyade.",
+
+  "conditionsActivation": "Personne trouvée immergée ou sortie de l'eau inconsciente, personne en détresse dans l'eau, victime extraite de l'eau ne répondant pas.",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne immergée ou flottant face vers le bas", "Écume rosée aux lèvres (eau dans les poumons)", "Teint bleuté (cyanose)", "Peau froide, mouillée"],
+    "auditifs": ["Appels à l'aide ou silence", "Toux, crachat d'eau", "Absence de respiration"],
+    "comportementaux": ["Mouvements désordonnés dans l'eau", "Corps flasque à l'extraction", "Inconscience partielle ou totale"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Noyade du sauveteur (priorité absolue)", "Courant, vagues, obstacles sous l'eau", "Hypothermie du sauveteur"],
+    "equipementsRequis": ["Bouée, corde ou perche avant toute entrée dans l'eau", "Gilet de sauvetage si disponible"],
+    "regleUniverselle": "NE PAS entrer dans l'eau sans équipement. Lancer un objet flottant avant d'entrer. Un sauveteur noyé = deux victimes.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 18 (pompiers) ou 112 — préciser 'noyade'",
+    "quoiDire": "Je suis [NOM], au [LIEU PRÉCIS : piscine/lac/mer]. Noyade, victime extraite. [Consciente/inconsciente]. [Respire/ne respire pas]. RCP en cours si nécessaire.",
+    "informationsAFournir": ["Lieu exact (piscine, cours d'eau, mer)", "Durée d'immersion estimée", "Température de l'eau", "État de conscience et respiration"]
+  },
+
+  "actionsImmédiates": [
+    "ALERTER le 18 ou 112 AVANT d'entrer dans l'eau si possible",
+    "LANCER une bouée, corde, branche — tirer sans entrer",
+    "Si entrée nécessaire : garder distance, approcher par derrière",
+    "EXTRAIRE vers surface stable"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Évaluer la sécurité : courant, profondeur, obstacles — alerter le 18"},
+    {"etape": 2, "action": "Tenter sauvetage sans contact : corde, bouée, vêtement tendu, perche"},
+    {"etape": 3, "action": "Si entrée eau nécessaire : approcher la victime par derrière pour éviter qu'elle vous noie"},
+    {"etape": 4, "action": "Extraire la victime sur une surface stable et horizontale"},
+    {"etape": 5, "action": "NE PAS la secouer ni la mettre la tête en bas pour 'vider' l'eau"},
+    {"etape": 6, "action": "Évaluer la conscience : appeler, stimuler"},
+    {"etape": 7, "action": "Évaluer la respiration : basculer tête, observer la poitrine max 10 secondes"},
+    {"etape": 8, "action": "Absence de respiration → 5 insufflations de secours immédiates, puis protocole RCP 30/2"},
+    {"etape": 9, "action": "Respiration présente mais inconscient → PLS, surveiller, couvrir"},
+    {"etape": 10, "action": "Réchauffer la victime — hypothermie fréquente même en été"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime dans l'eau, consciente, appelle à l'aide",
+      "alors": "Lancer flotteur — tirer sans entrer — surveiller — alerter 18"
+    },
+    {
+      "condition": "Victime extraite, inconsciente, ne respire pas",
+      "alors": "5 insufflations immédiates → RCP 30/2 → DAE dès disponible — 15 alerté"
+    },
+    {
+      "condition": "Victime extraite, inconsciente mais respire",
+      "alors": "PLS — couvrir — 15 alerté — surveiller respiration en continu"
+    },
+    {
+      "condition": "Noyade eau froide (< 15°C), récupération difficile",
+      "alors": "RCP prolongée obligatoire — 'pas mort tant que pas chaud et mort' — continuer jusqu'aux secours"
+    },
+    {
+      "condition": "Victime consciente extraite, symptômes secondaires",
+      "alors": "Hospitalisation systématique — noyade secondaire possible jusqu'à 24h après"
+    }
+  ],
+
+  "notesCritiques": [
+    "La noyade secondaire peut tuer jusqu'à 24h après l'incident — tout noyé doit être hospitalisé",
+    "Eau froide = noyade différée possible — continuer la RCP même après longue immersion",
+    "5 insufflations initiales avant les compressions — les poumons sont la priorité dans la noyade",
+    "Ne JAMAIS mettre la victime tête en bas pour 'vider' l'eau — risque de vomissement et d'inhalation",
+    "Un noyé conscient mais ayant inhalé de l'eau doit être hospitalisé MÊME s'il se sent bien"
+  ],
+
+  "pointsControle": [
+    "Sauveteur en sécurité — pas entré dans l'eau sans équipement",
+    "Secours alertés (15 ou 18)",
+    "Victime extraite et sur surface stable",
+    "RCP démarrée si nécessaire",
+    "Victime couverte et réchauffée"
+  ],
+
+  "conditionsArretEscalade": [
+    "Arrivée des secours — transmettre durée d'immersion, température eau, gestes effectués",
+    "Épuisement du sauveteur — relai immédiat",
+    "Reprise respiration → PLS + surveillance continue"
+  ],
+
+  "ressourcesNecessaires": [
+    "Bouée ou objet flottant",
+    "Corde de sauvetage",
+    "DAE si disponible",
+    "Couverture de survie",
+    "Téléphone pour appel 18"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours sont à plus de 15-30 min et la victime présente un arrêt respiratoire ou cardiaque",
+    "actions": [
+      "Continuer la RCP sans interruption — en eau froide, la survie est possible après 30+ min de RCP",
+      "5 insufflations de secours en priorité avant les compressions pour la noyade",
+      "Réchauffer activement la victime (corps à corps dans sac de couchage, vêtements secs)",
+      "Si la victime reprend conscience : position semi-assise, surveiller toux et détresse respiratoire",
+      "Surveiller noyade secondaire : toute aggravation respiratoire dans les 24h = urgence vitale",
+      "Ne jamais laisser seul un noyé 'récupéré' — la noyade secondaire peut survenir des heures après"
+    ],
+    "ressourcesImprovises": [
+      "Sac de couchage + corps à corps pour réchauffer (hypothermie = ennemi principal)",
+      "Couverture de survie si disponible",
+      "Vêtements secs de remplacement"
+    ],
+    "signesAggravation": [
+      "Respiration qui redevient difficile après amélioration (noyade secondaire)",
+      "Mousse rosée aux lèvres",
+      "Toux persistante et aggravée",
+      "Confusion ou somnolence croissante"
+    ],
+    "limitesSansSecours": "La RCP en noyade est efficace — ne jamais arrêter trop tôt. En eau froide, des récupérations après 60+ min de RCP ont été documentées (hypothermie protectrice). La noyade secondaire sur 24h est imprévisible sans surveillance médicale.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. Tout noyé doit être pris en charge médicalement même s'il semble se rétablir."
+}

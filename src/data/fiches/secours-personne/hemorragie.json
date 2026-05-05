@@ -1,0 +1,130 @@
+{
+  "id": "hemorragie-externe",
+  "titre": "Hémorragie Externe Grave",
+  "categorie": "secours-personne",
+  "sousCategorie": "traumatologique",
+  "tags": ["hémorragie", "saignement", "garrot", "compression", "plaie", "traumatisme"],
+  "niveauDanger": "critique",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Arrêter une hémorragie externe grave pour prévenir le choc hémorragique et décès par perte de sang.",
+
+  "conditionsActivation": "Saignement abondant visible, qui ne s'arrête pas spontanément, membre sectionné ou plaie profonde avec sang rouge vif pulsatile.",
+
+  "diagnosticRapide": {
+    "visuels": ["Sang en grande quantité sur le sol ou les vêtements", "Plaie béante sur membre ou tronc", "Teint pâle, sueurs froides"],
+    "auditifs": ["Victime qui se plaint de douleur intense", "Gémissements", "Victime qui dit 'je saigne beaucoup'"],
+    "comportementaux": ["Victime agitée puis qui se calme (signe de choc)", "Confusion mentale", "Victime qui comprime spontanément la plaie"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contact avec le sang (risque biologique)", "Zone d'accident (trafic, effondrement)"],
+    "equipementsRequis": ["Gants à usage unique (latex ou nitrile)", "Compresses stériles", "Garrot tourniquet si disponible"],
+    "regleUniverselle": "Mettre des gants AVANT tout contact avec le sang. Si indisponibles, utiliser un sac plastique ou tissu épais.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 18 (pompiers) ou 112",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Victime avec hémorragie grave [membre/tronc]. Compression en cours / garrot posé à [HEURE]. Victime [consciente/inconsciente].",
+    "informationsAFournir": ["Localisation et type de plaie", "Heure de pose du garrot", "État de conscience", "Mécanisme du traumatisme"]
+  },
+
+  "actionsImmédiates": [
+    "METTRE DES GANTS ou protection",
+    "COMPRIMER la plaie FORT avec les deux mains ou compresses",
+    "ALERTER le 15 / 112",
+    "Ne PAS lâcher la compression"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Mettre des gants — sécuriser la zone"},
+    {"etape": 2, "action": "Appliquer une compression manuelle directe et forte sur la plaie"},
+    {"etape": 3, "action": "Appeler le 15 ou faire appeler — maintenir la compression pendant l'appel"},
+    {"etape": 4, "action": "Si plaie sur membre : poser un garrot 5-7 cm au-dessus de la plaie si compression insuffisante"},
+    {"etape": 5, "action": "NOTER L'HEURE DE POSE DU GARROT — ne jamais retirer sans ordre médical"},
+    {"etape": 6, "action": "Si compression manuelle suffisante : maintenir jusqu'à relai médical"},
+    {"etape": 7, "action": "Allonger la victime, jambes surélevées si elle est consciente (position antichoc)"},
+    {"etape": 8, "action": "Couvrir la victime (prévenir l'hypothermie)"},
+    {"etape": 9, "action": "Surveiller : conscience, pouls radial, coloration, fréquence respiratoire"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Saignement sur membre + compression insuffisante",
+      "alors": "Poser un garrot 5-7 cm au-dessus de la plaie — noter l'heure — ne jamais retirer"
+    },
+    {
+      "condition": "Saignement sur tronc / cou / aisselle (zone non garrotable)",
+      "alors": "Compression manuelle forte + pansement compressif si disponible — ne JAMAIS poser de garrot sur le cou"
+    },
+    {
+      "condition": "Victime inconsciente + hémorragie",
+      "alors": "Compression/garrot PUIS vérifier la respiration — PLS si respire, RCP si arrêt cardiaque"
+    },
+    {
+      "condition": "Corps étranger dans la plaie",
+      "alors": "NE PAS retirer — comprimer autour — stabiliser l'objet"
+    }
+  ],
+
+  "notesCritiques": [
+    "Un adulte peut mourir d'une hémorragie en 3-5 minutes — agir IMMÉDIATEMENT",
+    "Le garrot sauve des vies — ne pas hésiter à en poser un sur membre",
+    "NOTER L'HEURE DE POSE — information vitale pour le chirurgien",
+    "Ne jamais retirer un garrot sans ordre médical — risque de choc brutal",
+    "Ne pas comprimer le cou (arrêt circulation cérébrale)",
+    "Réchauffer la victime — l'hypothermie aggrave les troubles de la coagulation"
+  ],
+
+  "pointsControle": [
+    "Le saignement est stoppé ou très réduit",
+    "L'heure du garrot est notée et transmise aux secours",
+    "La victime est allongée et couverte",
+    "Les secours ont été alertés"
+  ],
+
+  "conditionsArretEscalade": [
+    "Saignement non contrôlable → maintenir compression, attendre SMUR",
+    "Victime en arrêt cardiaque → passer en protocole RCP",
+    "Choc hémorragique (victime très pâle, inconsciente, pouls filant) → position allongée, 15 immédiat"
+  ],
+
+  "ressourcesNecessaires": [
+    "Gants à usage unique",
+    "Compresses stériles ou tissu propre",
+    "Garrot tourniquet (CAT-T ou similaire)",
+    "Marqueur ou stylo pour noter l'heure",
+    "Couverture de survie"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours sont à plus de 30-60 min et que l'hémorragie est active (zone reculée, accident de randonnée, catastrophe)",
+    "actions": [
+      "Maintenir la compression ou le garrot ABSOLUMENT sans relâcher",
+      "Si le garrot saigne encore en dessous : serrer davantage ou poser un second garrot au-dessus",
+      "Élever le membre blessé au-dessus du niveau du cœur (si garrot non posé)",
+      "Surveiller les signes de choc toutes les 5 minutes",
+      "Garder la victime allongée, jambes légèrement surélevées, couverte et au chaud",
+      "Hydrater oralement si la victime est consciente et ne vomit pas (eau, sucre) — ne compense pas la perte sanguine mais évite la déshydratation"
+    ],
+    "ressourcesImprovises": [
+      "Tissu propre très serré > compresses stériles",
+      "Ceinture de cuir / sangle / lacet de chaussure comme garrot de fortune (serrer jusqu'à arrêt du saignement)",
+      "Film alimentaire ou sac plastique propre sur plaie thoracique (laisser un côté libre pour permettre l'expiration)",
+      "Vêtement propre comme pansement compressif d'urgence"
+    ],
+    "signesAggravation": [
+      "Pouls radial imperceptible (poignet)",
+      "Victime de plus en plus confuse, puis agitée, puis inconsciente",
+      "Peau froide, moite, pâle, marbrée",
+      "Respiration rapide > 25/min et superficielle"
+    ],
+    "limitesSansSecours": "La compression/garrot peut maintenir la vie plusieurs heures si correctement maintenue. Sans transfusion, les pertes importantes (> 1,5L) sont fatales. Le garrot peut être maintenu 2h sans séquelles graves.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

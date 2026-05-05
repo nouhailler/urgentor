@@ -1,0 +1,170 @@
+{
+  "id": "alerte-chimique-nrbc",
+  "titre": "Agent Chimique de Guerre — Neurotoxiques",
+  "categorie": "nrbc",
+  "sousCategorie": "agent-nrbc-C",
+  "tags": ["neurotoxique", "sarin", "NRBC", "agent de guerre", "décontamination", "atropine", "urgence vitale"],
+  "niveauDanger": "critique",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "Ministère Intérieur",
+
+  "objectif": "Reconnaître une attaque ou un accident impliquant un agent chimique de guerre neurotoxique, protéger les intervenants et appliquer les mesures d'urgence vitale.",
+
+  "conditionsActivation": "Victimes multiples sans cause apparente, mioisis pupillaires, convulsions, liquide purulent en nappe, odeur de géranium/amande amère, rassemblement de victimes dans un espace clos.",
+
+  "nrbc": {
+    "type": "C",
+    "agent": "Organophosphorés neurotoxiques — Sarin (GB), Tabun (GA), VX, Novichok",
+    "codeNU": "2810 (liquide toxique organique) — Sarin : 2810",
+    "classificationADR": "6.1 — Matières toxiques",
+    "zoneExclusion": "500 m sous le vent — ajuster selon conditions météo",
+    "niveauEPI": "EPI niveau 4 — combinaison étanche imperméable + ARI — protection totale obligatoire",
+    "antidoteDisponible": true,
+    "decontaminationRequise": true,
+    "protocolePCO": "Plan NRBC activé — Préfet + SAMU — unités CMIR — Ministère Intérieur"
+  },
+
+  "chimique": {
+    "produit": "Sarin (isopropyl méthylphosphonofluoridate)",
+    "formePhysique": "liquide (évaporation rapide en gaz)",
+    "voiesExposition": ["inhalation", "contact cutané", "contact oculaire"],
+    "symptomesIntoxication": [
+      "Mioisis (pupilles en points) — signe pathognomonique",
+      "Larmoiement, rhinorrhée abondante",
+      "Hypersécrétion bronchique, dyspnée",
+      "Fasciculations musculaires, convulsions",
+      "Bradycardie, arrêt cardiaque"
+    ],
+    "seuilOlfactif": "Sarin : pratiquement inodore ou légère odeur de solvant",
+    "seuilDanger": "Sarin : LCt50 inhalation ≈ 35 mg·min/m³",
+    "seuilLCLO": "VX cutané : dose létale ≈ 10 mg",
+    "epiMinimum": "EPI niveau 4 — aucune intervention sans combinaison étanche + ARI",
+    "incompatibilites": ["Réactifs alcalins (hydrolyse mais dangereux)", "Oxydants forts"]
+  },
+
+  "diagnosticRapide": {
+    "visuels": ["Nombreuses victimes effondrées simultanément dans un espace clos", "Pupilles en points (mioisis) — signe majeur", "Sécrétions abondantes (larmes, salive, urine)", "Victimes en convulsions ou prostration"],
+    "auditifs": ["Cris puis silence", "Respiration sifflante (bronchospasme)", "Absence de réponse aux appels"],
+    "comportementaux": ["Victimes agitées, puis convulsives, puis inconscientes", "Vomissements massifs", "Incontinence urinaire et fécale"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contamination cutanée par contact ou sol souillé", "Inhalation de vapeurs", "Contamination par contact avec victime non décontaminée"],
+    "equipementsRequis": ["EPI niveau 4 : combinaison NRBC étanche + ARI + double gants + surbottes — OBLIGATOIRE", "Auto-injecteur atropine/pralidoxime si disponible et formé"],
+    "regleUniverselle": "Victimes multiples sans cause apparente dans espace clos = NRBC jusqu'à preuve du contraire. EPI niveau 4 ou ne pas entrer.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "zonesIntervention": {
+    "zoneRouge": "Zone de largage/contamination — EPI niveau 4 uniquement — équipes CMIR",
+    "zoneOrange": "Zone de décontamination — extraction victimes + déshabillage + rinçage massif",
+    "zoneVerte": "Zone médicale — réanimation victimes décontaminées — antidotes — médecins SMUR"
+  },
+
+  "scriptAlerte": {
+    "numero": "18 + 15 + 17 — ou 112 — PRÉCISER 'NRBC chimique — agents neurotoxiques suspectés — victimes multiples'",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Victimes multiples, suspicion agent chimique de guerre. [X] victimes, symptômes : mioisis/convulsions. Zone balisée. DÉCLENCHER PLAN NRBC.",
+    "informationsAFournir": ["Nombre et état des victimes", "Lieu précis et conditions d'exposition", "Heure de survenue", "Symptômes observés (mioisis, convulsions, sécrétions)"]
+  },
+
+  "actionsImmédiates": [
+    "ÉLOIGNER toutes les personnes — vent dans le dos — 500 m minimum",
+    "NE PAS entrer en zone chaude sans EPI niveau 4",
+    "ALERTER le 18 + 15 + 17 — préciser 'NRBC chimique'",
+    "DÉCLENCHER le plan NRBC — alerter la préfecture"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Victimes multiples simultanées → suspicion NRBC → évacuation immédiate zone chaude"},
+    {"etape": 2, "action": "Alerter 18+15+17 — préciser 'victimes multiples, NRBC chimique suspecté, déclencher plan'"},
+    {"etape": 3, "action": "Baliser 500 m sous le vent — interdire l'accès"},
+    {"etape": 4, "action": "NE PAS entrer en zone chaude sans EPI niveau 4 — attendre le CMIR"},
+    {"etape": 5, "action": "Extraire les victimes en zone tiède (avec EPI) — décontamination immédiate"},
+    {"etape": 6, "action": "Décontamination : déshabillage total + rinçage eau abondante 15 min"},
+    {"etape": 7, "action": "Administration d'atropine si formé et disponible (mioisis + bradycardie + sécrétions)"},
+    {"etape": 8, "action": "Réanimation en zone verte par SMUR — maintenir libres les voies aériennes"},
+    {"etape": 9, "action": "Conserver les vêtements et prélèvements pour identification de l'agent"}
+  ],
+
+  "decontamination": {
+    "requise": true,
+    "protocole": "Déshabillage total IMMÉDIAT (priorité absolue — élimine 80% de la contamination) — rinçage eau abondante tiède 15 min — ne pas frotter — décontamination oculaire prioritaire",
+    "pointDecontamination": "Zone tiède — ligne de décontamination avec douches portatives — personnel EPI niveau 3 minimum",
+    "gestionVetements": "Sacs hermétiques doubles — étiquetés NRBC CHIMIQUE — traitement déchets dangereux"
+  },
+
+  "arbresDecision": [
+    {
+      "condition": "Victimes multiples avec mioisis + sécrétions + convulsions",
+      "alors": "Agent neurotoxique — EPI niveau 4 — décontamination — atropine (formés seulement) — 15+18 NRBC"
+    },
+    {
+      "condition": "Victime unique, exposition isolée",
+      "alors": "Déshabillage + rinçage — 15 immédiat — transport SMUR — signaler agent suspecté"
+    },
+    {
+      "condition": "Agent non identifié mais victimes effondrées",
+      "alors": "Traiter comme agent neurotoxique — EPI niveau 4 — ne pas entrer sans — attendre CMIR"
+    },
+    {
+      "condition": "Arrêt cardiaque sur victime exposée",
+      "alors": "RCP uniquement en zone verte après décontamination complète — pas de bouche-à-bouche sans protection"
+    }
+  ],
+
+  "notesCritiques": [
+    "Victimes multiples sans cause apparente = NRBC jusqu'à preuve du contraire — NE PAS hésiter à déclencher",
+    "Le contact avec la peau d'une victime non décontaminée peut tuer l'intervenant (VX)",
+    "L'atropine est l'antidote des neurotoxiques — elle ne protège pas sans décontamination préalable",
+    "La RCP sans protection sur victime contaminée = contamination du sauveteur",
+    "Ne jamais entrer seul en zone chaude — règle des deux intervenants minimum"
+  ],
+
+  "pointsControle": [
+    "Zone balisée 500 m minimum",
+    "18+15+17 alertés — plan NRBC déclenché",
+    "Aucun intervenant entré sans EPI niveau 4",
+    "Victimes décontaminées avant prise en charge médicale",
+    "CMIR et équipes spécialisées en route"
+  ],
+
+  "conditionsArretEscalade": [
+    "Identification de l'agent → adapter le traitement médical (antidote spécifique)",
+    "Propagation zone → évacuation élargie sous vent — information population",
+    "Victimes en ACR → décontamination avant RCP en zone verte uniquement"
+  ],
+
+  "ressourcesNecessaires": [
+    "EPI niveau 4 (combinaison étanche + ARI + double gants + surbottes) — INDISPENSABLE",
+    "Auto-injecteurs atropine + pralidoxime (si disponibles, personnel formé)",
+    "Matériel décontamination (douches portatives, eau en quantité, sacs hermétiques)",
+    "Dosimètres si composante radiologique associée",
+    "Unité CMIR (Cellule Mobile d'Intervention Radiologique ou Chimique)"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si vous êtes isolé avec des victimes exposées à un agent neurotoxique et que les secours NRBC sont à plus de 1h",
+    "actions": [
+      "Décontamination IMMÉDIATE des victimes accessibles : déshabillage total + rinçage eau tiède abondante 15 min — élimine 80% de la contamination cutanée",
+      "Maintenir la distance 500m minimum — le simple contact avec une victime non décontaminée peut être fatal (VX)",
+      "Position demi-assise pour les victimes qui respirent difficilement",
+      "Si disponible et si vous êtes FORMÉ : auto-injecteur atropine IM (cuisse) pour victime avec mioisis + bradycardie + sécrétions abondantes",
+      "Libérer les voies aériennes des sécrétions (position latérale si inconscient et respirant)"
+    ],
+    "ressourcesImprovises": [
+      "Eau et savon : seule décontamination possible sans kit NRBC",
+      "Tissu humide sur le visage pour filtration minimale (ne protège PAS contre les neurotoxiques gazeux)"
+    ],
+    "signesAggravation": [
+      "Convulsions",
+      "Apnée (arrêt respiratoire)",
+      "Bradycardie < 40/min",
+      "Cyanose profonde"
+    ],
+    "limitesSansSecours": "Sans atropine/pralidoxime et sans prise en charge par réanimateur, la survie à une intoxication par neurotoxique de guerre dépend de la dose reçue et de la vitesse de décontamination. La décontamination immédiate et la mise en position adaptée sont les SEULES mesures disponibles sans médicaments. La RCP sur victime décontaminée peut être tentée — avec un masque de poche uniquement.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ INTERVENTION RÉSERVÉE AUX PERSONNELS FORMÉS ET ÉQUIPÉS — NRBC CHIMIQUE. Sans EPI niveau 4 : maintenir la distance 500 m, alerter les autorités, ne pas entrer. Cette fiche est une aide mémoire — l'intervention réelle nécessite une formation NRBC spécialisée (CMIR, équipes spécialisées)."
+}

@@ -1,0 +1,127 @@
+{
+  "id": "evacuation-batiment",
+  "titre": "Évacuation de Bâtiment",
+  "categorie": "incendie-evacuation",
+  "sousCategorie": "evacuation",
+  "tags": ["évacuation", "bâtiment", "rassemblement", "EAP", "guide-file", "serre-file"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "Ministère Intérieur",
+
+  "objectif": "Assurer l'évacuation rapide, ordonnée et complète d'un bâtiment en cas d'alarme, en conduisant toutes les personnes vers le point de rassemblement.",
+
+  "conditionsActivation": "Déclenchement de l'alarme incendie, ordre d'évacuation donné par responsable sécurité, découverte d'un sinistre, alerte à la bombe.",
+
+  "diagnosticRapide": {
+    "visuels": ["Voyant alarme allumé", "Flash lumineux d'évacuation", "Fumée ou flammes visibles", "Personnes qui se lèvent et se dirigent vers les sorties"],
+    "auditifs": ["Signal sonore continu ou intermittent de l'alarme", "Voix directive du responsable sécurité", "Annonce sonore d'évacuation"],
+    "comportementaux": ["Hésitation des occupants", "Désorientation dans les couloirs", "Personnes à mobilité réduite nécessitant assistance"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Mouvement de foule / bousculade", "Fumée dans les couloirs", "Blocage des sorties"],
+    "equipementsRequis": ["Badge guide-file ou serre-file si formation", "Liste des occupants de la zone"],
+    "regleUniverselle": "L'évacuation doit être calme mais rapide. Pas de course, pas d'ascenseur, pas de retour en arrière.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "18 (pompiers) si sinistre réel — confirmer l'évacuation au PC sécurité si bâtiment équipé",
+    "quoiDire": "Évacuation déclenchée au [BÂTIMENT / ADRESSE]. [X] personnes évacuées. [Personnes manquantes ou bloquées]. Point de rassemblement : [LIEU].",
+    "informationsAFournir": ["Bâtiment et numéro de zone", "Nombre de personnes évacuées vs présentes", "Personnes à mobilité réduite localisées", "Issue utilisée"]
+  },
+
+  "actionsImmédiates": [
+    "QUITTER immédiatement la zone — laisser toutes les affaires",
+    "Suivre le chemin d'évacuation affiché",
+    "NE PAS utiliser les ascenseurs",
+    "SE RENDRE au point de rassemblement"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Dès l'alarme : arrêter toute activité, se lever, laisser les affaires personnelles"},
+    {"etape": 2, "action": "Guide-file : se diriger vers la sortie désignée, vérifier que tout le monde suit"},
+    {"etape": 3, "action": "Fermer les portes en partant (ne pas les verrouiller) pour ralentir le feu"},
+    {"etape": 4, "action": "Si fumée dans le couloir : rester sous la fumée, se couvrir la bouche, prendre issue de secours alternative"},
+    {"etape": 5, "action": "Identifier les personnes à mobilité réduite — les accompagner ou signaler leur position aux secours"},
+    {"etape": 6, "action": "Serre-file : vérifier que toutes les pièces de la zone sont vides"},
+    {"etape": 7, "action": "Ne JAMAIS utiliser l'ascenseur — escaliers uniquement"},
+    {"etape": 8, "action": "Rejoindre le point de rassemblement (PA) indiqué dans le plan"},
+    {"etape": 9, "action": "Pointer les personnes au point de rassemblement — signaler tout absent au responsable"},
+    {"etape": 10, "action": "Ne JAMAIS retourner dans le bâtiment sans autorisation du responsable sécurité ou pompiers"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Issue principale bloquée par fumée ou feu",
+      "alors": "Utiliser l'issue de secours alternative (affichée sur plan) — rester sous la fumée"
+    },
+    {
+      "condition": "Personne bloquée dans une pièce",
+      "alors": "Fermer la porte, obstruer les fentes, signaler à la fenêtre, appeler le 18 avec localisation précise"
+    },
+    {
+      "condition": "Personne à mobilité réduite (PMR)",
+      "alors": "Conduire vers l'espace d'attente sécurisé (EAS) si disponible — signaler la position aux pompiers à leur arrivée"
+    },
+    {
+      "condition": "Alerte à la bombe (pas d'incendie)",
+      "alors": "Évacuation identique — NE PAS utiliser les téléphones portables à proximité de l'objet suspect — point de rassemblement à 300 m"
+    }
+  ],
+
+  "notesCritiques": [
+    "80% des victimes d'incendie périssent par intoxication aux fumées, pas par brûlures",
+    "L'ascenseur peut s'arrêter et piéger les occupants en cas de coupure électrique",
+    "Les EAS (espaces d'attente sécurisés) sont des paliers résistants au feu pour PMR",
+    "Ne JAMAIS retourner chercher des affaires — aucun objet ne vaut une vie",
+    "Le comptage au point de rassemblement est obligatoire — signaler immédiatement tout absent"
+  ],
+
+  "pointsControle": [
+    "Toutes les personnes de la zone sont au point de rassemblement",
+    "Toutes les portes sont fermées (non verrouillées)",
+    "Aucune personne n'est retournée dans le bâtiment",
+    "Les pompiers ont été informés des personnes bloquées",
+    "Le responsable sécurité a validé l'évacuation complète"
+  ],
+
+  "conditionsArretEscalade": [
+    "Personnes manquantes au comptage → alerter pompiers avec localisation probable",
+    "Accès bloqué par les flammes → attendre les pompiers, ne pas forcer",
+    "Mouvement de foule → se mettre sur le côté, protéger sa tête"
+  ],
+
+  "ressourcesNecessaires": [
+    "Plan d'évacuation affiché",
+    "Liste des occupants par zone",
+    "Brassards guide-file et serre-file",
+    "Point de rassemblement identifié et dégagé"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours ne peuvent confirmer l'évacuation complète et que des personnes semblent manquer",
+    "actions": [
+      "Recenser précisément les personnes manquantes et leur dernière position connue",
+      "Alerter vocalement depuis l'extérieur (cris, sifflets) avant toute tentative d'entrée",
+      "Ne jamais entrer seul dans un bâtiment en feu pour chercher quelqu'un — attendre un binôme minimum",
+      "Si entrée indispensable (enfant visible, personne répondant) : tissu humide sur le nez, rester sous la fumée, cordelette de retour",
+      "Appliquer la règle des 30 secondes : si vous n'avez pas trouvé en 30s, ressortez"
+    ],
+    "ressourcesImprovises": [
+      "Tissu humide sur le nez et la bouche (filtre limité mais utile)",
+      "Corde attachée à l'entrée pour se repérer dans la fumée",
+      "Lampe torche (l'électricité peut être coupée)"
+    ],
+    "signesAggravation": [
+      "Fumée noire qui envahit les couloirs bas (baisse rapide de la visibilité)",
+      "Température qui monte rapidement dans les espaces communs",
+      "Craquements de structures porteuses"
+    ],
+    "limitesSansSecours": "L'entrée dans un bâtiment en feu sans EPI est extrêmement dangereuse — les gaz de combustion peuvent tuer en quelques respirations. La décision d'entrer relève d'une évaluation personnelle des risques — toujours avec un binôme et un plan de sortie clair.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ L'évacuation est obligatoire à chaque déclenchement d'alarme. Ne jamais présumer d'une fausse alarme."
+}

@@ -1,0 +1,152 @@
+{
+  "id": "alerte-radiologique",
+  "titre": "Contamination Radiologique",
+  "categorie": "nrbc",
+  "sousCategorie": "agent-nrbc-R",
+  "tags": ["radiologique", "contamination", "irradiation", "source orpheline", "accident nucléaire", "NRBC"],
+  "niveauDanger": "critique",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "Ministère Intérieur",
+
+  "objectif": "Reconnaître une situation de contamination radiologique, protéger les personnes et appliquer les mesures conservatoires en attendant les équipes spécialisées.",
+
+  "conditionsActivation": "Alarme de détection radioactive, victime présentant syndrome d'irradiation, découverte de source orpheline, accident transport matière radioactive.",
+
+  "nrbc": {
+    "type": "R",
+    "agent": "Source radioactive non identifiée / accident radiologique",
+    "codeNU": "Variable selon source — ex. 2916 (matière radioactive type B)",
+    "classificationADR": "Classe 7 — matières radioactives",
+    "zoneExclusion": "300 m minimum — ajuster selon mesures dosimétrique terrain",
+    "niveauEPI": "EPI niveau 2 minimum — combinaison + dosimètre personnel — masque FFP3",
+    "antidoteDisponible": false,
+    "decontaminationRequise": true,
+    "protocolePCO": "Alerter préfet — activer cellule de crise — contacter ASN (Autorité de Sûreté Nucléaire)"
+  },
+
+  "diagnosticRapide": {
+    "visuels": ["Déclenchement d'alarme dosimètre/Geiger", "Conteneur métallique atypique, endommagé", "Pictogramme trèfle noir sur fond jaune", "Victimes sans cause apparente avec nausées"],
+    "auditifs": ["Bip continu du dosimètre", "Alarme de détection du bâtiment"],
+    "comportementaux": ["Nausées, vomissements sans cause apparente (syndrome d'irradiation)", "Rougeur cutanée localisée sans contact connu", "Chute de cheveux dans les heures/jours suivants (signe tardif)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Irradiation externe (émetteurs gamma)", "Contamination interne par inhalation de particules (alpha/bêta)", "Contamination cutanée"],
+    "equipementsRequis": ["Dosimètre personnel OBLIGATOIRE", "Combinaison de protection (NRBC niveau 2 minimum)", "Masque ARI ou FFP3", "Ne jamais toucher sans EPI"],
+    "regleUniverselle": "Distance — Durée — Écrantage. Maximiser la distance, minimiser le temps d'exposition, se mettre à l'abri derrière un mur épais.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "zonesIntervention": {
+    "zoneRouge": "Zone source / zone chaude — accès équipes RAD uniquement — dosimètre obligatoire",
+    "zoneOrange": "Zone tiède — décontamination des victimes — EPI niveau 2",
+    "zoneVerte": "Zone froide — poste de commandement — prise en charge médicale victimes décontaminées"
+  },
+
+  "scriptAlerte": {
+    "numero": "18 (SDIS) + 15 (SAMU) + 17 (Police) — ou 112 — préciser 'risque NRBC radiologique'",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Suspicion de contamination radiologique. [X] victimes. Zone balisée à [X] m. Dosimètre déclenché. Attente équipes spécialisées.",
+    "informationsAFournir": ["Localisation précise de la source si connue", "Mesure dosimétrique si disponible", "Nombre de victimes et durée d'exposition estimée", "Type de source si identifiable (pictogramme)"]
+  },
+
+  "actionsImmédiates": [
+    "ÉLOIGNER : quitter immédiatement la zone — distance = protection",
+    "BALISER : zone de 300 m minimum",
+    "ALERTER : 18 + préciser NRBC radiologique",
+    "NE TOUCHER aucun objet suspect"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Détecter l'alarme ou symptômes → quitter immédiatement la zone en restant debout (ne pas s'allonger)"},
+    {"etape": 2, "action": "Alerter le 18 depuis zone sûre — préciser 'risque radiologique NRBC'"},
+    {"etape": 3, "action": "Baliser à 300 m minimum — interdire l'accès — ne pas laisser entrer"},
+    {"etape": 4, "action": "Recenser les personnes exposées : noms, durée d'exposition estimée"},
+    {"etape": 5, "action": "Mettre à l'abri dans un bâtiment (béton/brique) si évacuation impossible"},
+    {"etape": 6, "action": "Attendre les équipes spécialisées (RAD SDIS, IRSN, PCO)"},
+    {"etape": 7, "action": "Décontamination vitimes : déshabillage total + douche/rinçage en zone tiède"},
+    {"etape": 8, "action": "Conserver les vêtements en sac hermétique — pour mesure de contamination"}
+  ],
+
+  "decontamination": {
+    "requise": true,
+    "protocole": "Déshabillage total (élimine 90% des particules bêta/alpha) — rinçage eau tiède en douche — ne pas frotter — shampoing doux pour cheveux",
+    "pointDecontamination": "Zone tiède — poste spécifique avant zone médicale",
+    "gestionVetements": "Sacs hermétiques étiquetés — conservation pour dosimétrie ultérieure — traitement déchets radioactifs"
+  },
+
+  "arbresDecision": [
+    {
+      "condition": "Dosimètre déclenche — source non identifiée",
+      "alors": "Distance maximale — baliser 300 m — ne pas toucher — 18 immédiat"
+    },
+    {
+      "condition": "Source identifiée avec pictogramme radioactif",
+      "alors": "Ne pas approcher — baliser — appeler ASN (0800 804 167) + 18"
+    },
+    {
+      "condition": "Victime symptomatique (nausées, vomissements, érythème)",
+      "alors": "Décontamination prioritaire — hospitalisation en service spécialisé — signaler aux équipes médicales 'exposition radiologique'"
+    },
+    {
+      "condition": "Accident transport matières radioactives (camion, train)",
+      "alors": "Zone 300 m — ne pas approcher l'épave — attendre équipe RAD — signaler le numéro ONU sur la plaque orange"
+    }
+  ],
+
+  "notesCritiques": [
+    "La contamination est invisible, inodore et indolore — ne pas sous-estimer",
+    "Les rayonnements alpha et bêta sont arrêtés par la peau — la contamination interne (inhalation) est le danger principal",
+    "Les rayonnements gamma traversent les murs — seule la distance protège",
+    "Le syndrome d'irradiation apparaît en heures/jours — la victime peut sembler bien au départ",
+    "Ne JAMAIS utiliser de bandes absorbantes ou de sable — disperser les particules augmente la contamination"
+  ],
+
+  "pointsControle": [
+    "Zone balisée à 300 m minimum",
+    "18 alerté avec mention NRBC radiologique",
+    "Liste des personnes exposées constituée",
+    "Victimes décontaminées avant prise en charge médicale",
+    "ASN contactée si source radioactive"
+  ],
+
+  "conditionsArretEscalade": [
+    "Mesures dosimétriques élevées → évacuation zone élargie — PCO à distance",
+    "Victimes multiples symptomatiques → plan blanc — service REA spécialisé",
+    "Source non récupérable → police scientifique — IRSN — ASN"
+  ],
+
+  "ressourcesNecessaires": [
+    "Dosimètre personnel (obligatoire avant toute approche)",
+    "EPI niveau 2 (combinaison NRBC + masque ARI/FFP3)",
+    "Matériel de décontamination (douche portative si possible)",
+    "Sacs hermétiques pour vêtements",
+    "Contact ASN : 0800 804 167 (numéro d'urgence)"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si vous êtes isolé avec une exposition radiologique confirmée ou suspectée et que les secours sont à plus de 1h",
+    "actions": [
+      "Distance : s'éloigner le plus possible de la source (loi inverse des carrés : distance × 2 = exposition / 4)",
+      "Mise à l'abri dans un bâtiment en béton ou brique (réduit jusqu'à 90% l'exposition aux rayonnements gamma)",
+      "Fermer TOUTES les ouvertures : fenêtres, ventilation, climatisation (protège contre les particules alpha/bêta)",
+      "Décontamination externe : déshabillage total + lavage au savon + shampoing (élimine les particules)",
+      "Ne pas manger, boire ni fumer (évite la contamination interne)",
+      "Conserver les vêtements dans sac hermétique pour dosimétrie ultérieure"
+    ],
+    "ressourcesImprovises": [
+      "Bâtiment en béton épais > maison en bois (atténuation des gammas)",
+      "Eau embouteillée et nourriture emballée (protégées de la contamination externe)",
+      "Masque chirurgical ou tissu humide sur le nez (filtre partiel particules)"
+    ],
+    "signesAggravation": [
+      "Nausées et vomissements apparaissant dans l'heure (dose > 1 Gy — urgence absolue)",
+      "Érythème cutané localisé sans explication (brûlure radiologique)",
+      "Chute de cheveux dans les jours suivants (dose > 3 Gy)"
+    ],
+    "limitesSansSecours": "Sans dosimètre, l'exposition est inconnaissable. Les rayonnements gamma traversent les murs et les corps sans sensation — la victime peut sembler parfaitement bien après une exposition létale. La mise à l'abri et la décontamination externe réduisent le risque mais ne le suppriment pas. Une prise en charge médicale dans les 24-48h est impérative si une exposition significative est possible.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ INTERVENTION RÉSERVÉE AUX PERSONNELS FORMÉS ET ÉQUIPÉS. Sans dosimètre et EPI adapté : maintenir la distance et attendre les équipes spécialisées NRBC."
+}

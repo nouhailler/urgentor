@@ -1,0 +1,133 @@
+{
+  "id": "brulure-thermique",
+  "titre": "Brûlure Thermique",
+  "categorie": "secours-personne",
+  "sousCategorie": "traumatologique",
+  "tags": ["brûlure", "thermique", "refroidissement", "degrés", "surface", "peau"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Limiter l'extension et la profondeur d'une brûlure thermique, prévenir l'infection et orienter vers les soins adaptés.",
+
+  "conditionsActivation": "Contact avec flamme, liquide chaud, surface brûlante, vapeur d'eau ou explosion. Douleur intense, rougeur, cloques ou peau blanchâtre/carbonisée.",
+
+  "diagnosticRapide": {
+    "visuels": ["Rougeur (1er degré)", "Cloques / phlyctènes (2e degré)", "Peau blanche, marron ou noire, insensible (3e degré)", "Peau carbonisée, odeur de brûlé"],
+    "auditifs": ["Cris de douleur (1er/2e degré)", "Silence inquiétant si 3e degré (perte de sensibilité)"],
+    "comportementaux": ["Victime qui souffle sur la brûlure", "Agitation ou prostration selon étendue", "Retrait réflexe de la zone brûlée"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Risque de brûlure si source encore active", "Fumées toxiques si incendie", "Explosion si gaz en cause"],
+    "equipementsRequis": ["Gants de protection", "Eau courante", "Pansement non adhérent si disponible"],
+    "regleUniverselle": "Éloigner la victime de la source ou éteindre/écarter la source avant d'intervenir.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — pour brûlure grave ou étendue (> paume de main adulte)",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Brûlure [thermique] sur [localisation], surface estimée [X%]. Degré apparent : [1/2/3]. Victime [consciente, âge].",
+    "informationsAFournir": ["Mécanisme (flamme, eau bouillante, vapeur)", "Surface et localisation", "Degré apparent", "Âge de la victime"]
+  },
+
+  "actionsImmédiates": [
+    "REFROIDIR immédiatement à l'eau tiède (15-25°C) pendant 5 MINUTES MINIMUM",
+    "RETIRER les vêtements non collés et bijoux",
+    "NE PAS percer les cloques",
+    "APPELER le 15 si brûlure grave"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser : éloigner de la source de chaleur, éteindre les vêtements si en feu (rouler au sol)"},
+    {"etape": 2, "action": "Refroidir la zone brûlée à l'eau courante tiède (15-25°C) pendant 5 à 15 minutes"},
+    {"etape": 3, "action": "Retirer délicatement vêtements et bijoux sauf s'ils collent à la peau — ne pas forcer"},
+    {"etape": 4, "action": "NE PAS percer les cloques — NE PAS appliquer de beurre, crème, dentifrice, glace"},
+    {"etape": 5, "action": "Couvrir avec un pansement non adhérent propre ou un film alimentaire (sans serrer)"},
+    {"etape": 6, "action": "Évaluer la surface (règle des 9 : chaque membre = 9%, tronc avant = 18%, dos = 18%)"},
+    {"etape": 7, "action": "Appeler le 15 si brûlure étendue (> paume victime), profonde, sur visage/mains/périnée ou chez enfant"},
+    {"etape": 8, "action": "Réchauffer la victime (risque hypothermie), couvrir les zones non brûlées"},
+    {"etape": 9, "action": "Surveiller : conscience, respiration, douleur, extension apparente"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Brûlure 1er degré — rougeur simple, < paume de main",
+      "alors": "Refroidissement 5 min — crème hydratante — pas d'urgence hospitalière"
+    },
+    {
+      "condition": "Brûlure 2e degré — cloques — < 10% surface corporelle adulte",
+      "alors": "Refroidissement 10-15 min — protection stérile — consultation médicale dans les heures"
+    },
+    {
+      "condition": "Brûlure 2e degré étendue (> 10%) OU brûlure 3e degré quelle que soit surface",
+      "alors": "15 immédiat — brûlure grave — unité spécialisée — ne pas percer, ne pas graisser"
+    },
+    {
+      "condition": "Brûlure voies respiratoires (fumée, vapeur, flamme) — brûlures tour de bouche, sourcils",
+      "alors": "15 IMMÉDIAT — risque d'œdème laryngé — urgence vitale dans l'heure"
+    },
+    {
+      "condition": "Brûlure chez enfant < 2 ans, toute brûlure > paume de main",
+      "alors": "15 immédiat — tolérance moindre — hospitalisation systématique"
+    }
+  ],
+
+  "notesCritiques": [
+    "L'eau froide aggrave l'hypothermie — utiliser eau TIÈDE (15-25°C)",
+    "Brûlure 3e degré = indolore (nerf détruits) — NE PAS sous-estimer la gravité",
+    "Les brûlures respiratoires tuent par œdème laryngé en 1-2 heures",
+    "Graisser une brûlure (beurre, huile) augmente le risque infectieux et masque la profondeur",
+    "Percer une cloque = infection garantie",
+    "La règle des 9% ne s'applique pas aux enfants — sous-estimer la surface chez l'enfant est dangereux"
+  ],
+
+  "pointsControle": [
+    "Refroidissement effectué (durée et température correctes)",
+    "Source de chaleur éliminée",
+    "Vêtements retirés (sauf collés)",
+    "Protection posée, victime couverte",
+    "Gravité évaluée, 15 appelé si nécessaire"
+  ],
+
+  "conditionsArretEscalade": [
+    "Brûlure étendue ou profonde → 15 immédiat, transfert centre spécialisé",
+    "Brûlures respiratoires → urgence vitale, 15 immédiat",
+    "Victime en arrêt cardiaque → protocole RCP"
+  ],
+
+  "ressourcesNecessaires": [
+    "Point d'eau courante",
+    "Pansement non adhérent / film alimentaire",
+    "Couverture de survie",
+    "Antalgiques si prescrits"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours sont à plus de 1h et la brûlure est étendue ou profonde",
+    "actions": [
+      "Continuer le refroidissement à l'eau tiède (15-25°C) aussi longtemps que possible — jusqu'à 30 min pour brûlures profondes",
+      "Couvrir avec tissu propre NON COLLANT ou film alimentaire (ne pas serrer)",
+      "Ne jamais percer les cloques — risque infectieux majeur",
+      "Maintenir la victime au chaud (hypothermie = aggravation des brûlures)",
+      "Si brûlure voies respiratoires : maintenir assis penché en avant, surveiller le larynx",
+      "Hydrater la victime si consciente et brûlures > 10% : 1L d'eau par heure avec une pincée de sel et de sucre"
+    ],
+    "ressourcesImprovises": [
+      "Film alimentaire (ne colle pas, protège de l'infection) > pansement stérile",
+      "Eau en bouteille pour refroidissement prolongé",
+      "Miel naturel non chauffé (propriétés antibactériennes) en ultime recours sur brûlure superficielle propre uniquement"
+    ],
+    "signesAggravation": [
+      "Difficultés respiratoires croissantes (brûlure inhalation)",
+      "Brûlure 3e degré : peau blanche/noire indolore — gravité sous-estimée",
+      "Fièvre apparaissant dans les heures suivantes (infection)",
+      "Victime qui devient agitée puis somnolente (choc)"
+    ],
+    "limitesSansSecours": "Les brûlures < 10% surface corporelle adulte peuvent être gérées temporairement. Au-delà, le risque infectieux et le choc hypovolémique nécessitent une prise en charge hospitalière dans les 6-12h.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. Toute brûlure grave doit être évaluée par un médecin."
+}

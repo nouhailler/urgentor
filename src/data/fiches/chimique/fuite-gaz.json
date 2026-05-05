@@ -1,0 +1,142 @@
+{
+  "id": "fuite-gaz",
+  "titre": "Fuite de Gaz — Domestique et Industriel",
+  "categorie": "chimique",
+  "sousCategorie": "gaz-inflammable",
+  "tags": ["gaz", "fuite", "méthane", "propane", "ammoniac", "explosion", "intoxication", "évacuation"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS",
+
+  "objectif": "Gérer une fuite de gaz en toute sécurité pour éviter explosion, incendie ou intoxication collective.",
+
+  "conditionsActivation": "Odeur de gaz, alarme CO/gaz déclenchée, sifflement de fuite, victime présentant des signes d'intoxication.",
+
+  "chimique": {
+    "produit": "Méthane (CH₄), Propane (C₃H₈), Butane (C₄H₁₀), Ammoniac (NH₃)",
+    "formePhysique": "gaz",
+    "voiesExposition": ["inhalation"],
+    "symptomesIntoxication": ["Maux de tête", "Nausées", "Vertiges", "Perte de connaissance si concentration élevée"],
+    "seuilOlfactif": "Méthane : inodore naturellement (odorisé à 1 ppm) — Propane : 500 ppm",
+    "seuilDanger": "LIE méthane : 5% vol — LIE propane : 1.7% vol",
+    "seuilLCLO": "Ammoniac : 300 ppm (IDLH) — CO (combustion incomplète) : 1200 ppm",
+    "epiMinimum": "Masque FFP3 si ammoniac — aucun EPI ne protège de l'explosion",
+    "incompatibilites": ["Toute source d'ignition", "Étincelles électriques", "Flammes nues", "Cigarettes"]
+  },
+
+  "diagnosticRapide": {
+    "visuels": ["Givre sur tuyau (propane liquide qui s'évapore)", "Végétation morte autour d'une canalisation enterrée", "Colonne de bulles dans l'eau si tuyauterie enterrée"],
+    "auditifs": ["Sifflement continu de la fuite", "Alarme gaz déclenchée"],
+    "comportementaux": ["Odeur de gaz (si odorisé)", "Maux de tête, nausées des occupants", "Gêne respiratoire ou toux (ammoniac)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Explosion si source d'ignition", "Intoxication par inhalation (ammoniac, CO)", "Asphyxie par déplacement d'air"],
+    "equipementsRequis": ["Téléphone portable sorti du bâtiment avant d'appeler", "Masque FFP3 si ammoniac industriel"],
+    "regleUniverselle": "Ne créez AUCUNE étincelle. Pas d'interrupteur, pas de téléphone portable dans la zone, pas de sonnette, pas de cigarette.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "zonesIntervention": {
+    "zoneRouge": "Périmètre immédiat de la fuite — EPI complet, accès pompiers uniquement",
+    "zoneOrange": "50-100 m selon intensité — évacuation, pas de source d'ignition",
+    "zoneVerte": "Au-delà — point de rassemblement, prise en charge des victimes"
+  },
+
+  "scriptAlerte": {
+    "numero": "18 (pompiers) + 0 800 47 33 33 (urgence réseau GDF/Engie)",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Fuite de gaz [nature si connue]. J'ai évacué, coupé l'arrivée si possible. Ne rapprochez pas de véhicule.",
+    "informationsAFournir": ["Adresse précise", "Nature du gaz si connue", "Vanne coupée ou non", "Personnes évacuées ou bloquées"]
+  },
+
+  "actionsImmédiates": [
+    "Ne créer AUCUNE étincelle — pas d'interrupteur, pas de téléphone dans la zone",
+    "ÉVACUER immédiatement — portes ouvertes pour ventiler",
+    "COUPER la vanne principale si possible et accessible en toute sécurité",
+    "APPELER le 18 de l'extérieur"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Odeur de gaz ? → NE PAS actionner d'interrupteur — NE PAS allumer/éteindre de lumière"},
+    {"etape": 2, "action": "Évacuer immédiatement toutes les personnes en laissant les portes ouvertes"},
+    {"etape": 3, "action": "Si accessible et sans risque : fermer la vanne principale d'arrivée de gaz"},
+    {"etape": 4, "action": "Sortir du bâtiment avant d'utiliser un téléphone mobile"},
+    {"etape": 5, "action": "Appeler le 18 depuis l'extérieur — donner l'adresse et la nature du gaz"},
+    {"etape": 6, "action": "Baliser la zone — éloigner les personnes à 50 m minimum"},
+    {"etape": 7, "action": "Ne pas laisser entrer dans le bâtiment avant dégagement officiel"},
+    {"etape": 8, "action": "Informer les pompiers de la localisation de la vanne et du type de gaz"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Fuite gaz domestique (méthane/propane) sans victime",
+      "alors": "Évacuer, ne pas allumer/éteindre, ouvrir les fenêtres en partant, couper la vanne, appeler 18 de l'extérieur"
+    },
+    {
+      "condition": "Fuite gaz industriel (ammoniac, CO, gaz inconnu)",
+      "alors": "Traiter comme chimique — EPI requis — zone 100 m — CMIR si nécessaire — 18 immédiat"
+    },
+    {
+      "condition": "Victimes inconscientes dans la zone de fuite",
+      "alors": "NE PAS entrer sans EPI adapté — attendre pompiers — signaler la localisation"
+    },
+    {
+      "condition": "Feu sur fuite de gaz",
+      "alors": "NE PAS éteindre le feu sur une fuite non stoppée — risque d'explosion — évacuation 100 m — 18 immédiat"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS éteindre un feu sur une fuite non coupée — la flamme indique la présence du gaz",
+    "Le propane est plus lourd que l'air — il s'accumule en bas (sous-sol, caves)",
+    "Le méthane est plus léger — il monte (combles, faîtes)",
+    "Ne pas chercher la fuite avec un briquet ou allumette",
+    "Téléphoner dans la zone de fuite peut créer une étincelle"
+  ],
+
+  "pointsControle": [
+    "Toutes les personnes évacuées",
+    "Vanne coupée si possible",
+    "18 appelé depuis l'extérieur",
+    "Zone balisée à 50 m minimum",
+    "Aucune source d'ignition dans la zone"
+  ],
+
+  "conditionsArretEscalade": [
+    "Fuite non maîtrisable → zone 100 m, attendre pompiers/gazier",
+    "Victime en zone de fuite → ne pas entrer, signaler aux secours",
+    "Explosion imminente → évacuation maximale"
+  ],
+
+  "ressourcesNecessaires": [
+    "Téléphone (à utiliser hors zone uniquement)",
+    "Clé de vanne si applicable",
+    "Masque FFP3 (gaz industriels toxiques)",
+    "Ruban de balisage"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si le gazier et les pompiers ne peuvent intervenir avant 30-60 min et la fuite persiste",
+    "actions": [
+      "Maintenir absolument la zone balisée et sans source d'ignition",
+      "Si la vanne principale est accessible à distance et en toute sécurité : la fermer",
+      "Ouvrir les fenêtres et portes côté opposé au vent pour favoriser la dispersion naturelle",
+      "Ne laisser personne s'approcher — le gaz peut s'accumuler silencieusement en sous-sol ou cave",
+      "Si victime inconsciente à proximité immédiate : apnée maximum, extraction rapide, pas de temps pour les gestes médicaux en zone de fuite"
+    ],
+    "ressourcesImprovises": [
+      "Ruban adhésif + tissu sur petite fuite de joint accessible (gaz domestique uniquement — palliatif)",
+      "Eau savonneuse pour localiser la fuite (bulles) à distance de sécurité"
+    ],
+    "signesAggravation": [
+      "Odeur qui s'intensifie malgré l'aération",
+      "Personnes qui présentent maux de tête / nausées en zone adjacente",
+      "Déclenche-gaz ou alarme CO qui reste active"
+    ],
+    "limitesSansSecours": "Sans coupure de la source, toute intervention est impossible. La dilution naturelle prend 30-60 min si la zone est ventilée. Le risque d'explosion persiste tant que la concentration est entre 1% et 15% vol. (méthane).",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ INTERVENTION RÉSERVÉE AUX PERSONNELS FORMÉS ET ÉQUIPÉS pour les gaz industriels. Pour le gaz domestique : évacuer et appeler le 18."
+}

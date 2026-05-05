@@ -1,0 +1,128 @@
+{
+  "id": "malaise-cardiaque",
+  "titre": "Malaise — Arrêt Cardiaque",
+  "categorie": "secours-personne",
+  "sousCategorie": "cardio-vasculaire",
+  "tags": ["malaise", "arrêt cardiaque", "RCP", "DAE", "inconscience", "défibrillateur"],
+  "niveauDanger": "critique",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître un arrêt cardiaque et réaliser les gestes de survie (RCP + DAE) dans les premières minutes pour maximiser les chances de survie.",
+
+  "conditionsActivation": "Personne inconsciente, ne réagit pas aux stimulations, ne respire pas normalement (gasps = arrêt cardiaque).",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne effondrée / au sol", "Teint pâle ou bleuté (cyanose)", "Absence de mouvement thoracique"],
+    "auditifs": ["Aucune réponse à la voix", "Absence de bruit de respiration", "Gasps (râles irréguliers = signe arrêt cardiaque)"],
+    "comportementaux": ["Ne réagit pas au pincement", "Corps flasque, sans tonus", "Yeux fixes ou révulsés"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Sol glissant", "Trafic si accident route", "Éléments électriques si contexte industriel"],
+    "equipementsRequis": ["DAE si disponible", "Gants si disponibles"],
+    "regleUniverselle": "Vérifier la sécurité de la zone avant d'approcher. Protéger, alerter, secourir.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 18 (pompiers) ou 112",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Personne inconsciente, ne respire pas, je fais le massage. DAE en cours / demandé. Restez en ligne.",
+    "informationsAFournir": ["Adresse précise", "Âge approximatif de la victime", "Présence d'un DAE", "Cause si connue"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER la zone",
+    "STIMULER : appeler, pincer — pas de réponse ?",
+    "APPELER le 15 ou 112 immédiatement",
+    "Commencer les compressions cardiaques SANS ATTENDRE"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Vérifier la sécurité de la zone"},
+    {"etape": 2, "action": "Stimuler la victime : 'Vous m'entendez ?' + pincement épaule"},
+    {"etape": 3, "action": "Absence de réponse → ALERTER le 15 ou demander à quelqu'un d'appeler + d'aller chercher un DAE"},
+    {"etape": 4, "action": "Basculer la tête en arrière, élever le menton — évaluer la respiration MAX 10 secondes"},
+    {"etape": 5, "action": "Absence/respiration anormale (gasps) → commencer RCP immédiatement"},
+    {"etape": 6, "action": "30 compressions thoraciques : talon de main, centre sternum, 5-6 cm, 100-120/min"},
+    {"etape": 7, "action": "2 insufflations bouche-à-bouche (si formé et équipé) — sinon RCP mains seules en continu"},
+    {"etape": 8, "action": "Dès l'arrivée du DAE : mettre en marche, coller les électrodes, suivre les instructions vocales"},
+    {"etape": 9, "action": "Continuer RCP jusqu'à arrivée des secours ou reprise activité normale"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime inconsciente + ne respire pas",
+      "alors": "Arrêt cardiaque → RCP immédiate + appel 15"
+    },
+    {
+      "condition": "Victime inconsciente MAIS respire normalement",
+      "alors": "Position Latérale de Sécurité (PLS) + appel 15 + surveillance"
+    },
+    {
+      "condition": "Victime consciente, douleur thoracique / bras gauche / mâchoire",
+      "alors": "Malaise cardiaque probable → 15 immédiat, position demi-assise, ne pas mobiliser, aspirine si prescrite et allergie vérifiée"
+    },
+    {
+      "condition": "Victime fait un malaise mais reprend conscience",
+      "alors": "Allonger, surveiller, appeler 15, ne pas donner à boire/manger"
+    },
+    {
+      "condition": "DAE disponible",
+      "alors": "Mettre en marche, poser les électrodes sur la peau nue, suivre les instructions — ne pas interrompre la RCP plus de 10 secondes"
+    }
+  ],
+
+  "notesCritiques": [
+    "Les gasps (respirations irrégulières et bruyantes) = arrêt cardiaque — commencer la RCP",
+    "Chaque minute sans RCP = -10% de survie",
+    "Le DAE ne choque pas si le cœur bat — il est sans danger",
+    "RCP mains seules (sans bouche-à-bouche) est efficace les 4-5 premières minutes",
+    "Ne pas mobiliser une victime qui a pu faire une chute cervicale"
+  ],
+
+  "pointsControle": [
+    "Les secours ont été alertés",
+    "La RCP est en cours (fréquence et profondeur correctes)",
+    "Le DAE est branché et en marche",
+    "Un relai pour les compressions est organisé toutes les 2 minutes"
+  ],
+
+  "conditionsArretEscalade": [
+    "Arrivée des secours qualifiés → transmettre le bilan",
+    "Reprise d'une respiration normale → PLS + surveillance",
+    "Épuisement total sans relai → continuer jusqu'à l'impossible, signaler aux secours"
+  ],
+
+  "ressourcesNecessaires": [
+    "DAE (défibrillateur automatisé externe)",
+    "Gants de protection si disponibles",
+    "Téléphone pour le 15",
+    "Espace dégagé autour de la victime"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si aucun DAE ni secours ne peut intervenir dans les 10 prochaines minutes (zone isolée, catastrophe, milieu rural profond)",
+    "actions": [
+      "Continuer la RCP mains seules SANS JAMAIS S'ARRÊTER (30 compressions, 5-6 cm, 100-120/min)",
+      "Relayer toutes les 2 minutes si plusieurs personnes disponibles",
+      "Si la victime reprend une respiration normale : PLS et surveiller en continu",
+      "En cas de reprise puis nouvel arrêt : reprendre la RCP immédiatement",
+      "Chercher tout objet pouvant faire office de défibrillateur (certains AED portables, défibrillateurs de voiture)"
+    ],
+    "ressourcesImprovises": [
+      "Rien ne remplace le DAE — la RCP mains seules reste la seule option",
+      "Surface dure sous le dos de la victime (planche, sol ferme) pour l'efficacité des compressions"
+    ],
+    "signesAggravation": [
+      "Corps qui refroidit progressivement",
+      "Peau violacée et marbrée (cyanose profonde)",
+      "Pupilles fixes et dilatées (signe très tardif)"
+    ],
+    "limitesSansSecours": "La RCP maintient une circulation minimale mais ne remplace pas la défibrillation. La survie sans DAE après 10+ min d'arrêt est possible mais rare. Continuer jusqu'à l'impossibilité physique totale.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

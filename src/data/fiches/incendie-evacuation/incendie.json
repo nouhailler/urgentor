@@ -1,0 +1,125 @@
+{
+  "id": "debut-incendie",
+  "titre": "Début d'Incendie — Intervention Initiale",
+  "categorie": "incendie-evacuation",
+  "sousCategorie": "incendie",
+  "tags": ["incendie", "feu", "extincteur", "RACE", "évacuation", "alarme"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2024-01-15T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "Ministère Intérieur",
+
+  "objectif": "Réagir efficacement lors d'un début d'incendie : alarme, évacuation, extinction si possible, sans mettre sa vie en danger.",
+
+  "conditionsActivation": "Flammes visibles, fumée importante, odeur de brûlé, alarme incendie déclenchée.",
+
+  "diagnosticRapide": {
+    "visuels": ["Flammes visibles", "Fumée noire ou épaisse", "Matériaux brûlants, panaches de fumée"],
+    "auditifs": ["Crépitements du feu", "Alarme incendie déclenchée", "Sifflement de gaz en combustion"],
+    "comportementaux": ["Personnes qui fuient", "Toux généralisée", "Chaleur ressentie sur les murs/portes"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Asphyxie par fumées toxiques", "Brûlures", "Effondrement de structure", "Explosion"],
+    "equipementsRequis": ["Extincteur adapté au type de feu", "Ne jamais utiliser d'eau sur feu électrique"],
+    "regleUniverselle": "Un feu s'éteint seul dans les 30 premières secondes ou vous éteindrez seul uniquement s'il tient dans une corbeille à papier. Sinon : évacuez SANS HÉSITER.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "18 (pompiers) — en priorité",
+    "quoiDire": "Je suis [NOM], incendie au [ADRESSE PRÉCISE, BÂTIMENT, ÉTAGE]. Feu de [type si connu]. [X] personnes évacuées. [Victimes ou non].",
+    "informationsAFournir": ["Adresse précise et étage", "Type de feu si connu", "Personnes éventuellement bloquées", "Accès pompiers (code porte, parking)"]
+  },
+
+  "actionsImmédiates": [
+    "ALERTER : déclencher l'alarme incendie",
+    "ÉVACUER : tout le monde, sans prendre d'affaires",
+    "APPELER le 18",
+    "ATTAQUER uniquement si feu petit, issue libre, extincteur à portée"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Découvrir le feu → déclencher immédiatement l'alarme incendie manuelle (boîtier rouge)"},
+    {"etape": 2, "action": "Alerter le 18 — donner adresse précise, nature du feu, personnes présentes"},
+    {"etape": 3, "action": "Évacuer selon plan d'évacuation — cheminer vers la sortie de secours la plus proche"},
+    {"etape": 4, "action": "Fermer les portes derrière soi (ralentit la propagation du feu — ne pas les verrouiller)"},
+    {"etape": 5, "action": "Si fumée dans le couloir : ramper sous la fumée, se protéger la bouche"},
+    {"etape": 6, "action": "Tester la porte avec la main — si chaude, ne pas ouvrir — chercher autre issue"},
+    {"etape": 7, "action": "Si feu petit (< corbeille) et issue libre : utiliser extincteur adapté (RACE)"},
+    {"etape": 8, "action": "Se regrouper au point de rassemblement — pointer les personnes"},
+    {"etape": 9, "action": "Informer les pompiers à leur arrivée : lieu du feu, personnes manquantes"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Feu tient dans une corbeille à papier + extincteur disponible + issue libre derrière soi",
+      "alors": "Attaquer avec extincteur adapté — RACE — si non maîtrisé en < 30 secondes, évacuer"
+    },
+    {
+      "condition": "Feu > corbeille OU fumée épaisse OU pas d'extincteur adapté",
+      "alors": "ÉVACUER IMMÉDIATEMENT — ne pas attaquer — donner l'alarme en partant"
+    },
+    {
+      "condition": "Feu électrique (tableau, ordinateur, machine)",
+      "alors": "Extincteur CO2 (rouge) UNIQUEMENT — jamais d'eau — couper l'alimentation si possible"
+    },
+    {
+      "condition": "Impossible de quitter la pièce (couloir en feu)",
+      "alors": "Fermer la porte, obstruer les fentes avec tissu mouillé, signaler par fenêtre, appeler le 18"
+    }
+  ],
+
+  "notesCritiques": [
+    "RACE : Retirer la goupille — Appuyer sur la poignée — Cibler la base des flammes — Effectuer un balayage",
+    "Les fumées tuent avant les flammes — 80% des décès par intoxication",
+    "Ne jamais utiliser l'ascenseur lors d'un incendie",
+    "Un feu double de volume toutes les 60 secondes — 2 minutes pour une pièce entière",
+    "Eau sur feu d'huile = explosion (colonne de flammes de 3 mètres)"
+  ],
+
+  "pointsControle": [
+    "Alarme déclenchée",
+    "18 appelé",
+    "Évacuation complète (pointage au rassemblement)",
+    "Personnes bloquées signalées aux pompiers"
+  ],
+
+  "conditionsArretEscalade": [
+    "Feu non maîtrisé → évacuation totale, attendre pompiers",
+    "Personnes bloquées signalées → priorité aux pompiers",
+    "Explosion imminente → évacuation maximale"
+  ],
+
+  "ressourcesNecessaires": [
+    "Extincteur adapté au type de feu",
+    "Plan d'évacuation affiché",
+    "Système d'alarme incendie",
+    "Liste du personnel / registre de présence"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les pompiers ne peuvent intervenir dans les 10-15 min et le feu n'est pas maîtrisé",
+    "actions": [
+      "Ne JAMAIS combattre un feu qui dépasse la taille d'un four — priorité absolue à l'évacuation",
+      "Fermer toutes les portes derrière soi (chaque porte fermée gagne 10-15 min de résistance au feu)",
+      "Si bloqué dans une pièce : obstruer les fentes avec tissu humide, signaler à la fenêtre, ne pas sauter (sauf dernier recours au 1er étage sur surface molle)",
+      "Depuis l'extérieur : arroser les structures adjacentes pour éviter la propagation",
+      "Identifier les bouteilles de gaz à proximité et s'en éloigner (explosion si chauffées)"
+    ],
+    "ressourcesImprovises": [
+      "Seau d'eau sur feu de poubelle naissant uniquement",
+      "Couverture épaisse humide pour étouffer un petit feu (casserole, friteuse)",
+      "Ligne de tuyau d'arrosage si pression suffisante pour protéger les accès"
+    ],
+    "signesAggravation": [
+      "Fumée noire épaisse (combustion de matières plastiques — toxique en quelques bouffées)",
+      "Chaleur ressentie à travers les portes fermées",
+      "Craquements de charpente (risque d'effondrement imminent)"
+    ],
+    "limitesSansSecours": "Sans équipement de protection, aucun intervenant non formé ne devrait entrer dans un bâtiment en feu. L'évacuation et le balisage restent les seules actions sûres. Les biens matériels ne valent aucune vie.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ne combattez jamais un incendie au-delà de vos capacités. Votre vie vaut plus que n'importe quel bien matériel."
+}
