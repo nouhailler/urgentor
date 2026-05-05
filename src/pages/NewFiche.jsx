@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AIGenerator from '../components/AIGenerator'
 import { useFiches } from '../hooks/useFiches'
+import { CATEGORIES } from '../data/categories'
 
 export default function NewFiche() {
   const navigate = useNavigate()
@@ -108,10 +109,9 @@ function ManualForm({ onSave }) {
       <div className="grid grid-cols-2 gap-4">
         <Field label="Catégorie">
           <select value={data.categorie} onChange={e => set('categorie', e.target.value)} style={inputStyle} className="w-full px-4 py-3 rounded border outline-none">
-            <option value="secours-personne">🚑 Secours à personne</option>
-            <option value="incendie-evacuation">🔥 Incendie / Évacuation</option>
-            <option value="chimique">☣️ Chimique</option>
-            <option value="nrbc">☢️ NRBC</option>
+            {CATEGORIES.map(c => (
+              <option key={c.id} value={c.id}>{c.icone} {c.label}</option>
+            ))}
           </select>
         </Field>
         <Field label="Niveau de danger">

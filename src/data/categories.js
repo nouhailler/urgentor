@@ -1,9 +1,9 @@
 export const CATEGORIES = [
   {
     id: "secours-personne",
-    label: "Secours à Personne",
+    label: "Secours à la Personne",
     couleur: "#CC0000",
-    icone: "🚑",
+    icone: "🩺",
     description: "Malaise, hémorragie, brûlure, noyade, inconscience"
   },
   {
@@ -32,6 +32,41 @@ export const CATEGORIES = [
     niveauDanger: "critique",
     equipementObligatoire: true,
     accesRestreint: false
+  },
+  {
+    id: "environnement-exterieur",
+    label: "Environnement & Extérieur",
+    couleur: "#27AE60",
+    icone: "🌍",
+    description: "Morsures, piqûres, hypothermie, avalanche, foudre, naufrage"
+  },
+  {
+    id: "professionnel-industriel",
+    label: "Professionnel / Industriel",
+    couleur: "#E67E22",
+    icone: "🏭",
+    description: "Accidents du travail, écrasements, chutes en hauteur, électrisation"
+  },
+  {
+    id: "evenementiel-foule",
+    label: "Événementiel / Foule",
+    couleur: "#3498DB",
+    icone: "👥",
+    description: "Mouvement de foule, bousculade, malaise de masse, attentat"
+  },
+  {
+    id: "pediatrie",
+    label: "Pédiatrie Spécifique",
+    couleur: "#E91E8C",
+    icone: "👶",
+    description: "Réanimation nourrisson, étouffement enfant, convulsions fébriles"
+  },
+  {
+    id: "psychologique",
+    label: "Psychologique / Comportemental",
+    couleur: "#9B59B6",
+    icone: "🤯",
+    description: "État de choc psychologique, crise de panique, comportement agressif"
   }
 ]
 
