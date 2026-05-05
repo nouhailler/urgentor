@@ -27,38 +27,64 @@ Chaque fiche couvre :
 | 🔥 | **Incendie & Évacuation** | Conduite à tenir en cas d'incendie, procédure d'évacuation |
 | ☣️ | **Risque chimique** | Fuite de gaz, déversement chimique |
 | ☢️ | **NRBC** | Alerte radiologique, alerte chimique NRBC |
+| 🌍 | **Environnement & Extérieur** | Morsures, hypothermie, avalanche, foudre, naufrage |
+| 🏭 | **Professionnel / Industriel** | Accidents du travail, écrasements, chutes, électrisation |
+| 👥 | **Événementiel / Foule** | Mouvement de foule, bousculade, malaise de masse |
+| 👶 | **Pédiatrie Spécifique** | Réanimation nourrisson, étouffement enfant, convulsions |
+| 🤯 | **Psychologique / Comportemental** | État de choc, crise de panique, comportement agressif |
 
 ---
 
 ## ✨ Fonctionnalités
 
+### 🔍 Recherche intelligente avec autocomplétion
+- Recherche **sans accents** : tapez `brulure`, `hemorragie`, `nrbc`… sans vous soucier des accents
+- **Autocomplétion** : suggestions dès 2 caractères, max 5 résultats triés par pertinence
+- Navigation clavier (↑↓ Entrée Échap) et **tap direct** sur une suggestion pour ouvrir la fiche
+- Mise en évidence de la correspondance dans le titre
+
+### 🔊 Lecture vocale par section
+- Chaque section d'une fiche dispose d'un **bouton haut-parleur** pour écoute mains libres
+- Lecture en français (voix `fr-FR` si disponible)
+- Compatible **iOS** (Safari) et **Android** (Chrome) — contournement du bug de pause WebView
+- Une seule section parle à la fois — tap à nouveau pour stopper
+
 ### 📖 Bibliothèque de fiches
 - **10 fiches officielles** pré-chargées, validées sur références HAS / INRS / Ministère de l'Intérieur
-- Recherche textuelle instantanée (titre, tags, objectif)
-- Filtrage par catégorie
-- Affichage adapté aux situations NRBC (bandeau clignotant, code couleur danger)
+- Filtrage par catégorie avec les 9 couleurs de danger
+- Affichage adapté aux situations NRBC (bandeau clignotant, code couleur critique)
 
 ### 🤖 Génération de fiches par IA
 - Génération automatique de nouvelles fiches à partir d'un titre et d'une catégorie
-- Compatible **Anthropic Claude**, **OpenAI GPT**, **OpenRouter** (modèles `:free`)
-- Sélection dynamique du modèle OpenRouter (liste actualisée depuis l'API)
+- Compatible **Anthropic Claude** (Opus 4.7, Sonnet 4.6, Haiku 4.5), **OpenAI GPT** (GPT-4o, o3-mini), **OpenRouter** (modèles dynamiques)
 - Prévisualisation avant sauvegarde
+
+### 📥 Import / Export de fiches
+- **Import JSON** dans Paramètres : glisser-déposer ou sélection de fichier
+- Accepte un tableau de fiches ou une fiche unique
+- Dédoublonnage automatique par identifiant
+- **Export** de fiches personnalisées (fiche par fiche ou en lot)
+- Workflow desktop → mobile : créez sur desktop, exportez en JSON, importez sur mobile
 
 ### 📝 Notes personnelles
 - Zone de notes libre par fiche, sauvegardée localement
 - Auto-save avec debounce (600 ms)
-- Indicateur visuel sur les fiches annotées
 
 ### ⚙️ Gestion des fiches
 - Créer des fiches personnalisées (manuellement ou via IA)
 - Modifier les fiches custom via éditeur JSON intégré (validation temps réel)
 - Protection des fiches officielles — fork en un clic
 - Suppression avec confirmation
-- **Import / Export** au format JSON (fiche par fiche ou en lot)
+
+### ❓ Aide contextuelle
+- Bouton **`?`** dans la navbar, à côté de la roue paramètres
+- Contenu adapté à la page courante : bibliothèque, fiche, paramètres, nouvelle fiche, gestion
+- Panneau slide-in avec fermeture par tap, clic extérieur ou touche Échap
 
 ### 📴 Mode hors ligne (PWA)
 - Installation sur l'écran d'accueil (iOS / Android / Desktop)
 - Cache service worker — toutes les fiches disponibles sans réseau
+- Polices Google Fonts mises en cache (StaleWhileRevalidate / CacheFirst)
 - Données stockées dans le navigateur (localStorage)
 
 ---
@@ -72,8 +98,10 @@ Chaque fiche couvre :
 | Styles | **Tailwind CSS v4** (`@tailwindcss/vite`) |
 | Routing | **React Router v7** |
 | PWA | **vite-plugin-pwa v1.2** (Workbox, generateSW) |
+| TTS | **Web Speech API** (`speechSynthesis`) |
 | Typo | Oswald · IBM Plex Sans · IBM Plex Mono |
-| Stockage | `localStorage` (fiches, notes, paramètres, cache modèles) |
+| Stockage | `localStorage` (fiches, notes, paramètres) |
+| Déploiement | **Netlify** (`netlify.toml`, SPA redirects, headers sécurité) |
 
 ---
 
@@ -103,11 +131,11 @@ npm run preview
 
 Pour utiliser la génération de fiches par IA, configurez vos clés dans **Paramètres** (icône ⚙️ dans la navbar) :
 
-| Fournisseur | Modèles | Clé |
-|-------------|---------|-----|
-| 🟣 **Anthropic** | claude-3-5-haiku, claude-opus-4 | `sk-ant-...` |
-| 🟢 **OpenAI** | gpt-4o-mini, gpt-4o | `sk-...` |
-| 🔵 **OpenRouter** | tous les modèles `:free` | `sk-or-...` |
+| Fournisseur | Modèles disponibles | Format de clé |
+|-------------|---------------------|---------------|
+| 🟣 **Anthropic** | Claude Opus 4.7, Sonnet 4.6, Haiku 4.5 | `sk-ant-...` |
+| 🟢 **OpenAI** | GPT-4o, GPT-4o Mini, o3-mini | `sk-proj-...` |
+| 🔵 **OpenRouter** | Tous les modèles (liste dynamique) | `sk-or-...` |
 
 > Les clés sont stockées **uniquement dans votre navigateur** (localStorage), jamais transmises à un serveur tiers.
 
@@ -117,37 +145,42 @@ Pour utiliser la génération de fiches par IA, configurez vos clés dans **Para
 
 ```
 urgentor/
-├── public/                    # Icônes PWA, manifest
+├── public/                    # Icônes PWA (SVG, PNG 192/512, Apple Touch)
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.jsx         # Barre de navigation sticky
+│   │   ├── Navbar.jsx         # Barre de navigation sticky + bouton aide
+│   │   ├── HelpPanel.jsx      # Panneau d'aide contextuel (slide-in)
+│   │   ├── SearchBar.jsx      # Recherche accent-insensible + autocomplétion
 │   │   ├── FicheCard.jsx      # Carte résumé d'une fiche
-│   │   ├── FicheDetail.jsx    # Vue complète d'une fiche
+│   │   ├── FicheDetail.jsx    # Vue complète avec lecture vocale par section
+│   │   ├── SpeakButton.jsx    # Bouton haut-parleur animé (TTS)
 │   │   ├── AIGenerator.jsx    # Générateur IA de fiches
-│   │   ├── SearchBar.jsx      # Barre de recherche
 │   │   ├── NRBCBadge.jsx      # Badge danger NRBC
 │   │   └── DiagramVisuel.jsx  # Arbre de décision visuel
 │   ├── pages/
-│   │   ├── Home.jsx           # Bibliothèque + recherche
+│   │   ├── Home.jsx           # Bibliothèque + recherche + filtres
 │   │   ├── FichePage.jsx      # Affichage d'une fiche
 │   │   ├── NewFiche.jsx       # Création de fiche (manuel / IA)
 │   │   ├── GestionFiches.jsx  # Import / export / suppression
 │   │   ├── EditFiche.jsx      # Éditeur JSON intégré
-│   │   └── Settings.jsx       # Paramètres clés API
+│   │   └── Settings.jsx       # Paramètres clés API + import de fiches
 │   ├── hooks/
-│   │   ├── useFiches.js       # CRUD fiches + filtrage
+│   │   ├── useFiches.js       # CRUD fiches + filtrage + import/export
+│   │   ├── useSpeech.js       # TTS : voix FR, Android async, iOS keepalive
 │   │   ├── useNotes.js        # Notes par fiche (localStorage)
-│   │   ├── useSettings.js     # Gestion clés API
+│   │   ├── useSettings.js     # Gestion clés API et modèles IA
 │   │   └── useOpenRouterModels.js  # Modèles OpenRouter dynamiques
 │   └── data/
-│       ├── categories.js
-│       ├── ficheIndex.js
+│       ├── categories.js           # 9 catégories avec couleurs et icônes
+│       ├── ficheIndex.js           # Index des 10 fiches builtin
 │       └── fiches/
-│           ├── secours-personne/    # malaise, hémorragie, brûlure, noyade
-│           ├── incendie-evacuation/ # incendie, évacuation
-│           ├── chimique/            # fuite-gaz, déversement-chimique
-│           └── nrbc/                # alerte-radiologique, alerte-chimique-nrbc
-├── vite.config.js
+│           ├── secours-personne/   # malaise, hémorragie, brûlure, noyade
+│           ├── incendie-evacuation/# incendie, évacuation
+│           ├── chimique/           # fuite-gaz, déversement-chimique
+│           └── nrbc/               # alerte-radiologique, alerte-chimique-nrbc
+├── CONTEXT.md                 # Documentation technique interne du projet
+├── netlify.toml               # Config Netlify (build, redirects, headers)
+├── vite.config.js             # Config Vite + PWA Workbox
 └── package.json
 ```
 
@@ -155,7 +188,7 @@ urgentor/
 
 ## 🗂️ Format d'une fiche JSON
 
-Chaque fiche est un fichier `.json` avec la structure suivante :
+Chaque fiche est un fichier `.json` (ou un objet dans un tableau exporté). Structure minimale :
 
 ```json
 {
@@ -172,7 +205,7 @@ Chaque fiche est un fichier `.json` avec la structure suivante :
   "arbresDecision": [{ "condition": "Saignement abondant", "alors": "Garrot" }],
   "siSecoursTardent": {
     "contexte": "Si les secours sont à plus de 20 min",
-    "actions": ["Maintenir la compression", "..."],
+    "actions": ["Maintenir la compression"],
     "signesAggravation": ["Pâleur", "Confusion"],
     "limitesSansSecours": "Choc hémorragique sans transfusion = risque vital"
   },
@@ -180,6 +213,8 @@ Chaque fiche est un fichier `.json` avec la structure suivante :
   "avertissement": "Information indicative uniquement"
 }
 ```
+
+Les fiches peuvent également inclure des champs `nrbc`, `chimique`, `diagnosticRapide`, `securiteAvantAction`, `zonesIntervention`, `decontamination` — voir `CONTEXT.md` pour le schéma complet.
 
 ---
 
