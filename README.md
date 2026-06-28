@@ -4,6 +4,25 @@
 
 ---
 
+## 📸 Aperçu
+
+| Bibliothèque | Fiche détaillée |
+|:---:|:---:|
+| ![Bibliothèque — recherche et filtres par catégorie](docs/screenshots/home.png) | ![Fiche détaillée avec lecture vocale par section](docs/screenshots/fiche-detail.png) |
+| **Bibliothèque** — recherche accent-insensible et filtres par catégorie | **Fiche détaillée** — sections structurées avec lecture vocale |
+
+| Génération de fiches par IA | Paramètres & import |
+|:---:|:---:|
+| ![Création de fiche — génération IA ou saisie manuelle](docs/screenshots/nouvelle-fiche.png) | ![Paramètres — clés API et import de fiches JSON](docs/screenshots/parametres.png) |
+| **Nouvelle fiche** — génération IA ou saisie manuelle | **Paramètres** — clés API (Anthropic / OpenAI / OpenRouter) et import JSON |
+
+| Gestion des fiches | Vue mobile |
+|:---:|:---:|
+| ![Gestion des fiches — import, export, suppression](docs/screenshots/gestion.png) | ![Vue mobile de la bibliothèque](docs/screenshots/mobile.png) |
+| **Gestion** — import / export / suppression des fiches | **Mobile** — interface responsive et installable (PWA) |
+
+---
+
 ## 🎯 À quoi ça sert ?
 
 **Urgentor** centralise des fiches opérationnelles de premiers secours, structurées et claires, pour intervenir rapidement et efficacement face à une situation d'urgence — même sans connexion internet.
