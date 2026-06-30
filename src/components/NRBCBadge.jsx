@@ -1,44 +1,47 @@
+// Couleur d'accent par type NRBC (teinte douce, lisible sur fond clair)
 const NRBC_CONFIG = {
-  N: { bg: '#0D0D0D', text: '#FFD700', border: '#FFD700', icone: '☢️', label: 'NUCLÉAIRE' },
-  R: { bg: '#FFD700', text: '#0D0D0D', border: '#0D0D0D', icone: '☢️', label: 'RADIOLOGIQUE' },
-  B: { bg: '#1a4a1a', text: '#FFFFFF', border: '#2ECC71', icone: '🦠', label: 'BIOLOGIQUE' },
-  C: { bg: '#2d0060', text: '#FFFFFF', border: '#8B00FF', icone: '☣️', label: 'CHIMIQUE' }
+  N: { color: '#B08A1E', icone: '☢️', label: 'NUCLÉAIRE' },
+  R: { color: '#B08A1E', icone: '☢️', label: 'RADIOLOGIQUE' },
+  B: { color: '#2F8F6B', icone: '🦠', label: 'BIOLOGIQUE' },
+  C: { color: '#7A5AA6', icone: '☣️', label: 'CHIMIQUE' }
 }
 
 const EPI_COLORS = {
-  'EPI niveau 1': '#2ECC71',
-  'EPI niveau 2': '#F39C12',
-  'EPI niveau 3': '#FF6B35',
-  'EPI niveau 4': '#CC0000'
+  'EPI niveau 1': '#1E8A5A',
+  'EPI niveau 2': '#B5740A',
+  'EPI niveau 3': '#D2762E',
+  'EPI niveau 4': '#C8102E'
 }
 
 export default function NRBCBadge({ type, niveauEPI, className = '' }) {
   const config = NRBC_CONFIG[type]
   if (!config) return null
 
-  const epiColor = Object.entries(EPI_COLORS).find(([k]) => niveauEPI?.includes(k))?.[1] ?? '#CC0000'
+  const epiColor = Object.entries(EPI_COLORS).find(([k]) => niveauEPI?.includes(k))?.[1] ?? '#C8102E'
 
   return (
-    <div className={`inline-flex flex-col items-center gap-1 ${className}`}>
+    <div className={`inline-flex items-center gap-1.5 ${className}`}>
       <div
         style={{
-          backgroundColor: config.bg,
-          color: config.text,
-          border: `2px solid ${config.border}`,
-          fontFamily: 'Oswald, sans-serif'
+          backgroundColor: `${config.color}1A`,
+          color: config.color,
+          border: `1px solid ${config.color}40`,
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: '11px',
+          letterSpacing: '0.5px',
         }}
-        className="flex items-center gap-2 px-3 py-1.5 rounded font-semibold text-sm tracking-widest"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-medium"
       >
-        <span className="text-lg">{config.icone}</span>
+        <span style={{ fontSize: '13px' }}>{config.icone}</span>
         <span>{type} — {config.label}</span>
       </div>
       {niveauEPI && (
-        <div
-          style={{ color: epiColor, borderColor: epiColor }}
-          className="text-xs font-mono border px-2 py-0.5 rounded tracking-wide"
+        <span
+          style={{ color: epiColor, borderColor: `${epiColor}40`, fontFamily: "'IBM Plex Mono', monospace" }}
+          className="text-[11px] border px-2 py-0.5 rounded-full"
         >
           {niveauEPI.split('—')[0].trim()}
-        </div>
+        </span>
       )}
     </div>
   )

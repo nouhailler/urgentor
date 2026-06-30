@@ -2,21 +2,26 @@ import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useFiches } from '../hooks/useFiches'
 import { TOUTES_FICHES } from '../data/ficheIndex'
-import { getCategorieById } from '../data/categories'
+import { getCategorieById, getSeverity } from '../data/categories'
 import { loadAllNotes } from '../hooks/useNotes'
 
 const SOURCE_CONFIG = {
-  officielle:   { label: 'Officielle', color: '#2ECC71', icon: '🏛️' },
-  'ia-generee': { label: 'IA',         color: '#6366F1', icon: '🤖' },
-  utilisateur:  { label: 'Manuel',     color: '#F39C12', icon: '✏️' }
+  officielle:   { label: 'Officielle', neutral: true, icon: '🔒' },
+  'ia-generee': { label: 'IA',     icon: '✦' },
+  utilisateur:  { label: 'Perso',  icon: '✎' }
 }
 
 function SourceBadge({ source }) {
   const cfg = SOURCE_CONFIG[source] ?? SOURCE_CONFIG.utilisateur
+  const neutral = cfg.neutral
   return (
     <span
-      style={{ backgroundColor: cfg.color + '22', color: cfg.color, borderColor: cfg.color + '44', fontSize: '11px' }}
-      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border"
+      style={{
+        backgroundColor: neutral ? 'var(--chip-bg)' : 'var(--accent-soft)',
+        color: neutral ? 'var(--chip-text)' : 'var(--accent-deep)',
+        fontFamily: 'var(--font-mono)', fontSize: '10.5px', letterSpacing: '0.3px',
+      }}
+      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full"
     >
       {cfg.icon} {cfg.label}
     </span>
@@ -26,98 +31,52 @@ function SourceBadge({ source }) {
 function FicheRow({ fiche, isCustom, onDelete, onExport }) {
   const [confirmDelete, setConfirmDelete] = useState(false)
   const categorie = getCategorieById(fiche.categorie)
+  const sev = getSeverity(fiche.niveauDanger)
   const notes = loadAllNotes()
   const hasNote = !!notes[fiche.id]?.trim()
 
   return (
-    <div
-      style={{
-        backgroundColor: '#16213e',
-        borderLeft: `3px solid ${categorie?.couleur ?? '#444'}`
-      }}
-      className="rounded-lg px-4 py-3 flex items-center gap-3 flex-wrap"
-    >
-      {/* Icône catégorie */}
-      <span className="text-xl flex-shrink-0">{categorie?.icone ?? '📄'}</span>
+    <div className="px-4 py-3.5 flex items-center gap-3 flex-wrap" style={{ borderBottom: '1px solid var(--divider)' }}>
+      <span style={{ fontSize: '18px', color: categorie?.couleur }} className="flex-shrink-0">{categorie?.icone ?? '📄'}</span>
 
-      {/* Titre + meta */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
           <Link
             to={`/fiche/${fiche.id}`}
-            style={{ color: '#f0f0f0', fontFamily: 'Oswald, sans-serif', fontSize: '15px', textDecoration: 'none' }}
-            className="hover:text-red-400 transition-colors truncate"
+            style={{ color: 'var(--text)', fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 600, textDecoration: 'none' }}
+            className="hover:text-[var(--accent-deep)] transition-colors truncate"
           >
             {fiche.titre}
           </Link>
+          <span style={{ backgroundColor: sev.bg, color: sev.color, border: `1px solid ${sev.color}33`, fontFamily: 'var(--font-mono)', fontSize: '9.5px', padding: '2px 6px' }} className="rounded-full uppercase">
+            {sev.label}
+          </span>
           <SourceBadge source={fiche.source} />
-          {hasNote && (
-            <span style={{ color: '#F39C12', fontSize: '11px' }} title="Contient des notes">📝</span>
-          )}
+          {hasNote && <span style={{ color: 'var(--warning)', fontSize: '11px' }} title="Contient des notes">📝</span>}
         </div>
-        <div style={{ color: '#555', fontSize: '12px', fontFamily: 'IBM Plex Mono, monospace', marginTop: '2px' }}>
+        <div style={{ color: 'var(--text-faint)', fontSize: '12px', fontFamily: 'var(--font-mono)', marginTop: '2px' }}>
           {fiche.id}
         </div>
       </div>
 
-      {/* Actions */}
-      <div className="flex items-center gap-2 flex-shrink-0">
-        <Link
-          to={`/fiche/${fiche.id}`}
-          style={{ color: '#9ca3af', fontSize: '13px', textDecoration: 'none' }}
-          className="px-2 py-1 rounded hover:bg-gray-700 transition-colors"
-          title="Voir"
-        >
+      <div className="flex items-center gap-1 flex-shrink-0">
+        <Link to={`/fiche/${fiche.id}`} className="icon-btn px-2 py-1.5 rounded-lg flex items-center" title="Voir" style={{ textDecoration: 'none', minHeight: '36px' }}>
           👁
         </Link>
-
-        {isCustom && (
-          <Link
-            to={`/modifier-fiche/${fiche.id}`}
-            style={{ color: '#6366F1', fontSize: '13px', textDecoration: 'none' }}
-            className="px-2 py-1 rounded hover:bg-indigo-900 transition-colors"
-            title="Modifier"
-          >
-            ✏️
-          </Link>
+        <button onClick={() => onExport(fiche)} className="icon-btn px-2 py-1.5 rounded-lg" title="Exporter" style={{ minHeight: '36px' }}>⬇️</button>
+        {isCustom ? (
+          <Link to={`/modifier-fiche/${fiche.id}`} className="icon-btn px-2 py-1.5 rounded-lg flex items-center" title="Modifier" style={{ textDecoration: 'none', minHeight: '36px' }}>✏️</Link>
+        ) : (
+          <button onClick={() => onExport(fiche)} className="icon-btn px-2 py-1.5 rounded-lg" title="Dupliquer" style={{ minHeight: '36px' }}>⧉</button>
         )}
-
-        <button
-          onClick={() => onExport(fiche)}
-          style={{ color: '#9ca3af', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer' }}
-          className="px-2 py-1 rounded hover:bg-gray-700 transition-colors"
-          title="Exporter cette fiche"
-        >
-          ⬇️
-        </button>
-
         {isCustom && (
           confirmDelete ? (
             <div className="flex items-center gap-1">
-              <button
-                onClick={() => onDelete(fiche.id)}
-                style={{ backgroundColor: '#CC0000', color: 'white', fontSize: '12px', border: 'none', cursor: 'pointer' }}
-                className="px-2 py-1 rounded"
-              >
-                Confirmer
-              </button>
-              <button
-                onClick={() => setConfirmDelete(false)}
-                style={{ color: '#9ca3af', fontSize: '12px', background: 'none', border: 'none', cursor: 'pointer' }}
-                className="px-2 py-1 rounded hover:bg-gray-700"
-              >
-                Annuler
-              </button>
+              <button onClick={() => onDelete(fiche.id)} style={{ backgroundColor: 'var(--danger)', color: 'white', fontSize: '12px', border: 'none', cursor: 'pointer', minHeight: '32px' }} className="px-2 py-1 rounded-lg">Confirmer</button>
+              <button onClick={() => setConfirmDelete(false)} className="icon-btn px-2 py-1 rounded-lg" style={{ fontSize: '12px', minHeight: '32px' }}>Annuler</button>
             </div>
           ) : (
-            <button
-              onClick={() => setConfirmDelete(true)}
-              style={{ color: '#666', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer' }}
-              className="px-2 py-1 rounded hover:text-red-400 hover:bg-red-900/20 transition-colors"
-              title="Supprimer"
-            >
-              🗑
-            </button>
+            <button onClick={() => setConfirmDelete(true)} className="icon-btn danger px-2 py-1.5 rounded-lg" title="Supprimer" style={{ minHeight: '36px' }}>🗑</button>
           )
         )}
       </div>
@@ -127,10 +86,13 @@ function FicheRow({ fiche, isCustom, onDelete, onExport }) {
 
 export default function GestionFiches() {
   const { allFiches, deleteFiche, exportFiches, importFiches, isCustom } = useFiches()
-  const [tab, setTab] = useState('toutes') // 'toutes' | 'custom' | 'officielles'
+  const [tab, setTab] = useState('toutes')
   const [importError, setImportError] = useState('')
   const [importSuccess, setImportSuccess] = useState('')
   const fileRef = useRef()
+
+  const customCount = allFiches.filter(f => isCustom(f.id)).length
+  const officialCount = TOUTES_FICHES.length
 
   const fiches = tab === 'custom'
     ? allFiches.filter(f => isCustom(f.id))
@@ -157,94 +119,64 @@ export default function GestionFiches() {
     e.target.value = ''
   }
 
-  const handleExportAll = () => {
-    exportFiches(allFiches.filter(f => isCustom(f.id)))
-  }
+  const handleExportSingle = (fiche) => exportFiches([fiche])
 
-  const handleExportSingle = (fiche) => {
-    exportFiches([fiche])
-  }
+  const tabBtn = (active) => ({
+    flex: 1, minHeight: '36px', borderRadius: '8px', fontSize: '13.5px', fontWeight: 600,
+    fontFamily: 'var(--font-body)', cursor: 'pointer', border: 'none',
+    background: active ? 'var(--surface)' : 'transparent',
+    color: active ? 'var(--text)' : 'var(--text-secondary)',
+    boxShadow: active ? 'var(--shadow-seg-active)' : 'none',
+    transition: 'all .15s ease',
+  })
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-6 w-full">
+    <main className="max-w-5xl mx-auto px-4 py-7 w-full">
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-6 flex-wrap">
         <div>
-          <h1 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '28px', letterSpacing: '2px', marginBottom: '4px' }}>
-            📂 GESTION DES FICHES
+          <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontSize: '11px', letterSpacing: '2px', marginBottom: '8px' }} className="uppercase">
+            Gestion
+          </div>
+          <h1 style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '30px', fontWeight: 700, letterSpacing: '-0.3px', margin: 0 }}>
+            Gestion des fiches
           </h1>
-          <p style={{ color: '#9ca3af', fontSize: '14px' }}>
-            {allFiches.length} fiche{allFiches.length > 1 ? 's' : ''} au total — {allFiches.filter(f => isCustom(f.id)).length} personnalisée{allFiches.filter(f => isCustom(f.id)).length > 1 ? 's' : ''}
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '6px' }}>
+            {officialCount} officielle{officialCount > 1 ? 's' : ''} · {customCount} personnelle{customCount > 1 ? 's' : ''}
           </p>
         </div>
 
-        {/* Import / Export */}
         <div className="flex gap-2 flex-wrap">
-          <input
-            ref={fileRef}
-            type="file"
-            accept=".json"
-            onChange={handleImport}
-            className="hidden"
-          />
-          <button
-            onClick={() => fileRef.current?.click()}
-            style={{ backgroundColor: '#1e2a4a', borderColor: '#6366F1', color: '#a5b4fc', fontSize: '14px', minHeight: '40px' }}
-            className="flex items-center gap-2 px-4 py-2 rounded border hover:bg-indigo-900/40 transition-colors"
-          >
-            ⬆️ Importer
+          <input ref={fileRef} type="file" accept=".json" onChange={handleImport} className="hidden" />
+          <button onClick={() => fileRef.current?.click()} className="btn-outline flex items-center gap-2 px-4 py-2 rounded-[10px]" style={{ fontSize: '14px', minHeight: '40px' }}>
+            ⬆️ Importer JSON
           </button>
-          <button
-            onClick={handleExportAll}
-            disabled={allFiches.filter(f => isCustom(f.id)).length === 0}
-            style={{ backgroundColor: '#1e2a4a', borderColor: '#2ECC71', color: '#86efac', fontSize: '14px', minHeight: '40px' }}
-            className="flex items-center gap-2 px-4 py-2 rounded border hover:bg-green-900/30 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            ⬇️ Exporter perso.
-          </button>
-          <button
-            onClick={() => exportFiches(allFiches)}
-            style={{ backgroundColor: '#1e2a4a', borderColor: '#F39C12', color: '#fcd34d', fontSize: '14px', minHeight: '40px' }}
-            className="flex items-center gap-2 px-4 py-2 rounded border hover:bg-yellow-900/20 transition-colors"
-          >
-            ⬇️ Exporter tout
+          <button onClick={() => exportFiches(allFiches)} className="btn-outline flex items-center gap-2 px-4 py-2 rounded-[10px]" style={{ fontSize: '14px', minHeight: '40px' }}>
+            ⬇️ Tout exporter
           </button>
         </div>
       </div>
 
       {/* Messages import */}
       {importSuccess && (
-        <div style={{ backgroundColor: '#0a2a0a', border: '1px solid #2ECC71', color: '#2ECC71', fontSize: '14px' }} className="rounded p-3 mb-4">
+        <div style={{ background: 'var(--success-bg)', border: '1px solid var(--success)', color: 'var(--success)', fontSize: '14px' }} className="rounded-lg p-3 mb-4">
           ✓ {importSuccess}
         </div>
       )}
       {importError && (
-        <div style={{ backgroundColor: '#2a0000', border: '1px solid #CC0000', color: '#ff8080', fontSize: '14px' }} className="rounded p-3 mb-4">
+        <div style={{ background: 'var(--danger-bg)', border: '1px solid var(--danger)', color: 'var(--danger)', fontSize: '14px' }} className="rounded-lg p-3 mb-4">
           {importError}
         </div>
       )}
 
       {/* Onglets */}
-      <div style={{ backgroundColor: '#0d0d1e', border: '1px solid #1e1e3a' }} className="rounded-lg p-1 flex gap-1 mb-5">
+      <div style={{ background: '#EBEEF2', borderRadius: '10px', padding: '4px' }} className="flex gap-1 mb-5">
         {[
           { id: 'toutes', label: `Toutes (${allFiches.length})` },
-          { id: 'custom', label: `Personnalisées (${allFiches.filter(f => isCustom(f.id)).length})` },
-          { id: 'officielles', label: `Officielles (${TOUTES_FICHES.length})` }
+          { id: 'custom', label: `Personnelles (${customCount})` },
+          { id: 'officielles', label: `Officielles (${officialCount})` }
         ].map(t => (
-          <button
-            key={t.id}
-            onClick={() => setTab(t.id)}
-            style={{
-              backgroundColor: tab === t.id ? '#CC0000' : 'transparent',
-              color: tab === t.id ? 'white' : '#9ca3af',
-              fontSize: '14px',
-              minHeight: '36px',
-              flex: 1
-            }}
-            className="rounded font-medium transition-colors"
-          >
-            {t.label}
-          </button>
+          <button key={t.id} onClick={() => setTab(t.id)} style={tabBtn(tab === t.id)}>{t.label}</button>
         ))}
       </div>
 
@@ -252,15 +184,13 @@ export default function GestionFiches() {
       {fiches.length === 0 ? (
         <div className="text-center py-12">
           <div className="text-4xl mb-3">📭</div>
-          <div style={{ color: '#9ca3af', fontSize: '16px' }}>Aucune fiche {tab === 'custom' ? 'personnalisée' : ''}</div>
+          <div style={{ color: 'var(--text-secondary)', fontSize: '16px' }}>Aucune fiche {tab === 'custom' ? 'personnelle' : ''}</div>
           {tab === 'custom' && (
-            <Link to="/nouvelle-fiche" style={{ color: '#CC0000', marginTop: '12px', display: 'inline-block' }}>
-              + Créer une fiche
-            </Link>
+            <Link to="/nouvelle-fiche" style={{ color: 'var(--accent)', marginTop: '12px', display: 'inline-block' }}>+ Créer une fiche</Link>
           )}
         </div>
       ) : (
-        <div className="flex flex-col gap-2">
+        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)', overflow: 'hidden' }}>
           {fiches.map(fiche => (
             <FicheRow
               key={fiche.id}

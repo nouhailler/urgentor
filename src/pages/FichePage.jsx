@@ -12,13 +12,13 @@ export default function FichePage() {
 
   if (!fiche) {
     return (
-      <main className="max-w-5xl mx-auto px-4 py-10 text-center">
+      <main className="mx-auto px-4 py-10 text-center w-full" style={{ maxWidth: '780px' }}>
         <div className="text-6xl mb-4">❓</div>
-        <h1 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '28px' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '28px', fontWeight: 700 }}>
           Fiche introuvable
         </h1>
-        <p style={{ color: '#9ca3af', marginTop: '8px' }}>L'identifiant « {id} » ne correspond à aucune fiche.</p>
-        <Link to="/" style={{ color: '#CC0000', marginTop: '16px', display: 'inline-block', fontSize: '16px' }}>
+        <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>L'identifiant « {id} » ne correspond à aucune fiche.</p>
+        <Link to="/" style={{ color: 'var(--accent)', marginTop: '16px', display: 'inline-block', fontSize: '16px' }}>
           ← Retour à la bibliothèque
         </Link>
       </main>
@@ -26,14 +26,14 @@ export default function FichePage() {
   }
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-6 w-full">
-      {/* Retour */}
+    <main className="mx-auto px-4 py-6 w-full" style={{ maxWidth: '780px' }}>
       <button
         onClick={() => navigate(-1)}
-        style={{ color: '#9ca3af', fontSize: '14px', marginBottom: '20px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-        className="flex items-center gap-1 hover:text-white transition-colors"
+        style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '18px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        className="flex items-center gap-1.5 hover:text-[var(--text)] transition-colors"
       >
-        ← Retour
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+        Retour à la bibliothèque
       </button>
 
       <FicheDetail fiche={fiche} />

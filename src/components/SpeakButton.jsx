@@ -1,7 +1,8 @@
 import { useSpeech } from '../hooks/useSpeech'
 
-export default function SpeakButton({ text, color = '#9ca3af' }) {
+export default function SpeakButton({ text, color = '#0E7180' }) {
   const { isSpeaking, speak } = useSpeech()
+  const idle = '#8A95A3'
 
   if (!('speechSynthesis' in window)) return null
 
@@ -10,29 +11,28 @@ export default function SpeakButton({ text, color = '#9ca3af' }) {
       onClick={() => speak(text)}
       title={isSpeaking ? 'Arrêter la lecture' : 'Lire à voix haute'}
       style={{
-        background: isSpeaking ? color + '22' : 'transparent',
+        background: isSpeaking ? color + '18' : 'transparent',
         border: `1px solid ${isSpeaking ? color : 'transparent'}`,
-        color: isSpeaking ? color : '#555',
-        padding: '5px 9px',
-        borderRadius: '8px',
+        color: isSpeaking ? color : idle,
+        padding: '6px 11px',
+        borderRadius: '999px',
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
-        gap: '5px',
+        gap: '6px',
         flexShrink: 0,
+        fontFamily: "'IBM Plex Sans', sans-serif",
+        fontSize: '12.5px',
+        fontWeight: 500,
         transition: 'color 0.2s, border-color 0.2s, background 0.2s',
-        minWidth: 'unset',   // override le 44px global — trop grand ici
+        minWidth: 'unset',
         minHeight: 'unset',
       }}
-      onMouseEnter={e => {
-        if (!isSpeaking) e.currentTarget.style.color = color
-      }}
-      onMouseLeave={e => {
-        if (!isSpeaking) e.currentTarget.style.color = '#555'
-      }}
+      onMouseEnter={e => { if (!isSpeaking) e.currentTarget.style.color = color }}
+      onMouseLeave={e => { if (!isSpeaking) e.currentTarget.style.color = idle }}
     >
       {isSpeaking ? <StopIcon color={color} /> : <SpeakerIcon />}
-      {isSpeaking && <SoundWaves color={color} />}
+      {isSpeaking ? <SoundWaves color={color} /> : <span>Écouter</span>}
     </button>
   )
 }

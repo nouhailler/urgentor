@@ -1,60 +1,139 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+/* ============================================================
+   URGENTOR — Design Tokens · Thème « Clair »
+   Source unique de vérité pour le redesign.
+   (Le thème « Nuit » pourra être ajouté via [data-theme="dark"].)
+   ============================================================ */
 :root {
-  --rouge: #CC0000;
-  --orange: #FF6B35;
-  --vert: #2ECC71;
-  --jaune: #F39C12;
-  --violet: #8B00FF;
-  --jaune-nrbc: #FFD700;
-  --noir-nrbc: #0D0D0D;
-  --gris-sombre: #1A1A2E;
-  --blanc: #FFFFFF;
+  /* ---- Typographie ---- */
+  --font-display: 'Archivo', sans-serif;        /* titres, logo, numéros d'étape */
+  --font-body:    'IBM Plex Sans', sans-serif;  /* corps de texte, contrôles UI */
+  --font-mono:    'IBM Plex Mono', monospace;   /* eyebrows, tags, numéros, micro-labels */
+
+  /* ---- Rayons ---- */
+  --radius-pill:    999px;
+  --radius-card:    16px;
+  --radius-card-sm: 14px;
+  --radius-control: 10px;
+  --radius-input:   12px;
+  --radius-badge:   9px;
+  --radius-inner:   8px;
+
+  /* ---- Ombres ---- */
+  --shadow-card-hover: 0 10px 26px rgba(20, 32, 43, 0.09);
+  --shadow-logo:       0 3px 8px rgba(200, 16, 46, 0.26);
+  --shadow-seg-active: 0 1px 4px rgba(20, 32, 43, 0.12);
+  --shadow-fab:        0 4px 12px rgba(200, 16, 46, 0.32);
+
+  /* ---- Anneau de focus (teal) ---- */
+  --focus-ring: 0 0 0 3px rgba(14, 113, 128, 0.14);
+
+  /* ---- Surfaces ---- */
+  --bg-page:        #E7EAEE;
+  --bg-app:         #F4F6F8;
+  --surface:        #FFFFFF;
+  --surface-subtle: #FAFBFC;
+  --surface-input:  #F8FAFB;
+
+  /* ---- Bordures & séparateurs ---- */
+  --border:        #E3E8ED;
+  --border-strong: #D3DAE1;
+  --border-hover:  #CCD5DD;
+  --divider:       #EEF1F4;
+  --divider-soft:  #E9EDF1;
+
+  /* ---- Texte ---- */
+  --text:           #16202B;
+  --text-body:      #3B4654;
+  --text-secondary: #5B6776;
+  --text-muted:     #8A95A3;
+  --text-faint:     #9AA5B1;
+
+  /* ---- Marque ---- */
+  --brand:     #C8102E;
+  --ink:       #1E2A37;
+  --ink-hover: #0F1822;
+
+  /* ---- Accent — teal ---- */
+  --accent:      #0E7180;
+  --accent-deep: #0A5963;
+  --accent-soft: #E6F2F3;
+
+  /* ---- Puce neutre ---- */
+  --chip-bg:   #F2F4F7;
+  --chip-text: #6B7785;
+
+  /* ---- Sémantique ---- */
+  --success:    #1E8A5A;  --success-bg: #E7F4EC;
+  --warning:    #B5740A;  --warning-bg: #FBF1DD;
+  --danger:     #C8102E;  --danger-bg:  #FCEBEE;
+
+  /* ---- Sévérité (badge texte / fond) ---- */
+  --sev-standard: #1E8A5A;  --sev-standard-bg: #E7F4EC;
+  --sev-eleve:    #B5740A;  --sev-eleve-bg:    #FBF1DD;
+  --sev-critique: #C8102E;  --sev-critique-bg: #FCEBEE;
+
+  /* ---- Panneaux contextuels (fiche détaillée) ---- */
+  --panel-action-bg:     #FFF5F6;  --panel-action-border: #F1C7CF;
+  --panel-warn-bg:       #FFFBF2;  --panel-warn-border:   #F0E2C4;
+  --panel-warn-soft:     #FDF8EE;
+  --fiche-accent-bar:    #C2415A;
+}
+
+/* ---- Couleurs d'accent des catégories (teintes douces) ---- */
+:root {
+  --cat-secours-personne:         #C2415A;
+  --cat-incendie-evacuation:      #D2762E;
+  --cat-chimique:                 #7A5AA6;
+  --cat-nrbc:                     #B08A1E;
+  --cat-environnement-exterieur:  #2F8F6B;
+  --cat-professionnel-industriel: #B06A3A;
+  --cat-evenementiel-foule:       #3A77B0;
+  --cat-pediatrie:                #C25C92;
+  --cat-psychologique:            #6E73C0;
 }
 
 * {
   box-sizing: border-box;
-  /* Supprime le flash bleu/gris au tap sur mobile */
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
-  background: #0f0f1a;
-  color: #f0f0f0;
+  background: var(--bg-app);
+  color: var(--text-body);
   min-height: 100vh;
-  /* Scroll fluide sur iOS */
   -webkit-overflow-scrolling: touch;
-  /* Évite les rebonds de scroll sur iOS au niveau du body */
   overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   min-height: 100vh;
-  min-height: 100dvh; /* dynamic viewport height — gère la barre d'adresse mobile */
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  /* Safe areas pour les encoches/barre de navigation (iPhone X+, Android) */
+  background: var(--bg-app);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Taille minimale de zone tactile 44px (recommandation Apple/Google) */
+/* Zone tactile minimale 44px (recommandation Apple/Google) */
 button, a, [role="button"] {
   min-height: 44px;
   min-width: 44px;
 }
 
-/* Scroll fluide dans les conteneurs scrollables */
 textarea, select, [data-scrollable] {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Empêche la sélection de texte accidentelle sur les éléments interactifs */
 button, [role="button"] {
   user-select: none;
   -webkit-user-select: none;
@@ -62,11 +141,20 @@ button, [role="button"] {
 }
 
 h1, h2, h3, .titre-fiche {
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-display);
 }
 
 code, .code-chimique, .seuil-ppm {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
+}
+
+/* Champs de formulaire — focus accent teal homogène */
+input, textarea, select {
+  font-family: var(--font-body);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent) !important;
+  box-shadow: var(--focus-ring);
 }
 
 @keyframes speak-wave {
@@ -76,7 +164,7 @@ code, .code-chimique, .seuil-ppm {
 
 @keyframes blink-warning {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50% { opacity: 0.55; }
 }
 
 .bandeau-danger {
@@ -89,25 +177,57 @@ code, .code-chimique, .seuil-ppm {
 }
 
 .nrbc-border {
-  border: 4px solid var(--jaune-nrbc);
+  border: 4px solid var(--cat-nrbc);
   background-image: repeating-linear-gradient(
     45deg,
-    var(--jaune-nrbc) 0px,
-    var(--jaune-nrbc) 7px,
-    var(--noir-nrbc) 7px,
-    var(--noir-nrbc) 14px
+    var(--cat-nrbc) 0px,
+    var(--cat-nrbc) 7px,
+    #0D0D0D 7px,
+    #0D0D0D 14px
   );
   background-size: 20px 20px;
   padding: 6px;
 }
 
 .nrbc-border-inner {
-  background: var(--gris-sombre);
+  background: var(--surface);
 }
 
-@media (prefers-color-scheme: light) {
-  body {
-    background: #f5f5f5;
-    color: #1a1a2e;
-  }
+/* Carte de fiche — survol */
+.fiche-card {
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.fiche-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Boutons outline génériques (Gestion, etc.) */
+.btn-outline {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-body);
+  transition: border-color .12s ease, color .12s ease, background .12s ease;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+/* Boutons icône (lignes de gestion) */
+.icon-btn {
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease;
+}
+.icon-btn:hover {
+  background: var(--chip-bg);
+  color: var(--text-body);
+}
+.icon-btn.danger:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
 }

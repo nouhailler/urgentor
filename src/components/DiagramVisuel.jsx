@@ -4,49 +4,34 @@ export default function DiagramVisuel({ arbresDecision }) {
   return (
     <div className="flex flex-col gap-3">
       {arbresDecision.map((noeud, i) => (
-        <div key={i} className="flex gap-0 items-stretch">
-          {/* Condition */}
-          <div
-            style={{
-              backgroundColor: '#1a1a3a',
-              borderLeft: '4px solid #F39C12',
-              minWidth: 0,
-              flex: 1
-            }}
-            className="rounded-l-lg p-4"
-          >
-            <div style={{ color: '#F39C12', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace' }} className="mb-1 uppercase tracking-wider">
-              SI
+        <div
+          key={i}
+          className="flex items-stretch"
+          style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-inner)', overflow: 'hidden' }}
+        >
+          {/* SI */}
+          <div style={{ backgroundColor: 'var(--surface-subtle)', flex: 1, minWidth: 0, padding: '14px 16px' }}>
+            <div style={{ color: 'var(--warning)', fontSize: '10.5px', fontFamily: 'var(--font-mono)', letterSpacing: '1px' }} className="mb-1.5 uppercase">
+              Si
             </div>
-            <div style={{ color: '#f0f0f0', fontSize: '15px' }}>
+            <div style={{ color: 'var(--text)', fontSize: '14.5px', lineHeight: 1.45 }}>
               {noeud.condition}
             </div>
           </div>
 
-          {/* Arrow */}
-          <div
-            style={{ backgroundColor: '#F39C12', minWidth: '36px' }}
-            className="flex items-center justify-center"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
-              <path d="M10 3l7 7-7 7M3 10h14" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
+          {/* Flèche */}
+          <div style={{ display: 'flex', alignItems: 'center', padding: '0 10px', color: 'var(--text-muted)', flexShrink: 0 }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </div>
 
-          {/* Action */}
-          <div
-            style={{
-              backgroundColor: '#0a2a1a',
-              borderRight: '4px solid #2ECC71',
-              flex: 1,
-              minWidth: 0
-            }}
-            className="rounded-r-lg p-4"
-          >
-            <div style={{ color: '#2ECC71', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace' }} className="mb-1 uppercase tracking-wider">
-              ALORS
+          {/* ALORS */}
+          <div style={{ backgroundColor: 'var(--surface)', flex: 1, minWidth: 0, padding: '14px 16px', borderLeft: '1px solid var(--border)' }}>
+            <div style={{ color: 'var(--success)', fontSize: '10.5px', fontFamily: 'var(--font-mono)', letterSpacing: '1px' }} className="mb-1.5 uppercase">
+              Alors
             </div>
-            <div style={{ color: '#f0f0f0', fontSize: '15px' }}>
+            <div style={{ color: 'var(--text)', fontSize: '14.5px', lineHeight: 1.45 }}>
               {noeud.alors}
             </div>
           </div>

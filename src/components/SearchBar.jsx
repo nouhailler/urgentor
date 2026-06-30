@@ -47,13 +47,11 @@ function HighlightText({ text, query }) {
   const idx = normText.indexOf(normQuery)
   if (idx === -1) return <span>{text}</span>
 
-  // Les positions restent alignées car chaque char accenté
-  // (é, û, ç…) compte pour 1 dans l'original ET dans la forme normalisée.
   const len = normQuery.length
   return (
     <>
       {text.slice(0, idx)}
-      <span style={{ backgroundColor: '#CC000055', color: '#FF9999', borderRadius: '2px', padding: '0 1px' }}>
+      <span style={{ backgroundColor: 'var(--accent-soft)', color: 'var(--accent-deep)', borderRadius: '3px', padding: '0 2px' }}>
         {text.slice(idx, idx + len)}
       </span>
       {text.slice(idx + len)}
@@ -71,10 +69,8 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
   const suggestions  = getSuggestions(value, allFiches)
   const showDropdown = open && suggestions.length > 0
 
-  // Réinitialise la sélection clavier à chaque nouvelle frappe
   useEffect(() => { setActiveIdx(-1) }, [value])
 
-  // Ferme le dropdown si on tape ≥ 2 chars mais aucune suggestion
   useEffect(() => {
     if (value.length >= 2 && suggestions.length === 0) setOpen(false)
   }, [suggestions.length, value.length])
@@ -106,26 +102,24 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
       e.preventDefault()
       if (activeIdx >= 0)           selectSuggestion(suggestions[activeIdx])
       else if (suggestions.length === 1) selectSuggestion(suggestions[0])
-      else                          setOpen(false) // filtre la grille
+      else                          setOpen(false)
     } else if (e.key === 'Escape') {
       setOpen(false)
       onChange('')
     }
   }
 
-  // Empêche l'input de perdre le focus lors d'un tap sur une suggestion
   const handleSuggestionPointerDown = (e) => e.preventDefault()
-
   const handleBlur  = () => { blurTimer.current = setTimeout(() => setOpen(false), 150) }
   const handleFocus = () => { clearTimeout(blurTimer.current); if (suggestions.length > 0) setOpen(true) }
 
   return (
     <div className="relative w-full" style={{ zIndex: 40 }}>
-      {/* ── Input ─────────────────────────────────────────────────── */}
+      {/* Input */}
       <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            style={{ color: showDropdown ? '#CC0000' : '#666' }}>
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            style={{ color: showDropdown ? 'var(--accent)' : 'var(--text-muted)' }}>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
@@ -139,25 +133,22 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          placeholder="brulure, malaise, gaz, noyade…"
+          placeholder="Rechercher — brûlure, hémorragie, NRBC…"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck="false"
           style={{
-            fontFamily: 'IBM Plex Sans, sans-serif',
-            fontSize: '18px',
-            backgroundColor: '#16213e',
-            color: '#f0f0f0',
-            border: `2px solid ${showDropdown ? '#CC0000' : (value ? '#CC0000' : '#2a2a4a')}`,
-            borderBottomLeftRadius:  showDropdown ? 0 : '8px',
-            borderBottomRightRadius: showDropdown ? 0 : '8px',
-            borderRadius: showDropdown ? '8px 8px 0 0' : '8px',
+            fontFamily: 'var(--font-body)',
+            fontSize: '16px',
+            backgroundColor: 'var(--surface)',
+            color: 'var(--text)',
+            border: `1px solid ${showDropdown ? 'var(--accent)' : 'var(--border-strong)'}`,
+            borderRadius: showDropdown ? '12px 12px 0 0' : '12px',
             outline: 'none',
             width: '100%',
-            padding: '16px 48px 16px 52px',
+            padding: '15px 48px 15px 46px',
           }}
-          autoFocus
         />
         {value && (
           <button
@@ -165,8 +156,8 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
             onClick={() => { onChange(''); setOpen(false); inputRef.current?.focus() }}
             aria-label="Effacer"
             style={{ position: 'absolute', right: 0, top: 0, bottom: 0,
-              padding: '0 16px', color: '#555', background: 'none', border: 'none', cursor: 'pointer' }}
-            className="hover:text-white transition-colors flex items-center"
+              padding: '0 16px', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer' }}
+            className="hover:text-[var(--text)] transition-colors flex items-center"
           >
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -175,19 +166,19 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
         )}
       </div>
 
-      {/* ── Dropdown suggestions ───────────────────────────────────── */}
+      {/* Dropdown suggestions */}
       {showDropdown && (
         <div style={{
           position: 'absolute',
           top: '100%',
           left: 0,
           right: 0,
-          backgroundColor: '#16213e',
-          border: '2px solid #CC0000',
-          borderTop: '1px solid #2a0000',
-          borderRadius: '0 0 10px 10px',
+          backgroundColor: 'var(--surface)',
+          border: '1px solid var(--accent)',
+          borderTop: '1px solid var(--border)',
+          borderRadius: '0 0 12px 12px',
           overflow: 'hidden',
-          boxShadow: '0 12px 32px rgba(0,0,0,0.6)',
+          boxShadow: 'var(--shadow-card-hover)',
           zIndex: 50,
         }}>
           {suggestions.map((fiche, i) => {
@@ -204,38 +195,29 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  padding: '13px 16px',
-                  backgroundColor: isActive ? '#2a0a0a' : 'transparent',
+                  padding: '12px 16px',
+                  backgroundColor: isActive ? 'var(--surface-subtle)' : 'transparent',
                   border: 'none',
-                  borderTop: i > 0 ? '1px solid #1e1e3a' : 'none',
+                  borderTop: i > 0 ? '1px solid var(--divider)' : 'none',
                   cursor: 'pointer',
                   textAlign: 'left',
                   minHeight: '56px',
                   transition: 'background 0.1s',
                 }}
               >
-                {/* Icône catégorie */}
-                <span style={{ fontSize: '22px', lineHeight: 1, flexShrink: 0 }}>{cat?.icone ?? '📄'}</span>
+                <span style={{ fontSize: '20px', lineHeight: 1, flexShrink: 0, color: cat?.couleur }}>{cat?.icone ?? '📄'}</span>
 
-                {/* Titre + catégorie */}
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{
-                    color: isActive ? '#FFFFFF' : '#f0f0f0',
-                    fontSize: '16px',
-                    fontFamily: 'Oswald, sans-serif',
-                    letterSpacing: '0.5px',
-                    lineHeight: 1.2,
-                  }}>
+                  <div style={{ color: 'var(--text)', fontSize: '15px', fontFamily: 'var(--font-display)', fontWeight: 600, lineHeight: 1.2 }}>
                     <HighlightText text={fiche.titre} query={value} />
                   </div>
-                  <div style={{ color: '#555', fontSize: '12px', marginTop: '2px' }}>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '12px', marginTop: '2px' }}>
                     {cat?.label}
                   </div>
                 </div>
 
-                {/* Flèche */}
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24"
-                  stroke={isActive ? '#CC0000' : '#333'} strokeWidth={2.5}
+                  stroke={isActive ? 'var(--accent)' : 'var(--text-faint)'} strokeWidth={2.5}
                   style={{ flexShrink: 0 }}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
@@ -243,28 +225,28 @@ export default function SearchBar({ value, onChange, allFiches = [] }) {
             )
           })}
 
-          {/* Pied de dropdown — indication */}
           <div style={{
             padding: '7px 16px',
-            borderTop: '1px solid #1e1e3a',
+            borderTop: '1px solid var(--divider)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            backgroundColor: 'var(--surface-subtle)',
           }}>
-            <span style={{ color: '#444', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace' }}>
+            <span style={{ color: 'var(--text-muted)', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
               {suggestions.length} résultat{suggestions.length > 1 ? 's' : ''}
             </span>
-            <span style={{ color: '#333', fontSize: '11px' }}>
+            <span style={{ color: 'var(--text-faint)', fontSize: '11px' }}>
               ↵ ouvrir · ↑↓ naviguer · Esc fermer
             </span>
           </div>
         </div>
       )}
 
-      {/* Hint sans accents sous l'input */}
+      {/* Hint sans accents */}
       {!showDropdown && !value && (
-        <div style={{ color: '#444', fontSize: '12px', marginTop: '6px', paddingLeft: '4px' }}>
-          Les accents ne sont pas nécessaires — tapez <em style={{ color: '#555' }}>brulure</em>, <em style={{ color: '#555' }}>hemorragie</em>, <em style={{ color: '#555' }}>nrbc</em>…
+        <div style={{ color: 'var(--text-faint)', fontSize: '12px', marginTop: '8px', paddingLeft: '4px' }}>
+          Les accents ne sont pas nécessaires — tapez <em style={{ color: 'var(--text-muted)' }}>brulure</em>, <em style={{ color: 'var(--text-muted)' }}>hemorragie</em>, <em style={{ color: 'var(--text-muted)' }}>nrbc</em>…
         </div>
       )}
     </div>

@@ -4,6 +4,15 @@ import SearchBar from '../components/SearchBar'
 import FicheCard from '../components/FicheCard'
 import { CATEGORIES } from '../data/categories'
 
+// Convertit un hex en rgba avec alpha — pour les fonds de chips actifs
+function withAlpha(hex, alpha) {
+  const h = hex.replace('#', '')
+  const r = parseInt(h.slice(0, 2), 16)
+  const g = parseInt(h.slice(2, 4), 16)
+  const b = parseInt(h.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 export default function Home() {
   const { fichesFiltrees, allFiches, query, setQuery, categorieActive, setCategorieActive } = useFiches()
 
@@ -12,14 +21,17 @@ export default function Home() {
   }
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-6 w-full flex-1">
-      {/* Hero */}
+    <main className="max-w-5xl mx-auto px-4 py-7 w-full flex-1">
+      {/* En-tête */}
       <div className="mb-6">
-        <h1 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '32px', letterSpacing: '3px', marginBottom: '4px' }}>
-          BIBLIOTHÈQUE
+        <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontSize: '11px', letterSpacing: '2px', marginBottom: '8px' }} className="uppercase">
+          Bibliothèque
+        </div>
+        <h1 style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '30px', fontWeight: 700, letterSpacing: '-0.3px', margin: 0 }}>
+          Fiches de premiers secours
         </h1>
-        <p style={{ color: '#9ca3af', fontSize: '15px' }}>
-          {fichesFiltrees.length} fiche{fichesFiltrees.length > 1 ? 's' : ''} disponible{fichesFiltrees.length > 1 ? 's' : ''}
+        <p style={{ color: 'var(--text-secondary)', fontSize: '15px', marginTop: '6px' }}>
+          {fichesFiltrees.length} fiche{fichesFiltrees.length > 1 ? 's' : ''} prête{fichesFiltrees.length > 1 ? 's' : ''} à l'emploi, utilisable{fichesFiltrees.length > 1 ? 's' : ''} hors ligne.
         </p>
       </div>
 
@@ -29,33 +41,35 @@ export default function Home() {
       </div>
 
       {/* Filtres catégories */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {CATEGORIES.map(cat => (
-          <button
-            key={cat.id}
-            onClick={() => toggleCategorie(cat.id)}
-            style={{
-              backgroundColor: categorieActive === cat.id ? cat.couleur : '#16213e',
-              borderColor: cat.couleur,
-              color: categorieActive === cat.id ? (cat.id === 'nrbc' ? '#0D0D0D' : '#FFFFFF') : '#d0d0d0',
-              fontSize: '14px',
-              minHeight: '44px',
-              fontFamily: 'IBM Plex Sans, sans-serif',
-              border: `2px solid ${cat.couleur}`
-            }}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-colors hover:opacity-90"
-          >
-            <span>{cat.icone}</span>
-            <span className="hidden sm:inline">{cat.label}</span>
-          </button>
-        ))}
+      <div className="flex flex-wrap gap-2 mb-7">
+        {CATEGORIES.map(cat => {
+          const active = categorieActive === cat.id
+          return (
+            <button
+              key={cat.id}
+              onClick={() => toggleCategorie(cat.id)}
+              style={{
+                backgroundColor: active ? withAlpha(cat.couleur, 0.14) : 'var(--surface)',
+                border: `${active ? 1.5 : 1}px solid ${active ? cat.couleur : 'var(--border)'}`,
+                color: active ? cat.couleur : 'var(--text-body)',
+                fontSize: '13.5px',
+                fontWeight: active ? 600 : 500,
+                minHeight: '42px',
+              }}
+              className="flex items-center gap-2 px-4 rounded-full transition-colors"
+            >
+              <span style={{ fontSize: '15px' }}>{cat.icone}</span>
+              <span className="hidden sm:inline">{cat.label}</span>
+            </button>
+          )
+        })}
         {categorieActive && (
           <button
             onClick={() => setCategorieActive(null)}
-            style={{ backgroundColor: '#333', color: '#9ca3af', fontSize: '13px', minHeight: '44px' }}
-            className="px-3 py-2 rounded-lg border border-gray-700 hover:bg-gray-700"
+            style={{ backgroundColor: 'var(--chip-bg)', color: 'var(--chip-text)', fontSize: '13px', minHeight: '42px', border: '1px solid var(--border)' }}
+            className="px-4 rounded-full hover:bg-[var(--divider)] transition-colors"
           >
-            ✕ Tout
+            ✕ Effacer
           </button>
         )}
       </div>
@@ -64,35 +78,34 @@ export default function Home() {
       {fichesFiltrees.length === 0 ? (
         <div className="text-center py-16">
           <div className="text-5xl mb-4">🔍</div>
-          <div style={{ color: '#9ca3af', fontSize: '18px' }}>Aucune fiche trouvée pour "{query}"</div>
-          <button onClick={() => { setQuery(''); setCategorieActive(null) }} style={{ color: '#CC0000', marginTop: '12px', fontSize: '15px' }}>
+          <div style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>Aucune fiche trouvée pour « {query} »</div>
+          <button onClick={() => { setQuery(''); setCategorieActive(null) }} style={{ color: 'var(--accent)', marginTop: '12px', fontSize: '15px', background: 'none', border: 'none', cursor: 'pointer' }}>
             Effacer les filtres
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(296px, 1fr))' }}>
           {fichesFiltrees.map(fiche => (
             <FicheCard key={fiche.id} fiche={fiche} />
           ))}
         </div>
       )}
 
-      {/* FAB Nouvelle fiche */}
+      {/* FAB Nouvelle fiche (mobile) */}
       <Link
         to="/nouvelle-fiche"
         style={{
-          backgroundColor: '#CC0000',
-          width: '60px',
-          height: '60px',
-          bottom: '24px',
-          right: '24px',
-          fontSize: '28px',
-          boxShadow: '0 4px 20px rgba(204,0,0,0.5)'
+          backgroundColor: 'var(--brand)',
+          width: '58px',
+          height: '58px',
+          bottom: 'calc(20px + env(safe-area-inset-bottom))',
+          right: '20px',
+          boxShadow: 'var(--shadow-fab)',
         }}
-        className="fixed rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors z-40"
+        className="fixed rounded-full flex items-center justify-center text-white hover:brightness-110 transition-all z-40 sm:hidden"
         title="Nouvelle fiche"
       >
-        +
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
       </Link>
     </main>
   )

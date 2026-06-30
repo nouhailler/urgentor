@@ -127,6 +127,15 @@ const API_CALLERS = {
   openrouter: callOpenRouter
 }
 
+const fieldLabel = { color: 'var(--text-secondary)', fontSize: '12px', letterSpacing: '0.5px' }
+const inputStyle = {
+  backgroundColor: 'var(--surface-input)',
+  border: '1px solid var(--border-strong)',
+  borderRadius: 'var(--radius-control)',
+  color: 'var(--text)',
+  fontFamily: 'var(--font-body)',
+}
+
 export default function AIGenerator({ onFicheGenerated }) {
   const settings = loadSettings()
   const cachedOR = loadCachedORModels()
@@ -145,17 +154,15 @@ export default function AIGenerator({ onFicheGenerated }) {
 
   const needsProduit = categorie === 'chimique' || categorie === 'nrbc'
 
-  // Modèles disponibles selon le fournisseur actif
   const getModelsForProvider = (p) => {
-    if (p === 'openrouter') return cachedOR.models // [{id, name}]
-    return PROVIDERS[p]?.models ?? []              // [{id, label}]
+    if (p === 'openrouter') return cachedOR.models
+    return PROVIDERS[p]?.models ?? []
   }
 
   const handleProviderChange = (p) => {
     setProvider(p)
     const savedModel = settings[p]?.model
     const models = getModelsForProvider(p)
-    // Garder le modèle sauvegardé s'il existe dans la liste, sinon prendre le premier
     const exists = models.some(m => m.id === savedModel)
     setModel(exists ? savedModel : (models[0]?.id ?? ''))
     setError('')
@@ -178,7 +185,6 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
       const caller = API_CALLERS[provider]
       const text = await caller({ key, model, systemPrompt: SYSTEM_PROMPT, userPrompt })
 
-      // Extraire le JSON même si le modèle a ajouté du texte autour
       const jsonMatch = text.match(/\{[\s\S]*\}/)
       if (!jsonMatch) throw new Error('Réponse non JSON — essayez un autre modèle')
       const fiche = JSON.parse(jsonMatch[0])
@@ -204,21 +210,18 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
   // Aucune clé configurée
   if (configuredProviders.length === 0) {
     return (
-      <div
-        style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a' }}
-        className="rounded-lg p-8 text-center flex flex-col items-center gap-4"
-      >
+      <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-8 text-center flex flex-col items-center gap-4">
         <div className="text-4xl">⚙️</div>
-        <div style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '20px' }}>
+        <div style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '20px', fontWeight: 700 }}>
           Aucune clé API configurée
         </div>
-        <div style={{ color: '#9ca3af', fontSize: '15px', maxWidth: '380px', lineHeight: 1.6 }}>
+        <div style={{ color: 'var(--text-secondary)', fontSize: '15px', maxWidth: '380px', lineHeight: 1.6 }}>
           Configurez au moins une clé API (Anthropic, OpenAI ou OpenRouter) pour pouvoir générer des fiches.
         </div>
         <Link
           to="/parametres"
-          style={{ backgroundColor: '#CC0000', fontSize: '15px', textDecoration: 'none', minHeight: '48px', display: 'flex', alignItems: 'center' }}
-          className="px-6 rounded text-white font-bold hover:bg-red-700 transition-colors"
+          style={{ backgroundColor: 'var(--ink)', fontSize: '15px', textDecoration: 'none', minHeight: '48px', display: 'flex', alignItems: 'center', borderRadius: 'var(--radius-control)' }}
+          className="px-6 text-white font-semibold hover:bg-[var(--ink-hover)] transition-colors"
         >
           → Aller aux Paramètres
         </Link>
@@ -226,21 +229,13 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
     )
   }
 
-  const currentProviderConfig = PROVIDERS[provider]
-
   return (
     <div className="flex flex-col gap-5">
-      <div style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a' }} className="rounded-lg p-5">
-        <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '20px', marginBottom: '20px' }}>
-          🤖 Générer une fiche par IA
-        </h2>
-
+      <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-6">
         <div className="flex flex-col gap-4">
           {/* Sélecteur fournisseur */}
           <div>
-            <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-2 uppercase tracking-wider">
-              Fournisseur IA
-            </label>
+            <label style={fieldLabel} className="block mb-2 uppercase tracking-wider font-medium">Fournisseur IA</label>
             <div className="flex gap-2 flex-wrap">
               {configuredProviders.map(p => {
                 const cfg = PROVIDERS[p]
@@ -250,26 +245,21 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
                     key={p}
                     onClick={() => handleProviderChange(p)}
                     style={{
-                      backgroundColor: active ? cfg.color + '33' : '#0a0a1a',
-                      borderColor: active ? cfg.color : '#2a2a4a',
-                      color: active ? cfg.color : '#9ca3af',
-                      fontSize: '14px',
-                      minHeight: '40px',
-                      border: `2px solid ${active ? cfg.color : '#2a2a4a'}`
+                      backgroundColor: active ? 'var(--accent-soft)' : 'var(--surface)',
+                      border: `1.5px solid ${active ? 'var(--accent)' : 'var(--border-strong)'}`,
+                      color: active ? 'var(--accent-deep)' : 'var(--text-body)',
+                      fontSize: '14px', minHeight: '40px', borderRadius: 'var(--radius-control)',
                     }}
-                    className="px-4 py-2 rounded font-semibold transition-colors flex items-center gap-2"
+                    className="px-4 py-2 font-medium transition-colors flex items-center gap-2"
                   >
-                    <span style={{ color: active ? cfg.color : '#666' }}>
-                      {PROVIDERS[p] && p === 'anthropic' ? '◆' : p === 'openai' ? '●' : '⬡'}
-                    </span>
                     {cfg.label}
                   </button>
                 )
               })}
               <Link
                 to="/parametres"
-                style={{ color: '#555', fontSize: '13px', textDecoration: 'none', minHeight: '40px', display: 'flex', alignItems: 'center' }}
-                className="px-3 rounded border border-gray-700 hover:text-gray-300 hover:border-gray-500 transition-colors"
+                style={{ color: 'var(--text-muted)', fontSize: '13px', textDecoration: 'none', minHeight: '40px', display: 'flex', alignItems: 'center', borderRadius: 'var(--radius-control)' }}
+                className="btn-outline px-3"
               >
                 ⚙️ Gérer
               </Link>
@@ -279,30 +269,19 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
           {/* Sélecteur modèle */}
           {provider && (
             <div>
-              <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-2 uppercase tracking-wider">
-                Modèle
-              </label>
+              <label style={fieldLabel} className="block mb-2 uppercase tracking-wider font-medium">Modèle IA</label>
               {provider === 'openrouter' && cachedOR.models.length === 0 ? (
-                <div style={{ backgroundColor: '#1a1a2e', border: '1px solid #2a2a4a', color: '#9ca3af', fontSize: '14px' }} className="rounded px-4 py-3 flex items-center justify-between gap-3">
+                <div style={{ background: 'var(--warning-bg)', border: '1px solid var(--panel-warn-border)', color: 'var(--warning)', fontSize: '14px', borderRadius: 'var(--radius-control)' }} className="px-4 py-3 flex items-center justify-between gap-3">
                   <span>Aucun modèle chargé</span>
-                  <Link to="/parametres" style={{ color: '#6366F1', fontSize: '13px', textDecoration: 'none', flexShrink: 0 }}>
+                  <Link to="/parametres" style={{ color: 'var(--accent)', fontSize: '13px', textDecoration: 'none', flexShrink: 0 }}>
                     → Actualiser dans Paramètres
                   </Link>
                 </div>
               ) : (
-                <select
-                  value={model}
-                  onChange={e => setModel(e.target.value)}
-                  style={{ backgroundColor: '#0a0a1a', borderColor: '#2a2a4a', color: '#f0f0f0', fontSize: '14px' }}
-                  className="w-full px-4 py-3 rounded border outline-none"
-                >
+                <select value={model} onChange={e => setModel(e.target.value)} style={inputStyle} className="w-full px-4 py-3 outline-none">
                   {provider === 'openrouter'
-                    ? cachedOR.models.map(m => (
-                        <option key={m.id} value={m.id}>{m.name}</option>
-                      ))
-                    : PROVIDERS[provider]?.models.map(m => (
-                        <option key={m.id} value={m.id}>{m.label}</option>
-                      ))
+                    ? cachedOR.models.map(m => (<option key={m.id} value={m.id}>{m.name}</option>))
+                    : PROVIDERS[provider]?.models.map(m => (<option key={m.id} value={m.id}>{m.label}</option>))
                   }
                 </select>
               )}
@@ -311,61 +290,52 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
 
           {/* Titre */}
           <div>
-            <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-2 uppercase tracking-wider">
-              Titre de la fiche *
-            </label>
+            <label style={fieldLabel} className="block mb-2 uppercase tracking-wider font-medium">Titre de la fiche *</label>
             <input
               type="text"
               value={titre}
               onChange={e => setTitre(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && generate()}
               placeholder="ex : Morsure de serpent, Intoxication au chlore..."
-              style={{ backgroundColor: '#0a0a1a', borderColor: '#2a2a4a', color: '#f0f0f0', fontSize: '16px' }}
-              className="w-full px-4 py-3 rounded border outline-none focus:border-red-600"
+              style={{ ...inputStyle, fontSize: '16px' }}
+              className="w-full px-4 py-3 outline-none"
             />
           </div>
 
           {/* Catégorie */}
           <div>
-            <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-2 uppercase tracking-wider">
-              Catégorie *
-            </label>
-            <select
-              value={categorie}
-              onChange={e => setCategorie(e.target.value)}
-              style={{ backgroundColor: '#0a0a1a', borderColor: '#2a2a4a', color: '#f0f0f0', fontSize: '16px' }}
-              className="w-full px-4 py-3 rounded border outline-none"
-            >
-              {CATEGORIES.map(c => (
-                <option key={c.id} value={c.id}>{c.icone} {c.label}</option>
-              ))}
+            <label style={fieldLabel} className="block mb-2 uppercase tracking-wider font-medium">Catégorie *</label>
+            <select value={categorie} onChange={e => setCategorie(e.target.value)} style={{ ...inputStyle, fontSize: '16px' }} className="w-full px-4 py-3 outline-none">
+              {CATEGORIES.map(c => (<option key={c.id} value={c.id}>{c.icone} {c.label}</option>))}
             </select>
           </div>
 
           {/* Produit chimique/NRBC */}
           {needsProduit && (
             <div>
-              <label style={{ color: '#c084fc', fontSize: '12px' }} className="block mb-2 uppercase tracking-wider">
-                ☣️ Nom du produit / agent
-              </label>
+              <label style={{ color: 'var(--cat-chimique)', fontSize: '12px', letterSpacing: '0.5px' }} className="block mb-2 uppercase tracking-wider font-medium">☣️ Nom du produit / agent</label>
               <input
                 type="text"
                 value={produit}
                 onChange={e => setProduit(e.target.value)}
                 placeholder="ex : Acide nitrique, Sarin, Césium-137..."
-                style={{ backgroundColor: '#150028', borderColor: '#8B00FF', color: '#f0f0f0', fontSize: '16px' }}
-                className="w-full px-4 py-3 rounded border outline-none"
+                style={{ ...inputStyle, fontSize: '16px' }}
+                className="w-full px-4 py-3 outline-none"
               />
             </div>
           )}
 
+          {/* Notice clé API */}
+          <div style={{ background: 'var(--warning-bg)', border: '1px solid var(--panel-warn-border)', color: 'var(--warning)', fontSize: '13px', borderRadius: 'var(--radius-control)' }} className="px-4 py-2.5 flex items-center gap-2">
+            <span>ⓘ</span> Une clé API est requise.
+            <Link to="/parametres" style={{ color: 'var(--warning)', fontWeight: 600, textDecoration: 'underline' }}>Paramètres</Link>
+          </div>
+
           {error && (
-            <div style={{ backgroundColor: '#2a0000', border: '1px solid #CC0000', color: '#ff8080', fontSize: '14px' }} className="rounded p-3">
+            <div style={{ background: 'var(--danger-bg)', border: '1px solid var(--panel-action-border)', color: 'var(--danger)', fontSize: '14px', borderRadius: 'var(--radius-control)' }} className="p-3">
               {error}
               {error.includes('Paramètres') && (
-                <Link to="/parametres" style={{ color: '#FF6B6B', marginLeft: '8px', fontWeight: 600, textDecoration: 'underline' }}>
-                  → Paramètres
-                </Link>
+                <Link to="/parametres" style={{ color: 'var(--danger)', marginLeft: '8px', fontWeight: 600, textDecoration: 'underline' }}>→ Paramètres</Link>
               )}
             </div>
           )}
@@ -373,12 +343,8 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
           <button
             onClick={generate}
             disabled={loading}
-            style={{
-              backgroundColor: loading ? '#444' : '#CC0000',
-              fontSize: '16px',
-              minHeight: '52px'
-            }}
-            className="w-full rounded text-white font-bold py-3 hover:bg-red-700 transition-colors disabled:cursor-not-allowed"
+            style={{ backgroundColor: loading ? 'var(--text-muted)' : 'var(--ink)', fontSize: '16px', minHeight: '52px', borderRadius: 'var(--radius-control)' }}
+            className="w-full text-white font-semibold py-3 hover:bg-[var(--ink-hover)] transition-colors disabled:cursor-not-allowed"
           >
             {loading
               ? <span className="flex items-center justify-center gap-2">
@@ -387,46 +353,42 @@ Catégorie : ${categorie}${needsProduit && produit ? `\nProduit/Agent : ${produi
                   </svg>
                   Génération en cours…
                 </span>
-              : '🚀 Générer la fiche'
+              : '✦ Générer la fiche'
             }
           </button>
         </div>
       </div>
 
       {/* Prévisualisation */}
-      {preview && (
-        <div style={{ backgroundColor: '#0a1a0a', border: '2px solid #2ECC71' }} className="rounded-lg p-5">
-          <h3 style={{ fontFamily: 'Oswald, sans-serif', color: '#2ECC71', fontSize: '18px', marginBottom: '12px' }}>
+      {preview ? (
+        <div style={{ background: 'var(--success-bg)', border: '1px solid var(--success)', borderRadius: 'var(--radius-card)' }} className="p-5">
+          <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--success)', fontSize: '16px', fontWeight: 800, marginBottom: '12px' }} className="uppercase">
             ✅ Fiche générée — Prévisualisation
           </h3>
-          <div style={{ color: '#e0e0e0', fontSize: '17px', fontFamily: 'Oswald, sans-serif', marginBottom: '4px' }}>
+          <div style={{ color: 'var(--text)', fontSize: '18px', fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '4px' }}>
             {preview.titre}
           </div>
-          <div style={{ color: '#9ca3af', fontSize: '14px', lineHeight: 1.6, marginBottom: '16px' }}>
+          <div style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6, marginBottom: '16px' }}>
             {preview.objectif}
           </div>
           <pre
-            style={{ backgroundColor: '#050f05', color: '#66cc66', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace', overflowX: 'auto', maxHeight: '280px' }}
-            className="rounded p-4"
+            style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text-body)', fontSize: '11px', fontFamily: 'var(--font-mono)', overflowX: 'auto', maxHeight: '280px', borderRadius: 'var(--radius-inner)' }}
+            className="p-4"
           >
             {JSON.stringify(preview, null, 2)}
           </pre>
           <div className="flex gap-3 mt-4">
-            <button
-              onClick={accepter}
-              style={{ backgroundColor: '#2ECC71', fontSize: '16px', minHeight: '48px', flex: 1 }}
-              className="rounded text-black font-bold hover:opacity-90 transition-opacity"
-            >
+            <button onClick={accepter} style={{ backgroundColor: 'var(--success)', fontSize: '15px', minHeight: '48px', flex: 1, borderRadius: 'var(--radius-control)' }} className="text-white font-semibold hover:brightness-105 transition-all">
               ✅ Accepter et sauvegarder
             </button>
-            <button
-              onClick={() => setPreview(null)}
-              style={{ backgroundColor: '#2a2a2a', fontSize: '16px', minHeight: '48px', flex: 1 }}
-              className="rounded text-white font-bold hover:opacity-90 transition-opacity"
-            >
-              ❌ Rejeter
+            <button onClick={() => setPreview(null)} style={{ fontSize: '15px', minHeight: '48px', flex: 1, borderRadius: 'var(--radius-control)' }} className="btn-outline font-semibold">
+              Rejeter
             </button>
           </div>
+        </div>
+      ) : (
+        <div style={{ border: '2px dashed var(--border-strong)', borderRadius: 'var(--radius-card)', color: 'var(--text-faint)' }} className="p-10 text-center text-sm">
+          La fiche générée s'affichera ici pour prévisualisation avant sauvegarde.
         </div>
       )}
     </div>

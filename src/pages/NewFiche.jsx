@@ -14,43 +14,39 @@ export default function NewFiche() {
     navigate(`/fiche/${fiche.id}`)
   }
 
+  const seg = (active) => ({
+    flex: 1,
+    minHeight: '40px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    fontWeight: 600,
+    fontFamily: 'var(--font-body)',
+    background: active ? 'var(--surface)' : 'transparent',
+    color: active ? 'var(--text)' : 'var(--text-secondary)',
+    boxShadow: active ? 'var(--shadow-seg-active)' : 'none',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'all .15s ease',
+  })
+
   return (
-    <main className="max-w-3xl mx-auto px-4 py-6 w-full">
+    <main className="mx-auto px-4 py-7 w-full" style={{ maxWidth: '760px' }}>
       <div className="mb-6">
-        <h1 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '28px', letterSpacing: '2px', marginBottom: '4px' }}>
-          NOUVELLE FICHE
+        <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontSize: '11px', letterSpacing: '2px', marginBottom: '8px' }} className="uppercase">
+          Création
+        </div>
+        <h1 style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '30px', fontWeight: 700, letterSpacing: '-0.3px', margin: 0 }}>
+          Nouvelle fiche
         </h1>
-        <p style={{ color: '#9ca3af', fontSize: '15px' }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '15px', marginTop: '6px' }}>
           Créez une fiche personnalisée avec l'IA ou manuellement.
         </p>
       </div>
 
       {/* Sélecteur de mode */}
-      <div style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a' }} className="rounded-lg p-1 flex mb-6">
-        <button
-          onClick={() => setMode('ai')}
-          style={{
-            backgroundColor: mode === 'ai' ? '#CC0000' : 'transparent',
-            color: mode === 'ai' ? '#FFFFFF' : '#9ca3af',
-            fontSize: '15px',
-            minHeight: '44px'
-          }}
-          className="flex-1 rounded font-semibold transition-colors"
-        >
-          🤖 Génération IA
-        </button>
-        <button
-          onClick={() => setMode('manual')}
-          style={{
-            backgroundColor: mode === 'manual' ? '#CC0000' : 'transparent',
-            color: mode === 'manual' ? '#FFFFFF' : '#9ca3af',
-            fontSize: '15px',
-            minHeight: '44px'
-          }}
-          className="flex-1 rounded font-semibold transition-colors"
-        >
-          ✏️ Saisie manuelle
-        </button>
+      <div style={{ background: '#EBEEF2', borderRadius: '10px', padding: '4px' }} className="flex gap-1 mb-6">
+        <button onClick={() => setMode('ai')} style={seg(mode === 'ai')}>✦ Génération IA</button>
+        <button onClick={() => setMode('manual')} style={seg(mode === 'manual')}>Saisie manuelle</button>
       </div>
 
       {mode === 'ai' ? (
@@ -61,6 +57,12 @@ export default function NewFiche() {
     </main>
   )
 }
+
+const DANGERS = [
+  { id: 'standard', label: 'STANDARD', color: '#1E8A5A' },
+  { id: 'élevé', label: 'ÉLEVÉ', color: '#B5740A' },
+  { id: 'critique', label: 'CRITIQUE', color: '#C8102E' },
+]
 
 function ManualForm({ onSave }) {
   const [data, setData] = useState({
@@ -100,68 +102,85 @@ function ManualForm({ onSave }) {
   }
 
   return (
-    <div style={{ backgroundColor: '#16213e', border: '1px solid #2a2a4a' }} className="rounded-lg p-5 flex flex-col gap-5">
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-6 flex flex-col gap-5">
       <Field label="Titre *">
         <input type="text" value={data.titre} onChange={e => set('titre', e.target.value)}
-          placeholder="Titre de la fiche..." style={inputStyle} className="w-full px-4 py-3 rounded border outline-none" />
+          placeholder="Ex : Étouffement adulte" style={inputStyle} className="w-full px-4 py-3 outline-none" />
       </Field>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Field label="Catégorie">
-          <select value={data.categorie} onChange={e => set('categorie', e.target.value)} style={inputStyle} className="w-full px-4 py-3 rounded border outline-none">
+          <select value={data.categorie} onChange={e => set('categorie', e.target.value)} style={inputStyle} className="w-full px-4 py-3 outline-none">
             {CATEGORIES.map(c => (
               <option key={c.id} value={c.id}>{c.icone} {c.label}</option>
             ))}
           </select>
         </Field>
         <Field label="Niveau de danger">
-          <select value={data.niveauDanger} onChange={e => set('niveauDanger', e.target.value)} style={inputStyle} className="w-full px-4 py-3 rounded border outline-none">
-            <option value="standard">Standard</option>
-            <option value="élevé">Élevé</option>
-            <option value="critique">Critique</option>
-          </select>
+          <div style={{ background: '#EBEEF2', borderRadius: '10px', padding: '4px' }} className="flex gap-1">
+            {DANGERS.map(d => {
+              const active = data.niveauDanger === d.id
+              return (
+                <button
+                  key={d.id}
+                  onClick={() => set('niveauDanger', d.id)}
+                  style={{
+                    flex: 1, minHeight: '40px', borderRadius: '8px',
+                    fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.5px', fontWeight: 600,
+                    background: active ? 'var(--surface)' : 'transparent',
+                    color: active ? d.color : 'var(--text-muted)',
+                    border: active ? `1.5px solid ${d.color}` : '1.5px solid transparent',
+                    boxShadow: active ? 'var(--shadow-seg-active)' : 'none',
+                    cursor: 'pointer', transition: 'all .15s ease',
+                  }}
+                >
+                  {d.label}
+                </button>
+              )
+            })}
+          </div>
         </Field>
       </div>
 
       <Field label="Objectif *">
         <textarea value={data.objectif} onChange={e => set('objectif', e.target.value)} rows={3}
-          placeholder="Objectif de la fiche..." style={inputStyle} className="w-full px-4 py-3 rounded border outline-none resize-none" />
+          placeholder="Ce qu'on cherche à éviter (ex : asphyxie, choc)..." style={inputStyle} className="w-full px-4 py-3 outline-none resize-none" />
       </Field>
 
       <Field label="Conditions d'activation">
         <textarea value={data.conditionsActivation} onChange={e => set('conditionsActivation', e.target.value)} rows={2}
-          placeholder="Quand activer cette procédure..." style={inputStyle} className="w-full px-4 py-3 rounded border outline-none resize-none" />
+          placeholder="Quand activer cette procédure..." style={inputStyle} className="w-full px-4 py-3 outline-none resize-none" />
       </Field>
 
       <Field label="Actions immédiates (1 par ligne)">
         {data.actionsImmédiates.map((a, i) => (
           <input key={i} type="text" value={a} onChange={e => set('actionsImmédiates', data.actionsImmédiates.map((x, j) => j === i ? e.target.value : x))}
-            placeholder={`Action ${i + 1}...`} style={{ ...inputStyle, marginBottom: '6px' }} className="w-full px-4 py-2 rounded border outline-none" />
+            placeholder={`Action ${i + 1}...`} style={{ ...inputStyle, marginBottom: '6px' }} className="w-full px-4 py-2.5 outline-none" />
         ))}
       </Field>
 
       <Field label="Procédure étape par étape">
         {data.procedureAction.map((e, i) => (
           <div key={i} className="flex gap-2 mb-2 items-center">
-            <span style={{ color: '#CC0000', fontFamily: 'Oswald, sans-serif', minWidth: '24px' }}>{e.etape}.</span>
+            <span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-display)', fontWeight: 700, minWidth: '24px' }}>{e.etape}.</span>
             <input type="text" value={e.action} onChange={ev => updateEtape(i, ev.target.value)}
-              placeholder={`Étape ${e.etape}...`} style={inputStyle} className="flex-1 px-4 py-2 rounded border outline-none" />
+              placeholder={`Étape ${e.etape}...`} style={inputStyle} className="flex-1 px-4 py-2.5 outline-none" />
           </div>
         ))}
-        <button onClick={addEtape} style={{ color: '#CC0000', fontSize: '14px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+        <button onClick={addEtape} style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
           + Ajouter une étape
         </button>
       </Field>
 
       <Field label="Tags (séparés par des virgules)">
         <input type="text" value={data.tagsInput} onChange={e => set('tagsInput', e.target.value)}
-          placeholder="urgence, malaise, choc..." style={inputStyle} className="w-full px-4 py-3 rounded border outline-none" />
+          placeholder="urgence, malaise, choc..." style={inputStyle} className="w-full px-4 py-3 outline-none" />
       </Field>
 
       <button onClick={handleSave}
-        style={{ backgroundColor: '#CC0000', fontSize: '16px', minHeight: '52px' }}
-        className="w-full rounded text-white font-bold hover:bg-red-700 transition-colors">
-        💾 Sauvegarder la fiche
+        style={{ backgroundColor: 'var(--ink)', fontSize: '15px', minHeight: '52px', borderRadius: 'var(--radius-control)' }}
+        className="w-full text-white font-semibold hover:bg-[var(--ink-hover)] transition-colors">
+        Continuer dans l'éditeur
       </button>
     </div>
   )
@@ -170,15 +189,17 @@ function ManualForm({ onSave }) {
 function Field({ label, children }) {
   return (
     <div>
-      <label style={{ color: '#9ca3af', fontSize: '13px' }} className="block mb-2 uppercase tracking-wider">{label}</label>
+      <label style={{ color: 'var(--text-secondary)', fontSize: '12px', letterSpacing: '0.5px' }} className="block mb-2 uppercase tracking-wider font-medium">{label}</label>
       {children}
     </div>
   )
 }
 
 const inputStyle = {
-  backgroundColor: '#0a0a1a',
-  borderColor: '#2a2a4a',
-  color: '#f0f0f0',
-  fontSize: '15px'
+  backgroundColor: 'var(--surface-input)',
+  border: '1px solid var(--border-strong)',
+  borderRadius: 'var(--radius-control)',
+  color: 'var(--text)',
+  fontSize: '15px',
+  fontFamily: 'var(--font-body)',
 }

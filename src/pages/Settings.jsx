@@ -23,6 +23,14 @@ const PROVIDER_ICONS = {
   )
 }
 
+const fieldLabel = { color: 'var(--text-secondary)', fontSize: '12px', letterSpacing: '0.5px' }
+const inputBase = {
+  backgroundColor: 'var(--surface-input)',
+  border: '1px solid var(--border-strong)',
+  borderRadius: 'var(--radius-control)',
+  color: 'var(--text)',
+}
+
 /* ── Champ clé API réutilisable ──────────────────────────────────── */
 function KeyField({ value, onChange, placeholder }) {
   const [show, setShow] = useState(false)
@@ -33,21 +41,14 @@ function KeyField({ value, onChange, placeholder }) {
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        style={{
-          backgroundColor: '#0a0a1a',
-          borderColor: '#2a2a4a',
-          color: '#f0f0f0',
-          fontSize: '14px',
-          fontFamily: 'IBM Plex Mono, monospace',
-          paddingRight: '44px'
-        }}
-        className="w-full px-4 py-3 rounded border outline-none focus:border-indigo-500 transition-colors"
+        style={{ ...inputBase, fontSize: '14px', fontFamily: 'var(--font-mono)', paddingRight: '44px' }}
+        className="w-full px-4 py-3 outline-none"
       />
       <button
         type="button"
         onClick={() => setShow(s => !s)}
-        style={{ color: '#555' }}
-        className="absolute right-3 top-1/2 -translate-y-1/2 hover:text-white transition-colors"
+        style={{ color: 'var(--text-muted)' }}
+        className="absolute right-3 top-1/2 -translate-y-1/2 hover:text-[var(--text)] transition-colors"
       >
         {show ? (
           <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,46 +72,21 @@ function StaticProviderSection({ providerId, config, settings, onUpdate }) {
   const isConfigured = !!currentKey.trim()
 
   return (
-    <div
-      style={{
-        backgroundColor: '#16213e',
-        border: `1px solid ${isConfigured ? config.color + '55' : '#2a2a4a'}`,
-        borderLeft: `4px solid ${isConfigured ? config.color : '#2a2a4a'}`
-      }}
-      className="rounded-lg p-5"
-    >
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-5">
       <ProviderHeader providerId={providerId} config={config} isConfigured={isConfigured} />
-
       <div className="flex flex-col gap-3 mt-4">
         <div>
-          <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-1.5 uppercase tracking-wider">Clé API</label>
-          <KeyField
-            value={currentKey}
-            onChange={v => onUpdate(providerId, { key: v })}
-            placeholder={config.placeholder}
-          />
+          <label style={fieldLabel} className="block mb-1.5 uppercase tracking-wider font-medium">Clé API</label>
+          <KeyField value={currentKey} onChange={v => onUpdate(providerId, { key: v })} placeholder={config.placeholder} />
         </div>
-
         <div>
-          <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-1.5 uppercase tracking-wider">Modèle par défaut</label>
-          <select
-            value={currentModel}
-            onChange={e => onUpdate(providerId, { model: e.target.value })}
-            style={{ backgroundColor: '#0a0a1a', borderColor: '#2a2a4a', color: '#f0f0f0', fontSize: '14px' }}
-            className="w-full px-4 py-3 rounded border outline-none"
-          >
-            {config.models.map(m => (
-              <option key={m.id} value={m.id}>{m.label}</option>
-            ))}
+          <label style={fieldLabel} className="block mb-1.5 uppercase tracking-wider font-medium">Modèle par défaut</label>
+          <select value={currentModel} onChange={e => onUpdate(providerId, { model: e.target.value })} style={{ ...inputBase, fontSize: '14px' }} className="w-full px-4 py-3 outline-none">
+            {config.models.map(m => (<option key={m.id} value={m.id}>{m.label}</option>))}
           </select>
         </div>
-
         {isConfigured && (
-          <button
-            onClick={() => onUpdate(providerId, { key: '' })}
-            style={{ color: '#555', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }}
-            className="hover:text-red-400 transition-colors"
-          >
+          <button onClick={() => onUpdate(providerId, { key: '' })} style={{ color: 'var(--text-muted)', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }} className="hover:text-[var(--danger)] transition-colors">
             ✕ Effacer la clé
           </button>
         )}
@@ -135,125 +111,59 @@ function OpenRouterSection({ settings, onUpdate }) {
     m.id.toLowerCase().includes(filter.toLowerCase())
   )
 
-  const handleSelect = (modelId) => {
-    onUpdate('openrouter', { model: modelId })
-  }
+  const handleSelect = (modelId) => onUpdate('openrouter', { model: modelId })
 
   return (
-    <div
-      style={{
-        backgroundColor: '#16213e',
-        border: `1px solid ${isConfigured ? config.color + '55' : '#2a2a4a'}`,
-        borderLeft: `4px solid ${isConfigured ? config.color : '#2a2a4a'}`
-      }}
-      className="rounded-lg p-5"
-    >
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-5">
       <ProviderHeader providerId="openrouter" config={config} isConfigured={isConfigured} />
-
       <div className="flex flex-col gap-3 mt-4">
-        {/* Clé API */}
         <div>
-          <label style={{ color: '#9ca3af', fontSize: '12px' }} className="block mb-1.5 uppercase tracking-wider">Clé API</label>
-          <KeyField
-            value={currentKey}
-            onChange={v => onUpdate('openrouter', { key: v })}
-            placeholder={config.placeholder}
-          />
+          <label style={fieldLabel} className="block mb-1.5 uppercase tracking-wider font-medium">Clé API</label>
+          <KeyField value={currentKey} onChange={v => onUpdate('openrouter', { key: v })} placeholder={config.placeholder} />
         </div>
 
-        {/* Bloc modèles gratuits */}
-        <div
-          style={{ backgroundColor: '#0d0d24', border: '1px solid #1e1e3a' }}
-          className="rounded-lg p-4"
-        >
-          {/* Barre titre + refresh */}
+        <div style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card-sm)' }} className="p-4">
           <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
             <div>
-              <div style={{ color: '#f0f0f0', fontSize: '14px', fontFamily: 'Oswald, sans-serif', letterSpacing: '1px' }}>
-                MODÈLES GRATUITS <span style={{ color: '#6366F1' }}>:free</span>
+              <div style={{ color: 'var(--text)', fontSize: '14px', fontFamily: 'var(--font-display)', fontWeight: 700 }}>
+                Modèles gratuits <span style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>:free</span>
               </div>
-              <div style={{ color: '#555', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace', marginTop: '2px' }}>
+              <div style={{ color: 'var(--text-faint)', fontSize: '11px', fontFamily: 'var(--font-mono)', marginTop: '2px' }}>
                 {models.length > 0
                   ? `${models.length} modèle${models.length > 1 ? 's' : ''} — MAJ ${formatLastFetch(lastFetch)}`
-                  : lastFetch ? 'Aucun modèle trouvé' : 'Non chargés'
-                }
+                  : lastFetch ? 'Aucun modèle trouvé' : 'Non chargés'}
               </div>
             </div>
-            <button
-              onClick={refresh}
-              disabled={loading}
-              style={{
-                backgroundColor: loading ? '#1a1a2e' : '#1e1e3e',
-                borderColor: '#6366F1',
-                color: loading ? '#555' : '#6366F1',
-                fontSize: '13px',
-                minHeight: '36px',
-                minWidth: '110px'
-              }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded border hover:bg-indigo-950 transition-colors disabled:cursor-not-allowed"
-            >
-              {loading ? (
-                <>
-                  <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
-                  Chargement…
-                </>
-              ) : (
-                <>
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
-                  Actualiser
-                </>
-              )}
+            <button onClick={refresh} disabled={loading} className="btn-outline flex items-center gap-2 px-3 py-1.5 rounded-[10px]" style={{ fontSize: '13px', minHeight: '36px', minWidth: '110px', opacity: loading ? 0.6 : 1 }}>
+              <svg className={loading ? 'animate-spin' : ''} width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              {loading ? 'Chargement…' : 'Actualiser'}
             </button>
           </div>
 
-          {/* Erreur */}
           {error && (
-            <div style={{ backgroundColor: '#2a0000', border: '1px solid #CC0000', color: '#ff8080', fontSize: '13px' }} className="rounded p-2 mb-3">
-              {error}
-            </div>
+            <div style={{ background: 'var(--danger-bg)', border: '1px solid var(--danger)', color: 'var(--danger)', fontSize: '13px' }} className="rounded-lg p-2 mb-3">{error}</div>
           )}
 
-          {/* Filtre */}
           {models.length > 0 && (
             <div className="relative mb-2">
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-muted)' }} width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <input
-                type="text"
-                value={filter}
-                onChange={e => setFilter(e.target.value)}
-                placeholder={`Filtrer parmi ${models.length} modèles…`}
-                style={{ backgroundColor: '#0a0a1a', borderColor: '#1e1e3a', color: '#f0f0f0', fontSize: '13px', paddingLeft: '32px' }}
-                className="w-full py-2 pr-3 rounded border outline-none focus:border-indigo-600"
-              />
-              {filter && (
-                <button onClick={() => setFilter('')} style={{ color: '#555' }} className="absolute right-2 top-1/2 -translate-y-1/2 hover:text-white text-xs">✕</button>
-              )}
+              <input type="text" value={filter} onChange={e => setFilter(e.target.value)} placeholder={`Filtrer parmi ${models.length} modèles…`} style={{ ...inputBase, fontSize: '13px', paddingLeft: '32px' }} className="w-full py-2 pr-3 outline-none" />
+              {filter && <button onClick={() => setFilter('')} style={{ color: 'var(--text-muted)' }} className="absolute right-2 top-1/2 -translate-y-1/2 hover:text-[var(--text)] text-xs">✕</button>}
             </div>
           )}
 
-          {/* Liste des modèles */}
           {models.length === 0 && !loading ? (
-            <div style={{ color: '#555', fontSize: '13px', textAlign: 'center', padding: '20px 0' }}>
-              {lastFetch
-                ? 'Aucun modèle :free disponible'
-                : <span>Cliquez sur <strong style={{ color: '#6366F1' }}>Actualiser</strong> pour charger la liste</span>
-              }
+            <div style={{ color: 'var(--text-muted)', fontSize: '13px', textAlign: 'center', padding: '20px 0' }}>
+              {lastFetch ? 'Aucun modèle :free disponible' : <span>Cliquez sur <strong style={{ color: 'var(--accent)' }}>Actualiser</strong> pour charger la liste</span>}
             </div>
           ) : (
-            <div
-              style={{ maxHeight: '280px', overflowY: 'auto', scrollbarWidth: 'thin' }}
-              className="flex flex-col gap-1"
-            >
+            <div style={{ maxHeight: '280px', overflowY: 'auto', scrollbarWidth: 'thin' }} className="flex flex-col gap-1">
               {filtered.length === 0 ? (
-                <div style={{ color: '#555', fontSize: '13px', textAlign: 'center', padding: '16px 0' }}>
-                  Aucun résultat pour « {filter} »
-                </div>
+                <div style={{ color: 'var(--text-muted)', fontSize: '13px', textAlign: 'center', padding: '16px 0' }}>Aucun résultat pour « {filter} »</div>
               ) : (
                 filtered.map(m => {
                   const selected = currentModel === m.id
@@ -262,32 +172,24 @@ function OpenRouterSection({ settings, onUpdate }) {
                       key={m.id}
                       onClick={() => handleSelect(m.id)}
                       style={{
-                        backgroundColor: selected ? '#6366F1' + '22' : 'transparent',
-                        borderColor: selected ? '#6366F1' : 'transparent',
-                        textAlign: 'left',
-                        border: `1px solid ${selected ? '#6366F1' : 'transparent'}`
+                        backgroundColor: selected ? 'var(--accent-soft)' : 'transparent',
+                        border: `1px solid ${selected ? 'var(--accent)' : 'transparent'}`,
+                        textAlign: 'left', borderRadius: 'var(--radius-inner)',
                       }}
-                      className="w-full rounded px-3 py-2 hover:bg-indigo-950 transition-colors group"
+                      className="w-full px-3 py-2 hover:bg-[var(--chip-bg)] transition-colors group"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <div className="min-w-0">
-                          <div style={{ color: selected ? '#a5b4fc' : '#d0d0d0', fontSize: '13px', fontWeight: selected ? 600 : 400 }} className="truncate">
-                            {m.name}
-                          </div>
-                          <div style={{ color: '#555', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace' }} className="truncate">
-                            {m.id}
-                          </div>
+                          <div style={{ color: selected ? 'var(--accent-deep)' : 'var(--text)', fontSize: '13px', fontWeight: selected ? 600 : 400 }} className="truncate">{m.name}</div>
+                          <div style={{ color: 'var(--text-faint)', fontSize: '11px', fontFamily: 'var(--font-mono)' }} className="truncate">{m.id}</div>
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
                           {m.contextLength && (
-                            <span style={{ color: '#444', fontSize: '10px', fontFamily: 'IBM Plex Mono, monospace' }}>
+                            <span style={{ color: 'var(--text-faint)', fontSize: '10px', fontFamily: 'var(--font-mono)' }}>
                               {m.contextLength >= 1000 ? `${Math.round(m.contextLength / 1000)}k` : m.contextLength}
                             </span>
                           )}
-                          {selected
-                            ? <span style={{ color: '#6366F1' }}>✓</span>
-                            : <span style={{ color: '#333' }} className="group-hover:text-indigo-400 transition-colors">○</span>
-                          }
+                          {selected ? <span style={{ color: 'var(--accent)' }}>✓</span> : <span style={{ color: 'var(--text-faint)' }}>○</span>}
                         </div>
                       </div>
                     </button>
@@ -297,27 +199,16 @@ function OpenRouterSection({ settings, onUpdate }) {
             </div>
           )}
 
-          {/* Modèle sélectionné actuel */}
           {currentModel && (
-            <div
-              style={{ backgroundColor: '#6366F1' + '11', borderColor: '#6366F1' + '44', marginTop: '10px' }}
-              className="rounded px-3 py-2 border"
-            >
-              <div style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '2px' }}>MODÈLE SÉLECTIONNÉ</div>
-              <div style={{ color: '#a5b4fc', fontSize: '12px', fontFamily: 'IBM Plex Mono, monospace' }} className="truncate">
-                {currentModel}
-              </div>
+            <div style={{ background: 'var(--accent-soft)', border: '1px solid var(--accent)', marginTop: '10px', borderRadius: 'var(--radius-inner)' }} className="px-3 py-2">
+              <div style={{ color: 'var(--accent-deep)', fontSize: '10.5px', marginBottom: '2px', fontFamily: 'var(--font-mono)' }} className="uppercase tracking-wide">Modèle sélectionné</div>
+              <div style={{ color: 'var(--accent-deep)', fontSize: '12px', fontFamily: 'var(--font-mono)' }} className="truncate">{currentModel}</div>
             </div>
           )}
         </div>
 
-        {/* Effacer la clé */}
         {isConfigured && (
-          <button
-            onClick={() => onUpdate('openrouter', { key: '' })}
-            style={{ color: '#555', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }}
-            className="hover:text-red-400 transition-colors"
-          >
+          <button onClick={() => onUpdate('openrouter', { key: '' })} style={{ color: 'var(--text-muted)', fontSize: '13px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }} className="hover:text-[var(--danger)] transition-colors">
             ✕ Effacer la clé
           </button>
         )}
@@ -329,29 +220,24 @@ function OpenRouterSection({ settings, onUpdate }) {
 /* ── En-tête commune aux sections ───────────────────────────────── */
 function ProviderHeader({ providerId, config, isConfigured }) {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-3">
       <div className="flex items-center gap-3">
-        <div style={{ color: config.color }}>{PROVIDER_ICONS[providerId]}</div>
-        <div>
-          <div style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '18px', letterSpacing: '1px' }}>
-            {config.label}
-          </div>
-          <div style={{ fontSize: '12px', color: isConfigured ? '#2ECC71' : '#555' }}>
-            {isConfigured ? '✓ Clé configurée' : 'Non configuré'}
-          </div>
+        <span style={{ width: '8px', height: '8px', borderRadius: '999px', background: isConfigured ? 'var(--success)' : 'var(--warning)', flexShrink: 0 }} />
+        <div style={{ color: 'var(--text)' }}>{PROVIDER_ICONS[providerId]}</div>
+        <div style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '17px', fontWeight: 700 }}>
+          {config.label}
         </div>
       </div>
-      <div
+      <span
         style={{
-          backgroundColor: isConfigured ? config.color + '22' : '#111',
-          color: isConfigured ? config.color : '#444',
-          fontSize: '11px',
-          border: `1px solid ${isConfigured ? config.color + '44' : '#222'}`
+          backgroundColor: isConfigured ? 'var(--success-bg)' : 'var(--warning-bg)',
+          color: isConfigured ? 'var(--success)' : 'var(--warning)',
+          fontSize: '11px', fontFamily: 'var(--font-mono)',
         }}
-        className="px-2 py-1 rounded-full font-mono"
+        className="px-2.5 py-1 rounded-full"
       >
-        {isConfigured ? 'ACTIF' : 'INACTIF'}
-      </div>
+        {isConfigured ? 'Configurée' : 'Non configurée'}
+      </span>
     </div>
   )
 }
@@ -360,7 +246,7 @@ function ProviderHeader({ providerId, config, isConfigured }) {
 function ImportFichesSection() {
   const { importFiches, allFiches, isCustom } = useFiches()
   const fileRef = useRef()
-  const [status, setStatus] = useState(null) // null | { ok, message, count? }
+  const [status, setStatus] = useState(null)
   const [dragging, setDragging] = useState(false)
 
   const processFile = (file) => {
@@ -372,11 +258,8 @@ function ImportFichesSection() {
     reader.onload = (ev) => {
       try {
         const added = importFiches(ev.target.result)
-        if (added === 0) {
-          setStatus({ ok: false, message: 'Aucune nouvelle fiche — toutes déjà présentes (doublon d\'id).' })
-        } else {
-          setStatus({ ok: true, count: added, message: `${added} fiche${added > 1 ? 's' : ''} importée${added > 1 ? 's' : ''} avec succès` })
-        }
+        if (added === 0) setStatus({ ok: false, message: 'Aucune nouvelle fiche — toutes déjà présentes (doublon d\'id).' })
+        else setStatus({ ok: true, count: added, message: `${added} fiche${added > 1 ? 's' : ''} importée${added > 1 ? 's' : ''} avec succès` })
       } catch (err) {
         setStatus({ ok: false, message: `Fichier invalide : ${err.message}` })
       }
@@ -386,116 +269,77 @@ function ImportFichesSection() {
   }
 
   const handleFile = (e) => processFile(e.target.files?.[0])
-
-  const handleDrop = (e) => {
-    e.preventDefault()
-    setDragging(false)
-    processFile(e.dataTransfer.files?.[0])
-  }
-
+  const handleDrop = (e) => { e.preventDefault(); setDragging(false); processFile(e.dataTransfer.files?.[0]) }
   const customCount = allFiches.filter(f => isCustom(f.id)).length
 
   return (
-    <div
-      style={{ backgroundColor: '#16213e', border: '1px solid #1e3a2a', borderLeft: '4px solid #2ECC71' }}
-      className="rounded-lg p-5"
-    >
-      {/* Titre */}
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-5">
       <div className="flex items-center justify-between mb-1">
-        <div style={{ fontFamily: 'Oswald, sans-serif', color: '#2ECC71', fontSize: '18px', letterSpacing: '1px' }}>
-          📥 IMPORTER DES FICHES
+        <div style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '17px', fontWeight: 700 }}>
+          Import de fiches
         </div>
         {customCount > 0 && (
-          <Link
-            to="/gestion"
-            style={{ color: '#2ECC71', fontSize: '12px', textDecoration: 'none', opacity: 0.7 }}
-            className="hover:opacity-100 transition-opacity"
-          >
+          <Link to="/gestion" style={{ color: 'var(--accent)', fontSize: '12px', textDecoration: 'none' }} className="hover:underline">
             {customCount} fiche{customCount > 1 ? 's' : ''} →
           </Link>
         )}
       </div>
-      <p style={{ color: '#9ca3af', fontSize: '13px', marginBottom: '16px' }}>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '16px' }}>
         Importez un fichier JSON exporté depuis un autre appareil ou préparé sur desktop.
       </p>
 
-      {/* Zone de drop + bouton */}
-      <input
-        ref={fileRef}
-        type="file"
-        accept=".json,application/json"
-        onChange={handleFile}
-        className="hidden"
-      />
+      <input ref={fileRef} type="file" accept=".json,application/json" onChange={handleFile} className="hidden" />
       <div
         onClick={() => fileRef.current?.click()}
         onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
         onDragLeave={() => setDragging(false)}
         onDrop={handleDrop}
         style={{
-          border: `2px dashed ${dragging ? '#2ECC71' : '#1e3a2a'}`,
-          backgroundColor: dragging ? '#0a2a0a' : '#0d1a0d',
-          borderRadius: '10px',
-          padding: '28px 16px',
-          cursor: 'pointer',
-          transition: 'all 0.2s',
-          textAlign: 'center',
+          border: `2px dashed ${dragging ? 'var(--accent)' : 'var(--border-strong)'}`,
+          backgroundColor: dragging ? 'var(--accent-soft)' : 'var(--surface-subtle)',
+          borderRadius: 'var(--radius-card-sm)', padding: '28px 16px', cursor: 'pointer',
+          transition: 'all 0.2s', textAlign: 'center',
         }}
       >
-        {/* Icône upload */}
-        <div style={{ color: dragging ? '#2ECC71' : '#2ECC71', opacity: dragging ? 1 : 0.5, marginBottom: '10px' }}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto' }}>
+        <div style={{ color: dragging ? 'var(--accent)' : 'var(--text-muted)', marginBottom: '10px' }}>
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto' }}>
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
             <polyline points="17 8 12 3 7 8"/>
             <line x1="12" y1="3" x2="12" y2="15"/>
           </svg>
         </div>
-        <div style={{ color: '#2ECC71', fontFamily: 'Oswald, sans-serif', fontSize: '16px', letterSpacing: '1px', marginBottom: '4px' }}>
-          {dragging ? 'Déposez ici' : 'Sélectionner un fichier JSON'}
+        <div style={{ color: 'var(--text)', fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 600, marginBottom: '4px' }}>
+          {dragging ? 'Déposez ici' : 'Glisser-déposer un fichier JSON'}
         </div>
-        <div style={{ color: '#555', fontSize: '12px' }}>
+        <div style={{ color: 'var(--text-muted)', fontSize: '12px' }}>
           Touchez pour parcourir · ou glissez-déposez un fichier .json
         </div>
       </div>
 
-      {/* Feedback */}
       {status && (
         <div
           style={{
-            backgroundColor: status.ok ? '#0a2a0a' : '#2a0000',
-            border: `1px solid ${status.ok ? '#2ECC71' : '#CC0000'}`,
-            color: status.ok ? '#2ECC71' : '#ff8080',
-            fontSize: '14px',
-            marginTop: '12px',
+            background: status.ok ? 'var(--success-bg)' : 'var(--danger-bg)',
+            border: `1px solid ${status.ok ? 'var(--success)' : 'var(--danger)'}`,
+            color: status.ok ? 'var(--success)' : 'var(--danger)',
+            fontSize: '14px', marginTop: '12px',
           }}
-          className="rounded p-3 flex items-start gap-2"
+          className="rounded-lg p-3 flex items-start gap-2"
         >
           <span>{status.ok ? '✓' : '✗'}</span>
           <div className="flex-1">
             {status.message}
             {status.ok && (
-              <Link
-                to="/gestion"
-                style={{ color: '#2ECC71', display: 'block', fontSize: '12px', marginTop: '4px', opacity: 0.8 }}
-              >
-                → Voir dans Gestion des fiches
-              </Link>
+              <Link to="/gestion" style={{ color: 'var(--success)', display: 'block', fontSize: '12px', marginTop: '4px' }}>→ Voir dans Gestion des fiches</Link>
             )}
           </div>
-          <button
-            onClick={() => setStatus(null)}
-            style={{ color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', opacity: 0.6, padding: '0 2px' }}
-          >
-            ✕
-          </button>
+          <button onClick={() => setStatus(null)} style={{ color: 'inherit', background: 'none', border: 'none', cursor: 'pointer', opacity: 0.7, padding: '0 2px' }}>✕</button>
         </div>
       )}
 
-      {/* Rappel format */}
-      <div style={{ color: '#444', fontSize: '12px', marginTop: '12px', lineHeight: 1.6 }}>
-        Format accepté : tableau JSON <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>[{'{...}'}]</code> ou fiche unique <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>{'{...}'}</code>.
-        Chaque fiche doit avoir les champs <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>id</code> et <code style={{ color: '#666', fontFamily: 'IBM Plex Mono, monospace' }}>titre</code>.
-        Les fiches déjà présentes (même id) sont ignorées.
+      <div style={{ color: 'var(--text-faint)', fontSize: '12px', marginTop: '12px', lineHeight: 1.6 }}>
+        Format accepté : tableau JSON <code style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>[{'{...}'}]</code> ou fiche unique <code style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{'{...}'}</code>.
+        Chaque fiche doit avoir les champs <code style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>id</code> et <code style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>titre</code>.
       </div>
     </div>
   )
@@ -503,7 +347,7 @@ function ImportFichesSection() {
 
 /* ── Page principale ─────────────────────────────────────────────── */
 export default function Settings() {
-  const { settings, updateProvider, configuredProviders } = useSettings()
+  const { settings, updateProvider } = useSettings()
   const [flash, setFlash] = useState('')
 
   const handleUpdate = (provider, patch) => {
@@ -513,53 +357,42 @@ export default function Settings() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto px-4 py-6 w-full">
-      {/* Header */}
+    <main className="mx-auto px-4 py-7 w-full" style={{ maxWidth: '760px' }}>
       <div className="mb-6 flex items-center justify-between gap-4">
         <div>
-          <h1 style={{ fontFamily: 'Oswald, sans-serif', color: '#CC0000', fontSize: '28px', letterSpacing: '2px', marginBottom: '4px' }}>
-            ⚙️ PARAMÈTRES
+          <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontSize: '11px', letterSpacing: '2px', marginBottom: '8px' }} className="uppercase">
+            Paramètres
+          </div>
+          <h1 style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '30px', fontWeight: 700, letterSpacing: '-0.3px', margin: 0 }}>
+            Paramètres
           </h1>
-          <p style={{ color: '#9ca3af', fontSize: '14px' }}>
-            {configuredProviders.length === 0
-              ? 'Aucun fournisseur configuré — ajoutez une clé pour générer des fiches.'
-              : `${configuredProviders.length} fournisseur${configuredProviders.length > 1 ? 's' : ''} actif${configuredProviders.length > 1 ? 's' : ''}`
-            }
+          <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '6px' }}>
+            Clés API et import de fiches.
           </p>
         </div>
         {flash && (
-          <div style={{ backgroundColor: '#0a2a0a', border: '1px solid #2ECC71', color: '#2ECC71', fontSize: '13px' }} className="px-3 py-1.5 rounded flex-shrink-0">
-            ✓ {flash}
-          </div>
+          <div style={{ background: 'var(--success-bg)', border: '1px solid var(--success)', color: 'var(--success)', fontSize: '13px' }} className="px-3 py-1.5 rounded-lg flex-shrink-0">✓ {flash}</div>
         )}
       </div>
 
-      <div className="flex flex-col gap-4">
-        {/* Import en premier — usage prioritaire sur mobile */}
-        <ImportFichesSection />
+      {/* Clés API */}
+      <div className="mb-2 flex items-center justify-between">
+        <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '16px', fontWeight: 700 }}>Clés API</h2>
+        <span style={{ color: 'var(--text-faint)', fontSize: '12px', fontFamily: 'var(--font-mono)' }}>Stockées uniquement sur cet appareil</span>
+      </div>
 
-        <StaticProviderSection
-          providerId="anthropic"
-          config={PROVIDERS.anthropic}
-          settings={settings}
-          onUpdate={handleUpdate}
-        />
-        <StaticProviderSection
-          providerId="openai"
-          config={PROVIDERS.openai}
-          settings={settings}
-          onUpdate={handleUpdate}
-        />
+      <div className="flex flex-col gap-4 mb-6">
+        <StaticProviderSection providerId="anthropic" config={PROVIDERS.anthropic} settings={settings} onUpdate={handleUpdate} />
+        <StaticProviderSection providerId="openai" config={PROVIDERS.openai} settings={settings} onUpdate={handleUpdate} />
         <OpenRouterSection settings={settings} onUpdate={handleUpdate} />
       </div>
 
+      <ImportFichesSection />
+
       {/* Notice sécurité */}
-      <div
-        style={{ backgroundColor: '#111', border: '1px solid #222', color: '#555', fontSize: '13px', lineHeight: 1.6, marginTop: '24px' }}
-        className="rounded-lg p-4"
-      >
-        <div style={{ color: '#777', fontFamily: 'Oswald, sans-serif', marginBottom: '6px' }}>🔒 SÉCURITÉ</div>
-        Les clés API sont stockées uniquement dans le <strong style={{ color: '#888' }}>localStorage</strong> de votre navigateur. Elles ne transitent jamais par un serveur tiers — chaque appel est direct vers l'API du fournisseur.
+      <div style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border)', color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6, marginTop: '24px' }} className="rounded-lg p-4">
+        <div style={{ color: 'var(--text)', fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '6px' }}>🔒 Sécurité</div>
+        Les clés API sont stockées uniquement dans le <strong style={{ color: 'var(--text)' }}>localStorage</strong> de votre navigateur. Elles ne transitent jamais par un serveur tiers — chaque appel est direct vers l'API du fournisseur.
       </div>
     </main>
   )

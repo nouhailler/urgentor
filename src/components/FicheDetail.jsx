@@ -2,8 +2,17 @@ import { useState, useRef } from 'react'
 import NRBCBadge from './NRBCBadge'
 import DiagramVisuel from './DiagramVisuel'
 import SpeakButton from './SpeakButton'
-import { getCategorieById } from '../data/categories'
+import { getCategorieById, getSeverity } from '../data/categories'
 import { useNotes } from '../hooks/useNotes'
+
+// Couleurs hex (alignées sur les tokens) — passées à SpeakButton / accents JS
+const C = {
+  brand:   '#C8102E',
+  accent:  '#0E7180',
+  warning: '#B5740A',
+  success: '#1E8A5A',
+  ink:     '#1E2A37',
+}
 
 // ── Textes de lecture pour chaque section ────────────────────────────────────
 
@@ -83,39 +92,42 @@ function ttsSecoursTardent(fiche) {
 
 // ── Composants utilitaires ────────────────────────────────────────────────────
 
-function SectionHeader({ title, speakText, speakColor, style = {} }) {
+function Card({ children, style = {}, className = '' }) {
   return (
-    <div className="flex items-center justify-between gap-2 mb-3">
-      <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '16px', letterSpacing: '1px', margin: 0, ...style }} className="uppercase">
-        {title}
+    <div
+      className={className}
+      style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)', padding: '20px 22px', ...style }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function SectionTitle({ children, color = 'var(--text)', speakText, speakColor, size = '15px' }) {
+  return (
+    <div className="flex items-center justify-between gap-3 mb-3.5">
+      <h2 style={{ fontFamily: 'var(--font-display)', color, fontSize: size, fontWeight: 800, letterSpacing: '0.4px', margin: 0 }} className="uppercase">
+        {children}
       </h2>
       {speakText && <SpeakButton text={speakText} color={speakColor} />}
     </div>
   )
 }
 
-function Section({ title, children, color = '#2a2a4a', borderColor, speakText, speakColor }) {
+// Section générique : carte blanche standard
+function Section({ title, children, color, speakText, speakColor }) {
   return (
-    <div
-      style={{ backgroundColor: color, borderLeft: borderColor ? `4px solid ${borderColor}` : undefined }}
-      className="rounded-lg p-5"
-    >
-      <SectionHeader title={title} speakText={speakText} speakColor={speakColor ?? borderColor} />
+    <Card>
+      <SectionTitle color={color} speakText={speakText} speakColor={speakColor ?? C.accent}>{title}</SectionTitle>
       {children}
-    </div>
+    </Card>
   )
 }
 
-function EtapeItem({ etape, action }) {
+function MicroLabel({ children, color = 'var(--text-muted)' }) {
   return (
-    <div className="flex gap-3 items-start">
-      <div
-        style={{ backgroundColor: '#CC0000', minWidth: '28px', height: '28px', fontFamily: 'Oswald, sans-serif', fontSize: '14px' }}
-        className="rounded-full flex items-center justify-center text-white font-bold flex-shrink-0 mt-0.5"
-      >
-        {etape}
-      </div>
-      <div style={{ color: '#e0e0e0', fontSize: '15px', lineHeight: '1.6' }}>{action}</div>
+    <div style={{ color, fontSize: '10.5px', fontFamily: 'var(--font-mono)', letterSpacing: '1px', marginBottom: '8px' }} className="uppercase">
+      {children}
     </div>
   )
 }
@@ -124,129 +136,139 @@ function EtapeItem({ etape, action }) {
 
 export default function FicheDetail({ fiche }) {
   const categorie = getCategorieById(fiche.categorie)
+  const sev = getSeverity(fiche.niveauDanger)
   const isNRBC = fiche.categorie === 'nrbc'
   const isChimique = fiche.categorie === 'chimique'
   const isDangerous = isNRBC || isChimique
 
   return (
-    <article className="flex flex-col gap-5 pb-10">
+    <article className="flex flex-col gap-4 pb-10">
 
-      {/* Bandeau avertissement clignotant */}
+      {/* Bandeau avertissement EPI */}
       {isDangerous && (
         <div
-          className="bandeau-danger rounded-lg px-5 py-4 text-center font-bold"
-          style={{ backgroundColor: '#CC0000', color: '#FFFFFF', fontFamily: 'Oswald, sans-serif', fontSize: '16px', letterSpacing: '1px' }}
+          className="bandeau-danger"
+          style={{
+            backgroundColor: 'var(--danger-bg)', color: 'var(--danger)',
+            border: '1px solid var(--panel-action-border)',
+            borderRadius: 'var(--radius-card-sm)', padding: '12px 18px', textAlign: 'center',
+            fontFamily: 'var(--font-display)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px',
+          }}
         >
-          ⚠️ INTERVENTION RÉSERVÉE AUX PERSONNELS FORMÉS ET ÉQUIPÉS ⚠️
+          ⚠️ Intervention réservée aux personnels formés et équipés
         </div>
       )}
 
       {/* En-tête fiche */}
-      <div
-        style={{ backgroundColor: categorie?.couleur ?? '#CC0000', padding: '20px 24px' }}
-        className={`rounded-lg ${isNRBC ? 'nrbc-border' : ''}`}
-      >
-        <div className={isNRBC ? 'nrbc-border-inner p-4 rounded' : ''}>
-          <div className="flex items-start gap-3 flex-wrap">
-            <span className="text-4xl">{categorie?.icone}</span>
-            <div className="flex-1">
-              <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '12px', fontFamily: 'IBM Plex Mono, monospace', letterSpacing: '2px' }} className="uppercase mb-1">
+      <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)', overflow: 'hidden' }}>
+        <div style={{ height: '5px', background: categorie?.couleur ?? 'var(--fiche-accent-bar)' }} />
+        <div style={{ padding: '22px 24px 24px' }}>
+          <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+            <div className="flex items-center gap-2">
+              <span style={{ fontSize: '16px', color: categorie?.couleur }}>{categorie?.icone}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', fontSize: '11px', letterSpacing: '1.5px' }} className="uppercase">
                 {categorie?.label}
-              </div>
-              <h1 style={{ fontFamily: 'Oswald, sans-serif', color: '#FFFFFF', fontSize: '28px', lineHeight: 1.2, margin: 0 }}>
-                {fiche.titre}
-              </h1>
+              </span>
             </div>
-            {isNRBC && fiche.nrbc?.type && (
-              <NRBCBadge type={fiche.nrbc.type} niveauEPI={fiche.nrbc.niveauEPI} />
-            )}
+            <span
+              style={{
+                backgroundColor: sev.bg, color: sev.color, border: `1px solid ${sev.color}33`,
+                fontFamily: 'var(--font-mono)', fontSize: '10.5px', letterSpacing: '0.5px',
+                padding: '4px 10px', borderRadius: '7px',
+              }}
+              className="uppercase font-medium flex items-center gap-1.5"
+            >
+              <span style={{ width: '6px', height: '6px', borderRadius: '999px', background: sev.color, display: 'inline-block' }} />
+              {sev.label}
+            </span>
           </div>
 
-          <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '16px', marginTop: '12px', lineHeight: '1.6' }}>
+          <h1 className="titre-fiche" style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '32px', fontWeight: 800, letterSpacing: '-0.5px', lineHeight: 1.12, margin: 0 }}>
+            {fiche.titre}
+          </h1>
+
+          <p style={{ color: 'var(--text-body)', fontSize: '16px', marginTop: '12px', lineHeight: 1.55 }}>
             {fiche.objectif}
           </p>
 
-          <div className="flex flex-wrap gap-2 mt-3">
-            {fiche.tags?.map(tag => (
-              <span key={tag} style={{ backgroundColor: 'rgba(0,0,0,0.3)', color: 'rgba(255,255,255,0.8)', fontSize: '12px' }} className="px-2 py-1 rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
+          {(fiche.tags?.length > 0 || (isNRBC && fiche.nrbc?.type)) && (
+            <div className="flex flex-wrap items-center gap-2 mt-4">
+              {fiche.tags?.map(tag => (
+                <span key={tag} style={{ backgroundColor: 'var(--chip-bg)', color: 'var(--chip-text)', fontFamily: 'var(--font-mono)', fontSize: '11.5px', padding: '3px 9px' }} className="rounded-full">
+                  {tag}
+                </span>
+              ))}
+              {isNRBC && fiche.nrbc?.type && <NRBCBadge type={fiche.nrbc.type} niveauEPI={fiche.nrbc.niveauEPI} />}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Conditions d'activation */}
       {fiche.conditionsActivation && (
-        <Section title="🎯 Conditions d'activation" borderColor="#F39C12"
-          speakText={ttsActivation(fiche)} speakColor="#F39C12">
-          <p style={{ color: '#e0e0e0', fontSize: '15px', lineHeight: '1.6' }}>{fiche.conditionsActivation}</p>
+        <Section title="🎯 Conditions d'activation" color="var(--warning)" speakText={ttsActivation(fiche)} speakColor={C.warning}>
+          <p style={{ color: 'var(--text-body)', fontSize: '15px', lineHeight: 1.6 }}>{fiche.conditionsActivation}</p>
         </Section>
       )}
 
-      {/* Infos produit NRBC */}
+      {/* Infos NRBC */}
       {isNRBC && fiche.nrbc && (
-        <div style={{ backgroundColor: '#1a1000', border: '2px solid #FFD700' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#FFD700', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-            ☢️ Informations NRBC
-          </h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <Card style={{ background: 'var(--panel-warn-soft)', borderColor: 'var(--panel-warn-border)' }}>
+          <SectionTitle color="var(--warning)">☢️ Informations NRBC</SectionTitle>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {fiche.nrbc.agent && <InfoField label="Agent" value={fiche.nrbc.agent} />}
             {fiche.nrbc.codeNU && <InfoField label="Code NU" value={fiche.nrbc.codeNU} mono />}
             {fiche.nrbc.classificationADR && <InfoField label="Classif. ADR" value={fiche.nrbc.classificationADR} />}
-            {fiche.nrbc.zoneExclusion && <InfoField label="Zone exclusion" value={fiche.nrbc.zoneExclusion} color="#CC0000" />}
-            {fiche.nrbc.niveauEPI && <InfoField label="EPI requis" value={fiche.nrbc.niveauEPI.split('—')[0].trim()} color="#FF6B35" />}
+            {fiche.nrbc.zoneExclusion && <InfoField label="Zone exclusion" value={fiche.nrbc.zoneExclusion} color="var(--danger)" />}
+            {fiche.nrbc.niveauEPI && <InfoField label="EPI requis" value={fiche.nrbc.niveauEPI.split('—')[0].trim()} color="var(--warning)" />}
             {fiche.nrbc.decontaminationRequise !== undefined && (
-              <InfoField label="Décontam." value={fiche.nrbc.decontaminationRequise ? 'OBLIGATOIRE' : 'Non requise'} color={fiche.nrbc.decontaminationRequise ? '#CC0000' : '#2ECC71'} />
+              <InfoField label="Décontam." value={fiche.nrbc.decontaminationRequise ? 'OBLIGATOIRE' : 'Non requise'} color={fiche.nrbc.decontaminationRequise ? 'var(--danger)' : 'var(--success)'} />
             )}
           </div>
-        </div>
+        </Card>
       )}
 
-      {/* Infos produit chimique */}
+      {/* Infos chimique */}
       {(isChimique || (isNRBC && fiche.chimique)) && fiche.chimique && (
-        <div style={{ backgroundColor: '#150028', border: '2px solid #8B00FF' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#8B00FF', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-            ☣️ Données chimiques
-          </h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <Card style={{ background: 'var(--surface-subtle)', borderColor: 'var(--border)' }}>
+          <SectionTitle color="var(--cat-chimique)">☣️ Données chimiques</SectionTitle>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {fiche.chimique.produit && <InfoField label="Produit" value={fiche.chimique.produit} />}
             {fiche.chimique.seuilOlfactif && <InfoField label="Seuil olfactif" value={fiche.chimique.seuilOlfactif} mono />}
-            {fiche.chimique.seuilDanger && <InfoField label="Seuil danger" value={fiche.chimique.seuilDanger} mono color="#F39C12" />}
-            {fiche.chimique.seuilLCLO && <InfoField label="Seuil LCLO" value={fiche.chimique.seuilLCLO} mono color="#CC0000" />}
-            {fiche.chimique.epiMinimum && <InfoField label="EPI minimum" value={fiche.chimique.epiMinimum} color="#FF6B35" />}
+            {fiche.chimique.seuilDanger && <InfoField label="Seuil danger" value={fiche.chimique.seuilDanger} mono color="var(--warning)" />}
+            {fiche.chimique.seuilLCLO && <InfoField label="Seuil LCLO" value={fiche.chimique.seuilLCLO} mono color="var(--danger)" />}
+            {fiche.chimique.epiMinimum && <InfoField label="EPI minimum" value={fiche.chimique.epiMinimum} color="var(--warning)" />}
           </div>
           {fiche.chimique.symptomesIntoxication?.length > 0 && (
             <div className="mt-4">
-              <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">Symptômes</div>
+              <MicroLabel>Symptômes</MicroLabel>
               <div className="flex flex-wrap gap-2">
                 {fiche.chimique.symptomesIntoxication.map((s, i) => (
-                  <span key={i} style={{ backgroundColor: '#2d0060', color: '#c084fc', fontSize: '13px' }} className="px-2 py-1 rounded">
+                  <span key={i} style={{ backgroundColor: 'var(--chip-bg)', color: 'var(--cat-chimique)', fontSize: '12.5px' }} className="px-2.5 py-1 rounded-md">
                     {s}
                   </span>
                 ))}
               </div>
             </div>
           )}
-        </div>
+        </Card>
       )}
 
       {/* Zones d'intervention */}
       {(isNRBC || isChimique) && fiche.zonesIntervention && (
         <Section title="🗺️ Zones d'intervention">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <ZoneCard couleur="#CC0000" label="ZONE ROUGE" texte={fiche.zonesIntervention.zoneRouge} />
-            <ZoneCard couleur="#FF6B35" label="ZONE ORANGE" texte={fiche.zonesIntervention.zoneOrange} />
-            <ZoneCard couleur="#2ECC71" label="ZONE VERTE" texte={fiche.zonesIntervention.zoneVerte} />
+            <ZoneCard couleur="var(--danger)" label="Zone rouge" texte={fiche.zonesIntervention.zoneRouge} />
+            <ZoneCard couleur="var(--warning)" label="Zone orange" texte={fiche.zonesIntervention.zoneOrange} />
+            <ZoneCard couleur="var(--success)" label="Zone verte" texte={fiche.zonesIntervention.zoneVerte} />
           </div>
         </Section>
       )}
 
       {/* Diagnostic rapide */}
       {fiche.diagnosticRapide && (
-        <Section title="🔍 Diagnostic rapide" borderColor="#F39C12"
-          speakText={ttsDiagnostic(fiche)} speakColor="#F39C12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Section title="🔍 Diagnostic rapide" color="var(--warning)" speakText={ttsDiagnostic(fiche)} speakColor={C.warning}>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             <DiagCol icone="👁" label="Visuels" items={fiche.diagnosticRapide.visuels} />
             <DiagCol icone="👂" label="Auditifs" items={fiche.diagnosticRapide.auditifs} />
             <DiagCol icone="🧠" label="Comportements" items={fiche.diagnosticRapide.comportementaux} />
@@ -256,99 +278,108 @@ export default function FicheDetail({ fiche }) {
 
       {/* Sécurité avant action */}
       {fiche.securiteAvantAction && (
-        <div style={{ backgroundColor: '#2a1500', border: '2px solid #FF6B35' }} className="rounded-lg p-5">
-          <SectionHeader title="⚠️ Sécurité avant action"
-            speakText={ttsSecurite(fiche)} speakColor="#FF6B35"
-            style={{ color: '#FF6B35' }} />
-          <div
-            style={{ backgroundColor: '#1a0a00', borderLeft: '4px solid #FF6B35', fontSize: '15px', color: '#f0e0d0' }}
-            className="rounded p-4 mb-4 font-semibold"
-          >
+        <Card style={{ background: 'var(--panel-warn-bg)', borderColor: 'var(--panel-warn-border)' }}>
+          <SectionTitle color="var(--warning)" speakText={ttsSecurite(fiche)} speakColor={C.warning}>⚠️ Sécurité avant action</SectionTitle>
+          <div style={{ background: 'var(--panel-warn-soft)', borderLeft: '3px solid var(--warning)', borderRadius: 'var(--radius-inner)', color: 'var(--text)', fontSize: '15px', lineHeight: 1.55 }} className="p-4 mb-4 font-medium">
             {fiche.securiteAvantAction.regleUniverselle}
           </div>
-          {fiche.securiteAvantAction.risquesPourIntervenant?.length > 0 && (
-            <div className="mb-3">
-              <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">Risques</div>
-              <ul className="space-y-1">
-                {fiche.securiteAvantAction.risquesPourIntervenant.map((r, i) => (
-                  <li key={i} style={{ color: '#e0a070', fontSize: '14px' }} className="flex gap-2">
-                    <span>▸</span>{r}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {fiche.securiteAvantAction.equipementsRequis?.length > 0 && (
-            <div>
-              <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">Équipements requis</div>
-              <ul className="space-y-1">
-                {fiche.securiteAvantAction.equipementsRequis.map((e, i) => (
-                  <li key={i} style={{ color: '#70c0e0', fontSize: '14px' }} className="flex gap-2">
-                    <span>✓</span>{e}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {fiche.securiteAvantAction.risquesPourIntervenant?.length > 0 && (
+              <div>
+                <MicroLabel color="var(--warning)">Risques intervenant</MicroLabel>
+                <ul className="flex flex-col gap-1.5">
+                  {fiche.securiteAvantAction.risquesPourIntervenant.map((r, i) => (
+                    <li key={i} style={{ color: 'var(--text-body)', fontSize: '14px', lineHeight: 1.5 }} className="flex gap-2">
+                      <span style={{ color: 'var(--warning)' }}>▸</span>{r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {fiche.securiteAvantAction.equipementsRequis?.length > 0 && (
+              <div>
+                <MicroLabel color="var(--success)">Équipements requis</MicroLabel>
+                <ul className="flex flex-col gap-1.5">
+                  {fiche.securiteAvantAction.equipementsRequis.map((e, i) => (
+                    <li key={i} style={{ color: 'var(--text-body)', fontSize: '14px', lineHeight: 1.5 }} className="flex gap-2">
+                      <span style={{ color: 'var(--success)' }}>✓</span>{e}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </Card>
       )}
 
       {/* Script d'alerte */}
       {fiche.scriptAlerte && (
-        <div style={{ backgroundColor: '#0a0a1a', border: '2px solid #CC0000' }} className="rounded-lg p-5">
-          <SectionHeader title="📞 Script d'alerte"
-            speakText={ttsScriptAlerte(fiche)} speakColor="#CC0000"
-            style={{ color: '#CC0000' }} />
-          <div style={{ backgroundColor: '#1a0010', borderRadius: '8px', padding: '12px 16px', marginBottom: '12px' }}>
-            <div style={{ color: '#FF6B35', fontFamily: 'IBM Plex Mono, monospace', fontSize: '22px', fontWeight: 700, letterSpacing: '2px' }}>
+        <Card>
+          <SectionTitle color="var(--brand)" speakText={ttsScriptAlerte(fiche)} speakColor={C.brand}>📞 Script d'alerte</SectionTitle>
+          <div style={{ background: 'var(--ink)', borderRadius: 'var(--radius-control)', padding: '14px 18px', marginBottom: '14px' }}>
+            <div style={{ color: '#fff', fontFamily: 'var(--font-mono)', fontSize: '22px', fontWeight: 600, letterSpacing: '1px' }}>
               {fiche.scriptAlerte.numero}
             </div>
           </div>
-          <div
-            style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '14px', color: '#d0d0d0', backgroundColor: '#141428', lineHeight: 1.8 }}
-            className="rounded p-4"
-          >
+          <div style={{ background: 'var(--surface-subtle)', borderLeft: '3px solid var(--ink)', borderRadius: 'var(--radius-inner)', fontFamily: 'var(--font-mono)', fontSize: '13.5px', color: 'var(--text-body)', lineHeight: 1.8 }} className="p-4">
             {fiche.scriptAlerte.quoiDire}
           </div>
           {fiche.scriptAlerte.informationsAFournir?.length > 0 && (
-            <div className="mt-3">
-              <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">Informations à fournir</div>
-              <ul className="space-y-1">
+            <div className="mt-4">
+              <MicroLabel>Informations à fournir</MicroLabel>
+              <ul className="flex flex-col gap-1.5">
                 {fiche.scriptAlerte.informationsAFournir.map((info, i) => (
-                  <li key={i} style={{ color: '#e0e0e0', fontSize: '14px' }} className="flex gap-2">
-                    <span style={{ color: '#CC0000' }}>→</span>{info}
+                  <li key={i} style={{ color: 'var(--text-body)', fontSize: '14px', lineHeight: 1.5 }} className="flex gap-2">
+                    <span style={{ color: 'var(--accent)' }}>→</span>{info}
                   </li>
                 ))}
               </ul>
             </div>
           )}
-        </div>
+        </Card>
       )}
 
       {/* Actions immédiates */}
       {fiche.actionsImmédiates && (
-        <div style={{ backgroundColor: '#1a0000', border: '3px solid #CC0000' }} className="rounded-lg p-5">
-          <SectionHeader title="⚡ Actions immédiates — 3 minutes max"
-            speakText={ttsActionsImmediates(fiche)} speakColor="#CC0000"
-            style={{ color: '#CC0000', fontSize: '18px', letterSpacing: '2px' }} />
-          <ol className="space-y-2">
+        <Card style={{ background: 'var(--panel-action-bg)', borderColor: 'var(--panel-action-border)' }}>
+          <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+            <div className="flex items-center gap-2.5">
+              <span style={{ width: '30px', height: '30px', borderRadius: '9px', background: 'var(--brand)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z" /></svg>
+              </span>
+              <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--brand)', fontSize: '16px', fontWeight: 800, letterSpacing: '0.4px', margin: 0 }} className="uppercase">
+                Actions immédiates
+              </h2>
+              <span style={{ background: 'var(--brand)', color: '#fff', fontFamily: 'var(--font-mono)', fontSize: '10.5px', padding: '3px 8px', borderRadius: '999px', letterSpacing: '0.5px' }}>
+                ≤ 3 MIN
+              </span>
+            </div>
+            <SpeakButton text={ttsActionsImmediates(fiche)} color={C.brand} />
+          </div>
+          <ol className="flex flex-col gap-3">
             {fiche.actionsImmédiates.map((action, i) => (
-              <li key={i} style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 600 }} className="flex gap-3 items-start">
-                <span style={{ color: '#CC0000', fontFamily: 'Oswald, sans-serif', fontSize: '20px', lineHeight: 1, minWidth: '24px' }}>{i + 1}.</span>
-                {action}
+              <li key={i} className="flex gap-3 items-center">
+                <span style={{ width: '30px', height: '30px', minWidth: '30px', borderRadius: '999px', background: 'var(--brand)', color: '#fff', fontFamily: 'var(--font-display)', fontSize: '14px', fontWeight: 700 }} className="flex items-center justify-center">
+                  {i + 1}
+                </span>
+                <span style={{ color: 'var(--text)', fontSize: '16px', fontWeight: 600, lineHeight: 1.4 }}>{action}</span>
               </li>
             ))}
           </ol>
-        </div>
+        </Card>
       )}
 
       {/* Procédure d'action */}
       {fiche.procedureAction && (
-        <Section title="📋 Procédure d'action" borderColor="#CC0000"
-          speakText={ttsProcedure(fiche)} speakColor="#CC0000">
+        <Section title="📋 Procédure d'action" speakText={ttsProcedure(fiche)} speakColor={C.accent}>
           <div className="flex flex-col gap-3">
             {fiche.procedureAction.map((e) => (
-              <EtapeItem key={e.etape} etape={e.etape} action={e.action} />
+              <div key={e.etape} className="flex gap-3 items-start">
+                <span style={{ width: '27px', height: '27px', minWidth: '27px', borderRadius: '8px', background: 'var(--ink)', color: '#fff', fontFamily: 'var(--font-display)', fontSize: '13px', fontWeight: 700, marginTop: '1px' }} className="flex items-center justify-center">
+                  {e.etape}
+                </span>
+                <div style={{ color: 'var(--text-body)', fontSize: '15px', lineHeight: 1.55 }}>{e.action}</div>
+              </div>
             ))}
           </div>
         </Section>
@@ -356,56 +387,46 @@ export default function FicheDetail({ fiche }) {
 
       {/* Décontamination */}
       {fiche.decontamination?.requise && (
-        <div style={{ backgroundColor: '#150028', border: '2px solid #8B00FF' }} className="rounded-lg p-5">
-          <h2 style={{ fontFamily: 'Oswald, sans-serif', color: '#c084fc', fontSize: '16px', letterSpacing: '1px', marginBottom: '12px' }} className="uppercase">
-            🧪 Décontamination
-          </h2>
-          <div style={{ color: '#e0e0e0', fontSize: '15px', lineHeight: 1.7 }}>
+        <Card style={{ background: 'var(--surface-subtle)' }}>
+          <SectionTitle color="var(--cat-chimique)">🧪 Décontamination</SectionTitle>
+          <div style={{ color: 'var(--text-body)', fontSize: '15px', lineHeight: 1.65 }}>
             {fiche.decontamination.protocole}
           </div>
-          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {fiche.decontamination.pointDecontamination && (
-              <InfoField label="Point décontam." value={fiche.decontamination.pointDecontamination} />
-            )}
-            {fiche.decontamination.gestionVetements && (
-              <InfoField label="Gestion vêtements" value={fiche.decontamination.gestionVetements} />
-            )}
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {fiche.decontamination.pointDecontamination && <InfoField label="Point décontam." value={fiche.decontamination.pointDecontamination} />}
+            {fiche.decontamination.gestionVetements && <InfoField label="Gestion vêtements" value={fiche.decontamination.gestionVetements} />}
           </div>
-        </div>
+        </Card>
       )}
 
       {/* Arbre de décision */}
       {fiche.arbresDecision?.length > 0 && (
-        <Section title="🌿 Arbre de décision" borderColor="#F39C12"
-          speakText={ttsArbres(fiche)} speakColor="#F39C12">
+        <Section title="🌿 Arbre de décision" color="var(--warning)" speakText={ttsArbres(fiche)} speakColor={C.warning}>
           <DiagramVisuel arbresDecision={fiche.arbresDecision} />
         </Section>
       )}
 
       {/* Notes critiques */}
       {fiche.notesCritiques?.length > 0 && (
-        <div style={{ backgroundColor: '#1a0a00', border: '2px solid #FF6B35' }} className="rounded-lg p-5">
-          <SectionHeader title="🔴 Notes critiques"
-            speakText={ttsNotesCritiques(fiche)} speakColor="#FF6B35"
-            style={{ color: '#FF6B35' }} />
-          <ul className="space-y-2">
+        <Card style={{ background: 'var(--panel-action-bg)', borderColor: 'var(--panel-action-border)' }}>
+          <SectionTitle color="var(--brand)" speakText={ttsNotesCritiques(fiche)} speakColor={C.brand}>🔴 Notes critiques</SectionTitle>
+          <ul className="flex flex-col gap-2.5">
             {fiche.notesCritiques.map((note, i) => (
-              <li key={i} style={{ color: '#f0d0b0', fontSize: '15px', borderLeft: '3px solid #FF6B35', paddingLeft: '12px' }}>
-                {note}
+              <li key={i} style={{ color: 'var(--text-body)', fontSize: '15px', lineHeight: 1.5 }} className="flex gap-2.5">
+                <span style={{ color: 'var(--brand)', fontWeight: 800, flexShrink: 0 }}>!</span>{note}
               </li>
             ))}
           </ul>
-        </div>
+        </Card>
       )}
 
       {/* Points de contrôle */}
       {fiche.pointsControle?.length > 0 && (
-        <Section title="✅ Points de contrôle" borderColor="#2ECC71"
-          speakText={ttsPointsControle(fiche)} speakColor="#2ECC71">
-          <ul className="space-y-2">
+        <Section title="✅ Points de contrôle" color="var(--success)" speakText={ttsPointsControle(fiche)} speakColor={C.success}>
+          <ul className="flex flex-col gap-2.5">
             {fiche.pointsControle.map((pt, i) => (
-              <li key={i} style={{ color: '#b0e0c0', fontSize: '15px' }} className="flex gap-2 items-start">
-                <span style={{ color: '#2ECC71', marginTop: '2px' }}>☑</span>
+              <li key={i} style={{ color: 'var(--text-body)', fontSize: '15px', lineHeight: 1.5 }} className="flex gap-2.5 items-start">
+                <span style={{ width: '20px', height: '20px', minWidth: '20px', borderRadius: '5px', border: '1.5px solid var(--success)', color: 'var(--success)', marginTop: '1px' }} className="flex items-center justify-center text-xs">✓</span>
                 {pt}
               </li>
             ))}
@@ -415,12 +436,11 @@ export default function FicheDetail({ fiche }) {
 
       {/* Conditions d'arrêt / escalade */}
       {fiche.conditionsArretEscalade?.length > 0 && (
-        <Section title="⬆️ Escalade" borderColor="#F39C12"
-          speakText={ttsEscalade(fiche)} speakColor="#F39C12">
-          <ul className="space-y-2">
+        <Section title="⬆️ Escalade" color="var(--warning)" speakText={ttsEscalade(fiche)} speakColor={C.warning}>
+          <ul className="flex flex-col gap-2.5">
             {fiche.conditionsArretEscalade.map((c, i) => (
-              <li key={i} style={{ color: '#e0d080', fontSize: '15px' }} className="flex gap-2">
-                <span style={{ color: '#F39C12' }}>▲</span>{c}
+              <li key={i} style={{ color: 'var(--text-body)', fontSize: '15px', lineHeight: 1.5 }} className="flex gap-2.5">
+                <span style={{ color: 'var(--warning)' }}>▲</span>{c}
               </li>
             ))}
           </ul>
@@ -432,7 +452,7 @@ export default function FicheDetail({ fiche }) {
         <Section title="🧰 Ressources nécessaires">
           <div className="flex flex-wrap gap-2">
             {fiche.ressourcesNecessaires.map((r, i) => (
-              <span key={i} style={{ backgroundColor: '#1e2a4a', color: '#b0c4de', fontSize: '13px' }} className="px-3 py-1.5 rounded border border-gray-700">
+              <span key={i} style={{ backgroundColor: 'var(--chip-bg)', color: 'var(--text-body)', fontSize: '13px', border: '1px solid var(--border)' }} className="px-3 py-1.5 rounded-md">
                 {r}
               </span>
             ))}
@@ -440,31 +460,24 @@ export default function FicheDetail({ fiche }) {
         </Section>
       )}
 
-      {/* ── SI LES SECOURS TARDENT ───────────────────────────────── */}
+      {/* Si les secours tardent */}
       {fiche.siSecoursTardent && (
-        <div
-          style={{ backgroundColor: '#1a1200', border: '2px solid #F39C12', boxShadow: '0 0 20px rgba(243,156,18,0.15)' }}
-          className="rounded-lg p-5"
-        >
-          <SectionHeader title="🕐 Si les secours tardent — Zone isolée"
-            speakText={ttsSecoursTardent(fiche)} speakColor="#F39C12"
-            style={{ color: '#F39C12', fontSize: '18px', letterSpacing: '1px' }} />
+        <Card style={{ background: 'var(--panel-warn-bg)', borderColor: 'var(--panel-warn-border)' }}>
+          <SectionTitle color="var(--warning)" size="16px" speakText={ttsSecoursTardent(fiche)} speakColor={C.warning}>🕐 Si les secours tardent</SectionTitle>
 
           {fiche.siSecoursTardent.contexte && (
-            <p style={{ color: '#c0a060', fontSize: '14px', marginBottom: '16px', fontStyle: 'italic' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '16px', fontStyle: 'italic', lineHeight: 1.55 }}>
               {fiche.siSecoursTardent.contexte}
             </p>
           )}
 
           {fiche.siSecoursTardent.actions?.length > 0 && (
             <div className="mb-4">
-              <div style={{ color: '#F39C12', fontSize: '12px', marginBottom: '8px' }} className="uppercase tracking-wider">
-                Actions possibles
-              </div>
-              <ul className="space-y-2">
+              <MicroLabel color="var(--warning)">Actions possibles</MicroLabel>
+              <ul className="flex flex-col gap-2">
                 {fiche.siSecoursTardent.actions.map((a, i) => (
-                  <li key={i} style={{ color: '#e8d080', fontSize: '14px', lineHeight: 1.6 }} className="flex gap-2 items-start">
-                    <span style={{ color: '#F39C12', fontFamily: 'Oswald, sans-serif', fontWeight: 700, minWidth: '20px' }}>{i + 1}.</span>
+                  <li key={i} style={{ color: 'var(--text-body)', fontSize: '14px', lineHeight: 1.6 }} className="flex gap-2.5 items-start">
+                    <span style={{ color: 'var(--warning)', fontFamily: 'var(--font-display)', fontWeight: 700, minWidth: '18px' }}>{i + 1}.</span>
                     {a}
                   </li>
                 ))}
@@ -472,27 +485,26 @@ export default function FicheDetail({ fiche }) {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {fiche.siSecoursTardent.ressourcesImprovises?.length > 0 && (
               <div>
-                <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">🧰 Ressources de fortune</div>
-                <ul className="space-y-1.5">
+                <MicroLabel>🧰 Ressources de fortune</MicroLabel>
+                <ul className="flex flex-col gap-1.5">
                   {fiche.siSecoursTardent.ressourcesImprovises.map((r, i) => (
-                    <li key={i} style={{ color: '#c0c0a0', fontSize: '13px', lineHeight: 1.5 }} className="flex gap-2">
-                      <span style={{ color: '#F39C12' }}>→</span>{r}
+                    <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.5 }} className="flex gap-2">
+                      <span style={{ color: 'var(--warning)' }}>→</span>{r}
                     </li>
                   ))}
                 </ul>
               </div>
             )}
-
             {fiche.siSecoursTardent.signesAggravation?.length > 0 && (
               <div>
-                <div style={{ color: '#9ca3af', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider">⚠️ Signes d'aggravation</div>
-                <ul className="space-y-1.5">
+                <MicroLabel color="var(--danger)">▲ Signes d'aggravation</MicroLabel>
+                <ul className="flex flex-col gap-1.5">
                   {fiche.siSecoursTardent.signesAggravation.map((s, i) => (
-                    <li key={i} style={{ color: '#ff9999', fontSize: '13px', lineHeight: 1.5 }} className="flex gap-2">
-                      <span style={{ color: '#CC0000' }}>▲</span>{s}
+                    <li key={i} style={{ color: 'var(--text-body)', fontSize: '13px', lineHeight: 1.5 }} className="flex gap-2">
+                      <span style={{ color: 'var(--danger)' }}>▲</span>{s}
                     </li>
                   ))}
                 </ul>
@@ -501,32 +513,32 @@ export default function FicheDetail({ fiche }) {
           </div>
 
           {fiche.siSecoursTardent.limitesSansSecours && (
-            <div style={{ backgroundColor: '#2a1a00', borderLeft: '3px solid #F39C12', marginTop: '14px' }} className="rounded p-3">
-              <div style={{ color: '#9ca3af', fontSize: '11px', marginBottom: '4px' }} className="uppercase tracking-wider">Limites sans prise en charge médicale</div>
-              <div style={{ color: '#d0c080', fontSize: '14px', lineHeight: 1.6 }}>
+            <div style={{ background: 'var(--panel-warn-soft)', borderLeft: '3px solid var(--warning)', borderRadius: 'var(--radius-inner)', marginTop: '16px' }} className="p-3.5">
+              <MicroLabel>Limites sans prise en charge médicale</MicroLabel>
+              <div style={{ color: 'var(--text-body)', fontSize: '14px', lineHeight: 1.6 }}>
                 {fiche.siSecoursTardent.limitesSansSecours}
               </div>
             </div>
           )}
 
-          <div style={{ backgroundColor: '#111', border: '1px solid #444', color: '#888', fontSize: '12px', lineHeight: 1.6, marginTop: '12px' }} className="rounded p-3">
+          <div style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border)', color: 'var(--text-muted)', fontSize: '12px', lineHeight: 1.6, marginTop: '14px' }} className="rounded-lg p-3">
             ⚠️ {fiche.siSecoursTardent.avertissement ?? "Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Tout doit être fait pour obtenir une assistance médicale."}
           </div>
-        </div>
+        </Card>
       )}
 
-      {/* Avertissement médical global */}
-      <div style={{ backgroundColor: '#111', border: '1px solid #333', lineHeight: 1.6 }} className="rounded p-4">
-        <div style={{ color: '#666', fontSize: '12px', marginBottom: '6px' }} className="uppercase tracking-wider font-mono">⚕️ Avertissement médical</div>
-        <div style={{ color: '#777', fontSize: '13px' }}>
+      {/* Avertissement médical */}
+      <div style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card-sm)', lineHeight: 1.6 }} className="p-4">
+        <MicroLabel>⚕️ Avertissement médical</MicroLabel>
+        <div style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>
           {fiche.avertissement ?? "⚠️ Ce document est une aide-mémoire. Il ne remplace pas un avis ou un acte médical professionnel. En situation réelle, appelez les secours (15, 18, 112) dès que possible."}
         </div>
-        <div style={{ color: '#555', fontSize: '12px', marginTop: '8px', borderTop: '1px solid #222', paddingTop: '8px' }}>
+        <div style={{ color: 'var(--text-faint)', fontSize: '12px', marginTop: '8px', borderTop: '1px solid var(--divider)', paddingTop: '8px' }}>
           Les informations présentées sont à titre indicatif uniquement. Elles ne remplacent pas une formation PSC1, AFGSU, NRBC ou tout autre dispositif de secourisme certifié. En cas de doute, consultez un professionnel de santé.
         </div>
       </div>
 
-      {/* ── ZONE DE NOTES PERSONNELLES ──────────────────────────── */}
+      {/* Notes personnelles */}
       <NotesZone ficheId={fiche.id} />
     </article>
   )
@@ -545,53 +557,52 @@ function NotesZone({ ficheId }) {
   }
 
   return (
-    <div style={{ backgroundColor: '#0d1a0d', border: '1px solid #1a3a1a' }} className="rounded-lg overflow-hidden">
+    <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="overflow-hidden">
       <button
         onClick={() => setOpen(o => !o)}
-        style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '14px 20px' }}
-        className="flex items-center justify-between hover:bg-green-950/30 transition-colors"
+        style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '16px 20px' }}
+        className="flex items-center justify-between hover:bg-[var(--surface-subtle)] transition-colors"
       >
         <div className="flex items-center gap-2">
-          <span style={{ color: '#2ECC71', fontSize: '16px' }}>📝</span>
-          <span style={{ fontFamily: 'Oswald, sans-serif', color: '#2ECC71', fontSize: '15px', letterSpacing: '1px' }}>
-            NOTES PERSONNELLES
+          <span style={{ color: 'var(--accent)', fontSize: '15px' }}>📝</span>
+          <span style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '15px', fontWeight: 700, letterSpacing: '0.3px' }} className="uppercase">
+            Notes personnelles
           </span>
-          {text && <span style={{ color: '#2ECC71', fontSize: '11px', backgroundColor: '#0a2a0a', border: '1px solid #2ECC71', padding: '1px 6px' }} className="rounded-full">✓</span>}
+          {text && <span style={{ color: 'var(--success)', fontSize: '11px', backgroundColor: 'var(--success-bg)', border: '1px solid var(--success)', padding: '1px 7px' }} className="rounded-full">✓</span>}
         </div>
         <div className="flex items-center gap-3">
           {savedAt && open && (
-            <span style={{ color: '#555', fontSize: '11px', fontFamily: 'IBM Plex Mono, monospace' }}>
+            <span style={{ color: 'var(--text-faint)', fontSize: '11px', fontFamily: 'var(--font-mono)' }}>
               sauvegardé {savedAt.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
             </span>
           )}
-          <span style={{ color: '#2ECC71', fontSize: '14px' }}>{open ? '▲' : '▼'}</span>
+          <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>{open ? '▲' : '▼'}</span>
         </div>
       </button>
 
       {open && (
-        <div className="px-4 pb-4">
+        <div className="px-5 pb-5">
           <textarea
             defaultValue={text}
             onChange={e => handleChange(e.target.value)}
             placeholder="Ajoutez vos notes, observations, adaptations locales, contacts utiles, retours d'expérience..."
             style={{
-              backgroundColor: '#060f06',
-              borderColor: '#1a3a1a',
-              color: '#c0d8c0',
-              fontFamily: 'IBM Plex Sans, sans-serif',
+              backgroundColor: 'var(--surface-input)',
+              color: 'var(--text)',
+              fontFamily: 'var(--font-body)',
               fontSize: '14px',
               lineHeight: 1.7,
               resize: 'vertical',
               minHeight: '140px',
               width: '100%',
-              border: '1px solid #1a3a1a',
-              borderRadius: '6px',
+              border: '1px solid var(--border-strong)',
+              borderRadius: 'var(--radius-control)',
               padding: '12px',
-              outline: 'none'
+              outline: 'none',
             }}
           />
-          <div style={{ color: '#444', fontSize: '12px', marginTop: '6px' }}>
-            Sauvegarde automatique — les notes sont stockées localement sur cet appareil
+          <div style={{ color: 'var(--text-faint)', fontSize: '12px', marginTop: '6px', fontFamily: 'var(--font-mono)' }}>
+            Sauvegarde automatique — stockage local sur cet appareil
           </div>
         </div>
       )}
@@ -602,8 +613,8 @@ function NotesZone({ ficheId }) {
 function InfoField({ label, value, mono, color }) {
   return (
     <div>
-      <div style={{ color: '#9ca3af', fontSize: '11px' }} className="uppercase tracking-wider mb-1">{label}</div>
-      <div style={{ color: color ?? '#f0f0f0', fontSize: '14px', fontFamily: mono ? 'IBM Plex Mono, monospace' : undefined }}>
+      <MicroLabel>{label}</MicroLabel>
+      <div style={{ color: color ?? 'var(--text)', fontSize: '14px', fontFamily: mono ? 'var(--font-mono)' : undefined, fontWeight: 500 }}>
         {value}
       </div>
     </div>
@@ -612,11 +623,11 @@ function InfoField({ label, value, mono, color }) {
 
 function ZoneCard({ couleur, label, texte }) {
   return (
-    <div style={{ backgroundColor: couleur + '22', borderTop: `3px solid ${couleur}` }} className="rounded p-3">
-      <div style={{ color: couleur, fontFamily: 'Oswald, sans-serif', fontSize: '14px', letterSpacing: '1px' }} className="font-bold mb-2">
+    <div style={{ background: 'var(--surface-subtle)', border: '1px solid var(--border)', borderTop: `3px solid ${couleur}`, borderRadius: 'var(--radius-inner)' }} className="p-3.5">
+      <div style={{ color: couleur, fontFamily: 'var(--font-display)', fontSize: '13px', fontWeight: 700, letterSpacing: '0.5px' }} className="uppercase mb-2">
         {label}
       </div>
-      <div style={{ color: '#d0d0d0', fontSize: '13px', lineHeight: 1.5 }}>{texte}</div>
+      <div style={{ color: 'var(--text-body)', fontSize: '13px', lineHeight: 1.5 }}>{texte}</div>
     </div>
   )
 }
@@ -625,13 +636,13 @@ function DiagCol({ icone, label, items }) {
   if (!items?.length) return null
   return (
     <div>
-      <div style={{ color: '#F39C12', fontSize: '13px', fontFamily: 'Oswald, sans-serif' }} className="flex items-center gap-1 mb-2 uppercase tracking-wide">
+      <div style={{ color: 'var(--warning)', fontSize: '12.5px', fontFamily: 'var(--font-display)', fontWeight: 700, letterSpacing: '0.5px' }} className="flex items-center gap-1.5 mb-2.5 uppercase">
         <span>{icone}</span> {label}
       </div>
-      <ul className="space-y-1.5">
+      <ul className="flex flex-col gap-1.5">
         {items.map((item, i) => (
-          <li key={i} style={{ color: '#d0d0d0', fontSize: '14px' }} className="flex gap-2 items-start">
-            <span style={{ color: '#F39C12', marginTop: '2px' }}>•</span>{item}
+          <li key={i} style={{ color: 'var(--text-body)', fontSize: '14px', lineHeight: 1.5 }} className="flex gap-2 items-start">
+            <span style={{ color: 'var(--warning)', marginTop: '2px' }}>•</span>{item}
           </li>
         ))}
       </ul>

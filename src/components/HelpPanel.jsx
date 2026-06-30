@@ -253,8 +253,9 @@ export default function HelpPanel({ open, onClose }) {
           position: 'fixed',
           top: 0, right: 0, bottom: 0,
           width: 'min(420px, 100vw)',
-          backgroundColor: '#0d0d1e',
-          borderLeft: '2px solid #CC0000',
+          backgroundColor: 'var(--surface)',
+          borderLeft: '1px solid var(--border)',
+          boxShadow: '-12px 0 32px rgba(20,32,43,0.10)',
           zIndex: 100,
           overflowY: 'auto',
           transform: open ? 'translateX(0)' : 'translateX(100%)',
@@ -267,8 +268,8 @@ export default function HelpPanel({ open, onClose }) {
         {/* En-tête */}
         <div style={{
           position: 'sticky', top: 0,
-          backgroundColor: '#0d0d1e',
-          borderBottom: '1px solid #1e1e3a',
+          backgroundColor: 'var(--surface)',
+          borderBottom: '1px solid var(--border)',
           padding: '16px 20px',
           paddingTop: 'calc(16px + env(safe-area-inset-top))',
           display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px',
@@ -277,26 +278,26 @@ export default function HelpPanel({ open, onClose }) {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
               <span style={{
-                backgroundColor: '#CC0000', color: 'white',
-                fontFamily: 'Oswald, sans-serif', fontSize: '11px', letterSpacing: '1.5px',
-                padding: '2px 8px', borderRadius: '4px',
+                backgroundColor: 'var(--accent-soft)', color: 'var(--accent-deep)',
+                fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '1.5px',
+                padding: '3px 8px', borderRadius: '6px',
               }}>AIDE</span>
             </div>
-            <div style={{ fontFamily: 'Oswald, sans-serif', color: '#f0f0f0', fontSize: '20px', letterSpacing: '1px' }}>
+            <div style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '20px', fontWeight: 700, letterSpacing: '-0.2px' }}>
               {help.titre}
             </div>
-            <div style={{ color: '#666', fontSize: '13px', marginTop: '4px', lineHeight: 1.5 }}>
+            <div style={{ color: 'var(--text-secondary)', fontSize: '13px', marginTop: '4px', lineHeight: 1.5 }}>
               {help.intro}
             </div>
           </div>
           <button
             onClick={onClose}
             style={{
-              background: 'none', border: '1px solid #2a2a4a', cursor: 'pointer',
-              color: '#9ca3af', padding: '6px', borderRadius: '6px', flexShrink: 0,
+              background: 'none', border: '1px solid var(--border-strong)', cursor: 'pointer',
+              color: 'var(--text-muted)', padding: '6px', borderRadius: '8px', flexShrink: 0,
               marginTop: '2px',
             }}
-            className="hover:border-gray-500 hover:text-white transition-colors"
+            className="hover:border-[var(--border-hover)] hover:text-[var(--text)] transition-colors"
             aria-label="Fermer l'aide"
           >
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -309,9 +310,10 @@ export default function HelpPanel({ open, onClose }) {
         <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {help.sections.map((s, i) => (
             <div key={i} style={{
-              backgroundColor: '#111827',
+              backgroundColor: 'var(--surface-subtle)',
+              border: '1px solid var(--border)',
               borderLeft: `3px solid ${s.couleur}`,
-              borderRadius: '0 8px 8px 0',
+              borderRadius: '0 10px 10px 0',
               padding: '14px 16px',
             }}>
               <div style={{
@@ -319,19 +321,19 @@ export default function HelpPanel({ open, onClose }) {
               }}>
                 <span style={{ fontSize: '18px', lineHeight: 1 }}>{s.icone}</span>
                 <span style={{
-                  fontFamily: 'Oswald, sans-serif', color: s.couleur,
-                  fontSize: '14px', letterSpacing: '0.5px',
+                  fontFamily: 'var(--font-display)', color: s.couleur, fontWeight: 700,
+                  fontSize: '14px', letterSpacing: '0.2px',
                 }}>
                   {s.titre}
                 </span>
               </div>
-              <p style={{ color: '#c0c0c0', fontSize: '13px', lineHeight: 1.65, margin: 0 }}>
+              <p style={{ color: 'var(--text-body)', fontSize: '13px', lineHeight: 1.65, margin: 0 }}>
                 {s.texte}
               </p>
               {s.items && (
                 <ul style={{ margin: '10px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '5px' }}>
                   {s.items.map((item, j) => (
-                    <li key={j} style={{ display: 'flex', gap: '8px', color: '#a0a0a0', fontSize: '13px', lineHeight: 1.5 }}>
+                    <li key={j} style={{ display: 'flex', gap: '8px', color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.5 }}>
                       <span style={{ color: s.couleur, flexShrink: 0, marginTop: '2px' }}>▸</span>
                       {item}
                     </li>
@@ -343,10 +345,10 @@ export default function HelpPanel({ open, onClose }) {
         </div>
 
         {/* Pied */}
-        <div style={{ padding: '16px 20px', marginTop: 'auto', borderTop: '1px solid #1e1e3a' }}>
-          <div style={{ color: '#444', fontSize: '12px', textAlign: 'center', lineHeight: 1.6 }}>
+        <div style={{ padding: '16px 20px', marginTop: 'auto', borderTop: '1px solid var(--border)' }}>
+          <div style={{ color: 'var(--text-faint)', fontSize: '12px', textAlign: 'center', lineHeight: 1.6 }}>
             Urgentor — Fiches de premiers secours<br/>
-            <span style={{ color: '#333' }}>En cas d'urgence réelle : 15 · 18 · 112</span>
+            <span style={{ color: 'var(--text-muted)' }}>En cas d'urgence réelle : 15 · 18 · 112</span>
           </div>
         </div>
       </div>
