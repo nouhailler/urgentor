@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#E7EAEE}
+    ::selection{background:rgba(14,113,128,0.16)}
+  </style>
+</helmet>
+<div style="font-family:'IBM Plex Sans',sans-serif;background:#F4F6F8;min-height:100vh;color:#16202B">
+
+  <!-- ░░ PREVIEW TOOLBAR (méta — pas dans l'app) ░░ -->
+  <div style="background:#1E2A37;border-bottom:1px solid #0e1620;position:sticky;top:0;z-index:60">
+    <div style="max-width:1100px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:9px">
+        <span style="width:7px;height:7px;border-radius:50%;background:#C8102E;display:block"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;color:#8FA0B0">URGENTOR · APERÇU REDESIGN « CLAIR »</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:3px;background:#16202B;padding:4px;border-radius:10px">
+        <button onClick="{{ navHome }}" style="{{ tabHome }}">Bibliothèque</button>
+        <button onClick="{{ navFiche }}" style="{{ tabFiche }}">Fiche</button>
+        <button onClick="{{ navNew }}" style="{{ tabNew }}">Nouvelle fiche</button>
+        <button onClick="{{ navGestion }}" style="{{ tabGestion }}">Gestion</button>
+        <button onClick="{{ navSettings }}" style="{{ tabSettings }}">Paramètres</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░ NAVBAR (app) ░░ -->
+  <header style="background:#FFFFFF;border-bottom:1px solid #E3E8ED;position:sticky;top:43px;z-index:40">
+    <div style="max-width:1060px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <button onClick="{{ navHome }}" style="display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;padding:0">
+        <span style="width:36px;height:36px;border-radius:10px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(200,16,46,0.26)">
+          <svg width="18" height="18" viewBox="0 0 17 17"><path d="M6.8 1h3.4v4.8H15v3.4h-4.8V14H6.8V9.2H2V5.8h4.8z" fill="#fff"></path></svg>
+        </span>
+        <span style="display:flex;flex-direction:column;line-height:1;text-align:left">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:0.4px;color:#16202B">URGENTOR</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:2.4px;color:#8A95A3;margin-top:4px">PREMIERS SECOURS</span>
+        </span>
+      </button>
+
+      <nav style="display:flex;align-items:center;gap:5px">
+        <button onClick="{{ navHome }}" style="{{ linkHome }}">Bibliothèque</button>
+        <button onClick="{{ navGestion }}" style="{{ linkGestion }}">Gérer</button>
+        <span style="width:1px;height:22px;background:#E3E8ED;margin:0 5px"></span>
+        <button title="Aide" style="width:38px;height:38px;border-radius:9px;border:none;background:transparent;color:#5B6776;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5">
+          <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </button>
+        <button onClick="{{ navSettings }}" title="Paramètres" style="width:38px;height:38px;border-radius:9px;border:none;background:transparent;color:#5B6776;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5">
+          <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </button>
+        <button onClick="{{ navNew }}" style="margin-left:6px;display:inline-flex;align-items:center;gap:7px;background:#1E2A37;color:#fff;padding:9px 16px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;font-family:inherit" style-hover="background:#0f1822">
+          <svg width="15" height="15" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg>
+          <span>Nouvelle fiche</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ░░ ÉCRAN : BIBLIOTHÈQUE ░░ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:1060px;margin:0 auto;padding:32px 24px 90px;width:100%">
+
+    <div style="margin-bottom:24px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#0E7180;margin-bottom:9px">BIBLIOTHÈQUE</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.3px;margin:0 0 6px;color:#16202B">Fiches de premiers secours</h1>
+      <p style="color:#5B6776;font-size:15px;margin:0">{{ count }} fiches prêtes à l'emploi, utilisables hors ligne.</p>
+    </div>
+
+    <div style="position:relative;margin-bottom:18px">
+      <svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;left:16px;top:50%;transform:translateY(-50%)"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <input oninput="{{ onSearch }}" placeholder="Rechercher — brûlure, hémorragie, NRBC…" style="width:100%;padding:14px 16px 14px 46px;border:1px solid #D3DAE1;border-radius:12px;background:#FFFFFF;font-size:15px;color:#16202B;font-family:inherit;outline:none" style-focus="border-color:#0E7180;box-shadow:0 0 0 3px rgba(14,113,128,0.14)">
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="9">
+        <button onClick="{{ c.onClick }}" style="{{ c.style }}">
+          <span style="display:flex;flex-shrink:0">{{ c.picto }}</span>
+          <span>{{ c.label }}</span>
+        </button>
+      </sc-for>
+      <sc-if value="{{ hasCat }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ clearCat }}" style="display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;font-size:13px;font-weight:500;font-family:inherit;cursor:pointer;min-height:42px;background:transparent;border:1px solid transparent;color:#8A95A3">✕ Effacer</button>
+      </sc-if>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(296px,1fr));gap:16px">
+      <sc-for list="{{ fiches }}" as="f" hint-placeholder-count="6">
+        <button onClick="{{ navFiche }}" style="text-align:left;background:#FFFFFF;border:1px solid #E3E8ED;border-radius:14px;padding:18px 18px 16px;cursor:pointer;display:flex;flex-direction:column;gap:11px;min-height:44px;transition:transform .12s,box-shadow .12s,border-color .12s" style-hover="border-color:#CCD5DD;box-shadow:0 10px 26px rgba(20,32,43,0.09);transform:translateY(-2px)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+            <div style="display:flex;align-items:center;gap:8px;min-width:0">
+              <span style="display:flex;flex-shrink:0;color:#8A95A3">{{ f.picto }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.6px;color:#8A95A3;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ f.catLabel }}</span>
+            </div>
+            <span style="{{ f.sevStyle }}">{{ f.sevLabel }}</span>
+          </div>
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;line-height:1.25;margin:0;color:#16202B">{{ f.titre }}</h3>
+          <p style="color:#5B6776;font-size:13.5px;line-height:1.55;margin:0;flex:1">{{ f.objectif }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:2px">
+            <sc-for list="{{ f.tags }}" as="t" hint-placeholder-count="3">
+              <span style="background:#F2F4F7;color:#6B7785;font-size:11.5px;padding:3px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace">{{ t }}</span>
+            </sc-for>
+          </div>
+        </button>
+      </sc-for>
+    </div>
+  </main>
+  </sc-if>
+    <!-- ░░ ÉCRAN : FICHE DÉTAILLÉE ░░ -->
+  <sc-if value="{{ isFiche }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:780px;margin:0 auto;padding:22px 24px 110px;width:100%">
+
+    <button onClick="{{ navHome }}" style="display:inline-flex;align-items:center;gap:7px;background:none;border:none;color:#5B6776;font-size:14px;font-family:inherit;cursor:pointer;padding:6px 0;margin-bottom:14px" style-hover="color:#0E7180">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+      Retour à la bibliothèque
+    </button>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <!-- En-tête fiche -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;overflow:hidden">
+        <div style="height:5px;background:#C2415A"></div>
+        <div style="padding:22px 24px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px">
+            <div style="display:flex;align-items:center;gap:9px">
+              <span style="display:flex;flex-shrink:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg></span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.2px;color:#8A95A3;text-transform:uppercase">Secours à la personne</span>
+            </div>
+            <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.5px;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)"><span style="width:7px;height:7px;border-radius:50%;background:#C8102E"></span>CRITIQUE</span>
+          </div>
+          <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:32px;line-height:1.12;letter-spacing:-0.5px;margin:0;color:#16202B">Hémorragie externe grave</h1>
+          <p style="color:#3B4654;font-size:16px;line-height:1.6;margin:12px 0 0">Arrêter une hémorragie externe grave pour prévenir le choc hémorragique et le décès par perte de sang.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:17px">
+            <span style="background:#F2F4F7;color:#6B7785;font-size:11.5px;padding:4px 10px;border-radius:999px;font-family:'IBM Plex Mono',monospace">compression</span>
+            <span style="background:#F2F4F7;color:#6B7785;font-size:11.5px;padding:4px 10px;border-radius:999px;font-family:'IBM Plex Mono',monospace">garrot</span>
+            <span style="background:#F2F4F7;color:#6B7785;font-size:11.5px;padding:4px 10px;border-radius:999px;font-family:'IBM Plex Mono',monospace">plaie</span>
+            <span style="background:#F2F4F7;color:#6B7785;font-size:11.5px;padding:4px 10px;border-radius:999px;font-family:'IBM Plex Mono',monospace">traumatisme</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions immédiates (priorité) -->
+      <div style="background:#FFF5F6;border:1px solid #F1C7CF;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <span style="width:32px;height:32px;border-radius:9px;background:#C8102E;display:flex;align-items:center;justify-content:center">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M13 2L3 14h7l-1 8 10-12h-7z"></path></svg>
+            </span>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.4px;margin:0;color:#C8102E;text-transform:uppercase">Actions immédiates</h2>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#C8102E;background:#FCE0E5;padding:4px 10px;border-radius:999px;white-space:nowrap">≤ 3 MIN</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:30px;height:30px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="color:#16202B;font-size:16px;font-weight:600;line-height:1.4">Mettre des gants ou une protection</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:30px;height:30px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="color:#16202B;font-size:16px;font-weight:600;line-height:1.4">Comprimer la plaie fort avec les deux mains</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:30px;height:30px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span style="color:#16202B;font-size:16px;font-weight:600;line-height:1.4">Alerter le 15 / 112</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:30px;height:30px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span><span style="color:#16202B;font-size:16px;font-weight:600;line-height:1.4">Ne pas lâcher la compression</span></div>
+        </div>
+      </div>
+
+      <!-- Script d'alerte -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <span style="width:32px;height:32px;border-radius:9px;background:#EEF1F4;display:flex;align-items:center;justify-content:center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2A37" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3l2 5-2.5 1.5a11 11 0 005 5L17 12l5 2v3a2 2 0 01-2 2A16 16 0 013 5z"></path></svg>
+            </span>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#16202B;text-transform:uppercase">Script d'alerte</h2>
+          </div>
+          <button style="display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:8px;border:1px solid #E3E8ED;background:#fff;color:#6B7785;font-size:12px;cursor:pointer;font-family:inherit" style-hover="border-color:#0E7180;color:#0E7180"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"></path></svg>Écouter</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px">
+          <div style="background:#1E2A37;border-radius:11px;padding:12px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;color:#fff;line-height:1">15</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8FA0B0;margin-top:5px">SAMU</div></div>
+          <div style="background:#1E2A37;border-radius:11px;padding:12px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;color:#fff;line-height:1">18</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8FA0B0;margin-top:5px">POMPIERS</div></div>
+          <div style="background:#1E2A37;border-radius:11px;padding:12px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;color:#fff;line-height:1">112</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8FA0B0;margin-top:5px">EUROPÉEN</div></div>
+        </div>
+        <div style="background:#F6F8FA;border:1px solid #E9EDF1;border-left:3px solid #1E2A37;border-radius:8px;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:#3B4654;line-height:1.75">« Je suis [NOM], au [ADRESSE PRÉCISE]. Victime avec hémorragie grave au [membre/tronc]. Compression en cours / garrot posé à [HEURE]. Victime [consciente / inconsciente]. »</div>
+        <div style="margin-top:14px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Informations à fournir</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;gap:9px;color:#3B4654;font-size:14px"><span style="color:#0E7180">→</span>Localisation et type de plaie</div>
+            <div style="display:flex;gap:9px;color:#3B4654;font-size:14px"><span style="color:#0E7180">→</span>Heure de pose du garrot</div>
+            <div style="display:flex;gap:9px;color:#3B4654;font-size:14px"><span style="color:#0E7180">→</span>État de conscience</div>
+            <div style="display:flex;gap:9px;color:#3B4654;font-size:14px"><span style="color:#0E7180">→</span>Mécanisme du traumatisme</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Procédure d'action -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <span style="width:32px;height:32px;border-radius:9px;background:#EEF1F4;display:flex;align-items:center;justify-content:center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2A37" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+            </span>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#16202B;text-transform:uppercase">Procédure d'action</h2>
+          </div>
+          <button style="display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:8px;border:1px solid #E3E8ED;background:#fff;color:#6B7785;font-size:12px;cursor:pointer;font-family:inherit" style-hover="border-color:#0E7180;color:#0E7180"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 010 7M19 5a9 9 0 010 14"></path></svg>Écouter</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Mettre des gants — sécuriser la zone</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Appliquer une compression manuelle directe et forte sur la plaie</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Appeler le 15 ou faire appeler — maintenir la compression pendant l'appel</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Si plaie sur un membre : poser un garrot 5-7 cm au-dessus de la plaie si la compression est insuffisante</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Noter l'heure de pose du garrot — ne jamais retirer sans ordre médical</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">6</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Allonger la victime, jambes surélevées si elle est consciente (position antichoc)</span></div>
+          <div style="display:flex;gap:13px;align-items:flex-start"><span style="width:27px;height:27px;border-radius:8px;background:#1E2A37;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">7</span><span style="color:#3B4654;font-size:15px;line-height:1.55;padding-top:3px">Couvrir la victime et surveiller : conscience, pouls, coloration, respiration</span></div>
+        </div>
+      </div>
+
+      <!-- Sécurité avant action -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:15px">
+          <span style="width:32px;height:32px;border-radius:9px;background:#FBF1DD;display:flex;align-items:center;justify-content:center">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B5740A" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.86l-8.5 14.7A2 2 0 003.5 21h17a2 2 0 001.73-3l-8.5-14.7a2 2 0 00-3.46 0z"></path></svg>
+          </span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#B5740A;text-transform:uppercase">Sécurité avant action</h2>
+        </div>
+        <div style="background:#FDF8EE;border:1px solid #F0E2C4;border-radius:9px;padding:13px 15px;color:#7A5408;font-size:15px;font-weight:600;line-height:1.5;margin-bottom:16px">Mettre des gants avant tout contact avec le sang. À défaut, utiliser un sac plastique ou un tissu épais.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:9px">Risques intervenant</div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <div style="display:flex;gap:9px;color:#3B4654;font-size:14px;line-height:1.45"><span style="color:#B5740A">▸</span>Contact avec le sang (risque biologique)</div>
+              <div style="display:flex;gap:9px;color:#3B4654;font-size:14px;line-height:1.45"><span style="color:#B5740A">▸</span>Zone d'accident (trafic, effondrement)</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:9px">Équipements requis</div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <div style="display:flex;gap:9px;color:#3B4654;font-size:14px;line-height:1.45"><span style="color:#1E8A5A">✓</span>Gants à usage unique (latex / nitrile)</div>
+              <div style="display:flex;gap:9px;color:#3B4654;font-size:14px;line-height:1.45"><span style="color:#1E8A5A">✓</span>Compresses stériles</div>
+              <div style="display:flex;gap:9px;color:#3B4654;font-size:14px;line-height:1.45"><span style="color:#1E8A5A">✓</span>Garrot tourniquet si disponible</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arbre de décision -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px">
+          <span style="width:32px;height:32px;border-radius:9px;background:#EAF4EE;display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2F8F6B" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3v12m0 0a3 3 0 103 3m-3-3a3 3 0 003-3h6a3 3 0 003-3V6"></path></svg>
+          </span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#16202B;text-transform:uppercase">Arbre de décision</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid #E9EDF1;border-radius:10px;overflow:hidden">
+            <div style="flex:1;padding:13px 15px;background:#FAFBFC"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#B5740A;margin-bottom:4px">SI</div><div style="color:#3B4654;font-size:14px;line-height:1.45">Saignement sur membre + compression insuffisante</div></div>
+            <div style="width:34px;display:flex;align-items:center;justify-content:center;color:#C9D2DA;flex-shrink:0">→</div>
+            <div style="flex:1;padding:13px 15px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#1E8A5A;margin-bottom:4px">ALORS</div><div style="color:#16202B;font-size:14px;font-weight:500;line-height:1.45">Poser un garrot 5-7 cm au-dessus — noter l'heure — ne jamais retirer</div></div>
+          </div>
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid #E9EDF1;border-radius:10px;overflow:hidden">
+            <div style="flex:1;padding:13px 15px;background:#FAFBFC"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#B5740A;margin-bottom:4px">SI</div><div style="color:#3B4654;font-size:14px;line-height:1.45">Saignement sur tronc / cou / aisselle (zone non garrotable)</div></div>
+            <div style="width:34px;display:flex;align-items:center;justify-content:center;color:#C9D2DA;flex-shrink:0">→</div>
+            <div style="flex:1;padding:13px 15px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#1E8A5A;margin-bottom:4px">ALORS</div><div style="color:#16202B;font-size:14px;font-weight:500;line-height:1.45">Compression forte + pansement compressif — jamais de garrot sur le cou</div></div>
+          </div>
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid #E9EDF1;border-radius:10px;overflow:hidden">
+            <div style="flex:1;padding:13px 15px;background:#FAFBFC"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#B5740A;margin-bottom:4px">SI</div><div style="color:#3B4654;font-size:14px;line-height:1.45">Corps étranger dans la plaie</div></div>
+            <div style="width:34px;display:flex;align-items:center;justify-content:center;color:#C9D2DA;flex-shrink:0">→</div>
+            <div style="flex:1;padding:13px 15px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#1E8A5A;margin-bottom:4px">ALORS</div><div style="color:#16202B;font-size:14px;font-weight:500;line-height:1.45">Ne pas retirer — comprimer autour — stabiliser l'objet</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes critiques -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:15px">
+          <span style="width:32px;height:32px;border-radius:9px;background:#FCEBEE;display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" d="M12 8v5m0 3h.01"></path></svg>
+          </span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#C8102E;text-transform:uppercase">Notes critiques</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;gap:11px;color:#3B4654;font-size:14.5px;line-height:1.5"><span style="color:#C8102E;font-weight:700;flex-shrink:0">!</span>Un adulte peut mourir d'une hémorragie en 3-5 minutes — agir immédiatement</div>
+          <div style="display:flex;gap:11px;color:#3B4654;font-size:14.5px;line-height:1.5"><span style="color:#C8102E;font-weight:700;flex-shrink:0">!</span>Le garrot sauve des vies — ne pas hésiter à en poser un sur un membre</div>
+          <div style="display:flex;gap:11px;color:#3B4654;font-size:14.5px;line-height:1.5"><span style="color:#C8102E;font-weight:700;flex-shrink:0">!</span>Noter l'heure de pose — information vitale pour le chirurgien</div>
+          <div style="display:flex;gap:11px;color:#3B4654;font-size:14.5px;line-height:1.5"><span style="color:#C8102E;font-weight:700;flex-shrink:0">!</span>Ne jamais retirer un garrot sans ordre médical — risque de choc brutal</div>
+          <div style="display:flex;gap:11px;color:#3B4654;font-size:14.5px;line-height:1.5"><span style="color:#C8102E;font-weight:700;flex-shrink:0">!</span>Ne pas comprimer le cou (arrêt de la circulation cérébrale)</div>
+        </div>
+      </div>
+
+      <!-- Points de contrôle -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:15px">
+          <span style="width:32px;height:32px;border-radius:9px;background:#E7F4EC;display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E8A5A" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12l4.5 4.5L19 7"></path></svg>
+          </span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#16202B;text-transform:uppercase">Points de contrôle</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:11px;align-items:center;color:#3B4654;font-size:14.5px"><span style="width:20px;height:20px;border-radius:6px;border:1.5px solid #1E8A5A;color:#1E8A5A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">✓</span>Le saignement est stoppé ou très réduit</div>
+          <div style="display:flex;gap:11px;align-items:center;color:#3B4654;font-size:14.5px"><span style="width:20px;height:20px;border-radius:6px;border:1.5px solid #1E8A5A;color:#1E8A5A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">✓</span>L'heure du garrot est notée et transmise aux secours</div>
+          <div style="display:flex;gap:11px;align-items:center;color:#3B4654;font-size:14.5px"><span style="width:20px;height:20px;border-radius:6px;border:1.5px solid #1E8A5A;color:#1E8A5A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">✓</span>La victime est allongée et couverte</div>
+          <div style="display:flex;gap:11px;align-items:center;color:#3B4654;font-size:14.5px"><span style="width:20px;height:20px;border-radius:6px;border:1.5px solid #1E8A5A;color:#1E8A5A;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">✓</span>Les secours ont été alertés</div>
+        </div>
+      </div>
+
+      <!-- Si les secours tardent -->
+      <div style="background:#FFFBF2;border:1px solid #F0E2C4;border-radius:16px;padding:22px 24px">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px">
+          <span style="width:32px;height:32px;border-radius:9px;background:#F7EBD0;display:flex;align-items:center;justify-content:center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B5740A" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"></path></svg>
+          </span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.3px;margin:0;color:#B5740A;text-transform:uppercase">Si les secours tardent</h2>
+        </div>
+        <p style="color:#8A6B2E;font-size:13.5px;font-style:italic;line-height:1.55;margin:0 0 16px">Si les secours sont à plus de 30-60 min et que l'hémorragie est active (zone reculée, randonnée, catastrophe).</p>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#B5740A;text-transform:uppercase;margin-bottom:9px">Actions possibles</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+          <div style="display:flex;gap:10px;color:#5A4416;font-size:14px;line-height:1.5"><span style="font-family:'Archivo',sans-serif;font-weight:700;color:#B5740A;flex-shrink:0">1.</span>Maintenir la compression ou le garrot absolument, sans relâcher</div>
+          <div style="display:flex;gap:10px;color:#5A4416;font-size:14px;line-height:1.5"><span style="font-family:'Archivo',sans-serif;font-weight:700;color:#B5740A;flex-shrink:0">2.</span>Si le garrot saigne encore : serrer davantage ou poser un second garrot au-dessus</div>
+          <div style="display:flex;gap:10px;color:#5A4416;font-size:14px;line-height:1.5"><span style="font-family:'Archivo',sans-serif;font-weight:700;color:#B5740A;flex-shrink:0">3.</span>Surveiller les signes de choc toutes les 5 minutes</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:#fff;border:1px solid #EFE6CF;border-radius:10px;padding:13px 15px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Ressources de fortune</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;gap:8px;color:#5B6776;font-size:13px;line-height:1.45"><span style="color:#B5740A">→</span>Ceinture / sangle / lacet comme garrot</div>
+              <div style="display:flex;gap:8px;color:#5B6776;font-size:13px;line-height:1.45"><span style="color:#B5740A">→</span>Tissu propre très serré &gt; compresses</div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #F1D2D6;border-radius:10px;padding:13px 15px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Signes d'aggravation</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;gap:8px;color:#5B6776;font-size:13px;line-height:1.45"><span style="color:#C8102E">▲</span>Pouls au poignet imperceptible</div>
+              <div style="display:flex;gap:8px;color:#5B6776;font-size:13px;line-height:1.45"><span style="color:#C8102E">▲</span>Confusion, puis inconscience</div>
+              <div style="display:flex;gap:8px;color:#5B6776;font-size:13px;line-height:1.45"><span style="color:#C8102E">▲</span>Peau froide, moite, pâle</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avertissement médical -->
+      <div style="background:#F6F8FA;border:1px solid #E9EDF1;border-radius:12px;padding:16px 18px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:7px">⚕ Avertissement médical</div>
+        <div style="color:#7A8593;font-size:13px;line-height:1.6">Cette fiche est une aide-mémoire indicative. Elle ne remplace pas une formation certifiée (PSC1, AFGSU) ni l'avis d'un professionnel de santé. En cas de doute, suivez les instructions du 15.</div>
+      </div>
+
+      <!-- Notes personnelles -->
+      <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:14px;padding:18px 20px">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:12px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7180" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4z"></path></svg>
+          <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.3px;color:#16202B;text-transform:uppercase">Notes personnelles</span>
+        </div>
+        <textarea placeholder="Adaptations locales, contacts utiles, retours d'expérience…" style="width:100%;min-height:90px;background:#FAFBFC;border:1px solid #E3E8ED;border-radius:9px;padding:12px;font-family:inherit;font-size:14px;line-height:1.6;color:#3B4654;resize:vertical;outline:none" style-focus="border-color:#0E7180;box-shadow:0 0 0 3px rgba(14,113,128,0.12)"></textarea>
+        <div style="color:#9AA5B1;font-size:11.5px;margin-top:7px;font-family:'IBM Plex Mono',monospace">Sauvegarde automatique — stockage local sur cet appareil</div>
+      </div>
+
+    </div>
+  </main>
+  </sc-if>
+    <!-- ░░ ÉCRAN : NOUVELLE FICHE ░░ -->
+  <sc-if value="{{ isNew }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:760px;margin:0 auto;padding:32px 24px 100px;width:100%">
+    <div style="margin-bottom:22px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#0E7180;margin-bottom:9px">CRÉATION</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.3px;margin:0 0 6px;color:#16202B">Nouvelle fiche</h1>
+      <p style="color:#5B6776;font-size:15px;margin:0">Générez une fiche par IA ou saisissez-la manuellement.</p>
+    </div>
+
+    <div style="display:flex;gap:4px;background:#EBEEF2;padding:4px;border-radius:11px;margin-bottom:22px">
+      <button onClick="{{ setIA }}" style="{{ segIA }}">✦ Génération IA</button>
+      <button onClick="{{ setManual }}" style="{{ segManual }}">Saisie manuelle</button>
+    </div>
+
+    <sc-if value="{{ isIA }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:24px">
+      <div style="margin-bottom:18px">
+        <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Titre de la fiche</label>
+        <input placeholder="Ex. Étouffement chez l'adulte" style="width:100%;padding:13px 15px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:15px;color:#16202B;font-family:inherit;outline:none" style-focus="border-color:#0E7180;box-shadow:0 0 0 3px rgba(14,113,128,0.12)">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+        <div>
+          <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Catégorie</label>
+          <div style="position:relative">
+            <select style="appearance:none;width:100%;padding:13px 38px 13px 15px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:14px;color:#16202B;font-family:inherit;cursor:pointer;outline:none">
+              <option>Secours à la personne</option><option>Incendie &amp; évacuation</option><option>Risque chimique</option><option>NRBC</option>
+            </select>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Modèle IA</label>
+          <div style="position:relative">
+            <select style="appearance:none;width:100%;padding:13px 38px 13px 15px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:14px;color:#16202B;font-family:inherit;cursor:pointer;outline:none">
+              <option>Anthropic · Claude Sonnet</option><option>OpenAI · GPT-4o</option><option>OpenRouter · auto</option>
+            </select>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;background:#FDF8EE;border:1px solid #F0E2C4;border-radius:9px;padding:11px 14px;margin-bottom:20px">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#B5740A" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" d="M12 8v5m0 3h.01"></path></svg>
+        <span style="color:#7A5408;font-size:13px;line-height:1.45">Une clé API est requise. Configurez-la dans <button onClick="{{ navSettings }}" style="background:none;border:none;color:#0E7180;font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;padding:0;text-decoration:underline">Paramètres</button>.</span>
+      </div>
+      <button style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#1E2A37;color:#fff;padding:14px;border-radius:11px;font-weight:600;font-size:15px;border:none;cursor:pointer;font-family:inherit" style-hover="background:#0f1822">✦ Générer la fiche</button>
+      <div style="margin-top:18px;border:1.5px dashed #D3DAE1;border-radius:12px;padding:36px;text-align:center">
+        <div style="color:#9AA5B1;font-size:14px;line-height:1.5">L'aperçu de la fiche générée s'affichera ici<br>avant validation et sauvegarde.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isManual }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#FFFFFF;border:1px solid #E3E8ED;border-radius:16px;padding:24px">
+      <div style="margin-bottom:18px">
+        <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Titre de la fiche</label>
+        <input placeholder="Ex. Étouffement chez l'adulte" style="width:100%;padding:13px 15px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:15px;color:#16202B;font-family:inherit;outline:none" style-focus="border-color:#0E7180;box-shadow:0 0 0 3px rgba(14,113,128,0.12)">
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Niveau de danger</label>
+        <div style="display:flex;gap:8px">
+          <span style="flex:1;text-align:center;padding:10px;border-radius:9px;border:1.5px solid #1E8A5A;background:#E7F4EC;color:#1E8A5A;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer">STANDARD</span>
+          <span style="flex:1;text-align:center;padding:10px;border-radius:9px;border:1px solid #E3E8ED;background:#fff;color:#8A95A3;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer">ÉLEVÉ</span>
+          <span style="flex:1;text-align:center;padding:10px;border-radius:9px;border:1px solid #E3E8ED;background:#fff;color:#8A95A3;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;cursor:pointer">CRITIQUE</span>
+        </div>
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:8px">Objectif</label>
+        <textarea placeholder="But de l'intervention en une phrase…" style="width:100%;min-height:80px;padding:13px 15px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:14px;color:#16202B;font-family:inherit;line-height:1.6;resize:vertical;outline:none" style-focus="border-color:#0E7180;box-shadow:0 0 0 3px rgba(14,113,128,0.12)"></textarea>
+      </div>
+      <button style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#1E2A37;color:#fff;padding:14px;border-radius:11px;font-weight:600;font-size:15px;border:none;cursor:pointer;font-family:inherit" style-hover="background:#0f1822">Continuer dans l'éditeur</button>
+    </div>
+    </sc-if>
+  </main>
+  </sc-if>
+
+  <!-- ░░ ÉCRAN : GESTION ░░ -->
+  <sc-if value="{{ isGestion }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:1060px;margin:0 auto;padding:32px 24px 100px;width:100%">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:24px">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#0E7180;margin-bottom:9px">GESTION</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.3px;margin:0 0 6px;color:#16202B">Gestion des fiches</h1>
+        <p style="color:#5B6776;font-size:15px;margin:0">10 officielles · 2 personnelles — importez, exportez ou supprimez.</p>
+      </div>
+      <div style="display:flex;gap:9px">
+        <button style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #D3DAE1;color:#3B4654;padding:10px 15px;border-radius:10px;font-weight:600;font-size:13.5px;cursor:pointer;font-family:inherit" style-hover="border-color:#0E7180;color:#0E7180"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path></svg>Importer JSON</button>
+        <button style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #D3DAE1;color:#3B4654;padding:10px 15px;border-radius:10px;font-weight:600;font-size:13.5px;cursor:pointer;font-family:inherit" style-hover="border-color:#0E7180;color:#0E7180"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg>Tout exporter</button>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid #EEF1F4">
+        <span style="display:flex;flex-shrink:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg></span>
+        <div style="flex:1;min-width:0"><div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Hémorragie externe grave</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA5B1;margin-top:2px">secours-personne</div></div>
+        <span style="display:inline-block;padding:3px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)">CRITIQUE</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6B7785;background:#F2F4F7;padding:3px 9px;border-radius:999px"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM16 11V7a4 4 0 00-8 0v4"></path></svg>Officielle</span>
+        <div style="display:flex;gap:4px">
+          <button title="Exporter" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg></button>
+          <button title="Dupliquer pour modifier" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path stroke-linecap="round" stroke-linejoin="round" d="M5 15V5a2 2 0 012-2h10"></path></svg></button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid #EEF1F4">
+        <span style="display:flex;flex-shrink:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg></span>
+        <div style="flex:1;min-width:0"><div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Malaise cardiaque</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA5B1;margin-top:2px">secours-personne</div></div>
+        <span style="display:inline-block;padding:3px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)">CRITIQUE</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6B7785;background:#F2F4F7;padding:3px 9px;border-radius:999px"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM16 11V7a4 4 0 00-8 0v4"></path></svg>Officielle</span>
+        <div style="display:flex;gap:4px">
+          <button title="Exporter" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg></button>
+          <button title="Dupliquer pour modifier" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path stroke-linecap="round" stroke-linejoin="round" d="M5 15V5a2 2 0 012-2h10"></path></svg></button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid #EEF1F4">
+        <span style="display:flex;flex-shrink:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5l8 14H4l8-14z"></path><path stroke-linecap="round" d="M12 11v3.5M12 17h.01"></path></svg></span>
+        <div style="flex:1;min-width:0"><div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Alerte chimique NRBC</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA5B1;margin-top:2px">nrbc</div></div>
+        <span style="display:inline-block;padding:3px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)">CRITIQUE</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6B7785;background:#F2F4F7;padding:3px 9px;border-radius:999px"><svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zM16 11V7a4 4 0 00-8 0v4"></path></svg>Officielle</span>
+        <div style="display:flex;gap:4px">
+          <button title="Exporter" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg></button>
+          <button title="Dupliquer pour modifier" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path stroke-linecap="round" stroke-linejoin="round" d="M5 15V5a2 2 0 012-2h10"></path></svg></button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid #EEF1F4">
+        <span style="display:flex;flex-shrink:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="2.3"></circle><circle cx="16" cy="10" r="2"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M4 18c0-2.5 2-4.3 5-4.3s5 1.8 5 4.3M14 18c0-2 1.5-3.5 4-3.5"></path></svg></span>
+        <div style="flex:1;min-width:0"><div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Procédure interne — évacuation site</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA5B1;margin-top:2px">evenementiel-foule</div></div>
+        <span style="display:inline-block;padding:3px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:#FBF1DD;color:#B5740A;border:1px solid rgba(181,116,10,0.2)">ÉLEVÉ</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#0A5963;background:#E6F2F3;padding:3px 9px;border-radius:999px">Perso</span>
+        <div style="display:flex;gap:4px">
+          <button title="Exporter" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg></button>
+          <button title="Modifier" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4z"></path></svg></button>
+          <button title="Supprimer" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#FCEBEE;color:#C8102E"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-1 13a2 2 0 01-2 2H8a2 2 0 01-2-2L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M4 7h16"></path></svg></button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:15px 20px">
+        <span style="display:flex;flex-shrink:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20V11l5 3V11l5 3V7l8 5v8H3z"></path></svg></span>
+        <div style="flex:1;min-width:0"><div style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Trousse de secours — atelier</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AA5B1;margin-top:2px">professionnel-industriel</div></div>
+        <span style="display:inline-block;padding:3px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:#E7F4EC;color:#1E8A5A;border:1px solid rgba(30,138,90,0.2)">STANDARD</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#0A5963;background:#E6F2F3;padding:3px 9px;border-radius:999px">Perso</span>
+        <div style="display:flex;gap:4px">
+          <button title="Exporter" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg></button>
+          <button title="Modifier" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F0F2F5;color:#0E7180"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4z"></path></svg></button>
+          <button title="Supprimer" style="width:34px;height:34px;border-radius:8px;border:none;background:transparent;color:#8A95A3;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#FCEBEE;color:#C8102E"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-1 13a2 2 0 01-2 2H8a2 2 0 01-2-2L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M4 7h16"></path></svg></button>
+        </div>
+      </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ░░ ÉCRAN : PARAMÈTRES ░░ -->
+  <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ true }}">
+  <main style="max-width:760px;margin:0 auto;padding:32px 24px 100px;width:100%">
+    <div style="margin-bottom:26px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:#0E7180;margin-bottom:9px">PARAMÈTRES</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.3px;margin:0 0 6px;color:#16202B">Paramètres</h1>
+      <p style="color:#5B6776;font-size:15px;margin:0">Clés API pour la génération IA et import de fiches.</p>
+    </div>
+
+    <div style="margin-bottom:30px">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:#16202B;margin:0 0 4px">Clés API</h2>
+      <p style="color:#8A95A3;font-size:13px;margin:0 0 16px">Stockées uniquement sur cet appareil, jamais transmises à un serveur tiers.</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:18px 20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#C2755A"></span><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Anthropic Claude</span></div>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#1E8A5A;background:#E7F4EC;padding:4px 10px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#1E8A5A"></span>Configurée</span>
+          </div>
+          <div style="display:flex;gap:10px">
+            <input type="password" value="sk-ant-xxxxxxxxxxxxxxxx" style="flex:1;padding:11px 14px;border:1px solid #D3DAE1;border-radius:9px;background:#F8FAFB;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#3B4654;outline:none" style-focus="border-color:#0E7180;background:#fff">
+            <div style="position:relative;width:200px">
+              <select style="appearance:none;width:100%;padding:11px 36px 11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#fff;font-size:13px;color:#16202B;font-family:inherit;cursor:pointer;outline:none"><option>Claude Sonnet</option><option>Claude Opus</option><option>Claude Haiku</option></select>
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:18px 20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#2F8F6B"></span><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">OpenAI GPT</span></div>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B5740A;background:#FBF1DD;padding:4px 10px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#B5740A"></span>Non configurée</span>
+          </div>
+          <div style="display:flex;gap:10px">
+            <input type="password" placeholder="sk-proj-…" style="flex:1;padding:11px 14px;border:1px solid #D3DAE1;border-radius:9px;background:#F8FAFB;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#3B4654;outline:none" style-focus="border-color:#0E7180;background:#fff">
+            <div style="position:relative;width:200px">
+              <select style="appearance:none;width:100%;padding:11px 36px 11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#fff;font-size:13px;color:#16202B;font-family:inherit;cursor:pointer;outline:none"><option>GPT-4o</option><option>GPT-4o Mini</option><option>o3-mini</option></select>
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:18px 20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#6E73C0"></span><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">OpenRouter</span></div>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B5740A;background:#FBF1DD;padding:4px 10px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#B5740A"></span>Non configurée</span>
+          </div>
+          <div style="display:flex;gap:10px">
+            <input type="password" placeholder="sk-or-…" style="flex:1;padding:11px 14px;border:1px solid #D3DAE1;border-radius:9px;background:#F8FAFB;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#3B4654;outline:none" style-focus="border-color:#0E7180;background:#fff">
+            <div style="position:relative;width:200px">
+              <select style="appearance:none;width:100%;padding:11px 36px 11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#fff;font-size:13px;color:#16202B;font-family:inherit;cursor:pointer;outline:none"><option>Liste dynamique…</option></select>
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:#16202B;margin:0 0 4px">Import de fiches</h2>
+      <p style="color:#8A95A3;font-size:13px;margin:0 0 16px">Glissez un fichier .json (une fiche ou un tableau de fiches).</p>
+      <div style="border:1.5px dashed #C9D2DA;border-radius:14px;padding:36px 24px;text-align:center;background:#fff" style-hover="border-color:#0E7180;background:#F8FBFB">
+        <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="#0E7180" stroke-width="1.6" style="margin:0 auto 12px;display:block"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5 5 5M12 5v12"></path></svg>
+        <div style="color:#3B4654;font-size:15px;font-weight:500;margin-bottom:4px">Glisser-déposer un fichier JSON</div>
+        <div style="color:#9AA5B1;font-size:13px;margin-bottom:16px">ou</div>
+        <button style="display:inline-flex;align-items:center;gap:7px;background:#1E2A37;color:#fff;padding:10px 18px;border-radius:10px;font-weight:600;font-size:14px;border:none;cursor:pointer;font-family:inherit" style-hover="background:#0f1822">Choisir un fichier</button>
+      </div>
+    </div>
+  </main>
+  </sc-if>
+  <!--SCREENS-->
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { screen: 'home', cat: null, q: '' }
+
+  renderVals() {
+    const SEV = {
+      standard: { label: 'STANDARD', color: '#1E8A5A', bg: '#E7F4EC' },
+      'élevé':  { label: 'ÉLEVÉ',    color: '#B5740A', bg: '#FBF1DD' },
+      critique: { label: 'CRITIQUE', color: '#C8102E', bg: '#FCEBEE' },
+    }
+    const CATS = [
+      { id: 'secours-personne',         icone: '🩺', label: 'Secours à la personne', color: '#C2415A' },
+      { id: 'incendie-evacuation',      icone: '🔥', label: 'Incendie & évacuation', color: '#D2762E' },
+      { id: 'chimique',                 icone: '☣️', label: 'Risque chimique',       color: '#7A5AA6' },
+      { id: 'nrbc',                     icone: '☢️', label: 'NRBC',                  color: '#B08A1E' },
+      { id: 'environnement-exterieur',  icone: '🌍', label: 'Environnement',         color: '#2F8F6B' },
+      { id: 'professionnel-industriel', icone: '🏭', label: 'Industriel',            color: '#B06A3A' },
+      { id: 'evenementiel-foule',       icone: '👥', label: 'Foule',                 color: '#3A77B0' },
+      { id: 'pediatrie',                icone: '👶', label: 'Pédiatrie',             color: '#C25C92' },
+      { id: 'psychologique',            icone: '🤯', label: 'Psychologique',         color: '#6E73C0' },
+    ]
+    const FICHES = [
+      { id: 'hemorragie',   catId: 'secours-personne',    sev: 'critique', titre: 'Hémorragie externe grave', objectif: "Arrêter une hémorragie externe pour prévenir le choc hémorragique et le décès par perte de sang.", tags: ['compression', 'garrot', 'plaie'] },
+      { id: 'malaise',      catId: 'secours-personne',    sev: 'critique', titre: 'Malaise cardiaque',        objectif: "Reconnaître un arrêt cardiaque et engager la chaîne de survie sans délai.", tags: ['RCP', 'défibrillateur', '15'] },
+      { id: 'brulure',      catId: 'secours-personne',    sev: 'élevé',    titre: 'Brûlure thermique',        objectif: "Refroidir la brûlure, limiter son extension et prévenir l'infection.", tags: ['refroidir', 'eau', '15 min'] },
+      { id: 'incendie',     catId: 'incendie-evacuation', sev: 'élevé',    titre: 'Conduite à tenir — incendie', objectif: "Donner l'alerte, évacuer et limiter la propagation sans se mettre en danger.", tags: ['évacuation', 'alerte', 'fumée'] },
+      { id: 'fuite-gaz',    catId: 'chimique',            sev: 'élevé',    titre: 'Fuite de gaz',             objectif: "Couper, ventiler, évacuer et alerter sans provoquer d'étincelle.", tags: ['ventiler', 'couper', '18'] },
+      { id: 'nrbc-chim',    catId: 'nrbc',                sev: 'critique', titre: 'Alerte chimique NRBC',     objectif: "Se protéger, baliser les zones et n'intervenir qu'avec des EPI adaptés.", tags: ['EPI', 'zonage', 'décontamination'] },
+    ]
+
+    const IC = (id) => {
+      const e = React.createElement
+      const p = (d) => e('path', { d, fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' })
+      const c = (cx, cy, r) => e('circle', { cx, cy, r, fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 })
+      const K = {
+        'secours-personne': [p('M3 12h4l2-5 3 10 2-5h7')],
+        'incendie-evacuation': [p('M12 4s5 5.5 5 9a5 5 0 11-10 0c0-1 .4-2 1-3 .3 1.2 1.2 2 2 2 0-2-.3-5 2-8z')],
+        'chimique': [p('M12 4s5 5.5 5 9a5 5 0 11-10 0c0-3.5 5-9 5-9z')],
+        'nrbc': [p('M12 5l8 14H4l8-14z'), p('M12 11v3.5'), p('M12 17h.01')],
+        'environnement-exterieur': [p('M6 18c0-7 5-12 12-12 0 7-5 12-12 12z'), p('M6 18C9 14 13 12 17 11')],
+        'professionnel-industriel': [p('M3 20V11l5 3V11l5 3V7l8 5v8H3z')],
+        'evenementiel-foule': [c(9, 9, 2.3), c(16, 10, 2), p('M4 18c0-2.5 2-4.3 5-4.3s5 1.8 5 4.3'), p('M14 18c0-2 1.5-3.5 4-3.5')],
+        'pediatrie': [p('M12 19s-6-4.2-6-8.5A3.5 3.5 0 0112 7a3.5 3.5 0 016 3.5C18 14.8 12 19 12 19z')],
+        'psychologique': [c(12, 10, 5.5), p('M9.5 10a2.5 2.5 0 015 0'), p('M12 15.5V19')],
+      }
+      return e('svg', { width: 15, height: 15, viewBox: '0 0 24 24', style: { display: 'block' } }, ...(K[id] || []))
+    }
+    const dec = (f) => {
+      const c = CATS.find(x => x.id === f.catId)
+      const s = SEV[f.sev]
+      return {
+        ...f, catColor: c.color, catLabel: c.label, picto: IC(f.catId),
+        sevLabel: s.label, sevColor: s.color, sevBg: s.bg,
+        sevStyle: `display:inline-block;padding:4px 9px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:0.5px;white-space:nowrap;background:${s.bg};color:${s.color};border:1px solid ${s.color}33`,
+      }
+    }
+
+    const cat = this.state.cat
+    const q = this.state.q.trim().toLowerCase()
+    let shown = FICHES
+    if (cat) shown = shown.filter(f => f.catId === cat)
+    if (q) shown = shown.filter(f => (f.titre + ' ' + f.objectif + ' ' + f.tags.join(' ')).toLowerCase().includes(q))
+
+    const chipBase = "display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;font-size:13px;font-weight:600;font-family:'IBM Plex Sans',sans-serif;cursor:pointer;min-height:42px;"
+    const chips = CATS.map(c => ({
+      ...c,
+      picto: IC(c.id),
+      onClick: () => this.setState(s => ({ cat: s.cat === c.id ? null : c.id })),
+      style: (cat === c.id)
+        ? chipBase + `background:${c.color}14;border:1.5px solid ${c.color};color:${c.color}`
+        : chipBase + `background:#FFFFFF;border:1px solid #E3E8ED;color:#5B6776`,
+    }))
+
+    const screen = this.state.screen
+    const go = (k) => () => this.setState({ screen: k })
+    const navLink = (k) => screen === k
+      ? 'padding:8px 13px;border-radius:9px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;background:#E6F2F3;color:#0A5963;font-family:inherit'
+      : 'padding:8px 13px;border-radius:9px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:none;background:transparent;color:#5B6776;font-family:inherit'
+    const tabBase = "padding:7px 14px;border-radius:7px;border:none;cursor:pointer;font-size:13px;font-family:'Archivo',sans-serif;"
+    const tab = (k) => screen === k
+      ? tabBase + 'background:#F4F6F8;color:#16202B;font-weight:600'
+      : tabBase + 'background:transparent;color:#90A0B0;font-weight:500'
+
+    const newMode = this.state.newMode || 'ia'
+    const segBase = "flex:1;padding:11px;border-radius:9px;border:none;cursor:pointer;font-size:14px;font-weight:600;font-family:'Archivo',sans-serif;transition:all .12s;"
+    const seg = (on) => on
+      ? segBase + 'background:#fff;color:#16202B;box-shadow:0 1px 4px rgba(20,32,43,0.12)'
+      : segBase + 'background:transparent;color:#7A8593'
+
+    return {
+      isIA: newMode === 'ia', isManual: newMode === 'manual',
+      setIA: () => this.setState({ newMode: 'ia' }), setManual: () => this.setState({ newMode: 'manual' }),
+      segIA: seg(newMode === 'ia'), segManual: seg(newMode === 'manual'),
+      screen,
+      isHome: screen === 'home', isFiche: screen === 'fiche', isNew: screen === 'new', isGestion: screen === 'gestion', isSettings: screen === 'settings',
+      navHome: go('home'), navFiche: go('fiche'), navNew: go('new'), navGestion: go('gestion'), navSettings: go('settings'),
+      linkHome: navLink('home'), linkGestion: navLink('gestion'),
+      tabHome: tab('home'), tabFiche: tab('fiche'), tabNew: tab('new'), tabGestion: tab('gestion'), tabSettings: tab('settings'),
+      cats: chips, hasCat: !!cat, clearCat: () => this.setState({ cat: null }),
+      fiches: shown.map(dec), count: shown.length,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+    }
+  }
+}
+</script>
+</body>
+</html>

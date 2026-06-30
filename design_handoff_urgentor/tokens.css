@@ -1,0 +1,176 @@
+/* ============================================================
+   URGENTOR — Design Tokens
+   Theme « Clair » (light) + « Nuit » (dark)
+   Single source of truth for the redesign.
+   Apply dark theme by setting [data-theme="dark"] on <html> or a root container.
+   ============================================================ */
+
+:root {
+  /* ---- Typography ---- */
+  --font-display: 'Archivo', sans-serif;        /* headings, titles, logo, step numbers */
+  --font-body:    'IBM Plex Sans', sans-serif;  /* body copy, UI controls */
+  --font-mono:    'IBM Plex Mono', monospace;   /* eyebrows, tags, phone numbers, micro-labels */
+
+  /* Type scale (desktop) — size / weight / tracking
+     display-xl  fiche H1 ......... 32px / 800 / -0.5px / lh 1.12
+     display-lg  page H1 .......... 30px / 700 / -0.3px
+     title       card H3 .......... 18px / 700
+     section     section H2 ....... 15-16px / 700-800 / UPPERCASE / 0.3-0.4px
+     body        ................. 15-16px / 400-500 / lh 1.55-1.6
+     body-sm     ................. 13.5-14px
+     eyebrow     mono ............ 11px / 500 / 2px tracking / UPPERCASE
+     tag         mono ............ 11.5px / 400-500
+     micro       mono ............ 10-10.5px / 1px tracking / UPPERCASE  */
+
+  /* ---- Radii ---- */
+  --radius-pill:   999px;
+  --radius-card:   16px;   /* large surface cards */
+  --radius-card-sm:14px;   /* list rows, settings cards */
+  --radius-control:10px;   /* buttons, inputs, selects */
+  --radius-input:  12px;   /* search field */
+  --radius-badge:  9px;    /* icon chips / square badges */
+  --radius-inner:  8px;    /* nested panels, small buttons */
+
+  /* ---- Shadows ---- */
+  --shadow-card-hover: 0 10px 26px rgba(20, 32, 43, 0.09);
+  --shadow-logo:       0 3px 8px rgba(200, 16, 46, 0.26);
+  --shadow-seg-active: 0 1px 4px rgba(20, 32, 43, 0.12);
+  --shadow-fab:        0 4px 12px rgba(200, 16, 46, 0.32); /* mobile floating add button */
+
+  /* ---- Focus ring (teal) ---- */
+  --focus-ring: 0 0 0 3px rgba(14, 113, 128, 0.14);
+
+  /* ============================================================
+     LIGHT THEME (« Clair »)
+     ============================================================ */
+
+  /* Surfaces */
+  --bg-page:        #E7EAEE;  /* outermost canvas (behind app) */
+  --bg-app:         #F4F6F8;  /* app background */
+  --surface:        #FFFFFF;  /* cards, nav, panels */
+  --surface-subtle: #FAFBFC;  /* nested fills, "SI" cells */
+  --surface-input:  #F8FAFB;  /* prefilled inputs */
+
+  /* Borders & dividers */
+  --border:         #E3E8ED;  /* card / surface border */
+  --border-strong:  #D3DAE1;  /* input border */
+  --border-hover:   #CCD5DD;  /* card hover border */
+  --divider:        #EEF1F4;  /* list row dividers */
+  --divider-soft:   #E9EDF1;
+
+  /* Text */
+  --text:           #16202B;  /* primary / headings */
+  --text-body:      #3B4654;  /* paragraph body */
+  --text-secondary: #5B6776;  /* sub-labels, descriptions */
+  --text-muted:     #8A95A3;  /* captions, placeholders, icons */
+  --text-faint:     #9AA5B1;  /* hints, helper text */
+
+  /* Brand */
+  --brand:          #C8102E;  /* URGENTOR red — logo, critical, FAB */
+  --ink:            #1E2A37;  /* dark navy — primary buttons, phone tiles */
+  --ink-hover:      #0F1822;
+
+  /* Accent — teal */
+  --accent:         #0E7180;  /* links, active eyebrow, focus */
+  --accent-deep:    #0A5963;  /* active nav text */
+  --accent-soft:    #E6F2F3;  /* active nav bg, "Perso" pill */
+
+  /* Neutral chip */
+  --chip-bg:        #F2F4F7;
+  --chip-text:      #6B7785;
+
+  /* Semantic */
+  --success:        #1E8A5A;
+  --success-bg:     #E7F4EC;
+  --warning:        #B5740A;
+  --warning-bg:     #FBF1DD;
+  --danger:         #C8102E;
+  --danger-bg:      #FCEBEE;
+
+  /* Severity (badge color / background) */
+  --sev-standard:    #1E8A5A;  --sev-standard-bg: #E7F4EC;
+  --sev-eleve:       #B5740A;  --sev-eleve-bg:    #FBF1DD;
+  --sev-critique:    #C8102E;  --sev-critique-bg: #FCEBEE;
+  /* Severity badge border = color at 20% alpha, e.g. rgba(200,16,46,0.2) */
+
+  /* Contextual panels (fiche détaillée) */
+  --panel-action-bg:   #FFF5F6;  --panel-action-border:  #F1C7CF;  /* "Actions immédiates" */
+  --panel-warn-bg:     #FFFBF2;  --panel-warn-border:    #F0E2C4;  /* "Si les secours tardent" */
+  --panel-warn-soft:   #FDF8EE;                                    /* safety callout fill */
+  --fiche-accent-bar:  #C2415A;                                    /* 5px top bar on fiche header */
+}
+
+/* ============================================================
+   NIGHT THEME (« Nuit »)
+   ============================================================ */
+[data-theme="dark"] {
+  /* Surfaces */
+  --bg-page:        #0A0E13;
+  --bg-app:         #0F141A;  /* app background */
+  --surface:        #1A222B;  /* cards, panels */
+  --surface-subtle: #232D38;  /* chips, nested fills */
+  --surface-input:  #0F141A;  /* inputs */
+  --surface-header: #141A20;  /* nav / header bar */
+  --surface-deep:   #0A0E13;  /* phone-number tiles */
+
+  /* Borders & dividers */
+  --border:         #2A343E;
+  --border-strong:  #2A343E;
+  --border-hover:   #3A4654;
+  --divider:        #2A343E;
+  --divider-soft:   #2A343E;
+
+  /* Text */
+  --text:           #ECEFF2;
+  --text-body:      #B7C2CD;
+  --text-secondary: #9AA7B4;
+  --text-muted:     #8794A1;
+  --text-faint:     #6B7884;
+
+  /* Brand */
+  --brand:          #E23E54;  /* brightened red for dark bg */
+  --ink:            #232D38;  /* dark surface buttons */
+  --ink-hover:      #2A343E;
+
+  /* Accent — teal (brightened) */
+  --accent:         #3FB6C4;
+  --accent-deep:    #3FB6C4;
+  --accent-soft:    rgba(63, 182, 196, 0.13);
+
+  /* Neutral chip */
+  --chip-bg:        #232D38;
+  --chip-text:      #9AA7B4;
+
+  /* Semantic */
+  --success:        #46C98A;  --success-bg: rgba(70, 201, 138, 0.13);
+  --warning:        #E0A23A;  --warning-bg: rgba(224, 162, 58, 0.14);
+  --danger:         #FF6B7D;  --danger-bg:  rgba(255, 107, 125, 0.13);
+
+  /* Severity */
+  --sev-standard:   #46C98A;  --sev-standard-bg: rgba(70, 201, 138, 0.13);
+  --sev-eleve:      #E0A23A;  --sev-eleve-bg:    rgba(224, 162, 58, 0.14);
+  --sev-critique:   #FF6B7D;  --sev-critique-bg: rgba(255, 107, 125, 0.13);
+  /* Severity badge border in dark = color at ~30% alpha, e.g. rgba(255,107,125,0.3) */
+
+  /* Contextual panels */
+  --panel-action-bg:   rgba(255, 107, 125, 0.07);  --panel-action-border: rgba(255, 107, 125, 0.28);
+  --panel-warn-bg:     rgba(224, 162, 58, 0.07);   --panel-warn-border:   rgba(224, 162, 58, 0.28);
+  --fiche-accent-bar:  #E23E54;
+
+  /* Shadows tuned for dark */
+  --shadow-logo: 0 2px 8px rgba(226, 62, 84, 0.40);
+  --shadow-fab:  0 4px 14px rgba(226, 62, 84, 0.45);
+}
+
+/* ---- Category accent colors (theme-independent; used as soft tints) ---- */
+:root {
+  --cat-secours-personne:        #C2415A;
+  --cat-incendie-evacuation:     #D2762E;
+  --cat-chimique:                #7A5AA6;
+  --cat-nrbc:                    #B08A1E;
+  --cat-environnement-exterieur: #2F8F6B;
+  --cat-professionnel-industriel:#B06A3A;
+  --cat-evenementiel-foule:      #3A77B0;
+  --cat-pediatrie:               #C25C92;
+  --cat-psychologique:           #6E73C0;
+}

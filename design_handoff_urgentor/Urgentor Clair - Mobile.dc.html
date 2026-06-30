@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    ::-webkit-scrollbar{width:0;height:0}
+  </style>
+</helmet>
+
+<!-- ░░░░ RANGÉE CLAIR ░░░░ -->
+
+<!-- FRAME 1 — BIBLIOTHÈQUE -->
+<div style="position:absolute;left:40px;top:60px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">01 · BIBLIOTHÈQUE</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+    <div style="background:#F4F6F8;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#16202B">
+      <div style="padding:50px 14px 11px;background:#fff;border-bottom:1px solid #E3E8ED;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="width:30px;height:30px;border-radius:8px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(200,16,46,0.26)"><svg width="15" height="15" viewBox="0 0 17 17"><path d="M6.8 1h3.4v4.8H15v3.4h-4.8V14H6.8V9.2H2V5.8h4.8z" fill="#fff"></path></svg></span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.3px;color:#16202B">URGENTOR</span>
+        </div>
+        <span style="width:34px;height:34px;border-radius:9px;color:#5B6776;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></span>
+      </div>
+      <div style="flex:1;padding:16px 14px 30px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#0E7180;margin-bottom:7px">BIBLIOTHÈQUE</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.3px;margin:0 0 4px;color:#16202B">Fiches de premiers secours</h1>
+        <p style="color:#5B6776;font-size:13px;margin:0">6 fiches · disponibles hors ligne</p>
+        <div style="position:relative;margin:14px 0 4px">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;left:14px;top:50%;transform:translateY(-50%)"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input placeholder="Rechercher — brûlure, NRBC…" style="width:100%;padding:13px 14px 13px 42px;border:1px solid #D3DAE1;border-radius:12px;background:#fff;font-size:15px;color:#16202B;font-family:inherit;outline:none">
+        </div>
+        <div style="display:flex;gap:7px;overflow-x:auto;margin:14px 0 4px;padding-bottom:3px">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#16202B;border:1.5px solid #16202B;color:#fff"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg>Secours</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#fff;border:1px solid #E3E8ED;color:#5B6776"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4s5 5.5 5 9a5 5 0 11-10 0c0-1 .4-2 1-3 .3 1.2 1.2 2 2 2 0-2-.3-5 2-8z"></path></svg>Incendie</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#fff;border:1px solid #E3E8ED;color:#5B6776"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4s5 5.5 5 9a5 5 0 11-10 0c0-3.5 5-9 5-9z"></path></svg>Chimique</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#fff;border:1px solid #E3E8ED;color:#5B6776"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5l8 14H4l8-14z"></path><path stroke-linecap="round" d="M12 11v3.5M12 17h.01"></path></svg>NRBC</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+          <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="display:flex;align-items:center;gap:7px;min-width:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.5px;color:#8A95A3;text-transform:uppercase">Secours à la personne</span></div>
+              <span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)">CRITIQUE</span>
+            </div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.2;margin:0;color:#16202B">Hémorragie externe grave</h3>
+            <p style="color:#5B6776;font-size:13px;line-height:1.5;margin:0">Arrêter une hémorragie externe pour prévenir le choc hémorragique.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="background:#F2F4F7;color:#6B7785;font-size:11px;padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace">garrot</span><span style="background:#F2F4F7;color:#6B7785;font-size:11px;padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace">compression</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="display:flex;align-items:center;gap:7px;min-width:0;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.5px;color:#8A95A3;text-transform:uppercase">Secours à la personne</span></div>
+              <span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)">CRITIQUE</span>
+            </div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.2;margin:0;color:#16202B">Malaise cardiaque</h3>
+            <p style="color:#5B6776;font-size:13px;line-height:1.5;margin:0">Reconnaître un arrêt cardiaque et engager la chaîne de survie.</p>
+          </div>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #E3E8ED;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#0E7180;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,16,46,0.32)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- FRAME 2 — FICHE -->
+<div style="position:absolute;left:502px;top:60px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">02 · FICHE DÉTAILLÉE</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+    <div style="background:#F4F6F8;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#16202B">
+      <div style="padding:50px 14px 11px;background:#fff;border-bottom:1px solid #E3E8ED;display:flex;align-items:center;gap:10px">
+        <span style="width:34px;height:34px;border-radius:9px;color:#5B6776;display:flex;align-items:center;justify-content:center;margin-left:-6px"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Bibliothèque</span>
+      </div>
+      <div style="flex:1;padding:14px 14px 30px;display:flex;flex-direction:column;gap:13px">
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:16px;padding:17px 18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:7px;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase">Secours personne</span></div>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)"><span style="width:6px;height:6px;border-radius:50%;background:#C8102E"></span>CRITIQUE</span>
+          </div>
+          <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-0.5px;margin:0;color:#16202B">Hémorragie externe grave</h1>
+          <p style="color:#3B4654;font-size:14.5px;line-height:1.55;margin:10px 0 0">Arrêter une hémorragie externe grave pour prévenir le choc hémorragique et le décès.</p>
+        </div>
+        <div style="background:#FFF5F6;border:1px solid #F1C7CF;border-radius:16px;padding:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:9px"><span style="width:30px;height:30px;border-radius:8px;background:#C8102E;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M13 2L3 14h7l-1 8 10-12h-7z"></path></svg></span><h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.3px;margin:0;color:#C8102E;text-transform:uppercase">Actions immédiates</h2></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#C8102E;background:#FCE0E5;padding:4px 8px;border-radius:999px;white-space:nowrap">≤ 3 MIN</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:27px;height:27px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="color:#16202B;font-size:15px;font-weight:600;line-height:1.35">Mettre des gants ou une protection</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:27px;height:27px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="color:#16202B;font-size:15px;font-weight:600;line-height:1.35">Comprimer la plaie fort à deux mains</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:27px;height:27px;border-radius:50%;background:#C8102E;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span style="color:#16202B;font-size:15px;font-weight:600;line-height:1.35">Alerter le 15 / 112</span></div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:16px;padding:18px">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px"><span style="width:30px;height:30px;border-radius:8px;background:#EEF1F4;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1E2A37" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3l2 5-2.5 1.5a11 11 0 005 5L17 12l5 2v3a2 2 0 01-2 2A16 16 0 013 5z"></path></svg></span><h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.3px;margin:0;color:#16202B;text-transform:uppercase">Script d'alerte</h2></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+            <div style="background:#1E2A37;border-radius:10px;padding:11px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#fff;line-height:1">15</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#8FA0B0;margin-top:4px">SAMU</div></div>
+            <div style="background:#1E2A37;border-radius:10px;padding:11px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#fff;line-height:1">18</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#8FA0B0;margin-top:4px">POMPIERS</div></div>
+            <div style="background:#1E2A37;border-radius:10px;padding:11px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#fff;line-height:1">112</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#8FA0B0;margin-top:4px">EUROPE</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #E3E8ED;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#0E7180;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,16,46,0.32)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- FRAME 3 — NOUVELLE FICHE -->
+<div style="position:absolute;left:964px;top:60px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">03 · NOUVELLE FICHE</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+    <div style="background:#F4F6F8;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#16202B">
+      <div style="padding:50px 14px 11px;background:#fff;border-bottom:1px solid #E3E8ED;display:flex;align-items:center;gap:10px">
+        <span style="width:34px;height:34px;border-radius:9px;color:#5B6776;display:flex;align-items:center;justify-content:center;margin-left:-6px"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Retour</span>
+      </div>
+      <div style="flex:1;padding:18px 14px 30px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#0E7180;margin-bottom:7px">CRÉATION</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.3px;margin:0 0 4px;color:#16202B">Nouvelle fiche</h1>
+        <p style="color:#5B6776;font-size:13px;margin:0 0 18px">Générez par IA ou saisissez manuellement.</p>
+        <div style="display:flex;gap:4px;background:#EBEEF2;padding:4px;border-radius:11px;margin-bottom:18px">
+          <span style="flex:1;text-align:center;padding:10px;border-radius:9px;font-size:13.5px;font-weight:600;font-family:'Archivo',sans-serif;background:#fff;color:#16202B;box-shadow:0 1px 4px rgba(20,32,43,0.12)">✦ Génération IA</span>
+          <span style="flex:1;text-align:center;padding:10px;border-radius:9px;font-size:13.5px;font-weight:600;font-family:'Archivo',sans-serif;background:transparent;color:#7A8593">Manuelle</span>
+        </div>
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:16px;padding:18px">
+          <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:7px">Titre de la fiche</label>
+          <input placeholder="Ex. Étouffement adulte" style="width:100%;padding:12px 14px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:15px;color:#16202B;font-family:inherit;outline:none;margin-bottom:16px">
+          <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:7px">Catégorie</label>
+          <div style="position:relative;margin-bottom:16px"><select style="appearance:none;width:100%;padding:12px 36px 12px 14px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:14px;color:#16202B;font-family:inherit;outline:none"><option>Secours à la personne</option></select><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></div>
+          <label style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8A95A3;text-transform:uppercase;margin-bottom:7px">Modèle IA</label>
+          <div style="position:relative;margin-bottom:18px"><select style="appearance:none;width:100%;padding:12px 36px 12px 14px;border:1px solid #D3DAE1;border-radius:10px;background:#fff;font-size:14px;color:#16202B;font-family:inherit;outline:none"><option>Anthropic · Claude Sonnet</option></select><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></div>
+          <button style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#1E2A37;color:#fff;padding:14px;border-radius:11px;font-weight:600;font-size:15px;border:none;font-family:inherit">✦ Générer la fiche</button>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #E3E8ED;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,16,46,0.32)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- FRAME 4 — GESTION -->
+<div style="position:absolute;left:1426px;top:60px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">04 · GESTION</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+    <div style="background:#F4F6F8;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#16202B">
+      <div style="padding:50px 14px 11px;background:#fff;border-bottom:1px solid #E3E8ED;display:flex;align-items:center;gap:10px">
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.3px;color:#16202B;padding-left:4px">Gestion</span>
+      </div>
+      <div style="flex:1;padding:18px 14px 30px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#0E7180;margin-bottom:7px">GESTION</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.3px;margin:0 0 4px;color:#16202B">Gestion des fiches</h1>
+        <p style="color:#5B6776;font-size:13px;margin:0 0 16px">10 officielles · 2 personnelles</p>
+        <div style="display:flex;gap:9px;margin-bottom:18px">
+          <button style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:#fff;border:1px solid #D3DAE1;color:#3B4654;padding:11px;border-radius:10px;font-weight:600;font-size:13px;font-family:inherit"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"></path></svg>Importer</button>
+          <button style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:#fff;border:1px solid #D3DAE1;color:#3B4654;padding:11px;border-radius:10px;font-weight:600;font-size:13px;font-family:inherit"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg>Exporter</button>
+        </div>
+        <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #EEF1F4">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Hémorragie externe grave</span></div>
+            <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:#FCEBEE;color:#C8102E;border:1px solid rgba(200,16,46,0.2)">CRITIQUE</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6B7785;background:#F2F4F7;padding:3px 8px;border-radius:999px">Officielle</span><span style="flex:1"></span><span style="color:#8A95A3"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 14l5-5 5 5M12 9v12"></path></svg></span><span style="color:#8A95A3"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path stroke-linecap="round" stroke-linejoin="round" d="M5 15V5a2 2 0 012-2h10"></path></svg></span></div>
+          </div>
+          <div style="padding:14px 16px;border-bottom:1px solid #EEF1F4">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="2.3"></circle><circle cx="16" cy="10" r="2"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M4 18c0-2.5 2-4.3 5-4.3s5 1.8 5 4.3M14 18c0-2 1.5-3.5 4-3.5"></path></svg><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Procédure interne — site</span></div>
+            <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:#FBF1DD;color:#B5740A;border:1px solid rgba(181,116,10,0.2)">ÉLEVÉ</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#0A5963;background:#E6F2F3;padding:3px 8px;border-radius:999px">Perso</span><span style="flex:1"></span><span style="color:#8A95A3"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4z"></path></svg></span><span style="color:#8A95A3"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-1 13a2 2 0 01-2 2H8a2 2 0 01-2-2L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M4 7h16"></path></svg></span></div>
+          </div>
+          <div style="padding:14px 16px">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;color:#8A95A3"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20V11l5 3V11l5 3V7l8 5v8H3z"></path></svg><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#16202B">Trousse — atelier</span></div>
+            <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:#E7F4EC;color:#1E8A5A;border:1px solid rgba(30,138,90,0.2)">STANDARD</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#0A5963;background:#E6F2F3;padding:3px 8px;border-radius:999px">Perso</span><span style="flex:1"></span><span style="color:#8A95A3"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4z"></path></svg></span><span style="color:#8A95A3"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-1 13a2 2 0 01-2 2H8a2 2 0 01-2-2L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M4 7h16"></path></svg></span></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #E3E8ED;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#0E7180;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,16,46,0.32)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- FRAME 5 — PARAMÈTRES -->
+<div style="position:absolute;left:1888px;top:60px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">05 · PARAMÈTRES</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+    <div style="background:#F4F6F8;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#16202B">
+      <div style="padding:50px 14px 11px;background:#fff;border-bottom:1px solid #E3E8ED;display:flex;align-items:center;gap:10px">
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.3px;color:#16202B;padding-left:4px">Réglages</span>
+      </div>
+      <div style="flex:1;padding:18px 14px 30px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#0E7180;margin-bottom:7px">PARAMÈTRES</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.3px;margin:0 0 4px;color:#16202B">Paramètres</h1>
+        <p style="color:#5B6776;font-size:13px;margin:0 0 20px">Clés API et import de fiches.</p>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;color:#16202B;margin:0 0 3px">Clés API</h2>
+        <p style="color:#8A95A3;font-size:12px;margin:0 0 14px">Stockées sur cet appareil uniquement.</p>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:24px">
+          <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:14.5px;color:#16202B">Anthropic</span><span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#1E8A5A;background:#E7F4EC;padding:4px 9px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#1E8A5A"></span>OK</span></div>
+            <input type="password" value="sk-ant-xxxxxxxxxxxx" style="width:100%;padding:11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#F8FAFB;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#3B4654;outline:none;margin-bottom:9px">
+            <div style="position:relative"><select style="appearance:none;width:100%;padding:11px 34px 11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#fff;font-size:13px;color:#16202B;font-family:inherit;outline:none"><option>Claude Sonnet</option></select><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></div>
+          </div>
+          <div style="background:#fff;border:1px solid #E3E8ED;border-radius:14px;padding:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:14.5px;color:#16202B">OpenAI GPT</span><span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#B5740A;background:#FBF1DD;padding:4px 9px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#B5740A"></span>Vide</span></div>
+            <input type="password" placeholder="sk-proj-…" style="width:100%;padding:11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#F8FAFB;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#3B4654;outline:none;margin-bottom:9px">
+            <div style="position:relative"><select style="appearance:none;width:100%;padding:11px 34px 11px 13px;border:1px solid #D3DAE1;border-radius:9px;background:#fff;font-size:13px;color:#16202B;font-family:inherit;outline:none"><option>GPT-4o</option></select><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#8A95A3" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></div>
+          </div>
+        </div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;color:#16202B;margin:0 0 12px">Import de fiches</h2>
+        <div style="border:1.5px dashed #C9D2DA;border-radius:14px;padding:26px 20px;text-align:center;background:#fff">
+          <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="#0E7180" stroke-width="1.6" style="margin:0 auto 10px;display:block"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5 5 5M12 5v12"></path></svg>
+          <div style="color:#3B4654;font-size:14px;font-weight:500;margin-bottom:14px">Glisser un fichier JSON</div>
+          <button style="display:inline-flex;align-items:center;gap:7px;background:#1E2A37;color:#fff;padding:9px 16px;border-radius:10px;font-weight:600;font-size:13.5px;border:none;font-family:inherit">Choisir un fichier</button>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #E3E8ED;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#8A95A3;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#C8102E;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,16,46,0.32)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#0E7180;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- ░░░░ RANGÉE MODE NUIT ░░░░ -->
+
+<!-- FRAME 6 — BIBLIOTHÈQUE (nuit) -->
+<div style="position:absolute;left:40px;top:1060px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">06 · MODE NUIT — BIBLIOTHÈQUE</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+    <div style="background:#0F141A;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#ECEFF2">
+      <div style="padding:50px 14px 11px;background:#141A20;border-bottom:1px solid #2A343E;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="width:30px;height:30px;border-radius:8px;background:#E23E54;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(226,62,84,0.4)"><svg width="15" height="15" viewBox="0 0 17 17"><path d="M6.8 1h3.4v4.8H15v3.4h-4.8V14H6.8V9.2H2V5.8h4.8z" fill="#fff"></path></svg></span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.3px;color:#ECEFF2">URGENTOR</span>
+        </div>
+        <span style="width:34px;height:34px;border-radius:9px;color:#9AA7B4;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></span>
+      </div>
+      <div style="flex:1;padding:16px 14px 30px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#3FB6C4;margin-bottom:7px">BIBLIOTHÈQUE</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.3px;margin:0 0 4px;color:#ECEFF2">Fiches de premiers secours</h1>
+        <p style="color:#9AA7B4;font-size:13px;margin:0">6 fiches · disponibles hors ligne</p>
+        <div style="position:relative;margin:14px 0 4px">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#6B7884" stroke-width="2" style="position:absolute;left:14px;top:50%;transform:translateY(-50%)"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input placeholder="Rechercher — brûlure, NRBC…" style="width:100%;padding:13px 14px 13px 42px;border:1px solid #2A343E;border-radius:12px;background:#1A222B;font-size:15px;color:#ECEFF2;font-family:inherit;outline:none">
+        </div>
+        <div style="display:flex;gap:7px;overflow-x:auto;margin:14px 0 4px;padding-bottom:3px">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#ECEFF2;border:1.5px solid #ECEFF2;color:#0F141A"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg>Secours</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#1A222B;border:1px solid #2A343E;color:#9AA7B4"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4s5 5.5 5 9a5 5 0 11-10 0c0-1 .4-2 1-3 .3 1.2 1.2 2 2 2 0-2-.3-5 2-8z"></path></svg>Incendie</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#1A222B;border:1px solid #2A343E;color:#9AA7B4"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4s5 5.5 5 9a5 5 0 11-10 0c0-3.5 5-9 5-9z"></path></svg>Chimique</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;background:#1A222B;border:1px solid #2A343E;color:#9AA7B4"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5l8 14H4l8-14z"></path><path stroke-linecap="round" d="M12 11v3.5M12 17h.01"></path></svg>NRBC</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+          <div style="background:#1A222B;border:1px solid #2A343E;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="display:flex;align-items:center;gap:7px;min-width:0;color:#8794A1"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.5px;color:#8794A1;text-transform:uppercase">Secours à la personne</span></div>
+              <span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:rgba(255,107,125,0.13);color:#FF6B7D;border:1px solid rgba(255,107,125,0.3)">CRITIQUE</span>
+            </div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.2;margin:0;color:#ECEFF2">Hémorragie externe grave</h3>
+            <p style="color:#9AA7B4;font-size:13px;line-height:1.5;margin:0">Arrêter une hémorragie externe pour prévenir le choc hémorragique.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="background:#232D38;color:#9AA7B4;font-size:11px;padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace">garrot</span><span style="background:#232D38;color:#9AA7B4;font-size:11px;padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace">compression</span></div>
+          </div>
+          <div style="background:#1A222B;border:1px solid #2A343E;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div style="display:flex;align-items:center;gap:7px;min-width:0;color:#8794A1"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4s5 5.5 5 9a5 5 0 11-10 0c0-3.5 5-9 5-9z"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.5px;color:#8794A1;text-transform:uppercase">Risque chimique</span></div>
+              <span style="padding:3px 8px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;background:rgba(224,162,58,0.14);color:#E0A23A;border:1px solid rgba(224,162,58,0.3)">ÉLEVÉ</span>
+            </div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.2;margin:0;color:#ECEFF2">Fuite de gaz</h3>
+            <p style="color:#9AA7B4;font-size:13px;line-height:1.5;margin:0">Couper, ventiler, évacuer et alerter sans provoquer d'étincelle.</p>
+          </div>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(20,26,32,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #2A343E;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#3FB6C4;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#6B7884;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#E23E54;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(226,62,84,0.45)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#6B7884;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- FRAME 7 — FICHE (nuit) -->
+<div style="position:absolute;left:502px;top:1060px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">07 · MODE NUIT — FICHE</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+    <div style="background:#0F141A;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#ECEFF2">
+      <div style="padding:50px 14px 11px;background:#141A20;border-bottom:1px solid #2A343E;display:flex;align-items:center;gap:10px">
+        <span style="width:34px;height:34px;border-radius:9px;color:#9AA7B4;display:flex;align-items:center;justify-content:center;margin-left:-6px"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;color:#ECEFF2">Bibliothèque</span>
+      </div>
+      <div style="flex:1;padding:14px 14px 30px;display:flex;flex-direction:column;gap:13px">
+        <div style="background:#1A222B;border:1px solid #2A343E;border-radius:16px;padding:17px 18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:7px;color:#8794A1"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-5 3 10 2-5h7"></path></svg><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;color:#8794A1;text-transform:uppercase">Secours personne</span></div>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;background:rgba(255,107,125,0.13);color:#FF6B7D;border:1px solid rgba(255,107,125,0.3)"><span style="width:6px;height:6px;border-radius:50%;background:#FF6B7D"></span>CRITIQUE</span>
+          </div>
+          <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-0.5px;margin:0;color:#ECEFF2">Hémorragie externe grave</h1>
+          <p style="color:#B7C2CD;font-size:14.5px;line-height:1.55;margin:10px 0 0">Arrêter une hémorragie externe grave pour prévenir le choc hémorragique et le décès.</p>
+        </div>
+        <div style="background:rgba(255,107,125,0.07);border:1px solid rgba(255,107,125,0.28);border-radius:16px;padding:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:9px"><span style="width:30px;height:30px;border-radius:8px;background:#E23E54;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M13 2L3 14h7l-1 8 10-12h-7z"></path></svg></span><h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.3px;margin:0;color:#FF6B7D;text-transform:uppercase">Actions immédiates</h2></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#FF6B7D;background:rgba(255,107,125,0.16);padding:4px 8px;border-radius:999px;white-space:nowrap">≤ 3 MIN</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:27px;height:27px;border-radius:50%;background:#E23E54;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span style="color:#ECEFF2;font-size:15px;font-weight:600;line-height:1.35">Mettre des gants ou une protection</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:27px;height:27px;border-radius:50%;background:#E23E54;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span style="color:#ECEFF2;font-size:15px;font-weight:600;line-height:1.35">Comprimer la plaie fort à deux mains</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:27px;height:27px;border-radius:50%;background:#E23E54;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span style="color:#ECEFF2;font-size:15px;font-weight:600;line-height:1.35">Alerter le 15 / 112</span></div>
+          </div>
+        </div>
+        <div style="background:#1A222B;border:1px solid #2A343E;border-radius:16px;padding:18px">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px"><span style="width:30px;height:30px;border-radius:8px;background:#232D38;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B7C2CD" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3l2 5-2.5 1.5a11 11 0 005 5L17 12l5 2v3a2 2 0 01-2 2A16 16 0 013 5z"></path></svg></span><h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.3px;margin:0;color:#ECEFF2;text-transform:uppercase">Script d'alerte</h2></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+            <div style="background:#0A0E13;border:1px solid #2A343E;border-radius:10px;padding:11px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#fff;line-height:1">15</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#6B7884;margin-top:4px">SAMU</div></div>
+            <div style="background:#0A0E13;border:1px solid #2A343E;border-radius:10px;padding:11px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#fff;line-height:1">18</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#6B7884;margin-top:4px">POMPIERS</div></div>
+            <div style="background:#0A0E13;border:1px solid #2A343E;border-radius:10px;padding:11px;text-align:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#fff;line-height:1">112</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:#6B7884;margin-top:4px">EUROPE</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(20,26,32,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #2A343E;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#3FB6C4;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#6B7884;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#E23E54;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(226,62,84,0.45)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#6B7884;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+
+<!-- FRAME 8 — PARAMÈTRES (nuit) -->
+<div style="position:absolute;left:964px;top:1060px;width:402px;font-family:'IBM Plex Sans',sans-serif">
+  <div data-drags-parent="1" style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;color:#5B6776;margin-bottom:12px">08 · MODE NUIT — PARAMÈTRES</div>
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+    <div style="background:#0F141A;min-height:874px;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;color:#ECEFF2">
+      <div style="padding:50px 14px 11px;background:#141A20;border-bottom:1px solid #2A343E;display:flex;align-items:center;gap:10px">
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.3px;color:#ECEFF2;padding-left:4px">Réglages</span>
+      </div>
+      <div style="flex:1;padding:18px 14px 30px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;color:#3FB6C4;margin-bottom:7px">PARAMÈTRES</div>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.3px;margin:0 0 4px;color:#ECEFF2">Paramètres</h1>
+        <p style="color:#9AA7B4;font-size:13px;margin:0 0 20px">Clés API et import de fiches.</p>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;color:#ECEFF2;margin:0 0 3px">Clés API</h2>
+        <p style="color:#6B7884;font-size:12px;margin:0 0 14px">Stockées sur cet appareil uniquement.</p>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:24px">
+          <div style="background:#1A222B;border:1px solid #2A343E;border-radius:14px;padding:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:14.5px;color:#ECEFF2">Anthropic</span><span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#46C98A;background:rgba(70,201,138,0.13);padding:4px 9px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#46C98A"></span>OK</span></div>
+            <input type="password" value="sk-ant-xxxxxxxxxxxx" style="width:100%;padding:11px 13px;border:1px solid #2A343E;border-radius:9px;background:#0F141A;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#B7C2CD;outline:none;margin-bottom:9px">
+            <div style="position:relative"><select style="appearance:none;width:100%;padding:11px 34px 11px 13px;border:1px solid #2A343E;border-radius:9px;background:#1A222B;font-size:13px;color:#ECEFF2;font-family:inherit;outline:none"><option>Claude Sonnet</option></select><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#6B7884" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></div>
+          </div>
+          <div style="background:#1A222B;border:1px solid #2A343E;border-radius:14px;padding:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px"><span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:14.5px;color:#ECEFF2">OpenAI GPT</span><span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#E0A23A;background:rgba(224,162,58,0.14);padding:4px 9px;border-radius:999px"><span style="width:6px;height:6px;border-radius:50%;background:#E0A23A"></span>Vide</span></div>
+            <input type="password" placeholder="sk-proj-…" style="width:100%;padding:11px 13px;border:1px solid #2A343E;border-radius:9px;background:#0F141A;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#B7C2CD;outline:none;margin-bottom:9px">
+            <div style="position:relative"><select style="appearance:none;width:100%;padding:11px 34px 11px 13px;border:1px solid #2A343E;border-radius:9px;background:#1A222B;font-size:13px;color:#ECEFF2;font-family:inherit;outline:none"><option>GPT-4o</option></select><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#6B7884" stroke-width="2" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg></div>
+          </div>
+        </div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;color:#ECEFF2;margin:0 0 12px">Import de fiches</h2>
+        <div style="border:1.5px dashed #2A343E;border-radius:14px;padding:26px 20px;text-align:center;background:#1A222B">
+          <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="#3FB6C4" stroke-width="1.6" style="margin:0 auto 10px;display:block"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5-5 5 5M12 5v12"></path></svg>
+          <div style="color:#B7C2CD;font-size:14px;font-weight:500;margin-bottom:14px">Glisser un fichier JSON</div>
+          <button style="display:inline-flex;align-items:center;gap:7px;background:#ECEFF2;color:#0F141A;padding:9px 16px;border-radius:10px;font-weight:600;font-size:13.5px;border:none;font-family:inherit">Choisir un fichier</button>
+        </div>
+      </div>
+      <div style="position:sticky;bottom:0;background:rgba(20,26,32,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid #2A343E;display:flex;align-items:center;justify-content:space-around;padding:9px 16px 26px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#6B7884;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="1.4"></rect><rect x="13" y="4" width="7" height="7" rx="1.4"></rect><rect x="4" y="13" width="7" height="7" rx="1.4"></rect><rect x="13" y="13" width="7" height="7" rx="1.4"></rect></svg><span style="font-size:10px;font-weight:600">Bibliothèque</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#6B7884;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"></path></svg><span style="font-size:10px;font-weight:600">Gérer</span></div>
+        <div style="width:46px;height:46px;border-radius:14px;background:#E23E54;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(226,62,84,0.45)"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M6 0h2v6h6v2H8v6H6V8H0V6h6z" fill="#fff"></path></svg></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#3FB6C4;min-width:54px"><svg width="23" height="23" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span style="font-size:10px;font-weight:600">Réglages</span></div>
+      </div>
+    </div>
+  </x-import>
+</div>
+</x-dc>
+</body>
+</html>
