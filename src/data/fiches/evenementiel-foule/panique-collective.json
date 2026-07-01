@@ -1,0 +1,133 @@
+{
+  "id": "panique-collective",
+  "titre": "Crise de Panique Collective",
+  "categorie": "evenementiel-foule",
+  "sousCategorie": "psychologique",
+  "tags": ["communication", "calme", "guidage", "panique", "foule", "sorties"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "Sécurité Civile / psychologie des foules",
+
+  "objectif": "Contenir une panique collective naissante, éviter qu'elle ne dégénère en mouvement de foule dangereux, en communiquant avec calme et fermeté et en guidant les personnes vers les sorties.",
+
+  "conditionsActivation": "Une rumeur, un bruit, une fumée, une alarme ou un incident déclenche une réaction de peur collective dans une foule : cris, ruée, désorganisation, risque de bousculade et d'écrasement.",
+
+  "diagnosticRapide": {
+    "visuels": ["Ruée soudaine dans une direction, mouvements désordonnés", "Personnes qui courent, tombent, se piétinent", "Regards affolés, gestes de fuite", "Convergence dangereuse vers une même sortie"],
+    "auditifs": ["Cris de peur, hurlements, rumeur qui se propage", "'Au feu !', 'Ils arrivent !' — rumeurs amplificatrices", "Alarme, détonation ou bruit déclencheur"],
+    "comportementaux": ["Contagion émotionnelle rapide (la peur se propage)", "Comportements irrationnels, fuite aveugle", "Perte des repères, désobéissance aux consignes"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Être emporté ou renversé par la foule en mouvement", "Bousculade, écrasement, chute", "Amplifier la panique par un mauvais message"],
+    "equipementsRequis": ["Moyen de communication de masse si possible (micro, mégaphone)", "Connaissance des sorties et itinéraires d'évacuation", "Personnel / bénévoles pour relayer les consignes"],
+    "regleUniverselle": "Communiquer d'une voix CALME, ferme et directive, donner des consignes simples et répétées, orienter vers PLUSIEURS sorties pour répartir le flux. Ne jamais crier ni transmettre sa propre peur : le calme est contagieux autant que la panique.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 / 17 + PC sécurité de l'événement — alerter et coordonner l'évacuation",
+    "quoiDire": "Je suis [NOM], à [LIEU]. Mouvement de panique dans la foule à [zone], déclenché par [cause si connue]. Risque de bousculade. Sorties [état]. Besoin de renforts pour réguler le flux et d'une annonce officielle rassurante.",
+    "informationsAFournir": ["Localisation et ampleur de la panique", "Cause déclenchante si connue (réelle ou rumeur)", "État des sorties et zones de blocage", "Victimes éventuelles (chutes, bousculade)"]
+  },
+
+  "actionsImmédiates": [
+    "Garder soi-même son CALME — ne pas crier ni courir",
+    "COMMUNIQUER d'une voix calme, ferme et directive : consignes simples et répétées",
+    "GUIDER vers PLUSIEURS sorties pour répartir le flux, éviter la convergence unique",
+    "ÉVITER les mouvements brusques et les rumeurs ; alerter la sécurité / le 18"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Maîtriser sa propre réaction : rester visiblement calme, posture assurée — le calme se transmet comme la peur"},
+    {"etape": 2, "action": "Évaluer la réalité du danger : incident réel (feu, agression) ou rumeur ? La réponse oriente le message"},
+    {"etape": 3, "action": "Communiquer d'une voix forte mais calme et ferme, avec des consignes SIMPLES, claires et répétées : 'Restez calmes, avancez sans courir, dirigez-vous vers la sortie à votre gauche'"},
+    {"etape": 4, "action": "Répartir le flux vers PLUSIEURS sorties / issues de secours pour éviter la convergence vers un seul point (cause d'écrasement)"},
+    {"etape": 5, "action": "Utiliser tous les relais possibles (micro, mégaphone, personnel, bénévoles positionnés) pour diffuser un message cohérent et rassurant"},
+    {"etape": 6, "action": "Lutter contre les rumeurs par une information claire et officielle ; désigner et montrer les directions à suivre (gestes, balisage humain)"},
+    {"etape": 7, "action": "Fluidifier : éviter les mouvements brusques, ralentir plutôt qu'accélérer, empêcher les demi-tours à contre-courant"},
+    {"etape": 8, "action": "Alerter le PC sécurité et le 18 / 112, coordonner l'évacuation et la levée de l'éventuel danger réel"},
+    {"etape": 9, "action": "Une fois la foule dissipée : porter secours aux victimes (chutes, malaises, bousculade → voir protocole bousculade), gérer le choc psychologique (mise au calme, écoute)"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Panique déclenchée par une rumeur (pas de danger réel)",
+      "alors": "Information officielle claire et rassurante, consignes calmes, ralentir le flux, démentir la rumeur"
+    },
+    {
+      "condition": "Danger réel (incendie, agression)",
+      "alors": "Évacuation guidée vers plusieurs sorties + traitement du danger (protocole incendie / agression) + 18 / 112 / 17"
+    },
+    {
+      "condition": "Convergence dangereuse vers une seule sortie",
+      "alors": "Rediriger activement une partie du flux vers d'autres issues, positionner du personnel pour orienter"
+    },
+    {
+      "condition": "Bousculade / personnes à terre",
+      "alors": "Protocole mouvement de foule : dégager, protéger le thorax, secourir les victimes"
+    },
+    {
+      "condition": "Personnes en crise d'angoisse individuelle",
+      "alors": "Les isoler, voix calme, faire respirer lentement, rassurer (voir gestion de la crise de panique)"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le calme est aussi contagieux que la panique : ne jamais crier ni courir, adopter une voix posée et ferme",
+    "Des consignes SIMPLES, claires et répétées valent mieux que de longues explications",
+    "Répartir le flux vers PLUSIEURS sorties : la convergence vers une seule issue provoque les écrasements",
+    "Lutter contre les rumeurs par une information officielle rapide et cohérente",
+    "Ralentir la foule (éviter les mouvements brusques) est souvent plus sûr que de l'accélérer",
+    "Distinguer danger réel et rumeur oriente toute la réponse"
+  ],
+
+  "pointsControle": [
+    "L'intervenant est resté calme et a communiqué d'une voix ferme et posée",
+    "Des consignes simples et répétées ont été diffusées",
+    "Le flux a été réparti vers plusieurs sorties",
+    "Les rumeurs ont été contrées par une information officielle",
+    "La sécurité / les secours sont alertés et les victimes prises en charge"
+  ],
+
+  "conditionsArretEscalade": [
+    "Danger réel → évacuation guidée + protocole adapté + 18 / 112 / 17",
+    "Bousculade / victimes → protocole mouvement de foule + secours",
+    "Panique non maîtrisée → renforts sécurité, annonce officielle, régulation du flux"
+  ],
+
+  "ressourcesNecessaires": [
+    "Moyen de communication de masse (micro, mégaphone)",
+    "Connaissance des sorties et itinéraires d'évacuation",
+    "Personnel / bénévoles pour relayer les consignes et orienter",
+    "Balisage / signalétique des issues",
+    "Téléphone pour le 18 / 112 / 17 et le PC sécurité"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les renforts et secours tardent, la panique se prolongeant",
+    "actions": [
+      "Continuer à diffuser des messages calmes, cohérents et répétés, en s'appuyant sur tous les relais humains disponibles",
+      "Maintenir la répartition du flux vers plusieurs sorties et empêcher les points de convergence dangereux",
+      "Positionner des personnes-relais aux endroits clés pour orienter et rassurer",
+      "Traiter le danger réel s'il existe (début d'incendie, etc.) avec les moyens du site",
+      "Une fois la foule dissipée, organiser un point de rassemblement, secourir les blessés et accompagner les personnes en état de choc"
+    ],
+    "ressourcesImprovises": [
+      "Mégaphone / sonorisation, ou porte-voix improvisé pour se faire entendre",
+      "Personnel, bénévoles et spectateurs calmes mobilisés comme relais et guides",
+      "Objets / mobilier pour matérialiser et fluidifier les axes d'évacuation"
+    ],
+    "signesAggravation": [
+      "Ruée incontrôlée vers une seule sortie",
+      "Chutes, bousculade, personnes piétinées",
+      "Rumeur qui s'amplifie malgré les messages",
+      "Danger réel non maîtrisé (feu qui se propage)"
+    ],
+    "limitesSansSecours": "La gestion d'une panique de foule repose sur la communication et l'organisation de l'évacuation ; elle dépasse vite les capacités d'une seule personne. La coordination avec la sécurité et les secours est indispensable pour éviter le drame collectif.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence de renforts. Elles ne remplacent pas un dispositif de sécurité événementielle ni les forces de l'ordre. En cas de danger, appelez le 18 / 112 / 17."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation à la gestion des foules ni le dispositif de sécurité de l'événement. En cas de doute, suivez les instructions du 18 / 112."
+}

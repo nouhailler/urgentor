@@ -1,0 +1,133 @@
+{
+  "id": "enfant-perdu",
+  "titre": "Perte d'un Enfant en Événement",
+  "categorie": "evenementiel-foule",
+  "sousCategorie": "securite",
+  "tags": ["point rendez-vous", "description", "annonce", "enfant perdu", "recherche", "sécurité"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "Sécurité Civile / organisateurs d'événements",
+
+  "objectif": "Retrouver rapidement un enfant perdu dans un rassemblement (festival, parc, plage, centre commercial) de façon méthodique, en mobilisant l'organisation et en évitant la panique.",
+
+  "conditionsActivation": "Un enfant est séparé de ses accompagnants dans un lieu bondé et étendu ; il ne répond plus, n'est plus en vue, et le risque augmente avec le temps (foule, points d'eau, sorties, circulation).",
+
+  "diagnosticRapide": {
+    "visuels": ["Accompagnant qui cherche visiblement, appelle un enfant", "Enfant seul, désorienté, en pleurs", "Zones à risque proches (eau, route, sorties, scène)", "Foule dense limitant la visibilité"],
+    "auditifs": ["Parent qui appelle le prénom de l'enfant", "Enfant qui pleure / appelle", "Annonces au micro"],
+    "comportementaux": ["Panique naissante des accompagnants", "Recherche désordonnée", "Enfant figé ou au contraire qui se déplace au hasard"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Se perdre soi-même ou disperser le groupe", "Panique qui désorganise la recherche", "Suspicion en approchant un enfant inconnu (agir en présence de témoins / du personnel)"],
+    "equipementsRequis": ["Point de rendez-vous fixe convenu à l'avance", "Description et si possible photo récente de l'enfant", "Moyen de contacter l'organisation / la sécurité (micro, PC sécurité)", "Téléphone"],
+    "regleUniverselle": "Rester calme et méthodique. Désigner un adulte qui reste au dernier point de contact / au point de rendez-vous, alerter immédiatement l'organisation et la sécurité, et diffuser une description précise. Le temps est un facteur clé.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "PC sécurité / organisation de l'événement en priorité, puis 17 / 112 si l'enfant n'est pas retrouvé rapidement ou en cas de danger (enlèvement suspecté)",
+    "quoiDire": "Je suis [NOM], à [LIEU + zone]. Enfant perdu : [prénom, âge, sexe], vu pour la dernière fois à [heure et endroit]. Description : [taille, cheveux, vêtements, signes distinctifs]. Je reste joignable au [numéro] et au point [rendez-vous].",
+    "informationsAFournir": ["Prénom, âge, sexe de l'enfant", "Dernier lieu et heure où il a été vu", "Description physique et vestimentaire précise", "Point de rendez-vous et numéro de contact de l'accompagnant"]
+  },
+
+  "actionsImmédiates": [
+    "Rester CALME ; un adulte reste au dernier point de contact / au point de rendez-vous",
+    "ALERTER immédiatement l'organisation / la sécurité de l'événement",
+    "DIFFUSER une description précise (âge, vêtements, signes distinctifs) et une annonce",
+    "QUADRILLER les alentours et les zones à risque (eau, sorties, route)"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Garder son calme pour agir efficacement et ne pas transmettre la panique à l'enfant ou au groupe"},
+    {"etape": 2, "action": "Désigner un adulte qui reste immobile au dernier endroit où l'enfant a été vu (et/ou au point de rendez-vous convenu) : l'enfant peut y revenir"},
+    {"etape": 3, "action": "Alerter immédiatement le PC sécurité / l'organisation : ils disposent de moyens (micro, caméras, agents, procédure 'enfant perdu')"},
+    {"etape": 4, "action": "Fournir une description précise : prénom, âge, taille, couleur des cheveux, vêtements, chaussures, signes distinctifs, et une photo récente si disponible"},
+    {"etape": 5, "action": "Faire diffuser une annonce (micro / haut-parleurs) de façon rassurante ; convenir d'un point de regroupement clair"},
+    {"etape": 6, "action": "Quadriller méthodiquement les alentours immédiats, en priorité les zones à risque : points d'eau, sorties, parkings/routes, scènes, manèges, sanitaires"},
+    {"etape": 7, "action": "Solliciter le personnel (stands, sécurité, bénévoles) et les personnes autour, qui peuvent avoir vu l'enfant"},
+    {"etape": 8, "action": "Si un enfant seul est trouvé : le rassurer, rester avec lui en présence de témoins / du personnel, le conduire au poste dédié, ne pas l'emmener hors de vue"},
+    {"etape": 9, "action": "Si l'enfant n'est pas retrouvé rapidement ou si un enlèvement est suspecté : appeler le 17 / 112"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Perte récente dans une zone délimitée",
+      "alors": "Un adulte reste au point de contact, alerte sécurité + annonce + quadrillage des alentours et zones à risque"
+    },
+    {
+      "condition": "Zones dangereuses proches (eau, route, quais)",
+      "alors": "Vérifier ces zones EN PRIORITÉ, en mobilisant plusieurs personnes"
+    },
+    {
+      "condition": "Enfant seul retrouvé par un tiers",
+      "alors": "Le rassurer, rester visible avec lui / avec le personnel, le conduire au point dédié, diffuser l'info"
+    },
+    {
+      "condition": "Enfant non retrouvé rapidement",
+      "alors": "Élargir la recherche, faire renouveler l'annonce, appeler le 17 / 112"
+    },
+    {
+      "condition": "Suspicion d'enlèvement / de danger",
+      "alors": "17 / 112 immédiat, préserver les informations et témoignages"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le temps compte : alerter l'organisation et la sécurité dès les premières minutes",
+    "Un adulte doit rester au point de contact / de rendez-vous : les enfants reviennent souvent sur leurs pas",
+    "Convenir d'un point de rendez-vous fixe AVANT de se perdre est la meilleure prévention (à faire en arrivant sur le site)",
+    "Une description précise et une photo récente accélèrent considérablement la recherche",
+    "Vérifier en priorité les zones à risque : eau, routes, sorties",
+    "En présence d'un enfant seul, agir toujours en visibilité / avec le personnel pour lever toute ambiguïté"
+  ],
+
+  "pointsControle": [
+    "Un adulte est resté au dernier point de contact / au point de rendez-vous",
+    "L'organisation et la sécurité ont été alertées immédiatement",
+    "Une description précise (et une photo) a été diffusée",
+    "Les zones à risque ont été vérifiées en priorité",
+    "Le 17 / 112 est appelé si l'enfant n'est pas retrouvé rapidement ou en cas de danger"
+  ],
+
+  "conditionsArretEscalade": [
+    "Enfant non retrouvé rapidement → 17 / 112, élargissement des recherches",
+    "Suspicion d'enlèvement → 17 / 112 immédiat",
+    "Enfant retrouvé blessé / en détresse → premiers secours + 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Point de rendez-vous fixe convenu à l'avance",
+    "Description et photo récente de l'enfant",
+    "Contact du PC sécurité / de l'organisation (micro, agents)",
+    "Téléphone chargé et joignable",
+    "Personnel et bénévoles mobilisables"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'enfant n'est pas retrouvé rapidement malgré les premières recherches",
+    "actions": [
+      "Faire renouveler et élargir les annonces, étendre le quadrillage aux zones périphériques et aux sorties",
+      "Maintenir en permanence un adulte au point de rendez-vous et un contact téléphonique joignable",
+      "Coordonner les recherches avec la sécurité (caméras, agents) et, si nécessaire, les forces de l'ordre",
+      "Vérifier régulièrement les points d'eau, parkings et accès routiers (zones les plus dangereuses)",
+      "Consigner l'heure, le dernier lieu vu et la description pour les transmettre précisément aux secours / à la police"
+    ],
+    "ressourcesImprovises": [
+      "Micro / sonorisation de l'événement pour diffuser des annonces répétées",
+      "Groupe de bénévoles / spectateurs pour couvrir plus de terrain de façon organisée",
+      "Photo de l'enfant partagée avec le personnel et la sécurité"
+    ],
+    "signesAggravation": [
+      "Enfant introuvable après un quadrillage complet",
+      "Proximité de dangers non sécurisés (plan d'eau, route)",
+      "Éléments évoquant un enlèvement (témoignage, véhicule)",
+      "Nuit / fermeture du site approchant"
+    ],
+    "limitesSansSecours": "La recherche d'un enfant perdu repose sur la rapidité, la méthode et la coordination avec l'organisation et les forces de l'ordre. Au-delà des premières minutes ou en cas de danger, seule l'intervention de la police permet de déployer des moyens adaptés.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence d'appui. Elles ne remplacent pas l'action de la sécurité de l'événement ni des forces de l'ordre. En cas de danger, appelez le 17 / 112."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas les procédures de sécurité de l'événement. En cas de danger ou d'enfant non retrouvé, contactez le 17 / 112."
+}

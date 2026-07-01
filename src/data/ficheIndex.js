@@ -35,6 +35,11 @@ import incendieVehicule from './fiches/professionnel-industriel/incendie-vehicul
 import deversementBiologique from './fiches/professionnel-industriel/deversement-biologique.json'
 import agression from './fiches/professionnel-industriel/agression.json'
 import malaiseIsole from './fiches/professionnel-industriel/malaise-isole.json'
+import bousculade from './fiches/evenementiel-foule/bousculade.json'
+import malaiseConfine from './fiches/evenementiel-foule/malaise-confine.json'
+import enfantPerdu from './fiches/evenementiel-foule/enfant-perdu.json'
+import intoxicationCollective from './fiches/evenementiel-foule/intoxication-collective.json'
+import paniqueCollective from './fiches/evenementiel-foule/panique-collective.json'
 import incendie from './fiches/incendie-evacuation/incendie.json'
 import evacuation from './fiches/incendie-evacuation/evacuation.json'
 import fuiteGaz from './fiches/chimique/fuite-gaz.json'
@@ -80,6 +85,11 @@ export const TOUTES_FICHES = [
   deversementBiologique,
   agression,
   malaiseIsole,
+  bousculade,
+  malaiseConfine,
+  enfantPerdu,
+  intoxicationCollective,
+  paniqueCollective,
   incendie,
   evacuation,
   fuiteGaz,

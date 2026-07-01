@@ -1,0 +1,132 @@
+{
+  "id": "bousculade",
+  "titre": "Mouvement de Foule / Bousculade",
+  "categorie": "evenementiel-foule",
+  "sousCategorie": "securite",
+  "tags": ["protection thorax", "position", "sortie", "mouvement de foule", "bousculade", "écrasement"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / Sécurité Civile",
+
+  "objectif": "Survivre à un mouvement de foule en protégeant sa cage thoracique et en restant debout, éviter la chute et l'écrasement, puis porter secours aux victimes une fois le flux dissipé.",
+
+  "conditionsActivation": "Densité de foule excessive avec poussées incontrôlées (concert, stade, manifestation, panique, goulet d'étranglement) : les personnes sont comprimées, ne maîtrisent plus leurs déplacements, risque d'asphyxie et d'écrasement.",
+
+  "diagnosticRapide": {
+    "visuels": ["Foule très dense, mouvements de vagues, personnes soulevées / emportées", "Goulets d'étranglement, barrières, portes bloquées", "Personnes qui chutent, piétinement", "Visages paniqués, personnes qui suffoquent"],
+    "auditifs": ["Cris, appels à l'aide, grondement de la foule", "Craquements de barrières", "Ordres contradictoires, sirènes"],
+    "comportementaux": ["Poussées collectives incontrôlées", "Panique, ruée vers une sortie", "Personnes piégées contre un obstacle"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Asphyxie par compression (la cause principale de décès, souvent debout)", "Chute et piétinement", "Être emporté par le flux, écrasement contre un obstacle"],
+    "equipementsRequis": ["Repérage préalable des sorties et issues de secours", "Aucun matériel : la survie repose sur la posture et le placement", "Moyen d'alerte si possible"],
+    "regleUniverselle": "Rester DEBOUT à tout prix et protéger sa cage thoracique (position 'boxeur', bras repliés devant le thorax). Ne pas lutter contre le flux : se déplacer en diagonale avec les vagues vers les bords. En cas de chute, se relever immédiatement ou se protéger.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 / 17 — alerter dès que possible (organisateur, sécurité de l'événement)",
+    "quoiDire": "Je suis [NOM], à [LIEU PRÉCIS de l'événement / zone]. Mouvement de foule / bousculade, [nombre approximatif] de personnes comprimées. Personnes à terre / en détresse. Sorties [bloquées / saturées]. Besoin de secours et de régulation du flux.",
+    "informationsAFournir": ["Localisation précise dans le site", "Ampleur (densité, personnes à terre)", "Points de blocage / sorties saturées", "Nombre estimé de victimes"]
+  },
+
+  "actionsImmédiates": [
+    "RESTER DEBOUT — position 'boxeur' : bras repliés devant le thorax pour préserver la respiration",
+    "NE PAS lutter contre le flux : avancer en diagonale avec les vagues vers les bords / sorties",
+    "Si l'on tombe : se relever aussitôt ; sinon se mettre en boule sur le côté (protéger tête et thorax)",
+    "REPÉRER et gagner une sortie ; alerter la sécurité / le 18 dès que possible"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Garder son calme et rester DEBOUT : la plupart des décès sont dus à l'asphyxie par compression, pas au piétinement"},
+    {"etape": 2, "action": "Adopter la position 'boxeur' : bras repliés, poings devant la poitrine, coudes écartés, pour préserver un espace de respiration autour du thorax"},
+    {"etape": 3, "action": "Ne pas pousser ni lutter à contre-courant : économiser son énergie, se laisser porter par les vagues et progresser latéralement (en diagonale) vers les zones moins denses et les bords"},
+    {"etape": 4, "action": "Garder les mains libres, ne pas se baisser pour ramasser un objet (risque de chute fatale)"},
+    {"etape": 5, "action": "En cas de chute : se relever immédiatement en s'aidant des autres ; si c'est impossible, se mettre en position latérale, recroquevillé, genoux remontés, mains protégeant la tête et la nuque, pour préserver la respiration"},
+    {"etape": 6, "action": "Repérer en permanence les sorties, issues de secours et zones dégagées ; se diriger vers elles progressivement"},
+    {"etape": 7, "action": "Aider les personnes proches à rester debout, sans se mettre en danger"},
+    {"etape": 8, "action": "Une fois hors de la zone dense : alerter la sécurité / le 18, et prendre en charge les victimes"},
+    {"etape": 9, "action": "Sur les victimes dégagées : évaluer conscience et respiration (asphyxie par compression) → RCP si arrêt, PLS si inconsciente qui respire, prise en charge des traumatismes"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Foule dense qui se comprime, on est encore debout",
+      "alors": "Position 'boxeur', protéger le thorax, progresser en diagonale vers les bords / sorties"
+    },
+    {
+      "condition": "Chute au sol dans la foule",
+      "alors": "Se relever immédiatement si possible ; sinon se recroqueviller sur le côté, protéger tête et thorax, attendre une accalmie"
+    },
+    {
+      "condition": "Victime dégagée, inconsciente, ne respire pas",
+      "alors": "RCP + DAE + 18 / 15 (asphyxie par compression)"
+    },
+    {
+      "condition": "Victime dégagée, consciente, détresse respiratoire / douleur thoracique",
+      "alors": "Repos, position assise, air, surveillance, 15 (compression thoracique possible)"
+    },
+    {
+      "condition": "Sorties bloquées / saturées",
+      "alors": "Ne pas s'y ruer, chercher une issue alternative, alerter la sécurité pour réguler le flux"
+    }
+  ],
+
+  "notesCritiques": [
+    "La principale cause de décès dans les mouvements de foule est l'asphyxie par compression, souvent debout : protéger le thorax est vital",
+    "Rester debout à tout prix : une chute dans une foule dense est extrêmement dangereuse",
+    "Ne jamais se baisser pour ramasser un objet ou aider quelqu'un si cela risque de vous faire tomber",
+    "Ne pas lutter contre le flux : progresser en diagonale avec les vagues économise l'énergie",
+    "Repérer les sorties AVANT que la situation ne dégénère (réflexe à avoir en entrant dans tout lieu bondé)",
+    "Après dégagement, penser à la compression thoracique : surveiller la respiration des victimes"
+  ],
+
+  "pointsControle": [
+    "La cage thoracique a été protégée (position 'boxeur')",
+    "La personne est restée debout ou s'est protégée correctement en cas de chute",
+    "La progression s'est faite vers une sortie / zone dégagée sans lutter contre le flux",
+    "La sécurité / les secours ont été alertés",
+    "Les victimes dégagées sont évaluées et prises en charge"
+  ],
+
+  "conditionsArretEscalade": [
+    "Victimes à terre / en arrêt → RCP + 18 / 15, renfort secours",
+    "Détresse respiratoire après compression → 15",
+    "Sorties saturées / blocage → régulation du flux par la sécurité"
+  ],
+
+  "ressourcesNecessaires": [
+    "Connaissance des sorties et issues de secours",
+    "Moyen d'alerte (téléphone, contact sécurité de l'événement)",
+    "DAE de site pour la prise en charge des victimes",
+    "Espace dégagé pour évaluer et soigner les victimes"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une bousculade avec de nombreuses victimes",
+    "actions": [
+      "Éloigner les victimes de la zone de compression vers un espace dégagé et sûr avant tout soin",
+      "Trier rapidement : réanimer en priorité les personnes en arrêt (RCP), mettre en PLS les inconscientes qui respirent",
+      "Surveiller les détresses respiratoires (compression thoracique) et installer les victimes en position assise si elles respirent difficilement",
+      "Organiser des relais de secouristes et improviser un point de rassemblement des blessés",
+      "Transmettre aux secours un bilan du nombre et de la gravité des victimes"
+    ],
+    "ressourcesImprovises": [
+      "Zone dégagée (hall, extérieur) comme point de rassemblement des victimes",
+      "Vêtements pour couvrir et protéger les blessés du froid / du choc",
+      "Personnes valides mobilisées pour aider au dégagement et à la surveillance"
+    ],
+    "signesAggravation": [
+      "Victimes qui restent inconscientes ou en arrêt",
+      "Détresse respiratoire persistante (compression thoracique)",
+      "Nombreuses victimes dépassant les secouristes présents",
+      "Nouvelle poussée de foule"
+    ],
+    "limitesSansSecours": "Face à de nombreuses victimes d'asphyxie et de traumatismes, les secouristes présents ne peuvent gérer qu'un tri et des gestes de base. L'afflux massif nécessite des renforts médicaux et une régulation ; la priorité reste de dégager et de faire respirer les victimes.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni un dispositif de sécurité événementielle. En cas de doute, suivez les instructions du 18 / 112."
+}

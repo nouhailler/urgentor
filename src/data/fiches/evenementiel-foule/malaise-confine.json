@@ -1,0 +1,133 @@
+{
+  "id": "malaise-confine",
+  "titre": "Malaise en Milieu Confiné (Salle, Tente)",
+  "categorie": "evenementiel-foule",
+  "sousCategorie": "cardio-vasculaire",
+  "tags": ["ventilation", "oxygène", "évacuation", "malaise", "chaleur", "confiné"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Prendre en charge un malaise survenant dans un espace clos et bondé (salle, tente, chapiteau) où chaleur, promiscuité et manque d'air aggravent la situation, en aérant, en dégageant la victime et en évacuant si nécessaire.",
+
+  "conditionsActivation": "Personne victime d'un malaise (vagal, chaleur, hypoglycémie, oppression) dans un lieu confiné et surpeuplé : ambiance chaude, moite, mal ventilée, forte densité de public (concert, banquet, conférence sous tente).",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne qui pâlit, transpire, vacille ou s'effondre", "Teint blanc (malaise vagal) ou très rouge (chaleur)", "Ambiance chaude, air vicié, foule dense", "Personne assise repliée, tête basse"],
+    "auditifs": ["Plainte de vertige, de nausée, de chaleur, d'oppression", "'J'ai un malaise', 'j'étouffe', 'je vais tomber'", "Respiration rapide"],
+    "comportementaux": ["Sensation de malaise imminent, jambes qui flageolent", "Angoisse, besoin de sortir", "Perte de connaissance brève (syncope)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Chaleur et manque d'air ambiants", "Bousculade si mouvement du public autour de la victime", "Difficulté d'accès dans la foule"],
+    "equipementsRequis": ["Accès à une zone aérée / une sortie", "Eau fraîche, éventail / ventilation", "Trousse de secours, oxygène et DAE de site si disponibles", "Espace pour allonger la victime"],
+    "regleUniverselle": "Dégager la victime de la promiscuité, l'amener à l'air frais ou aérer largement, l'allonger. Créer un espace autour d'elle (écarter le public) et évacuer vers un lieu calme et frais si l'état ne s'améliore pas.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 / 18 / 112 (+ poste de secours de l'événement) — appeler si perte de connaissance prolongée, douleur thoracique, ou pas d'amélioration",
+    "quoiDire": "Je suis [NOM], à [LIEU + zone dans le site]. Personne en malaise dans un espace confiné et chaud. [Consciente / a perdu connaissance brièvement]. Symptômes : [pâleur, sueurs, oppression]. Amenée à l'air frais. Amélioration : [oui/non].",
+    "informationsAFournir": ["Localisation dans le site et accès", "Symptômes et durée, perte de connaissance éventuelle", "Antécédents / traitements connus", "Réponse aux premiers gestes (air frais, allongement)"]
+  },
+
+  "actionsImmédiates": [
+    "DÉGAGER la victime de la foule et l'amener à l'air frais (ou aérer largement)",
+    "ALLONGER, jambes surélevées (malaise vagal), desserrer les vêtements",
+    "RAFRAÎCHIR (eau, éventail) et rassurer ; écarter le public",
+    "ÉVACUER vers un lieu calme / poste de secours et appeler le 15 si aggravation"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Créer un espace autour de la victime : écarter calmement le public pour laisser passer l'air et éviter la sur-chaleur"},
+    {"etape": 2, "action": "Dégager la victime vers une zone aérée (sortie, extérieur) ou faire aérer largement (ouvrir portes, pans de tente, ventilation)"},
+    {"etape": 3, "action": "Allonger la victime, jambes surélevées si malaise vagal (pâleur, sueurs) ; position demi-assise si gêne respiratoire prédominante"},
+    {"etape": 4, "action": "Desserrer col, cravate, ceinture ; rafraîchir (linge humide, éventail, eau) si la chaleur est en cause"},
+    {"etape": 5, "action": "Rassurer, faire respirer calmement ; si la victime est consciente et lucide, lui proposer de l'eau à petites gorgées (sucrée si suspicion d'hypoglycémie)"},
+    {"etape": 6, "action": "Réévaluer après quelques minutes : en général le malaise vagal régresse rapidement une fois allongé et au frais"},
+    {"etape": 7, "action": "Diriger la victime vers le poste de secours de l'événement pour surveillance"},
+    {"etape": 8, "action": "Appeler le 15 en cas de perte de connaissance prolongée, de douleur thoracique, de gêne respiratoire marquée, de déficit neurologique ou d'absence d'amélioration"},
+    {"etape": 9, "action": "Surveiller conscience et respiration ; PLS si inconsciente qui respire ; RCP si arrêt + DAE"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Malaise vagal simple (pâleur, sueurs) qui régresse à l'allongement au frais",
+      "alors": "Repos, air frais, hydratation, orientation vers le poste de secours"
+    },
+    {
+      "condition": "Contexte de chaleur / ambiance surchauffée",
+      "alors": "Sortir la victime, rafraîchir activement, hydrater — voir protocole coup de chaleur si aggravation"
+    },
+    {
+      "condition": "Douleur thoracique, gêne respiratoire, déficit neurologique",
+      "alors": "15 immédiat, position adaptée, ne pas banaliser (malaise cardiaque, AVC possibles)"
+    },
+    {
+      "condition": "Perte de connaissance prolongée",
+      "alors": "PLS si respire + 15 ; RCP si arrêt"
+    },
+    {
+      "condition": "Malaises multiples au même endroit",
+      "alors": "Suspecter une cause environnementale (chaleur, manque d'air, gaz) → évacuer la zone, aérer, alerter"
+    }
+  ],
+
+  "notesCritiques": [
+    "Sortir la victime de la promiscuité et de la chaleur est souvent le geste qui suffit",
+    "Écarter le public : les curieux aggravent le manque d'air et la chaleur autour de la victime",
+    "Ne pas banaliser un malaise avec douleur thoracique, gêne respiratoire ou signe neurologique : appeler le 15",
+    "Des malaises multiples au même endroit doivent faire suspecter une cause environnementale (chaleur, CO, manque d'O2) et évacuer la zone",
+    "Ne rien faire boire à une personne qui n'est pas parfaitement consciente",
+    "Un malaise vagal régresse vite allongé au frais ; l'absence d'amélioration doit alerter"
+  ],
+
+  "pointsControle": [
+    "La victime a été dégagée de la foule et mise à l'air frais",
+    "Elle est allongée, vêtements desserrés, rafraîchie si besoin",
+    "Un espace a été créé autour d'elle",
+    "L'amélioration a été réévaluée et la victime orientée vers le poste de secours",
+    "Le 15 est alerté en cas de signe de gravité ou d'absence d'amélioration"
+  ],
+
+  "conditionsArretEscalade": [
+    "Douleur thoracique / signe neurologique / détresse respiratoire → 15",
+    "Perte de connaissance prolongée → PLS / RCP + 15",
+    "Malaises multiples → évacuation de zone + recherche de cause environnementale"
+  ],
+
+  "ressourcesNecessaires": [
+    "Accès à une zone aérée / une sortie",
+    "Eau fraîche, éventail, moyens de ventilation",
+    "Trousse de secours, oxygène et DAE de site si disponibles",
+    "Poste de secours de l'événement",
+    "Téléphone pour le 15 / 18"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si le poste de secours / les secours tardent, malaise persistant",
+    "actions": [
+      "Maintenir la victime allongée au frais et à l'air, continuer à rafraîchir et hydrater si elle est consciente",
+      "Surveiller conscience et respiration à intervalles rapprochés, réévaluer les symptômes",
+      "En cas de contexte de chaleur qui s'aggrave, appliquer le protocole coup de chaleur (refroidissement actif)",
+      "Rechercher et corriger une cause simple (hypoglycémie : resucrage si conscient ; déshydratation : hydratation)",
+      "Organiser l'évacuation vers un lieu calme, frais et médicalisable si l'état ne s'améliore pas"
+    ],
+    "ressourcesImprovises": [
+      "Éventail improvisé (carton, programme) et linges humides pour rafraîchir",
+      "Zone d'ombre / extérieur / pièce aérée comme espace de repos",
+      "Eau et aliments sucrés du site pour l'hydratation et un éventuel resucrage"
+    ],
+    "signesAggravation": [
+      "Absence d'amélioration ou récidive du malaise",
+      "Apparition d'une douleur thoracique, d'une gêne respiratoire ou d'un déficit neurologique",
+      "Confusion, somnolence, nouvelle perte de connaissance",
+      "Signes de coup de chaleur (peau chaude, confusion)"
+    ],
+    "limitesSansSecours": "La plupart des malaises en milieu confiné (vagal, chaleur) régressent avec air frais, repos et hydratation. Mais un malaise révélant une cause cardiaque, neurologique ou un coup de chaleur nécessite une prise en charge médicale sans délai.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni le dispositif de secours de l'événement. En cas de doute, suivez les instructions du 15."
+}

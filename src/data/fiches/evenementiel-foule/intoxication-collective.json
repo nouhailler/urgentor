@@ -1,0 +1,133 @@
+{
+  "id": "intoxication-collective",
+  "titre": "Intoxication Alimentaire Collective",
+  "categorie": "evenementiel-foule",
+  "sousCategorie": "toxicologique",
+  "tags": ["hydratation", "isolement", "signalement", "TIAC", "intoxication alimentaire", "ARS"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / Santé Publique France / ARS",
+
+  "objectif": "Prendre en charge plusieurs personnes présentant des symptômes digestifs après un repas commun (toxi-infection alimentaire collective - TIAC), assurer l'hydratation, isoler les cas et signaler aux autorités sanitaires.",
+
+  "conditionsActivation": "Plusieurs personnes ayant partagé un même repas (banquet, buffet, cantine, événement) présentent des troubles digestifs (nausées, vomissements, diarrhées, douleurs abdominales) dans un délai rapproché.",
+
+  "diagnosticRapide": {
+    "visuels": ["Plusieurs personnes malades simultanément après un même repas", "Vomissements, pâleur, signes de déshydratation", "Personnes prostrées, se tenant le ventre", "Aliments suspects (buffet, plats restés à température ambiante)"],
+    "auditifs": ["Plaintes de nausées, de crampes abdominales", "Plusieurs personnes signalant les mêmes symptômes", "'On a tous mangé la même chose'"],
+    "comportementaux": ["Malaises groupés dans le temps", "Allers-retours aux sanitaires", "Anxiété collective"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contamination (agent infectieux, hygiène des vomissures/selles)", "Risque de panique collective"],
+    "equipementsRequis": ["Eau / solutés de réhydratation orale", "Gants, matériel d'hygiène pour nettoyer les souillures", "Zone d'isolement / de repos", "Moyen de conserver les restes alimentaires (preuve)"],
+    "regleUniverselle": "Hydrater les malades, isoler et regrouper les cas au calme, appliquer une stricte hygiène des mains, CONSERVER les restes du repas suspect et signaler rapidement aux autorités sanitaires (ARS). Repérer les formes graves à orienter vers le 15.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 pour les cas graves ; signalement à l'ARS (Agence Régionale de Santé) pour toute TIAC (≥ 2 cas groupés). 18 en cas de nombreux malades",
+    "quoiDire": "Je suis [NOM], à [LIEU]. [Nombre] personnes malades après un repas commun pris à [heure] : nausées, vomissements, diarrhées. [Nombre] cas graves (déshydratation / malaise). Restes alimentaires conservés. Besoin d'avis médical et signalement TIAC.",
+    "informationsAFournir": ["Nombre de personnes malades et de personnes ayant partagé le repas", "Symptômes et délai depuis le repas", "Aliments suspectés, restes conservés", "Cas graves (déshydratation, malaise, terrain fragile)"]
+  },
+
+  "actionsImmédiates": [
+    "REGROUPER et ISOLER les cas au calme, à proximité des sanitaires",
+    "HYDRATER par petites gorgées (eau, solutés de réhydratation)",
+    "CONSERVER les restes du repas suspect (au froid) comme preuve",
+    "SIGNALER : 15 pour les cas graves, ARS pour la TIAC ; hygiène stricte des mains"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Regrouper les personnes malades dans une zone calme, aérée, proche des sanitaires, à l'écart des personnes non atteintes"},
+    {"etape": 2, "action": "Faire l'hygiène des mains (soi et les malades), mettre des gants pour manipuler souillures et vomissures, nettoyer/désinfecter les surfaces souillées"},
+    {"etape": 3, "action": "Hydrater les malades par petites gorgées répétées (eau, solutés de réhydratation orale) : la déshydratation est le principal risque des diarrhées/vomissements"},
+    {"etape": 4, "action": "Repérer les formes graves : vomissements/diarrhées incoercibles, déshydratation marquée, fièvre élevée, sang dans les selles, signes neurologiques, terrains fragiles (nourrissons, personnes âgées, femmes enceintes, immunodéprimés) → orienter vers le 15"},
+    {"etape": 5, "action": "Ne pas donner de médicament antidiarrhéique de sa propre initiative (peut aggraver certaines infections) ; suivre l'avis médical"},
+    {"etape": 6, "action": "CONSERVER au froid les restes des aliments suspects et noter le menu, l'heure du repas et l'heure d'apparition des symptômes (éléments essentiels pour l'enquête)"},
+    {"etape": 7, "action": "Recenser les personnes malades et celles ayant partagé le repas (liste, coordonnées)"},
+    {"etape": 8, "action": "Signaler la TIAC à l'ARS (obligatoire pour tout foyer de cas groupés) et prévenir le responsable de la restauration"},
+    {"etape": 9, "action": "Surveiller l'évolution de chaque cas et réorienter vers le 15 en cas d'aggravation"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Symptômes digestifs modérés, personne bien hydratée",
+      "alors": "Repos, hydratation orale, surveillance, avis médical selon évolution"
+    },
+    {
+      "condition": "Déshydratation marquée / vomissements incoercibles / terrain fragile",
+      "alors": "15 — risque de déshydratation grave, prise en charge médicale"
+    },
+    {
+      "condition": "Signes de gravité (fièvre élevée, sang dans les selles, signes neurologiques, difficulté respiratoire)",
+      "alors": "15 immédiat (suspicion d'infection sévère ou de toxine grave, ex. botulisme)"
+    },
+    {
+      "condition": "Cas groupés (≥ 2 personnes) après un même repas",
+      "alors": "TIAC → signalement ARS obligatoire, conservation des restes, recensement des cas"
+    },
+    {
+      "condition": "Nombreux malades simultanés",
+      "alors": "18 / 15, tri, renfort médical, gestion collective"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le principal danger des vomissements/diarrhées est la déshydratation : hydrater par petites gorgées répétées",
+    "Conserver les restes alimentaires suspects au froid : preuve indispensable à l'enquête sanitaire",
+    "Toute TIAC (≥ 2 cas groupés) doit être signalée à l'ARS : c'est une obligation",
+    "Repérer les terrains fragiles (nourrissons, personnes âgées, femmes enceintes, immunodéprimés), plus à risque de forme grave",
+    "Ne pas donner d'antidiarrhéique de sa propre initiative : cela peut aggraver certaines infections",
+    "Des signes neurologiques (vision double, paralysie) après une conserve/charcuterie doivent faire évoquer un botulisme → 15 immédiat"
+  ],
+
+  "pointsControle": [
+    "Les cas sont regroupés, isolés et hydratés",
+    "L'hygiène des mains et le nettoyage des souillures sont assurés",
+    "Les restes alimentaires sont conservés et le menu / les horaires notés",
+    "Les cas graves et les terrains fragiles sont orientés vers le 15",
+    "La TIAC est signalée à l'ARS et les cas recensés"
+  ],
+
+  "conditionsArretEscalade": [
+    "Déshydratation / forme grave / terrain fragile → 15",
+    "Signes neurologiques (botulisme suspecté) → 15 immédiat",
+    "Cas groupés → signalement ARS obligatoire"
+  ],
+
+  "ressourcesNecessaires": [
+    "Eau et solutés de réhydratation orale",
+    "Gants et matériel d'hygiène / désinfection",
+    "Zone d'isolement / de repos près des sanitaires",
+    "Moyen de conservation au froid des restes alimentaires",
+    "Coordonnées de l'ARS, du 15, et liste des convives"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'appui médical tarde, avec plusieurs personnes malades en site isolé",
+    "actions": [
+      "Poursuivre l'hydratation orale fractionnée de tous les malades (eau, solutés de réhydratation, à défaut eau légèrement sucrée et salée)",
+      "Surveiller de près les cas à risque de déshydratation (enfants, personnes âgées) et réévaluer régulièrement",
+      "Maintenir l'isolement des cas et une hygiène stricte pour limiter une éventuelle transmission",
+      "Conserver soigneusement les restes alimentaires et documenter menu, horaires et symptômes pour l'enquête",
+      "Organiser l'évacuation prioritaire des formes graves dès qu'un moyen est disponible"
+    ],
+    "ressourcesImprovises": [
+      "Solution de réhydratation maison (eau + sucre + sel, selon les proportions recommandées)",
+      "Zone dédiée et sanitaires pour regrouper et isoler les malades",
+      "Récipient réfrigéré (glacière) pour conserver les prélèvements alimentaires"
+    ],
+    "signesAggravation": [
+      "Déshydratation croissante (soif intense, urines rares et foncées, pli cutané, malaise)",
+      "Vomissements/diarrhées incoercibles",
+      "Fièvre élevée, sang dans les selles",
+      "Signes neurologiques (vision double, faiblesse, difficulté à avaler / respirer)"
+    ],
+    "limitesSansSecours": "La plupart des toxi-infections alimentaires guérissent avec repos et réhydratation. Mais les formes graves (déshydratation sévère, botulisme, terrains fragiles) nécessitent une prise en charge hospitalière, et l'enquête sanitaire relève de l'ARS.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical ni l'enquête sanitaire. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas un avis médical ni les obligations de signalement sanitaire. En cas de doute ou de forme grave, appelez le 15."
+}
