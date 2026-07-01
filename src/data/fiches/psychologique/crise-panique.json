@@ -1,0 +1,132 @@
+{
+  "id": "crise-panique",
+  "titre": "Crise de Panique / Attaque de Panique",
+  "categorie": "psychologique",
+  "sousCategorie": "anxiete",
+  "tags": ["respiration", "ancrage", "rassurer", "panique", "angoisse", "hyperventilation"],
+  "niveauDanger": "standard",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / Santé Publique France",
+
+  "objectif": "Accompagner une personne en attaque de panique, l'aider à retrouver une respiration calme par l'ancrage sensoriel et la respiration guidée, sans minimiser sa détresse, et écarter une cause médicale.",
+
+  "conditionsActivation": "Personne submergée par une peur intense et soudaine, avec sensation d'étouffer, cœur qui s'emballe, tremblements, impression de mourir ou de devenir fou. La crise culmine en quelques minutes et cède le plus souvent en 20-30 min.",
+
+  "diagnosticRapide": {
+    "visuels": ["Respiration rapide et superficielle (hyperventilation)", "Tremblements, sueurs, pâleur", "Personne agitée, prostrée ou repliée", "Mains crispées, fourmillements (autour de la bouche, extrémités)"],
+    "auditifs": ["'Je vais mourir', 'j'étouffe', 'je perds le contrôle'", "Respiration bruyante, soupirs, sanglots", "Voix tremblante, débit rapide"],
+    "comportementaux": ["Sensation de danger imminent sans cause objective", "Besoin de fuir, agitation ou sidération", "Peur de perdre connaissance ou de faire une crise cardiaque"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Aucun danger direct", "Ne pas se laisser gagner par l'agitation"],
+    "equipementsRequis": ["Un endroit calme, à l'écart de la foule", "Aucun matériel : la voix et la présence suffisent", "Eau à proposer"],
+    "regleUniverselle": "Rester calme, adopter une voix posée et rassurante, ne jamais minimiser ni dire 'ce n'est rien'. Aider la personne à ralentir sa respiration et à s'ancrer dans le présent. Écarter une cause médicale en cas de doute.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 en cas de doute avec une cause médicale (douleur thoracique atypique, première fois, malaise), ou si la crise ne cède pas ; 3114 (prévention suicide) si détresse profonde associée",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Personne en attaque de panique : hyperventilation, angoisse intense, [durée]. Pas d'antécédent connu / crises connues. Amélioration avec la respiration guidée : [oui/non]. Douleur thoracique atypique : [oui/non].",
+    "informationsAFournir": ["Symptômes et durée de la crise", "Antécédents d'attaques de panique ou première fois", "Signes faisant douter d'une cause médicale (douleur thoracique, malaise)", "Réponse à l'accompagnement"]
+  },
+
+  "actionsImmédiates": [
+    "ISOLER la personne au calme, se présenter d'une voix posée",
+    "RASSURER : 'C'est une crise d'angoisse, ça va passer, je reste avec vous'",
+    "GUIDER la respiration (ralentir, expiration longue, ex. 4-7-8)",
+    "ANCRER dans le présent (méthode 5-4-3-2-1) ; 15 si doute médical"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Amener la personne dans un endroit plus calme, à l'écart du bruit et des regards, s'accroupir/se mettre à sa hauteur"},
+    {"etape": 2, "action": "Se présenter calmement, parler d'une voix lente et posée : 'Je suis là, vous ne risquez rien, cette sensation va passer'"},
+    {"etape": 3, "action": "Nommer ce qui se passe sans dramatiser ni minimiser : 'C'est une attaque de panique, c'est très désagréable mais sans danger'"},
+    {"etape": 4, "action": "Guider la respiration pour casser l'hyperventilation : inspirer lentement par le nez, expirer longuement par la bouche ; proposer un rythme (ex. 4-7-8 : inspirer 4 s, retenir 7 s, expirer 8 s) ou compter avec la personne"},
+    {"etape": 5, "action": "Utiliser l'ancrage sensoriel (méthode 5-4-3-2-1) : demander de nommer 5 choses qu'elle voit, 4 qu'elle entend, 3 qu'elle touche, 2 qu'elle sent, 1 qu'elle goûte — pour la ramener au présent"},
+    {"etape": 6, "action": "Encourager, valoriser les progrès ('vous respirez déjà mieux'), rester patient : la crise cède généralement en 20-30 minutes"},
+    {"etape": 7, "action": "Proposer un verre d'eau, éviter la caféine ; ne pas entourer la personne de trop de monde"},
+    {"etape": 8, "action": "Écarter une cause médicale en cas de doute (douleur thoracique inhabituelle, malaise, première crise, terrain cardiaque) → appeler le 15"},
+    {"etape": 9, "action": "Une fois la crise passée : proposer de consulter (médecin, psychologue) et informer sur les ressources d'aide ; si détresse profonde ou idées suicidaires, orienter vers le 3114"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Symptômes typiques d'attaque de panique, personne aux antécédents connus",
+      "alors": "Accompagnement : respiration guidée + ancrage + réassurance, orientation vers un suivi"
+    },
+    {
+      "condition": "Doute avec une cause médicale (douleur thoracique atypique, malaise, terrain à risque, première crise)",
+      "alors": "Appeler le 15 pour écarter une urgence (cardiaque, respiratoire)"
+    },
+    {
+      "condition": "Hyperventilation intense avec fourmillements et spasmes",
+      "alors": "Guider une respiration lente et ample (expiration longue) ; ne PAS faire respirer dans un sac (déconseillé, risqué)"
+    },
+    {
+      "condition": "Détresse profonde, désespoir, idées suicidaires associées",
+      "alors": "Ne pas laisser seul, écoute, orienter vers le 3114 (prévention suicide), 15 si danger imminent"
+    },
+    {
+      "condition": "Crise qui ne cède pas ou s'aggrave",
+      "alors": "Réévaluer, appeler le 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS minimiser ('ce n'est rien', 'calmez-vous') : cela aggrave la détresse — valider le ressenti tout en rassurant",
+    "L'attaque de panique est très impressionnante mais bénigne ; en cas de doute avec une cause cardiaque/respiratoire, appeler le 15",
+    "Ne pas faire respirer dans un sac en papier (pratique dépassée et potentiellement dangereuse)",
+    "La respiration guidée (expiration longue) et l'ancrage sensoriel sont les outils les plus efficaces",
+    "Le calme du sauveteur est contagieux : voix lente, posée, présence rassurante",
+    "Après la crise, orienter vers un suivi ; penser au 3114 si détresse ou idées suicidaires"
+  ],
+
+  "pointsControle": [
+    "La personne a été isolée au calme et rassurée sans être minimisée",
+    "La respiration a été ralentie (expiration longue / 4-7-8)",
+    "L'ancrage sensoriel a aidé à revenir au présent",
+    "Une cause médicale a été écartée en cas de doute (15)",
+    "Une orientation vers un suivi / les ressources d'aide a été proposée"
+  ],
+
+  "conditionsArretEscalade": [
+    "Doute avec cause médicale → 15",
+    "Idées suicidaires / détresse profonde → 3114, ne pas laisser seul",
+    "Crise qui persiste ou s'aggrave → 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Un endroit calme et à l'écart",
+    "De l'eau à proposer",
+    "Numéros utiles : 15, 3114 (prévention suicide)",
+    "Du temps et une présence patiente"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si aucun professionnel n'est disponible et que la personne reste très angoissée",
+    "actions": [
+      "Poursuivre l'accompagnement respiratoire et l'ancrage sensoriel, répéter calmement que la sensation va passer",
+      "Rester présent et patient : la plupart des crises cèdent en 20 à 30 minutes",
+      "Aider à identifier et à s'éloigner d'un éventuel facteur déclenchant (bruit, foule, situation stressante)",
+      "Une fois la crise apaisée, discuter des ressources (médecin traitant, psychologue, 3114 si détresse) et encourager un suivi",
+      "Surveiller la réapparition de symptômes et réévaluer une cause médicale si le tableau change"
+    ],
+    "ressourcesImprovises": [
+      "Un objet à tenir en main pour l'ancrage tactile",
+      "Un point fixe à regarder / un rythme à compter ensemble pour guider la respiration",
+      "Un endroit à l'écart improvisé (voiture, pièce calme, coin tranquille)"
+    ],
+    "signesAggravation": [
+      "Douleur thoracique inhabituelle, malaise, perte de connaissance (évoquer une cause médicale)",
+      "Aggravation malgré l'accompagnement, crise qui se prolonge au-delà d'une heure",
+      "Apparition d'idées noires ou suicidaires",
+      "Crises à répétition très rapprochées"
+    ],
+    "limitesSansSecours": "L'accompagnement d'une attaque de panique est à la portée de tous et suffit le plus souvent. Mais un trouble panique récurrent relève d'un suivi médical/psychologique, et tout doute sur une cause organique (cœur, respiration) impose un avis médical.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence de professionnel. Elles ne remplacent pas un avis médical ou psychologique. En cas de doute ou de détresse, appelez le 15 ou le 3114."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas un avis médical ou psychologique. En cas de doute sur une cause médicale, appelez le 15 ; en cas de détresse psychique, le 3114."
+}

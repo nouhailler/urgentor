@@ -1,0 +1,132 @@
+{
+  "id": "detresse-psychologique",
+  "titre": "Idées Suicidaires / Détresse Psychologique",
+  "categorie": "psychologique",
+  "sousCategorie": "crise-suicidaire",
+  "tags": ["écoute", "non-jugement", "ressources", "suicide", "3114", "détresse"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / 3114 / Santé Publique France",
+
+  "objectif": "Accueillir une personne en détresse psychologique ou exprimant des idées suicidaires par une écoute active et sans jugement, ne pas la laisser seule et l'orienter vers les ressources d'urgence (3114, 15).",
+
+  "conditionsActivation": "Personne exprimant un profond désespoir, une souffrance psychique intense, des idées noires ou suicidaires, directement ('je veux mourir') ou indirectement (adieux, dons d'objets, repli, propos sur l'inutilité de vivre).",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne prostrée, en pleurs, ou au contraire étrangement calme/résignée", "Négligence, repli sur soi", "Objets donnés, affaires mises en ordre (signes d'adieu)", "Traces d'automutilation, moyens dangereux à proximité"],
+    "auditifs": ["'Je n'en peux plus', 'ça ne sert à rien', 'vous seriez mieux sans moi'", "Propos d'adieu, allusions à la mort", "Silence, réponses laconiques, voix éteinte"],
+    "comportementaux": ["Désespoir, sentiment d'impasse, culpabilité", "Isolement, rupture des contacts", "Recherche de moyens, plan évoqué (signe de gravité majeure)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Charge émotionnelle forte", "Situation à risque si moyens dangereux présents (arme, hauteur, médicaments)"],
+    "equipementsRequis": ["Un lieu calme et sûr pour parler", "Numéros d'urgence (3114, 15)", "Du temps et une écoute disponible"],
+    "regleUniverselle": "Prendre au sérieux toute expression de souffrance ou d'idée suicidaire. Écouter sans juger, ne pas laisser la personne seule, oser parler ouvertement du suicide (cela ne 'donne pas l'idée', au contraire), et l'orienter vers le 3114 / le 15.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "3114 (numéro national prévention du suicide, 24h/24, gratuit) ; 15 en cas de danger imminent, geste en cours ou déjà commis ; 17 si mise en danger immédiate",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Personne en détresse psychologique exprimant des idées suicidaires. [Plan / moyens évoqués : oui/non]. Geste en cours ou déjà fait : [oui/non]. Elle est [seule / avec moi]. Je reste avec elle. Besoin de conseils / d'intervention.",
+    "informationsAFournir": ["Nature de la détresse et idées exprimées", "Existence d'un plan, de moyens, d'un passage à l'acte (imminence)", "Antécédents connus, présence de moyens dangereux", "Localisation et personnes présentes"]
+  },
+
+  "actionsImmédiates": [
+    "RESTER avec la personne — ne pas la laisser seule",
+    "ÉCOUTER sans juger, avec bienveillance ; prendre au sérieux",
+    "OSER demander directement : 'Pensez-vous à mettre fin à vos jours ?'",
+    "ORIENTER vers le 3114 (24h/24) ; 15 si danger imminent ou geste commis"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Se rendre disponible, proposer un endroit calme et à l'abri des regards pour parler, adopter une attitude bienveillante et posée"},
+    {"etape": 2, "action": "Écouter activement, sans juger ni banaliser : laisser la personne exprimer sa souffrance, reformuler ('si je comprends bien...'), accueillir ses émotions"},
+    {"etape": 3, "action": "Oser aborder directement le sujet : 'Est-ce que vous pensez parfois à mourir / à vous faire du mal ?' — parler du suicide ne le provoque pas, cela soulage et ouvre le dialogue"},
+    {"etape": 4, "action": "Évaluer l'imminence sans dramatiser : la personne a-t-elle un plan, des moyens, une échéance ? Un geste est-il en cours ou déjà commis ? (plus c'est précis, plus le risque est élevé)"},
+    {"etape": 5, "action": "Ne pas laisser la personne seule ; si des moyens dangereux sont accessibles (médicaments, arme, hauteur), les éloigner discrètement si possible sans se mettre en danger"},
+    {"etape": 6, "action": "Ne pas promettre le secret : expliquer avec bienveillance qu'on va chercher de l'aide parce qu'on tient à elle"},
+    {"etape": 7, "action": "Orienter et mettre en lien : proposer d'appeler ensemble le 3114 (prévention du suicide, 24h/24, gratuit, anonyme) ; contacter le 15 en cas de danger imminent ou de geste déjà réalisé"},
+    {"etape": 8, "action": "En cas de tentative en cours / déjà commise (intoxication, plaie...) : 15 immédiat + gestes de secours adaptés (ne pas faire vomir une intoxication, comprimer une plaie...)"},
+    {"etape": 9, "action": "Rester présent jusqu'au relais par un professionnel ou un proche de confiance ; assurer la continuité de la prise en charge"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Idées suicidaires sans plan ni imminence",
+      "alors": "Écoute, ne pas laisser seul, appeler ensemble le 3114, organiser un relais (proche, médecin)"
+    },
+    {
+      "condition": "Plan précis, moyens disponibles, échéance proche (danger imminent)",
+      "alors": "Ne pas laisser seul, éloigner les moyens, 15 / 3114 en urgence, éventuellement 17 si mise en danger immédiate"
+    },
+    {
+      "condition": "Geste suicidaire en cours ou déjà commis",
+      "alors": "15 IMMÉDIAT + gestes de secours adaptés (intoxication, plaie, pendaison...) + ne pas laisser seul"
+    },
+    {
+      "condition": "Personne qui refuse toute aide mais reste en danger",
+      "alors": "Maintenir le lien, alerter le 15 / 3114 pour conduite à tenir, ne pas rester seul face à la situation"
+    },
+    {
+      "condition": "Détresse sans idées suicidaires exprimées",
+      "alors": "Écoute, soutien, orientation vers un professionnel (médecin, psychologue), information sur les ressources"
+    }
+  ],
+
+  "notesCritiques": [
+    "Toujours prendre au sérieux : ne jamais banaliser ni défier ('tu ne le feras pas')",
+    "Parler ouvertement du suicide ne 'donne pas l'idée' : cela soulage et permet d'évaluer le risque",
+    "Ne pas laisser la personne seule, surtout en cas de plan précis ou de moyens accessibles",
+    "Écouter sans juger et sans donner de leçons ; la présence bienveillante compte plus que les 'bons conseils'",
+    "Ne pas promettre le secret : chercher de l'aide est un acte de soin, pas une trahison",
+    "3114 : numéro national de prévention du suicide, 24h/24, gratuit — 15 si danger imminent ou geste commis"
+  ],
+
+  "pointsControle": [
+    "La personne n'a pas été laissée seule",
+    "Elle a été écoutée sans jugement et prise au sérieux",
+    "Le risque (plan, moyens, imminence) a été évalué avec tact",
+    "Les moyens dangereux ont été éloignés si possible",
+    "Un lien a été établi avec le 3114 / le 15 et un relais organisé"
+  ],
+
+  "conditionsArretEscalade": [
+    "Geste en cours / commis → 15 immédiat + secours",
+    "Plan précis + moyens + imminence → 15 / 3114 en urgence, ne pas laisser seul",
+    "Refus d'aide avec danger → alerter le 15 / 3114, maintenir le lien"
+  ],
+
+  "ressourcesNecessaires": [
+    "Un lieu calme et sûr pour parler",
+    "3114 (prévention du suicide, 24h/24), 15, 17",
+    "Coordonnées d'un proche de confiance / du médecin traitant",
+    "Du temps et une écoute disponible"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'accès à un professionnel tarde et que la personne reste en détresse",
+    "actions": [
+      "Rester présent et maintenir le dialogue, continuer à écouter sans juger, montrer que l'on tient à elle",
+      "Appeler le 3114 : les professionnels guident la conduite à tenir, même à distance, 24h/24",
+      "Éloigner ou sécuriser les moyens dangereux accessibles et ne pas laisser la personne seule",
+      "Mobiliser un proche de confiance pour se relayer et assurer une présence continue",
+      "Aider à élaborer un plan de sécurité simple (personnes à appeler, éloignement des moyens, prochain rendez-vous) et réorienter vers le 15 si la situation se tend"
+    ],
+    "ressourcesImprovises": [
+      "Téléphone pour joindre le 3114 ensemble",
+      "Un proche de confiance mobilisable pour une présence continue",
+      "Un lieu sûr et calme où la personne se sent en sécurité"
+    ],
+    "signesAggravation": [
+      "Passage d'idées vagues à un plan précis avec moyens et échéance",
+      "Calme soudain et résignation après une grande agitation (peut signer une décision prise)",
+      "Gestes d'adieu, sécurisation de ses affaires",
+      "Début de passage à l'acte"
+    ],
+    "limitesSansSecours": "L'écoute et la présence sauvent, mais l'évaluation et la prise en charge d'une crise suicidaire relèvent de professionnels (3114, urgences psychiatriques). En cas de danger imminent ou de geste, seule l'intervention des secours permet de protéger la personne.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence de professionnel. Elles ne remplacent pas une prise en charge spécialisée. En cas de danger, appelez le 15 ; pour être guidé, le 3114 (24h/24)."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une prise en charge médicale ou psychologique. En cas de détresse suicidaire, contactez le 3114 (24h/24, gratuit) ; en cas de danger imminent, le 15."
+}

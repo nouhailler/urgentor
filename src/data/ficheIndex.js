@@ -45,6 +45,10 @@ import convulsionsFebriles from './fiches/pediatrie/convulsions-febriles.json'
 import ingestionToxique from './fiches/pediatrie/ingestion-toxique.json'
 import brulureEnfant from './fiches/pediatrie/brulure-enfant.json'
 import traumaNourrisson from './fiches/pediatrie/trauma-nourrisson.json'
+import crisePanique from './fiches/psychologique/crise-panique.json'
+import detressePsychologique from './fiches/psychologique/detresse-psychologique.json'
+import agitation from './fiches/psychologique/agitation.json'
+import chocPsychologique from './fiches/psychologique/choc-psychologique.json'
 import incendie from './fiches/incendie-evacuation/incendie.json'
 import evacuation from './fiches/incendie-evacuation/evacuation.json'
 import fuiteGaz from './fiches/chimique/fuite-gaz.json'
@@ -100,6 +104,10 @@ export const TOUTES_FICHES = [
   ingestionToxique,
   brulureEnfant,
   traumaNourrisson,
+  crisePanique,
+  detressePsychologique,
+  agitation,
+  chocPsychologique,
   incendie,
   evacuation,
   fuiteGaz,

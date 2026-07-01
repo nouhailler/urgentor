@@ -1,0 +1,133 @@
+{
+  "id": "agitation",
+  "titre": "Comportement Agressif / Désorientation",
+  "categorie": "psychologique",
+  "sousCategorie": "agitation",
+  "tags": ["distance", "désescalade", "sécurité", "agitation", "agressivité", "confusion"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Faire face à une personne agitée, agressive ou désorientée en préservant la sécurité de tous, en désamorçant la tension par la communication, sans confrontation, et en recherchant une éventuelle cause médicale.",
+
+  "conditionsActivation": "Personne agitée, menaçante, confuse ou désorientée (crise psychique, alcool/drogue, confusion aiguë, hypoglycémie, traumatisme, démence) : propos incohérents, agressivité verbale ou physique, perte des repères.",
+
+  "diagnosticRapide": {
+    "visuels": ["Agitation motrice, gestes brusques, déambulation", "Poings serrés, tension corporelle, posture menaçante", "Regard perdu, désorientation (ne sait plus où il est)", "Sueurs, pâleur, tremblements (possible cause médicale)"],
+    "auditifs": ["Cris, insultes, menaces, propos incohérents", "Discours décousu, idées confuses", "Refus du dialogue, provocations"],
+    "comportementaux": ["Imprévisibilité, escalade rapide", "Désorientation temporo-spatiale", "Comportement inhabituel pour la personne"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Coups, blessures, passage à l'acte violent", "Escalade en cas de confrontation", "Objets pouvant servir d'arme"],
+    "equipementsRequis": ["Espace dégagé avec une issue de repli", "Renfort (ne pas rester seul)", "Moyen d'alerte (15, 17)"],
+    "regleUniverselle": "Garder une distance de sécurité, ne jamais acculer ni confronter la personne. Voix calme, posture non menaçante, un seul interlocuteur. Rechercher une cause médicale (hypoglycémie, hypoxie, traumatisme, intoxication) qui peut expliquer l'agitation.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (volet médical : cause de l'agitation, régulation) ; 17 (police) en cas de danger / violence ; ensemble si nécessaire",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Personne agitée / agressive / désorientée. [Menace / violence : oui/non]. Cause possible : [alcool, malaise, confusion, inconnue]. [Nombre] personnes autour. Besoin d'un avis médical / d'une intervention.",
+    "informationsAFournir": ["Comportement (agitation, agressivité, désorientation) et son évolution", "Danger éventuel (arme, violence)", "Cause médicale suspectée (diabète, traumatisme, intoxication)", "Localisation et personnes présentes"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER : garder une distance, une issue de repli, ne pas rester seul",
+    "DÉSESCALADER : voix calme, posture ouverte, un seul interlocuteur",
+    "NE PAS confronter, contredire ni acculer ; écarter le public",
+    "RECHERCHER une cause médicale ; alerter le 15 / 17 selon le danger"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Assurer la sécurité : garder une distance suffisante (bras tendus), se placer près d'une sortie, ne pas tourner le dos, ne jamais s'isoler seul avec la personne"},
+    {"etape": 2, "action": "Écarter calmement le public et retirer les objets dangereux accessibles si possible sans risque"},
+    {"etape": 3, "action": "Désigner UN seul interlocuteur (éviter que plusieurs personnes parlent en même temps, ce qui augmente la tension)"},
+    {"etape": 4, "action": "Adopter une communication de désescalade : voix calme et lente, ton posé, posture ouverte et non menaçante, contact visuel modéré, écouter, ne pas contredire ni humilier"},
+    {"etape": 5, "action": "Reconnaître l'émotion ('je vois que vous êtes en colère'), reformuler, laisser un espace, éviter les ordres secs et les gestes brusques"},
+    {"etape": 6, "action": "Rechercher une cause médicale à l'agitation : hypoglycémie (diabétique), manque d'oxygène, traumatisme crânien, intoxication, fièvre/confusion, douleur — corriger si possible (ex. resucrage si hypoglycémie et personne capable d'avaler)"},
+    {"etape": 7, "action": "Ne pas tenter de maîtriser physiquement seul : toute contention éventuelle relève de personnels formés/des forces de l'ordre, à plusieurs, en dernier recours"},
+    {"etape": 8, "action": "Alerter : le 15 pour le volet médical (cause, régulation, orientation), le 17 en cas de danger ou de violence"},
+    {"etape": 9, "action": "Après l'apaisement : prendre en charge une éventuelle cause médicale, orienter vers un suivi, sécuriser la personne et l'entourage"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Agitation sans violence physique",
+      "alors": "Désescalade verbale + distance + recherche d'une cause médicale + 15 si besoin"
+    },
+    {
+      "condition": "Violence physique / arme / danger imminent",
+      "alors": "Se mettre à l'abri, ne pas affronter, 17 immédiat, protéger les autres"
+    },
+    {
+      "condition": "Désorientation aiguë (confusion soudaine)",
+      "alors": "Suspecter une cause médicale (hypoglycémie, hypoxie, AVC, infection, traumatisme, intoxication) → 15"
+    },
+    {
+      "condition": "Diabétique agité / sueurs / pâleur",
+      "alors": "Penser à l'hypoglycémie : resucrer si conscient et capable d'avaler (voir protocole hypoglycémie)"
+    },
+    {
+      "condition": "Personne âgée confuse et agitée",
+      "alors": "Rassurer, environnement calme, rechercher une cause (douleur, infection, médicament), avis médical"
+    }
+  ],
+
+  "notesCritiques": [
+    "La sécurité prime : garder une distance, une issue, ne jamais rester seul ni acculer la personne",
+    "Ne pas confronter, contredire ou humilier : cela déclenche l'escalade",
+    "Un seul interlocuteur, une voix calme : la désescalade repose sur le ton et la posture autant que sur les mots",
+    "L'agitation ou la désorientation peuvent avoir une CAUSE MÉDICALE (hypoglycémie, hypoxie, AVC, intoxication, traumatisme) à rechercher et corriger",
+    "Ne pas tenter de contention physique seul : risque pour tous",
+    "Une agressivité liée à une confusion ou une hypoglycémie n'est pas de la mauvaise volonté"
+  ],
+
+  "pointsControle": [
+    "Une distance de sécurité et une issue de repli ont été maintenues",
+    "La désescalade a été privilégiée (un interlocuteur, voix calme, pas de confrontation)",
+    "Le public a été écarté et les objets dangereux éloignés si possible",
+    "Une cause médicale a été recherchée et corrigée si possible",
+    "Le 15 / 17 a été alerté selon le danger, sans tentative de maîtrise isolée"
+  ],
+
+  "conditionsArretEscalade": [
+    "Violence / arme / danger imminent → 17, se mettre à l'abri",
+    "Cause médicale suspectée (confusion aiguë, hypoglycémie) → 15",
+    "Agitation non maîtrisable → renforts (15/17), pas de contention seul"
+  ],
+
+  "ressourcesNecessaires": [
+    "Espace dégagé avec issue de repli",
+    "Renfort (autres personnes, sécurité)",
+    "Numéros 15 et 17",
+    "De quoi corriger une cause simple (sucre pour une hypoglycémie)",
+    "Environnement calme pour l'apaisement"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours / forces de l'ordre tardent, la personne restant agitée",
+    "actions": [
+      "Maintenir la distance et la désescalade, gagner du temps par une communication calme et patiente",
+      "Continuer à rechercher et corriger une cause médicale accessible (resucrage d'une hypoglycémie chez une personne consciente, mise au calme, hydratation)",
+      "Réduire les stimulations (bruit, lumière, foule) qui entretiennent l'agitation",
+      "Se relayer entre intervenants pour rester disponible sans s'épuiser, ne jamais rester seul",
+      "Tenir les secours informés de l'évolution et se mettre à l'abri au moindre passage à la violence"
+    ],
+    "ressourcesImprovises": [
+      "Un espace calme et à l'écart pour réduire les stimulations",
+      "Du sucre / une boisson sucrée en cas de suspicion d'hypoglycémie chez une personne consciente",
+      "Des personnes-relais pour assurer une présence sûre et continue"
+    ],
+    "signesAggravation": [
+      "Escalade vers la violence physique, apparition d'une arme",
+      "Aggravation de la confusion, troubles de la conscience (cause médicale)",
+      "Signes de malaise (sueurs, pâleur, convulsions) évoquant une urgence médicale",
+      "Mise en danger de la personne ou d'autrui"
+    ],
+    "limitesSansSecours": "La désescalade permet souvent d'apaiser, mais une agitation d'origine médicale (hypoglycémie, AVC, intoxication) ou psychiatrique nécessite une prise en charge spécialisée. Face à la violence, seule l'intervention des forces de l'ordre garantit la sécurité.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence de secours. Elles ne remplacent pas une prise en charge médicale ou l'intervention des forces de l'ordre. Votre sécurité passe avant tout."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation à la gestion de l'agressivité ni un avis médical. En cas de danger, appelez le 17 ; pour le volet médical, le 15."
+}

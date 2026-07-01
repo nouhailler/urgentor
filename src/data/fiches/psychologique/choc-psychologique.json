@@ -1,0 +1,133 @@
+{
+  "id": "choc-psychologique",
+  "titre": "État de Choc Psychologique Post-Traumatique",
+  "categorie": "psychologique",
+  "sousCategorie": "trauma",
+  "tags": ["sécurité", "parole", "orientation", "choc psychologique", "stress aigu", "post-traumatique"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / CUMP",
+
+  "objectif": "Accompagner une personne en état de choc psychologique après un événement traumatique (accident, agression, catastrophe, décès), la mettre en sécurité, permettre la parole sans forcer et l'orienter vers un professionnel.",
+
+  "conditionsActivation": "Personne venant de vivre ou de témoigner d'un événement traumatisant (accident grave, agression, attentat, catastrophe, mort brutale) : sidération, agitation, pleurs, prostration, sentiment d'irréalité.",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne figée, hébétée, regard vide (sidération)", "Ou au contraire agitée, tremblante, en pleurs", "Pâleur, tremblements, gestes automatiques", "Comportement inadapté (déambulation, rires nerveux)"],
+    "auditifs": ["Répétition en boucle des faits, ou mutisme", "'Ce n'est pas possible', 'je n'y crois pas'", "Propos confus, questions répétées"],
+    "comportementaux": ["Sidération (figé, incapable d'agir) ou agitation désordonnée", "Sentiment d'irréalité, de détachement (comme dans un rêve)", "Hypervigilance, sursauts, ou au contraire apathie"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Charge émotionnelle", "Danger résiduel de la scène (sur-accident, agresseur)", "Comportement imprévisible de la personne en état de choc"],
+    "equipementsRequis": ["Un lieu sûr, à l'écart de la scène traumatique", "Couverture (le choc s'accompagne souvent de froid/tremblements)", "Eau, présence rassurante", "Coordonnées CUMP / soutien psychologique"],
+    "regleUniverselle": "Mettre d'abord la personne en sécurité physique, à l'écart de la scène. Offrir une présence calme et rassurante, permettre la parole SANS la forcer, ne pas faire revivre les détails. Orienter vers un soutien psychologique spécialisé.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (peut déclencher la CUMP - Cellule d'Urgence Médico-Psychologique) ; 3114 pour la détresse suicidaire ; 15 aussi pour les blessures physiques associées",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Personne en état de choc psychologique après [événement]. État : [sidérée / agitée / prostrée]. Blessures physiques : [oui/non]. Elle est en sécurité avec moi. Besoin d'un soutien médico-psychologique.",
+    "informationsAFournir": ["Nature de l'événement traumatique", "État de la personne (sidération, agitation, détresse)", "Blessures physiques associées", "Nombre de personnes touchées (déclenchement CUMP)"]
+  },
+
+  "actionsImmédiates": [
+    "METTRE EN SÉCURITÉ physique, à l'écart de la scène traumatique",
+    "Se présenter, offrir une PRÉSENCE calme et rassurante",
+    "PERMETTRE la parole sans forcer ; ne pas faire revivre les détails",
+    "COUVRIR, hydrater, ne pas laisser seul ; ORIENTER vers un professionnel"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Éloigner la personne de la scène traumatique vers un endroit calme et sûr (soustraire à la vue, au bruit, au danger résiduel)"},
+    {"etape": 2, "action": "Se présenter simplement, se mettre à sa hauteur, adopter une voix calme et posée : 'Je suis là, vous êtes en sécurité maintenant'"},
+    {"etape": 3, "action": "Assurer les besoins de base : couvrir (le choc donne froid, fait trembler), proposer de l'eau, un endroit où s'asseoir"},
+    {"etape": 4, "action": "Offrir une présence rassurante et de l'écoute : permettre à la personne de parler si elle le souhaite, SANS la forcer, sans l'interroger sur les détails de l'événement (ne pas faire revivre le trauma)"},
+    {"etape": 5, "action": "Accueillir les émotions sans juger (pleurs, colère, sidération sont des réactions normales à un événement anormal), valider ('c'est normal de réagir ainsi')"},
+    {"etape": 6, "action": "Réorienter dans le temps et l'espace la personne désorientée (rappeler où elle est, que c'est fini, qu'elle est en sécurité)"},
+    {"etape": 7, "action": "Ne pas laisser la personne seule ; rechercher un proche de confiance à contacter"},
+    {"etape": 8, "action": "Prendre en charge d'éventuelles blessures physiques et appeler le 15 (qui peut déclencher la CUMP en cas d'événement collectif)"},
+    {"etape": 9, "action": "Orienter systématiquement vers un soutien psychologique (CUMP, médecin, psychologue) ; informer que des réactions peuvent apparaître dans les jours/semaines suivants"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Sidération (personne figée, hébétée)",
+      "alors": "Présence douce, contact verbal simple et répété, réorientation, ne pas brusquer, sécuriser"
+    },
+    {
+      "condition": "Agitation / détresse intense",
+      "alors": "Calmer par la voix et la présence, isoler du tumulte, éviter la surstimulation, envisager la CUMP"
+    },
+    {
+      "condition": "Blessures physiques associées",
+      "alors": "Premiers secours adaptés + 15 (le physique et le psychique sont pris en charge ensemble)"
+    },
+    {
+      "condition": "Idées suicidaires / désespoir profond",
+      "alors": "Ne pas laisser seul, écoute, orienter vers le 3114, 15 si danger imminent"
+    },
+    {
+      "condition": "Événement collectif (catastrophe, attentat)",
+      "alors": "Alerter le 15 pour déclenchement de la CUMP, regrouper et rassurer les victimes"
+    }
+  ],
+
+  "notesCritiques": [
+    "La sécurité physique d'abord : éloigner de la scène avant tout accompagnement psychologique",
+    "Permettre la parole SANS forcer ni faire raconter les détails (ne pas réactiver le trauma)",
+    "Les réactions (sidération, pleurs, agitation, détachement) sont NORMALES face à un événement anormal : ne pas les juger",
+    "Ne pas laisser la personne seule ; mobiliser un proche de confiance",
+    "Une présence calme et rassurante vaut mieux que des conseils ou des explications",
+    "Orienter systématiquement vers un soutien spécialisé (CUMP via le 15) : des troubles peuvent apparaître à distance"
+  ],
+
+  "pointsControle": [
+    "La personne a été mise en sécurité, à l'écart de la scène",
+    "Une présence calme et rassurante a été offerte",
+    "La parole a été permise sans être forcée",
+    "Les besoins de base (chaleur, eau) et les blessures ont été pris en charge",
+    "La personne n'est pas seule et a été orientée vers un soutien psychologique"
+  ],
+
+  "conditionsArretEscalade": [
+    "Blessures physiques → 15 + premiers secours",
+    "Idées suicidaires → 3114 / 15, ne pas laisser seul",
+    "Événement collectif → 15 pour déclenchement de la CUMP"
+  ],
+
+  "ressourcesNecessaires": [
+    "Un lieu sûr et calme, à l'écart de la scène",
+    "Couverture, eau, endroit où s'asseoir",
+    "Coordonnées d'un proche de confiance",
+    "Numéros 15 (CUMP), 3114",
+    "Une présence disponible et patiente"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si le soutien spécialisé tarde après un événement traumatique",
+    "actions": [
+      "Maintenir la personne en sécurité, au calme et au chaud, avec une présence continue et rassurante",
+      "Continuer à permettre la parole sans forcer, écouter, réorienter dans le temps et l'espace si besoin",
+      "Répondre aux besoins concrets (boire, se réchauffer, contacter un proche) qui aident à se reconnecter au réel",
+      "Éviter la surstimulation (foule, images, questions répétées) et les jugements sur ses réactions",
+      "Informer sur les réactions possibles dans les jours suivants et sur les ressources (CUMP, médecin, psychologue, 3114) à contacter"
+    ],
+    "ressourcesImprovises": [
+      "Couverture / vêtement chaud contre les tremblements liés au choc",
+      "Un endroit à l'écart (véhicule, pièce calme) pour s'isoler du tumulte",
+      "Un proche de confiance mobilisé pour assurer une présence continue"
+    ],
+    "signesAggravation": [
+      "Détresse qui s'intensifie, agitation incontrôlable ou sidération profonde persistante",
+      "Apparition d'idées suicidaires ou de désespoir",
+      "Symptômes physiques inquiétants (douleur thoracique, malaise) nécessitant un avis médical",
+      "Comportement de mise en danger de soi ou d'autrui"
+    ],
+    "limitesSansSecours": "Le soutien immédiat (sécurité, présence, écoute) est précieux et à la portée de tous, mais il ne remplace pas la prise en charge médico-psychologique (CUMP, psychologue). Un accompagnement spécialisé précoce limite le risque de stress post-traumatique durable.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence de professionnel. Elles ne remplacent pas une prise en charge médico-psychologique. Orientez la personne vers un soutien spécialisé (15/CUMP) ; en cas de détresse suicidaire, le 3114."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une prise en charge médico-psychologique. Orientez vers un professionnel (15/CUMP, psychologue) ; en cas de détresse suicidaire, le 3114."
+}
