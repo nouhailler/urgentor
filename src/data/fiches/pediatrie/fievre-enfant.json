@@ -1,0 +1,133 @@
+{
+  "id": "fievre-enfant",
+  "titre": "Fièvre Élevée chez l'Enfant",
+  "categorie": "pediatrie",
+  "sousCategorie": "infectieux",
+  "tags": ["hydratation", "bain tiède", "surveillance", "fièvre", "enfant", "purpura"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Faire baisser une fièvre élevée chez l'enfant, assurer son confort et son hydratation, et repérer les signes de gravité imposant un avis médical urgent.",
+
+  "conditionsActivation": "Enfant présentant une température élevée (≥ 38,5 °C, et surtout ≥ 40 °C ou fièvre mal tolérée), avec inconfort, abattement ou signes associés. Toute fièvre chez un nourrisson de moins de 3 mois est une urgence.",
+
+  "diagnosticRapide": {
+    "visuels": ["Enfant chaud, rouge ou au contraire pâle/gris", "Yeux cernés, abattu, ou au contraire agité", "Taches rouges/violacées qui ne s'effacent pas à la pression (purpura = urgence vitale)", "Frissons, sueurs"],
+    "auditifs": ["Pleurs, geignements", "Plainte de maux de tête, refus de la lumière", "Respiration rapide"],
+    "comportementaux": ["Abattement, somnolence inhabituelle, difficile à réveiller", "Refus de boire, de manger", "Irritabilité, inconsolabilité"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Risque infectieux modéré (hygiène des mains)", "Aucun danger direct particulier"],
+    "equipementsRequis": ["Thermomètre", "Eau / boissons pour hydrater", "Vêtements légers", "Antipyrétique adapté au poids (paracétamol) si prescrit / autorisé"],
+    "regleUniverselle": "Ne pas trop couvrir l'enfant (le découvrir favorise la baisse de température), l'hydrater régulièrement et surveiller les signes de gravité. Rechercher systématiquement des taches purpuriques et une raideur de la nuque.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — immédiat si purpura, moins de 3 mois, somnolence anormale, gêne respiratoire, ou fièvre mal tolérée",
+    "quoiDire": "Je suis [NOM], au [ADRESSE]. Enfant de [âge/poids], fièvre à [température] depuis [durée]. Signes : [abattement / taches / raideur nuque / gêne respiratoire]. Antipyrétique donné à [HEURE]. Boit [oui/non].",
+    "informationsAFournir": ["Âge et poids de l'enfant", "Température et durée de la fièvre", "Signes de gravité (purpura, somnolence, raideur de nuque, respiration)", "Antipyrétique donné, hydratation, antécédents"]
+  },
+
+  "actionsImmédiates": [
+    "DÉCOUVRIR l'enfant (vêtements légers), pièce fraîche et aérée (~19-20 °C)",
+    "HYDRATER souvent, par petites quantités",
+    "Donner un ANTIPYRÉTIQUE (paracétamol) selon le poids, si autorisé",
+    "RECHERCHER des taches purpuriques / une raideur de nuque → 15 immédiat si présentes"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Prendre la température avec un thermomètre pour objectiver la fièvre"},
+    {"etape": 2, "action": "Découvrir l'enfant (le laisser en vêtements légers), aérer la pièce et maintenir une température ambiante modérée (~19-20 °C) — ne pas surchauffer ni surcouvrir"},
+    {"etape": 3, "action": "Proposer à boire très régulièrement, par petites quantités (eau, lait, solutés) : la fièvre déshydrate"},
+    {"etape": 4, "action": "Administrer un antipyrétique adapté au POIDS de l'enfant (paracétamol en première intention) si autorisé, en respectant la dose et l'intervalle ; ne pas associer plusieurs antipyrétiques sans avis médical"},
+    {"etape": 5, "action": "Rechercher activement les signes de gravité : taches rouges/violacées ne s'effaçant pas à la pression du verre (purpura), raideur de la nuque, somnolence anormale, gêne respiratoire, refus total de boire"},
+    {"etape": 6, "action": "Surveiller le comportement, la coloration, l'hydratation (couches, larmes, bouche) et refaire la température après l'antipyrétique"},
+    {"etape": 7, "action": "Le bain tiède et les linges frais ne sont plus recommandés en routine ; privilégier antipyrétique + découvrir + hydrater. Ne jamais utiliser d'eau froide ni d'alcool"},
+    {"etape": 8, "action": "Appeler le 15 immédiatement en présence de tout signe de gravité, chez un nourrisson < 3 mois, ou si la fièvre est mal tolérée"},
+    {"etape": 9, "action": "Consulter un médecin en l'absence d'amélioration, si la fièvre dure > 48-72h, ou au moindre doute"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Taches purpuriques (ne s'effacent pas à la pression)",
+      "alors": "URGENCE VITALE (purpura fulminans possible) → 15 IMMÉDIAT"
+    },
+    {
+      "condition": "Nourrisson de moins de 3 mois avec fièvre",
+      "alors": "Avis médical urgent / 15 systématique (risque d'infection grave)"
+    },
+    {
+      "condition": "Somnolence anormale, raideur de nuque, refus de la lumière, geignement",
+      "alors": "Suspicion de méningite → 15 immédiat"
+    },
+    {
+      "condition": "Fièvre bien tolérée, enfant réactif et qui boit",
+      "alors": "Découvrir, hydrater, antipyrétique selon le poids, surveiller, consulter si persistance"
+    },
+    {
+      "condition": "Gêne respiratoire, déshydratation (bouche sèche, pas de larmes, couches sèches)",
+      "alors": "Avis médical urgent / 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "Des taches violacées qui ne s'effacent pas à la pression (purpura) sont une URGENCE VITALE : 15 immédiat",
+    "Toute fièvre chez un nourrisson de moins de 3 mois nécessite un avis médical urgent",
+    "Ne pas surcouvrir l'enfant : le découvrir aide à faire baisser la fièvre",
+    "Surveiller la raideur de la nuque, la somnolence anormale et le refus de la lumière (méningite)",
+    "Doser l'antipyrétique selon le POIDS, pas selon l'âge ; ne pas alterner plusieurs médicaments sans avis médical",
+    "Jamais d'eau froide, de bain glacé ni d'alcool sur la peau (inefficace et dangereux)"
+  ],
+
+  "pointsControle": [
+    "La température a été mesurée",
+    "L'enfant est découvert et dans une pièce fraîche",
+    "L'hydratation est régulière",
+    "Les signes de gravité (purpura, nuque, somnolence) ont été recherchés",
+    "Le 15 est alerté en cas de signe de gravité ou chez le nourrisson < 3 mois"
+  ],
+
+  "conditionsArretEscalade": [
+    "Purpura / raideur de nuque / somnolence → 15 immédiat",
+    "Nourrisson < 3 mois fébrile → avis médical urgent",
+    "Déshydratation / gêne respiratoire → 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Thermomètre",
+    "Boissons pour l'hydratation",
+    "Vêtements légers",
+    "Antipyrétique adapté au poids (paracétamol)",
+    "Un verre transparent (test du purpura), téléphone pour le 15"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'avis médical tarde, en zone isolée, avec un enfant fébrile",
+    "actions": [
+      "Poursuivre l'hydratation fractionnée et l'administration de l'antipyrétique selon le poids en respectant les intervalles",
+      "Maintenir l'enfant découvert dans une pièce tempérée, surveiller la température régulièrement",
+      "Surveiller étroitement les signes de gravité (apparition de purpura, somnolence, raideur de nuque, respiration, hydratation)",
+      "Refaire régulièrement le test du verre sur toute nouvelle tache cutanée",
+      "Organiser l'évacuation vers un médecin dès que possible, en priorité chez le nourrisson ou en cas de mauvaise tolérance"
+    ],
+    "ressourcesImprovises": [
+      "Solution de réhydratation orale maison si l'enfant boit peu (selon les proportions recommandées)",
+      "Linge légèrement tiède sur le front pour le confort (jamais d'eau froide)",
+      "Pièce la plus fraîche et aérée disponible"
+    ],
+    "signesAggravation": [
+      "Apparition de taches violacées (purpura)",
+      "Somnolence croissante, enfant difficile à réveiller, geignement",
+      "Raideur de la nuque, refus de la lumière, bombement de la fontanelle chez le nourrisson",
+      "Déshydratation (bouche sèche, pas de larmes, couches sèches), gêne respiratoire"
+    ],
+    "limitesSansSecours": "Faire baisser la fièvre soulage l'enfant mais ne traite pas sa cause. Une infection grave (méningite, purpura fulminans, infection du nourrisson) nécessite un traitement hospitalier urgent (antibiotiques) : le repérage précoce des signes de gravité est vital.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni un avis médical pédiatrique. En cas de doute, appelez le 15."
+}

@@ -1,0 +1,133 @@
+{
+  "id": "brulure-enfant",
+  "titre": "Brûlure chez l'Enfant",
+  "categorie": "pediatrie",
+  "sousCategorie": "traumatologique",
+  "tags": ["eau fraîche", "surface", "douleur", "brûlure", "enfant", "refroidissement"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Refroidir précocement une brûlure chez l'enfant pour limiter son extension, évaluer sa surface et sa gravité, calmer la douleur et orienter, tout en prévenant l'hypothermie (risque majeur chez l'enfant).",
+
+  "conditionsActivation": "Enfant brûlé par un liquide chaud (ébouillantement, cause la plus fréquente), une flamme, un contact avec une surface brûlante, de la vapeur ou de l'électricité : douleur, rougeur, cloques, peau blanchâtre.",
+
+  "diagnosticRapide": {
+    "visuels": ["Rougeur (1er degré)", "Cloques / phlyctènes (2e degré)", "Peau blanche, cartonnée ou noircie, insensible (3e degré)", "Zone brûlée localisée ou étendue (visage, mains, siège…)"],
+    "auditifs": ["Pleurs, cris de douleur", "Silence inquiétant si brûlure profonde (peau insensible)", "L'entourage décrit le mécanisme (eau bouillante, four…)"],
+    "comportementaux": ["Enfant qui retire la zone, souffle dessus", "Agitation ou prostration selon l'étendue", "Refus qu'on touche la zone"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Source de chaleur encore active (liquide, flamme, électricité)", "Risque de se brûler à son tour"],
+    "equipementsRequis": ["Point d'eau (eau tempérée 15-25 °C)", "Pansement non adhérent / film alimentaire", "Couverture (prévention de l'hypothermie)", "Antalgique adapté au poids (paracétamol) si autorisé"],
+    "regleUniverselle": "Refroidir rapidement à l'eau tempérée, retirer vêtements et bijoux non collés, ne pas percer les cloques, ne rien appliquer (beurre, crème). Surveiller de près l'hypothermie : l'enfant se refroidit très vite.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — pour toute brûlure étendue, profonde, sur zone à risque, ou chez le nourrisson",
+    "quoiDire": "Je suis [NOM], au [ADRESSE]. Enfant de [âge/poids] brûlé par [mécanisme] sur [localisation]. Surface estimée : [X paumes de l'enfant]. Aspect : [rougeur / cloques / peau blanche]. Refroidissement en cours depuis [HEURE].",
+    "informationsAFournir": ["Âge et poids de l'enfant", "Mécanisme (liquide chaud, flamme, électricité, chimique)", "Surface (en paumes de l'enfant) et localisation", "Profondeur apparente et état général"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER : éloigner de la source, éteindre les flammes",
+    "REFROIDIR à l'eau tempérée (15-25 °C) pendant 10 minutes environ",
+    "RETIRER vêtements et bijoux non collés ; NE PAS percer les cloques",
+    "COUVRIR (pansement propre) et RÉCHAUFFER l'enfant ; 15 si brûlure grave"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser : éloigner l'enfant de la source, éteindre des vêtements enflammés (rouler dans un tissu), couper l'électricité si en cause"},
+    {"etape": 2, "action": "Refroidir la zone brûlée à l'eau courante tempérée (15-25 °C, ni glacée ni froide) pendant environ 10 minutes, en surveillant que l'enfant ne se refroidisse pas globalement"},
+    {"etape": 3, "action": "Retirer délicatement vêtements, couche et bijoux autour de la zone, SAUF s'ils collent à la peau (ne pas forcer)"},
+    {"etape": 4, "action": "NE PAS percer les cloques ; NE PAS appliquer de beurre, crème, dentifrice, glace ou autre remède"},
+    {"etape": 5, "action": "Évaluer la surface avec la PAUME de la main de l'enfant (paume + doigts ≈ 1 % de sa surface corporelle) et la localisation"},
+    {"etape": 6, "action": "Couvrir la brûlure d'un pansement non adhérent propre ou d'un film alimentaire (sans serrer)"},
+    {"etape": 7, "action": "Réchauffer l'enfant (couverture) : le refroidissement global est un risque majeur, surtout chez le nourrisson"},
+    {"etape": 8, "action": "Donner un antalgique adapté au POIDS (paracétamol) si autorisé ; rassurer l'enfant"},
+    {"etape": 9, "action": "Appeler le 15 pour toute brûlure étendue (> 5 % environ), profonde, circulaire, sur visage/mains/plis/siège, d'origine électrique/chimique, ou chez un nourrisson ; sinon consultation médicale"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Brûlure étendue, profonde, circulaire, ou sur zone à risque (visage, mains, cou, plis, siège)",
+      "alors": "15 immédiat — brûlure grave chez l'enfant, prise en charge spécialisée"
+    },
+    {
+      "condition": "Nourrisson / jeune enfant, quelle que soit la brûlure au-delà d'une rougeur minime",
+      "alors": "Avis médical / 15 (tolérance moindre, surface relative plus grande)"
+    },
+    {
+      "condition": "Brûlure des voies respiratoires (vapeur, flamme, suie autour du nez/bouche)",
+      "alors": "15 IMMÉDIAT — risque d'œdème des voies aériennes"
+    },
+    {
+      "condition": "Petite brûlure superficielle (rougeur simple, < 1 paume)",
+      "alors": "Refroidir, protéger, antalgique, surveiller, consultation si besoin"
+    },
+    {
+      "condition": "Brûlure électrique ou chimique",
+      "alors": "Protocoles spécifiques (couper la source / rincer 15 min) + 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "La peau de l'enfant est fine : les brûlures sont plus profondes et plus étendues à surface égale que chez l'adulte",
+    "Utiliser de l'eau TEMPÉRÉE (15-25 °C) : l'eau glacée aggrave l'hypothermie, très rapide chez l'enfant",
+    "Surveiller le refroidissement global : couvrir l'enfant, ne pas prolonger excessivement le refroidissement d'une grande surface",
+    "Ne jamais percer les cloques ni appliquer de corps gras : risque infectieux, masque la profondeur",
+    "Évaluer la surface avec la paume de l'ENFANT (≈ 1 %)",
+    "Les brûlures respiratoires (vapeur, flamme) peuvent tuer par œdème du larynx : 15 immédiat"
+  ],
+
+  "pointsControle": [
+    "La source de chaleur a été éliminée",
+    "Le refroidissement à l'eau tempérée a été fait (~10 min) sans refroidir globalement l'enfant",
+    "Vêtements/bijoux non collés retirés, cloques non percées, rien appliqué",
+    "L'enfant est couvert et réchauffé, la douleur prise en charge",
+    "Le 15 est alerté pour toute brûlure grave ou chez le nourrisson"
+  ],
+
+  "conditionsArretEscalade": [
+    "Brûlure étendue/profonde/zone à risque, nourrisson → 15",
+    "Brûlure respiratoire → 15 immédiat",
+    "Signes de choc / détérioration → 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Point d'eau tempérée",
+    "Pansement non adhérent / film alimentaire",
+    "Couverture de survie / couverture",
+    "Antalgique adapté au poids (paracétamol)",
+    "Téléphone pour le 15"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une brûlure de l'enfant, en zone isolée",
+    "actions": [
+      "Refroidir sans dépasser 10-15 min pour une brûlure étendue afin d'éviter l'hypothermie, puis couvrir la zone avec un tissu propre non adhérent ou du film alimentaire",
+      "Garder l'enfant au chaud (couverture) et le rassurer, gérer la douleur avec un antalgique adapté au poids",
+      "Ne jamais percer les cloques ni appliquer de corps gras ; refaire un pansement propre si besoin",
+      "Hydrater l'enfant s'il est conscient (surtout si la brûlure est étendue) et surveiller son état général",
+      "Organiser l'évacuation vers un service adapté, en priorité pour les brûlures étendues, profondes ou du nourrisson"
+    ],
+    "ressourcesImprovises": [
+      "Film alimentaire propre (protège de l'infection, ne colle pas) à défaut de pansement",
+      "Eau en bouteille tempérée pour le refroidissement",
+      "Couverture / vêtements pour maintenir l'enfant au chaud pendant et après le refroidissement"
+    ],
+    "signesAggravation": [
+      "Refroidissement global de l'enfant (frissons, extrémités froides, apathie)",
+      "Difficultés respiratoires (brûlure des voies aériennes)",
+      "Extension apparente de la brûlure, cloques étendues, peau blanche indolore",
+      "Enfant de plus en plus abattu ou somnolent (choc), fièvre secondaire (infection)"
+    ],
+    "limitesSansSecours": "Les brûlures peu étendues et superficielles peuvent être gérées temporairement. Au-delà, le risque de choc, d'hypothermie et d'infection est élevé chez l'enfant : les brûlures étendues, profondes ou du nourrisson nécessitent une prise en charge hospitalière rapide.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni un avis médical pédiatrique. Toute brûlure grave doit être évaluée par un médecin. En cas de doute, appelez le 15."
+}

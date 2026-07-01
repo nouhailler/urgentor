@@ -1,0 +1,133 @@
+{
+  "id": "trauma-nourrisson",
+  "titre": "Traumatisme chez le Nourrisson",
+  "categorie": "pediatrie",
+  "sousCategorie": "traumatologique",
+  "tags": ["immobilisation", "pleurs", "fontanelle", "traumatisme", "nourrisson", "chute"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Évaluer un traumatisme chez le nourrisson (chute de table à langer, du lit, choc), protéger la tête et le cou, repérer les signes de gravité (dont l'état de la fontanelle) et consulter systématiquement.",
+
+  "conditionsActivation": "Nourrisson victime d'une chute (table à langer, lit, poussette, bras) ou d'un choc : pleurs, bosse, comportement inhabituel. La faible hauteur peut être trompeuse : le crâne et le cou du nourrisson sont fragiles.",
+
+  "diagnosticRapide": {
+    "visuels": ["Bosse, hématome, plaie du crâne", "Fontanelle bombée et tendue (hypertension intracrânienne) — signe de gravité", "Pâleur, teint gris", "Membre déformé, mouvements asymétriques"],
+    "auditifs": ["Pleurs vigoureux (plutôt rassurant) ou au contraire geignement faible / cri anormal", "Pleurs inconsolables et prolongés", "Silence anormal, gémissements"],
+    "comportementaux": ["Somnolence inhabituelle, difficulté à réveiller", "Refus de téter, vomissements répétés", "Irritabilité, hypotonie (bébé 'mou') ou raideur anormale"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Aucun danger direct", "Manipulation à réaliser avec une grande douceur"],
+    "equipementsRequis": ["Surface plane et sûre", "Compresses / tissu propre pour une plaie", "Couverture", "Téléphone pour le 15"],
+    "regleUniverselle": "Manipuler le nourrisson avec une extrême douceur en soutenant la tête et le cou. En cas de choc violent, ne pas mobiliser inutilement, maintenir la tête dans l'axe. Surveiller la fontanelle et le comportement, et consulter systématiquement.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — immédiat si perte de connaissance, vomissements répétés, somnolence, fontanelle bombée, malaise, ou chute de hauteur importante",
+    "quoiDire": "Je suis [NOM], au [ADRESSE]. Nourrisson de [âge] ayant chuté de [hauteur] sur [surface]. A pleuré [immédiatement / après un temps]. Actuellement : [réactif / somnolent / vomissements]. Fontanelle : [normale / bombée].",
+    "informationsAFournir": ["Âge du nourrisson", "Mécanisme et hauteur de la chute, surface d'impact", "Comportement immédiat et actuel (pleurs, conscience)", "Signes de gravité (vomissements, somnolence, fontanelle, malaise)"]
+  },
+
+  "actionsImmédiates": [
+    "Manipuler avec DOUCEUR en soutenant tête et cou ; ne pas mobiliser si choc violent",
+    "ÉVALUER : conscience, pleurs, coloration, fontanelle, mouvements des membres",
+    "COMPRIMER doucement une plaie du crâne avec un tissu propre",
+    "SURVEILLER étroitement ; 15 en cas de signe de gravité ; consulter systématiquement"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Prendre le nourrisson avec précaution en soutenant toujours la tête et la nuque ; en cas de choc violent (chute de grande hauteur, accident), ne pas le mobiliser inutilement et maintenir la tête dans l'axe du corps"},
+    {"etape": 2, "action": "Observer la réaction : a-t-il pleuré immédiatement (plutôt rassurant) ? Est-il réactif, tonique, de coloration normale ?"},
+    {"etape": 3, "action": "Palper doucement le crâne : bosse, plaie ; observer la fontanelle (une fontanelle bombée et tendue au repos est un signe de gravité)"},
+    {"etape": 4, "action": "Comprimer doucement une plaie du cuir chevelu avec une compresse / un tissu propre (sans appuyer sur un enfoncement)"},
+    {"etape": 5, "action": "Vérifier les mouvements et la symétrie des membres (recherche de fracture, de douleur à la mobilisation)"},
+    {"etape": 6, "action": "Surveiller étroitement pendant 24-48h : conscience, tonus, comportement, prises alimentaires, vomissements, fontanelle, coloration"},
+    {"etape": 7, "action": "Appeler le 15 immédiatement en cas de perte de connaissance, malaise, somnolence anormale, vomissements répétés, fontanelle bombée, convulsions, pâleur ou hypotonie"},
+    {"etape": 8, "action": "Si le nourrisson est inconscient mais respire : PLS adaptée en soutenant la tête ; en cas d'arrêt respiratoire : RCP du nourrisson (5 insufflations initiales) + 15"},
+    {"etape": 9, "action": "Consulter systématiquement un médecin, même si le nourrisson semble bien : les signes peuvent être différés"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Perte de connaissance, malaise, somnolence, vomissements répétés, fontanelle bombée, convulsions",
+      "alors": "Signes de gravité → 15 immédiat"
+    },
+    {
+      "condition": "Chute de hauteur importante ou suspicion d'atteinte du cou/rachis",
+      "alors": "Ne pas mobiliser, maintenir la tête dans l'axe, 15"
+    },
+    {
+      "condition": "Nourrisson réactif, pleurs vigoureux, coloration normale, sans signe de gravité",
+      "alors": "Surveillance rapprochée 24-48h + consultation médicale systématique"
+    },
+    {
+      "condition": "Membre déformé ou douloureux à la mobilisation",
+      "alors": "Immobiliser doucement, avis médical (fracture possible)"
+    },
+    {
+      "condition": "Nourrisson mou (hypotonie), pâle ou geignard",
+      "alors": "15 immédiat"
+    }
+  ],
+
+  "notesCritiques": [
+    "Chez le nourrisson, une chute de faible hauteur peut être grave : le crâne et le cou sont fragiles — consulter systématiquement",
+    "Une fontanelle bombée et tendue au repos est un signe d'alerte (pression intracrânienne)",
+    "Toujours soutenir la tête et le cou ; ne pas secouer ni mobiliser brusquement",
+    "Vomissements répétés, somnolence, hypotonie, pâleur = signes de gravité → 15",
+    "Un intervalle libre est possible : surveiller 24-48h même si le nourrisson va bien au début",
+    "Ne pas donner à boire, à manger ni de médicament sans avis en cas de suspicion de traumatisme grave"
+  ],
+
+  "pointsControle": [
+    "Le nourrisson a été manipulé avec douceur, tête et cou soutenus",
+    "La conscience, le tonus, la coloration et la fontanelle ont été évalués",
+    "Une plaie éventuelle est comprimée",
+    "Le 15 est alerté en présence de tout signe de gravité",
+    "Une consultation médicale est prévue systématiquement, avec surveillance 24-48h"
+  ],
+
+  "conditionsArretEscalade": [
+    "Signes de gravité (conscience, vomissements, fontanelle, hypotonie) → 15 immédiat",
+    "Suspicion d'atteinte du rachis → ne pas mobiliser + 15",
+    "Arrêt respiratoire → RCP du nourrisson + 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Surface plane et sûre",
+    "Compresses / tissu propre pour une plaie",
+    "Couverture",
+    "Téléphone pour le 15",
+    "De quoi noter l'heure et l'évolution du comportement"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours ou l'avis médical tardent, en zone isolée, après un traumatisme du nourrisson",
+    "actions": [
+      "Surveiller le nourrisson en continu : conscience, tonus, coloration, respiration, fontanelle, prises alimentaires et vomissements",
+      "Le maintenir au calme et au chaud, tête et cou soutenus, éviter toute manipulation brusque",
+      "Comprimer et protéger toute plaie du cuir chevelu, refaire un pansement propre si besoin",
+      "Ne rien donner par la bouche tant qu'un avis médical n'a pas exclu une atteinte grave",
+      "Organiser une évacuation vers un service pédiatrique, en priorité au moindre signe de gravité"
+    ],
+    "ressourcesImprovises": [
+      "Vêtements roulés pour caler doucement la tête et éviter les mouvements",
+      "Tissu propre en compresse pour une plaie",
+      "Couverture pour maintenir le nourrisson au chaud"
+    ],
+    "signesAggravation": [
+      "Somnolence croissante, nourrisson difficile à réveiller, hypotonie",
+      "Vomissements répétés, refus de téter",
+      "Fontanelle qui se bombe, convulsions",
+      "Pâleur, teint gris, respiration anormale"
+    ],
+    "limitesSansSecours": "Un hématome intracrânien ou une lésion cervicale chez le nourrisson peut s'aggraver rapidement et nécessite un scanner et parfois une chirurgie. La surveillance permet de détecter l'aggravation, mais seul l'hôpital peut diagnostiquer et traiter les lésions graves.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni un avis médical pédiatrique. Tout traumatisme du nourrisson justifie une consultation. En cas de doute, appelez le 15."
+}

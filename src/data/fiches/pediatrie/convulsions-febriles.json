@@ -1,0 +1,133 @@
+{
+  "id": "convulsions-febriles",
+  "titre": "Convulsions Fébriles",
+  "categorie": "pediatrie",
+  "sousCategorie": "neurologique",
+  "tags": ["PLS", "durée", "rassurer", "convulsions fébriles", "fièvre", "enfant"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Protéger un enfant pendant une convulsion fébrile, sécuriser ses voies aériennes après la crise, chronométrer la durée et rassurer, tout en repérant les situations nécessitant le 15.",
+
+  "conditionsActivation": "Chez un enfant (souvent 6 mois - 5 ans) en contexte de fièvre : perte de connaissance brutale avec raidissement puis secousses des membres, yeux révulsés, parfois lèvres bleutées. Impressionnant mais le plus souvent bénin.",
+
+  "diagnosticRapide": {
+    "visuels": ["Enfant qui se raidit puis présente des secousses des bras et des jambes", "Yeux révulsés, regard fixe", "Lèvres/visage bleutés pendant la crise", "Contexte de fièvre"],
+    "auditifs": ["Absence de réponse à la voix", "Respiration bruyante ou suspendue pendant la crise", "Aucune interaction"],
+    "comportementaux": ["Perte de contact total", "Mouvements involontaires incontrôlables", "Somnolence et confusion après la crise (phase post-critique)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Aucun danger direct", "Coups involontaires de l'enfant pendant les secousses"],
+    "equipementsRequis": ["Surface sûre pour allonger l'enfant", "De quoi chronométrer la crise", "Thermomètre, antipyrétique (après la crise, sur avis)"],
+    "regleUniverselle": "NE RIEN mettre dans la bouche, NE PAS entraver les mouvements. Protéger l'enfant, le mettre en PLS dès la fin des secousses, chronométrer la crise et rassurer l'entourage.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — immédiat si crise > 5 min, crises répétées, moins de 1 an, ou récupération anormale",
+    "quoiDire": "Je suis [NOM], au [ADRESSE]. Enfant de [âge], convulsion fébrile depuis [HEURE de début], fièvre à [température]. La crise dure/est terminée depuis [durée]. Après la crise : [somnolent / réactif]. Respire [oui/non].",
+    "informationsAFournir": ["Âge de l'enfant et température", "Heure de début et durée de la crise", "Première crise ou récidive", "État après la crise (respiration, conscience)"]
+  },
+
+  "actionsImmédiates": [
+    "PROTÉGER l'enfant : l'allonger sur une surface sûre, écarter les objets",
+    "NE RIEN mettre dans la bouche, NE PAS retenir les mouvements",
+    "CHRONOMÉTRER la crise (noter l'heure de début)",
+    "APRÈS la crise : PLS + surveiller la respiration ; 15 si crise > 5 min"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Rester calme et NOTER L'HEURE de début de la crise (la durée est déterminante)"},
+    {"etape": 2, "action": "Allonger l'enfant sur le côté ou sur une surface dégagée, écarter les objets durs autour de lui"},
+    {"etape": 3, "action": "NE PAS mettre les doigts ni aucun objet dans la bouche, NE PAS tenter d'immobiliser les secousses"},
+    {"etape": 4, "action": "Desserrer les vêtements autour du cou, laisser la crise se dérouler (elle dure généralement 1 à 3 minutes)"},
+    {"etape": 5, "action": "Dès la fin des secousses : mettre l'enfant en Position Latérale de Sécurité (PLS) pour dégager les voies aériennes (bave, vomissements)"},
+    {"etape": 6, "action": "Vérifier la respiration et la surveiller pendant la phase de récupération (somnolence et confusion normales après la crise)"},
+    {"etape": 7, "action": "Appeler le 15 si la crise dure plus de 5 minutes, si les crises se répètent, chez un nourrisson < 1 an, ou si la récupération est anormale"},
+    {"etape": 8, "action": "Après la crise et sur avis, prendre en charge la fièvre (découvrir, hydrater, antipyrétique selon le poids)"},
+    {"etape": 9, "action": "Rassurer l'enfant à son réveil et l'entourage ; une consultation médicale est nécessaire, au moins pour la première crise"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Crise qui dure plus de 5 minutes ou crises répétées sans reprise de conscience",
+      "alors": "URGENCE → 15 immédiat (état de mal convulsif possible)"
+    },
+    {
+      "condition": "Nourrisson de moins de 1 an, ou première convulsion",
+      "alors": "Appeler le 15 / avis médical urgent"
+    },
+    {
+      "condition": "Crise brève (< 5 min), récupération progressive normale",
+      "alors": "PLS, surveillance, prise en charge de la fièvre, consultation médicale (surtout si 1re crise)"
+    },
+    {
+      "condition": "Après la crise, l'enfant ne respire pas normalement",
+      "alors": "Débuter la RCP pédiatrique + 15"
+    },
+    {
+      "condition": "Signes de méningite associés (purpura, raideur de nuque, somnolence profonde)",
+      "alors": "15 immédiat"
+    }
+  ],
+
+  "notesCritiques": [
+    "NE RIEN mettre dans la bouche (ni doigt, ni objet) : risque d'étouffement et de blessure",
+    "Ne pas retenir les mouvements : cela n'arrête pas la crise et peut blesser",
+    "Chronométrer : une crise de plus de 5 minutes devient une urgence",
+    "La convulsion fébrile simple est le plus souvent bénigne, mais impressionnante — rassurer l'entourage",
+    "La somnolence et la confusion après la crise sont normales (phase post-critique)",
+    "Toujours consulter, au moins pour la première crise, et rechercher des signes de méningite"
+  ],
+
+  "pointsControle": [
+    "L'enfant a été protégé et rien n'a été mis dans sa bouche",
+    "L'heure de début et la durée de la crise sont notées",
+    "L'enfant est en PLS et respire après la crise",
+    "La fièvre est prise en charge après la crise",
+    "Le 15 est alerté si crise longue, nourrisson, ou récupération anormale ; consultation prévue"
+  ],
+
+  "conditionsArretEscalade": [
+    "Crise > 5 min ou répétée → 15 immédiat",
+    "Absence de respiration après la crise → RCP pédiatrique",
+    "Signes de méningite → 15 immédiat"
+  ],
+
+  "ressourcesNecessaires": [
+    "Surface sûre pour allonger l'enfant",
+    "Moyen de chronométrer",
+    "Thermomètre et antipyrétique (après la crise)",
+    "Téléphone pour le 15",
+    "Couverture légère pour la phase de récupération"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une convulsion fébrile, en zone isolée",
+    "actions": [
+      "Maintenir l'enfant en PLS et surveiller sa respiration en continu jusqu'à la récupération",
+      "Prendre en charge la fièvre (découvrir, hydrater, antipyrétique selon le poids) pour limiter le risque de récidive",
+      "Si une nouvelle crise survient : reprotéger l'enfant, écarter les objets, chronométrer",
+      "Ne rien donner par la bouche tant que la conscience n'est pas revenue",
+      "Organiser une consultation médicale, en priorité chez le nourrisson ou après une première crise"
+    ],
+    "ressourcesImprovises": [
+      "Vêtements pliés pour caler l'enfant en PLS",
+      "Linge tiède et pièce fraîche pour aider à faire baisser la fièvre",
+      "Solution de réhydratation orale si l'enfant boit peu"
+    ],
+    "signesAggravation": [
+      "Crises qui se répètent ou se prolongent (état de mal)",
+      "Respiration anormale ou lèvres bleutées persistant après la crise",
+      "Somnolence profonde, enfant impossible à réveiller",
+      "Apparition de purpura ou de raideur de nuque (méningite)"
+    ],
+    "limitesSansSecours": "La convulsion fébrile simple cède généralement seule et sans séquelle. En revanche une crise prolongée, répétée, chez un nourrisson, ou associée à des signes de méningite peut être grave et nécessite une prise en charge médicale urgente.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni un avis médical pédiatrique. En cas de doute, appelez le 15."
+}

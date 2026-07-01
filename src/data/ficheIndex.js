@@ -40,6 +40,11 @@ import malaiseConfine from './fiches/evenementiel-foule/malaise-confine.json'
 import enfantPerdu from './fiches/evenementiel-foule/enfant-perdu.json'
 import intoxicationCollective from './fiches/evenementiel-foule/intoxication-collective.json'
 import paniqueCollective from './fiches/evenementiel-foule/panique-collective.json'
+import fievreEnfant from './fiches/pediatrie/fievre-enfant.json'
+import convulsionsFebriles from './fiches/pediatrie/convulsions-febriles.json'
+import ingestionToxique from './fiches/pediatrie/ingestion-toxique.json'
+import brulureEnfant from './fiches/pediatrie/brulure-enfant.json'
+import traumaNourrisson from './fiches/pediatrie/trauma-nourrisson.json'
 import incendie from './fiches/incendie-evacuation/incendie.json'
 import evacuation from './fiches/incendie-evacuation/evacuation.json'
 import fuiteGaz from './fiches/chimique/fuite-gaz.json'
@@ -90,6 +95,11 @@ export const TOUTES_FICHES = [
   enfantPerdu,
   intoxicationCollective,
   paniqueCollective,
+  fievreEnfant,
+  convulsionsFebriles,
+  ingestionToxique,
+  brulureEnfant,
+  traumaNourrisson,
   incendie,
   evacuation,
   fuiteGaz,

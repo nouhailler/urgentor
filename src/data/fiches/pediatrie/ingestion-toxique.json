@@ -1,0 +1,132 @@
+{
+  "id": "ingestion-toxique",
+  "titre": "Ingestion de Produit Toxique / Médicament (Enfant)",
+  "categorie": "pediatrie",
+  "sousCategorie": "toxicologique",
+  "tags": ["ne pas faire vomir", "emballage", "15/112", "ingestion", "toxique", "centre antipoison"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / Centre Antipoison",
+
+  "objectif": "Prendre en charge un enfant ayant avalé un produit toxique, un médicament ou une substance ménagère, sans aggraver la situation (ne pas faire vomir), en contactant rapidement le Centre Antipoison / le 15.",
+
+  "conditionsActivation": "Enfant ayant avalé (ou suspecté d'avoir avalé) un médicament, un produit ménager, un cosmétique, une plante, une pile bouton, ou toute substance potentiellement toxique.",
+
+  "diagnosticRapide": {
+    "visuels": ["Emballage / flacon ouvert, comprimés ou produit répandus", "Résidus autour de la bouche, brûlures des lèvres (produit caustique)", "Enfant qui bave, vomit, pâlit", "Somnolence ou agitation inhabituelle"],
+    "auditifs": ["Enfant qui tousse, s'étouffe, pleure", "Plainte de brûlure de la bouche / gorge", "L'entourage décrit le produit avalé"],
+    "comportementaux": ["Somnolence, troubles de l'équilibre", "Agitation, confusion", "Refus de boire, hypersalivation"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contact avec le produit (caustique, toxique)", "Aucun danger majeur en dehors du produit lui-même"],
+    "equipementsRequis": ["Emballage / contenant du produit avalé (à garder)", "Téléphone pour le Centre Antipoison / le 15", "Gants si produit caustique"],
+    "regleUniverselle": "NE PAS faire vomir, NE PAS faire boire (ni lait, ni eau) sans avis, NE PAS donner de charbon de sa propre initiative. Récupérer l'emballage et appeler immédiatement le Centre Antipoison / le 15 qui guideront la conduite.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "Centre Antipoison (numéro régional) et/ou 15 — immédiat ; 15 sans délai si troubles de conscience, respiration, convulsions",
+    "quoiDire": "Je suis [NOM], au [ADRESSE]. Enfant de [âge/poids] ayant avalé [produit précis, nom commercial]. Quantité estimée : [X]. Heure de l'ingestion : [HEURE]. Symptômes : [aucun / vomissements / somnolence]. J'ai l'emballage.",
+    "informationsAFournir": ["Produit exact (nom, composition sur l'étiquette)", "Quantité estimée et heure d'ingestion", "Âge et poids de l'enfant", "Symptômes présents et évolution"]
+  },
+
+  "actionsImmédiates": [
+    "NE PAS faire vomir, NE PAS faire boire sans avis",
+    "IDENTIFIER le produit et GARDER l'emballage",
+    "APPELER le Centre Antipoison / le 15 sans attendre et suivre leurs consignes",
+    "SURVEILLER conscience et respiration ; 15 immédiat si troubles"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Éloigner l'enfant du produit, retirer ce qui reste dans sa bouche avec un doigt SEULEMENT si c'est visible et accessible (sans le pousser plus loin)"},
+    {"etape": 2, "action": "NE PAS faire vomir (risque de fausse route et, pour les caustiques, de re-brûlure de l'œsophage)"},
+    {"etape": 3, "action": "NE PAS faire boire (eau, lait) ni donner de charbon ou de 'contrepoison' de sa propre initiative, sauf consigne du Centre Antipoison"},
+    {"etape": 4, "action": "Identifier précisément le produit et conserver l'emballage / le contenant (composition, concentration)"},
+    {"etape": 5, "action": "Appeler immédiatement le Centre Antipoison et/ou le 15 : décrire le produit, la quantité, l'heure, l'âge et le poids ; suivre leurs consignes"},
+    {"etape": 6, "action": "Appeler le 15 SANS DÉLAI en cas de troubles de la conscience, de la respiration, de convulsions, de brûlures de la bouche, ou d'ingestion de pile bouton / aimant (urgences)"},
+    {"etape": 7, "action": "Installer l'enfant en PLS s'il est somnolent mais respire ; débuter la RCP pédiatrique en cas d'arrêt respiratoire"},
+    {"etape": 8, "action": "Surveiller en continu conscience, respiration et coloration jusqu'à la prise en charge"},
+    {"etape": 9, "action": "Remettre l'emballage aux secours ; en cas de projection cutanée/oculaire associée, rincer abondamment à l'eau"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Produit caustique (déboucheur, soude, acide, lave-vaisselle) : brûlures de la bouche, bave",
+      "alors": "NE PAS faire vomir ni boire, 15 immédiat, ne rien donner sans avis (risque de double brûlure)"
+    },
+    {
+      "condition": "Pile bouton ou aimant avalé",
+      "alors": "URGENCE → 15 immédiat (risque de perforation en quelques heures), ne pas attendre les symptômes"
+    },
+    {
+      "condition": "Produit moussant (liquide vaisselle, shampoing) ou hydrocarbure (essence, white-spirit)",
+      "alors": "NE PAS faire vomir (risque d'inhalation), Centre Antipoison / 15"
+    },
+    {
+      "condition": "Troubles de conscience, respiration, convulsions",
+      "alors": "15 immédiat, PLS si somnolent qui respire, RCP si arrêt"
+    },
+    {
+      "condition": "Médicament (surdosage possible)",
+      "alors": "Centre Antipoison / 15 avec nom et quantité — certains médicaments sont graves même en petite quantité chez l'enfant"
+    }
+  ],
+
+  "notesCritiques": [
+    "NE JAMAIS faire vomir : risque de fausse route et, pour les caustiques, de nouvelle brûlure au passage",
+    "Ne pas faire boire ni donner de 'contrepoison' sans l'avis du Centre Antipoison",
+    "Garder l'emballage : la composition exacte oriente toute la prise en charge",
+    "Une pile bouton avalée est une urgence (perforation possible en quelques heures) : 15 immédiat",
+    "Chez l'enfant, une petite quantité de certains médicaments peut être grave voire mortelle",
+    "Les caustiques et les produits moussants/hydrocarbures ne doivent jamais être vomis"
+  ],
+
+  "pointsControle": [
+    "L'enfant n'a pas été fait vomir ni fait boire sans avis",
+    "Le produit est identifié et l'emballage conservé",
+    "Le Centre Antipoison / le 15 a été appelé et ses consignes suivies",
+    "La conscience et la respiration sont surveillées",
+    "Le 15 est alerté sans délai en cas de troubles ou de produit à haut risque (pile, caustique)"
+  ],
+
+  "conditionsArretEscalade": [
+    "Troubles de conscience / respiration / convulsions → 15 immédiat",
+    "Pile bouton, caustique, aimant → 15 immédiat",
+    "Arrêt respiratoire → RCP pédiatrique"
+  ],
+
+  "ressourcesNecessaires": [
+    "Emballage / contenant du produit avalé",
+    "Numéro du Centre Antipoison et téléphone pour le 15",
+    "Gants si produit caustique",
+    "Eau pour rincer une projection cutanée/oculaire associée"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'avis ou les secours tardent, en zone isolée",
+    "actions": [
+      "Maintenir le contact avec le Centre Antipoison / une téléconsultation et appliquer scrupuleusement leurs consignes adaptées au produit",
+      "Ne rien administrer (vomitif, eau, lait, charbon) sans instruction médicale",
+      "Surveiller étroitement conscience, respiration et coloration ; PLS si somnolent qui respire",
+      "Organiser une évacuation rapide en cas de produit à haut risque (caustique, pile bouton, médicament dangereux)",
+      "Noter l'heure d'ingestion, le produit et l'évolution des symptômes pour les transmettre"
+    ],
+    "ressourcesImprovises": [
+      "Photo de l'étiquette / de la composition à transmettre au Centre Antipoison",
+      "Eau propre pour rincer une projection cutanée ou oculaire associée",
+      "De quoi noter l'heure et l'évolution des symptômes"
+    ],
+    "signesAggravation": [
+      "Somnolence croissante, troubles de l'équilibre, convulsions",
+      "Difficulté à respirer, à avaler, hypersalivation, bave",
+      "Brûlures de la bouche et des lèvres (caustique)",
+      "Vomissements, douleurs abdominales, pâleur"
+    ],
+    "limitesSansSecours": "Certaines intoxications (caustiques, pile bouton, médicaments cardiotropes, etc.) évoluent rapidement et nécessitent une prise en charge hospitalière spécialisée (endoscopie, antidotes, surveillance). Les gestes de terrain se limitent à ne pas aggraver et à obtenir un avis toxicologique urgent.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni un avis médical. En cas de doute, appelez le Centre Antipoison et le 15."
+}
