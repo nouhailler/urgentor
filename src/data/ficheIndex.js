@@ -17,6 +17,14 @@ import hypothermie from './fiches/secours-personne/hypothermie.json'
 import coupChaleur from './fiches/secours-personne/coup-chaleur.json'
 import morsurePiqure from './fiches/secours-personne/morsure-piqure.json'
 import accouchementUrgence from './fiches/secours-personne/accouchement-urgence.json'
+import noyadeEauVive from './fiches/environnement-exterieur/noyade-eau-vive.json'
+import chuteHauteur from './fiches/environnement-exterieur/chute-hauteur.json'
+import ensevelissement from './fiches/environnement-exterieur/ensevelissement.json'
+import foudre from './fiches/environnement-exterieur/foudre.json'
+import inondation from './fiches/environnement-exterieur/inondation.json'
+import glissade from './fiches/environnement-exterieur/glissade.json'
+import perteOrientation from './fiches/environnement-exterieur/perte-orientation.json'
+import froidExtreme from './fiches/environnement-exterieur/froid-extreme.json'
 import incendie from './fiches/incendie-evacuation/incendie.json'
 import evacuation from './fiches/incendie-evacuation/evacuation.json'
 import fuiteGaz from './fiches/chimique/fuite-gaz.json'
@@ -44,6 +52,14 @@ export const TOUTES_FICHES = [
   coupChaleur,
   morsurePiqure,
   accouchementUrgence,
+  noyadeEauVive,
+  chuteHauteur,
+  ensevelissement,
+  foudre,
+  inondation,
+  glissade,
+  perteOrientation,
+  froidExtreme,
   incendie,
   evacuation,
   fuiteGaz,

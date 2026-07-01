@@ -1,0 +1,133 @@
+{
+  "id": "perte-orientation",
+  "titre": "Perte d'Orientation en Milieu Naturel",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "environnemental",
+  "tags": ["STOP", "signalisation", "rationnement", "orientation", "perdu", "survie"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "PGHM / Sécurité Civile",
+
+  "objectif": "Réagir méthodiquement à une perte d'orientation en pleine nature (méthode STOP), se signaler, économiser ses ressources et se protéger pour attendre les secours ou retrouver son chemin en sécurité.",
+
+  "conditionsActivation": "Personne ou groupe qui ne reconnaît plus son itinéraire, ne sait plus où il se trouve (randonnée, forêt, montagne), avec risque d'aggravation par la nuit, le froid, la fatigue ou une météo qui se dégrade.",
+
+  "diagnosticRapide": {
+    "visuels": ["Absence de repères connus, chemin disparu", "Terrain qui ne correspond plus à la carte / au GPS", "Nuit ou brouillard qui tombe", "Traces effacées (neige, sous-bois)"],
+    "auditifs": ["Absence de sons de civilisation (route, village)", "Silence désorientant", "Éventuels appels ou sifflets de recherche"],
+    "comportementaux": ["Sensation de tourner en rond", "Montée du stress, de la panique", "Tentation d'accélérer au hasard (à éviter), fatigue croissante"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Aggravation en continuant au hasard (falaise, cours d'eau, terrain dangereux)", "Nuit, froid, hypothermie, épuisement", "Blessure en terrain difficile", "Déshydratation / faim"],
+    "equipementsRequis": ["Téléphone (avec GPS / coordonnées), batterie externe", "Carte, boussole, sifflet, lampe frontale", "Vêtements chauds, couverture de survie", "Eau et vivres, moyens de faire du feu / abri"],
+    "regleUniverselle": "Appliquer la méthode STOP : Stop (s'arrêter), Think (réfléchir), Observe (observer), Plan (planifier). Ne pas continuer au hasard : rester sur place et se signaler est souvent plus sûr.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "112 (ou 15 / 18) — préciser 'secours en montagne' si en zone montagneuse. Un SMS au 114 si le réseau est faible",
+    "quoiDire": "Je suis [NOM], perdu(e) en [zone / massif]. Coordonnées GPS : [lat/long si disponibles], altitude [X]. Dernier point connu : [lieu]. [Nombre] personne(s), état : [ok / blessé / froid]. Équipement : [vêtements, eau, lampe]. Batterie : [%].",
+    "informationsAFournir": ["Coordonnées GPS précises (application smartphone) ou description détaillée", "Dernier point de repère connu et itinéraire prévu", "Nombre de personnes et état (blessé, froid, fatigue)", "Équipement disponible et niveau de batterie du téléphone"]
+  },
+
+  "actionsImmédiates": [
+    "STOP : s'arrêter, ne pas continuer au hasard, se calmer",
+    "THINK / OBSERVE : réfléchir au dernier point connu, observer repères et carte/GPS",
+    "PLAN : décider — rester et se signaler, ou revenir sur ses pas si l'itinéraire est sûr",
+    "ALERTER le 112, transmettre ses coordonnées GPS, économiser la batterie"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "S'ARRÊTER dès que le doute s'installe : ne pas s'enfoncer davantage au hasard"},
+    {"etape": 2, "action": "Se calmer, boire une gorgée, réfléchir au dernier endroit où l'on était sûr de sa position"},
+    {"etape": 3, "action": "OBSERVER : carte, boussole, GPS / application smartphone, repères visuels (sommets, cours d'eau, ligne électrique, soleil)"},
+    {"etape": 4, "action": "Relever ses coordonnées GPS (application de localisation) pour pouvoir les transmettre"},
+    {"etape": 5, "action": "PLANIFIER : si l'itinéraire de retour est clair et sûr et qu'il reste du jour, revenir prudemment sur ses pas ; sinon, rester sur place"},
+    {"etape": 6, "action": "Alerter le 112 (ou SMS au 114) tôt, avant la nuit et avant d'épuiser la batterie ; passer le téléphone en mode économie/avion entre les contacts"},
+    {"etape": 7, "action": "Se rendre visible et audible : rester dans une zone dégagée, signaux (sifflet : 6 coups/min, lampe, vêtements de couleur vive, feu si possible en sécurité)"},
+    {"etape": 8, "action": "Se protéger du froid et de la nuit : monter un abri, s'isoler du sol et du vent, se couvrir, se regrouper"},
+    {"etape": 9, "action": "Rationner eau et vivres, rester groupé, surveiller les signes de froid, de déshydratation et de fatigue chez chacun"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Itinéraire de retour clair et sûr, jour et météo favorables",
+      "alors": "Revenir prudemment sur ses pas jusqu'au dernier point connu, en gardant un repère et sans se presser"
+    },
+    {
+      "condition": "Doute sur le chemin, nuit ou météo qui se dégradent",
+      "alors": "Rester sur place, se signaler, monter un abri, attendre les secours (bouger la nuit est dangereux)"
+    },
+    {
+      "condition": "Réseau téléphonique faible",
+      "alors": "Envoyer un SMS (114 pour les urgences), chercher un point haut/dégagé pour capter, économiser la batterie"
+    },
+    {
+      "condition": "Blessé ou personne en hypothermie dans le groupe",
+      "alors": "S'arrêter, prendre en charge (immobilisation / réchauffement), alerter en priorité, ne pas poursuivre"
+    },
+    {
+      "condition": "Nuit tombée sans abri",
+      "alors": "Ne pas marcher : s'abriter, s'isoler du sol, se regrouper pour conserver la chaleur, se signaler à la lampe"
+    }
+  ],
+
+  "notesCritiques": [
+    "Méthode STOP : Stop, Think, Observe, Plan — la panique et la marche au hasard aggravent presque toujours la situation",
+    "Rester sur place et se signaler est souvent plus sûr que de continuer, surtout la nuit ou par mauvais temps",
+    "Alerter tôt : avant la nuit et avant d'épuiser la batterie du téléphone",
+    "Transmettre des coordonnées GPS précises accélère considérablement les recherches",
+    "Économiser la batterie (mode avion entre les appels), l'eau et les vivres (rationnement)",
+    "6 coups de sifflet par minute = signal de détresse international ; répondre à un signal par 3 coups"
+  ],
+
+  "pointsControle": [
+    "La marche au hasard a été stoppée (méthode STOP appliquée)",
+    "La position a été observée et des coordonnées GPS relevées",
+    "Les secours ont été alertés tôt avec une localisation précise",
+    "Le groupe se signale (sifflet, lampe, couleur vive) et reste visible",
+    "La protection contre le froid et le rationnement sont en place"
+  ],
+
+  "conditionsArretEscalade": [
+    "Nuit, mauvais temps, blessé, hypothermie → rester, se signaler, 112",
+    "Réseau faible → SMS 114, point haut, économie de batterie",
+    "Aggravation de l'état d'un membre du groupe → prise en charge + alerte prioritaire"
+  ],
+
+  "ressourcesNecessaires": [
+    "Téléphone + GPS / application de localisation, batterie externe",
+    "Carte, boussole, sifflet, lampe frontale",
+    "Vêtements chauds, couverture de survie, moyens d'abri",
+    "Eau et vivres (à rationner)",
+    "Moyens de signalisation (couleur vive, feu en sécurité)"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent, notamment en cas de nuit ou de mauvais temps prolongés",
+    "actions": [
+      "Rester groupé et sur place dans un endroit repérable, continuer à se signaler par intermittence (lampe, sifflet) pour économiser l'énergie",
+      "Monter et améliorer l'abri, s'isoler du sol et du vent, se regrouper pour partager la chaleur",
+      "Rationner strictement l'eau et les vivres, faire fondre de la neige si nécessaire (jamais avaler de neige non fondue)",
+      "Surveiller chaque membre du groupe (froid, déshydratation, fatigue, moral) et se relayer pour la veille",
+      "Ne reprendre la marche qu'au jour, par bonne visibilité, vers une direction sûre et repérée"
+    ],
+    "ressourcesImprovises": [
+      "Abri de fortune (branchages, bâche, rocher coupe-vent, trou à neige)",
+      "Vêtements de couleur vive étalés au sol comme signal visible du ciel",
+      "Feu (en sécurité) pour se réchauffer et se signaler ; empilement de pierres / branches comme repère"
+    ],
+    "signesAggravation": [
+      "Hypothermie qui s'installe (frissons, ralentissement, confusion)",
+      "Déshydratation, épuisement, malaise d'un membre du groupe",
+      "Blessure limitant les déplacements",
+      "Panique désorganisant le groupe"
+    ],
+    "limitesSansSecours": "La plupart des pertes d'orientation se résolvent sans gravité si l'on garde son calme et que l'on se signale. Le danger vient surtout du froid, de la nuit et de l'épuisement : la priorité est de se protéger et de rester localisable plutôt que de marcher à tout prix.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas les consignes des secours. Faites tout ce qui est possible pour obtenir de l'aide."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation de survie ou de secours en montagne. En cas de doute, contactez le 112."
+}

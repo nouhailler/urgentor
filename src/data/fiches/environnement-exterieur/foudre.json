@@ -1,0 +1,133 @@
+{
+  "id": "foudre",
+  "titre": "Orage / Foudre",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "environnemental",
+  "tags": ["position sécurité", "brûlure", "arrêt cardiaque", "foudre", "orage", "électrisation"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / Météo-France",
+
+  "objectif": "Se protéger de la foudre pendant un orage, adopter la bonne position de sécurité et prendre en charge une victime foudroyée (arrêt cardiaque, brûlures, traumatismes).",
+
+  "conditionsActivation": "Orage en cours ou approchant (éclairs, tonnerre à moins de 30 secondes de l'éclair) en milieu exposé (montagne, plaine, plan d'eau), ou personne venant d'être foudroyée.",
+
+  "diagnosticRapide": {
+    "visuels": ["Éclairs, ciel très sombre, grêle", "Sur une victime : brûlures en 'fougère' (figures de Lichtenberg), vêtements/chaussures déchirés", "Victime effondrée, immobile", "Pilosité qui se dresse, objets métalliques qui grésillent (foudre imminente)"],
+    "auditifs": ["Tonnerre proche (délai éclair-tonnerre < 30 s = danger immédiat)", "Grésillements, bourdonnements sur objets métalliques", "Aucune réponse si victime inconsciente"],
+    "comportementaux": ["Victime foudroyée : perte de connaissance, confusion, amnésie", "Sensation de décharge, paralysie transitoire", "Panique du groupe"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Nouvel impact de foudre (le sauveteur est exposé au même risque)", "Terrain découvert, sommet, arbre isolé, plan d'eau", "Tension de pas, courant de sol"],
+    "equipementsRequis": ["Abri (bâtiment, véhicule fermé)", "Isolant du sol (sac, corde, tapis de mousse)", "Couverture de survie, DAE si disponible"],
+    "regleUniverselle": "Se mettre à l'abri AVANT tout : la foudre peut frapper plusieurs fois. Éviter les points hauts, arbres isolés, métal et eau. La victime foudroyée n'est PAS électrisée : on peut la toucher sans risque.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 / 18 / 112 — appeler dès que possible en sécurité, pour toute victime foudroyée",
+    "quoiDire": "Je suis [NOM], à [LIEU PRÉCIS]. Personne foudroyée, [consciente / inconsciente], [respire / arrêt cardiaque]. Orage encore en cours : [oui/non]. [Nombre] victime(s). RCP en cours si nécessaire.",
+    "informationsAFournir": ["Localisation précise", "Nombre de victimes (la foudre peut en toucher plusieurs)", "État (conscience, respiration, brûlures)", "Orage toujours actif ou non"]
+  },
+
+  "actionsImmédiates": [
+    "Se METTRE À L'ABRI (bâtiment, voiture fermée) — éviter hauteurs, arbres, eau, métal",
+    "Sinon : position ACCROUPIE, pieds joints, sur un isolant, loin des autres",
+    "Victime foudroyée : on peut la toucher → vérifier respiration",
+    "Arrêt cardiaque → RCP + DAE + 15 ; sinon PLS, brûlures, réchauffer"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Se mettre à l'abri sans délai : bâtiment en dur ou véhicule fermé (habitacle métallique protecteur)"},
+    {"etape": 2, "action": "Si aucun abri : s'éloigner des sommets, crêtes, arbres isolés, pylônes, clôtures et plans d'eau ; se débarrasser des objets métalliques longs (piolet, bâtons)"},
+    {"etape": 3, "action": "Adopter la position de sécurité : ACCROUPI, pieds joints, talons surélevés, sur un isolant (sac, corde), tête rentrée, sans s'allonger ni toucher la paroi"},
+    {"etape": 4, "action": "Espacer les membres du groupe de plusieurs mètres pour limiter le nombre de victimes en cas d'impact"},
+    {"etape": 5, "action": "Pour une victime foudroyée : elle ne conserve PAS de charge, on peut la toucher immédiatement sans danger"},
+    {"etape": 6, "action": "Évaluer conscience et respiration. Arrêt cardiaque → RCP 30:2 + DAE + 15 (la foudre provoque souvent un arrêt cardio-respiratoire réversible : réanimer en priorité)"},
+    {"etape": 7, "action": "En cas de victimes multiples, inverser le tri habituel : réanimer d'abord les personnes en arrêt (elles peuvent récupérer)"},
+    {"etape": 8, "action": "Victime consciente/inconsciente qui respire : PLS, rechercher brûlures (points d'entrée/sortie), traumatismes (chute, projection), immobiliser si suspicion rachidienne"},
+    {"etape": 9, "action": "Réchauffer, couvrir, surveiller ; toute victime de foudre doit être hospitalisée (troubles du rythme, lésions retardées)"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Orage actif, aucune victime",
+      "alors": "Abri en dur / véhicule, ou position accroupie pieds joints sur isolant, loin des points hauts et de l'eau"
+    },
+    {
+      "condition": "Victime foudroyée en arrêt cardiaque",
+      "alors": "RCP + DAE + 15 immédiatement — pronostic souvent bon si réanimation précoce (arrêt réversible)"
+    },
+    {
+      "condition": "Victimes multiples",
+      "alors": "Réanimer en priorité celles qui sont en arrêt (tri inversé : elles peuvent repartir)"
+    },
+    {
+      "condition": "Victime consciente avec brûlures / traumatisme",
+      "alors": "Refroidir/couvrir les brûlures, immobiliser si chute, 15 (hospitalisation pour surveillance cardiaque)"
+    },
+    {
+      "condition": "Chute ou projection associée",
+      "alors": "Suspecter un traumatisme du rachis, maintenir l'axe tête-cou-tronc"
+    }
+  ],
+
+  "notesCritiques": [
+    "La foudre peut frapper plusieurs fois au même endroit : se mettre à l'abri d'abord",
+    "Une victime foudroyée ne garde AUCUNE charge : on peut la toucher et la réanimer sans danger",
+    "L'arrêt cardio-respiratoire par foudre est souvent réversible : la RCP précoce sauve",
+    "Victimes multiples : inverser le tri, réanimer d'abord ceux qui sont en arrêt",
+    "Position de sécurité : accroupi pieds joints sur un isolant, JAMAIS allongé (limite la tension de pas), pas sous un arbre isolé",
+    "Toute victime de foudre doit être hospitalisée (troubles du rythme et lésions retardés)"
+  ],
+
+  "pointsControle": [
+    "L'intervenant et le groupe se sont mis à l'abri / en position de sécurité",
+    "La position adoptée est correcte (accroupi, pieds joints, isolant, loin des points hauts)",
+    "La respiration de la victime a été évaluée (RCP si arrêt)",
+    "Les brûlures et traumatismes ont été recherchés",
+    "Le 15 est alerté et l'hospitalisation prévue"
+  ],
+
+  "conditionsArretEscalade": [
+    "Arrêt cardiaque → RCP + DAE + 15",
+    "Victimes multiples → tri inversé, secours en renfort",
+    "Brûlures / traumatisme / troubles du rythme → 15, hospitalisation"
+  ],
+
+  "ressourcesNecessaires": [
+    "Abri (bâtiment, véhicule fermé)",
+    "Isolant du sol (sac, corde, tapis de mousse)",
+    "DAE et téléphone pour le 15 / 18 / 112",
+    "Couverture de survie",
+    "De quoi refroidir/couvrir les brûlures"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après un foudroiement, en montagne ou zone isolée",
+    "actions": [
+      "Poursuivre la RCP sans interruption en cas d'arrêt cardiaque : les victimes de foudre récupèrent souvent après une réanimation prolongée",
+      "Une fois la respiration reprise : PLS, réchauffer, surveiller conscience et respiration en continu",
+      "Traiter les brûlures (refroidir puis couvrir) et immobiliser les traumatismes liés à la projection",
+      "Attendre la fin de l'orage avant tout déplacement exposé, puis organiser l'évacuation",
+      "Surveiller l'apparition de troubles (palpitations, malaise) : les arythmies peuvent être retardées"
+    ],
+    "ressourcesImprovises": [
+      "Sac à dos, corde, tapis de mousse comme isolant du sol pour la position de sécurité",
+      "Vêtements de couleur vive, lampe, sifflet pour signaler la position aux secours",
+      "Couverture / vêtements secs pour lutter contre le refroidissement"
+    ],
+    "signesAggravation": [
+      "Nouvel arrêt cardiaque ou respiratoire",
+      "Palpitations, malaise, syncope (trouble du rythme retardé)",
+      "Extension des brûlures, douleurs profondes",
+      "Baisse de la conscience, confusion croissante"
+    ],
+    "limitesSansSecours": "Les troubles du rythme cardiaque et les lésions internes du foudroiement nécessitent une surveillance hospitalière. La RCP de terrain sauve la phase aiguë, mais toute victime de foudre doit être médicalement évaluée même si elle semble récupérer.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1. En cas de doute, suivez les instructions du 15 / 112."
+}

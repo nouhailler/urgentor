@@ -1,0 +1,133 @@
+{
+  "id": "glissade",
+  "titre": "Glissade sur Verglas / Neige",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "traumatologique",
+  "tags": ["traumatisme", "hypothermie", "isolement", "verglas", "neige", "immobilisation"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Prendre en charge une victime ayant chuté sur sol verglacé ou enneigé, immobiliser un traumatisme, prévenir l'hypothermie et signaler la situation en cas d'isolement.",
+
+  "conditionsActivation": "Chute sur une surface glissante (verglas, plaque de glace, neige tassée) entraînant douleur, impossibilité de se relever, suspicion de fracture (poignet, hanche, cheville), traumatisme crânien ou du dos, en contexte de froid.",
+
+  "diagnosticRapide": {
+    "visuels": ["Victime au sol, incapable de se relever", "Déformation ou gonflement d'un membre", "Plaie ou saignement (choc contre le sol dur)", "Sol verglacé / enneigé autour"],
+    "auditifs": ["Plainte de douleur vive (poignet, hanche, cheville, dos)", "La victime dit ne pas pouvoir bouger ou appuyer", "Signalement d'un choc à la tête"],
+    "comportementaux": ["Immobilisation spontanée du membre douloureux", "Frissons, plainte de froid (refroidissement au sol)", "Confusion possible si choc à la tête"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Chute à son tour sur le sol glissant", "Refroidissement en restant immobile au sol", "Circulation (chaussée verglacée), autres glissades"],
+    "equipementsRequis": ["Chaussures / crampons adaptés, appui stable", "Couverture, vêtements chauds, isolant du sol", "Matériel d'immobilisation improvisé", "Téléphone, moyens de signalisation"],
+    "regleUniverselle": "Sécuriser ses propres appuis avant d'approcher (ne pas chuter à son tour). Ne pas relever brutalement la victime : immobiliser le traumatisme et la protéger du froid avant tout déplacement.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 / 18 / 112 — pour fracture importante, traumatisme crânien/dos, ou impossibilité de déplacer la victime au chaud",
+    "quoiDire": "Je suis [NOM], à [LIEU PRÉCIS]. Personne ayant chuté sur [verglas / neige]. Douleur / déformation à [membre]. Suspicion de traumatisme [dos / tête] : [oui/non]. Victime consciente, exposée au froid. Accès [préciser].",
+    "informationsAFournir": ["Localisation et accessibilité", "Zone traumatisée et déformation éventuelle", "Suspicion d'atteinte du dos / de la tête", "Durée d'exposition au froid, état général"]
+  },
+
+  "actionsImmédiates": [
+    "Sécuriser ses appuis avant d'approcher (ne pas glisser à son tour)",
+    "NE PAS relever brutalement — immobiliser le membre / le dos si suspicion",
+    "ISOLER du sol froid et COUVRIR la victime (lutte contre l'hypothermie)",
+    "SIGNALER la zone (circulation) et appeler les secours si besoin"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Assurer ses propres appuis (crampons, points stables) pour ne pas chuter en approchant"},
+    {"etape": 2, "action": "Parler à la victime : où a-t-elle mal ? A-t-elle heurté la tête ou le dos ? Peut-elle bouger ses membres ?"},
+    {"etape": 3, "action": "En cas de suspicion de traumatisme du dos ou de la tête (chute violente, douleur cervicale/dorsale) : NE PAS mobiliser, maintenir l'axe tête-cou-tronc, attendre les secours"},
+    {"etape": 4, "action": "Immobiliser un membre traumatisé dans la position trouvée (attelle improvisée, écharpe), sans chercher à réduire une déformation"},
+    {"etape": 5, "action": "Isoler la victime du sol glacé (sac, vêtements, tapis) et la couvrir pour limiter la perte de chaleur"},
+    {"etape": 6, "action": "Signaler la zone si près d'une route/chemin (triangle, lampe, personne en amont) pour éviter d'autres chutes ou un sur-accident"},
+    {"etape": 7, "action": "Si la victime est indemne de traumatisme grave et peut se relever : l'aider prudemment, la mettre au chaud, surveiller"},
+    {"etape": 8, "action": "Appeler les secours en cas de fracture importante, de traumatisme dos/tête, ou d'impossibilité de mettre la victime à l'abri"},
+    {"etape": 9, "action": "Surveiller douleur, conscience, coloration et température jusqu'à la mise à l'abri ou l'arrivée des secours"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Chute violente avec douleur du dos / de la nuque ou choc à la tête",
+      "alors": "Ne pas mobiliser, maintien de l'axe tête-cou-tronc, isolation du froid, 15 / 112"
+    },
+    {
+      "condition": "Suspicion de fracture (poignet, cheville, hanche)",
+      "alors": "Immobiliser dans la position trouvée, protéger du froid, avis médical / secours selon la gravité"
+    },
+    {
+      "condition": "Suspicion de fracture de hanche (personne âgée, jambe raccourcie/tournée)",
+      "alors": "Ne pas relever, immobiliser, couvrir, 15 (fréquent et grave chez la personne âgée)"
+    },
+    {
+      "condition": "Pas de traumatisme grave, victime capable de se relever",
+      "alors": "Aide prudente au relevage, mise au chaud, surveillance"
+    },
+    {
+      "condition": "Exposition prolongée au froid",
+      "alors": "Surveiller et prévenir l'hypothermie (isolation, réchauffement progressif) — voir protocole hypothermie"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne pas relever brutalement : un traumatisme du dos ou une fracture peut être aggravé par une mobilisation hâtive",
+    "Le sol froid refroidit vite un blessé immobile : isoler et couvrir sans attendre",
+    "Fracture de hanche chez la personne âgée : fréquente, douloureuse, à ne pas mobiliser",
+    "Sécuriser ses propres appuis d'abord : un second blessé n'aide personne",
+    "Signaler la zone glissante pour éviter le sur-accident (surtout près d'une route)",
+    "Toute suspicion de traumatisme crânien impose une surveillance de la conscience"
+  ],
+
+  "pointsControle": [
+    "L'intervenant a sécurisé ses appuis avant d'approcher",
+    "La victime n'a pas été relevée brutalement en cas de doute",
+    "Le membre / le dos est immobilisé si nécessaire",
+    "La victime est isolée du sol et couverte",
+    "La zone est signalée et les secours alertés si besoin"
+  ],
+
+  "conditionsArretEscalade": [
+    "Traumatisme du dos / de la tête → 15 / 112, ne pas mobiliser",
+    "Fracture importante ou de hanche → immobilisation + secours",
+    "Hypothermie qui s'installe → réchauffement + surveillance médicale"
+  ],
+
+  "ressourcesNecessaires": [
+    "Appuis stables / crampons pour l'intervenant",
+    "Couverture, vêtements chauds, isolant du sol",
+    "Matériel d'immobilisation improvisé (attelle, écharpe)",
+    "Moyens de signalisation (triangle, lampe, gilet)",
+    "Téléphone pour le 15 / 18 / 112"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent ou en zone isolée, avec un blessé immobilisable au froid",
+    "actions": [
+      "Isoler totalement la victime du sol et du vent, la couvrir de plusieurs couches, prévenir activement l'hypothermie",
+      "Maintenir l'immobilisation du membre ou du rachis jusqu'à évacuation prudente à plusieurs",
+      "Si un abri proche existe et qu'aucun traumatisme grave n'est suspecté, y déplacer la victime avec précaution",
+      "Surveiller douleur, conscience, coloration et sensibilité des extrémités",
+      "Signaler la position aux secours (lampe, sifflet, couleur vive) et rassurer la victime"
+    ],
+    "ressourcesImprovises": [
+      "Sac à dos, branchages, vêtements pour isoler du sol glacé",
+      "Attelle de fortune (bâton de ski, piquet, magazine roulé) et écharpe improvisée",
+      "Vêtements de couleur vive et lampe pour signaler la zone et la position"
+    ],
+    "signesAggravation": [
+      "Frissons intenses puis disparition des frissons (hypothermie qui s'aggrave)",
+      "Extrémité froide, pâle ou insensible en aval d'une fracture",
+      "Baisse de la conscience, confusion (traumatisme crânien ou hypothermie)",
+      "Douleur croissante, gonflement rapide"
+    ],
+    "limitesSansSecours": "Une fracture bien immobilisée et un blessé protégé du froid peuvent attendre. En revanche un traumatisme du rachis, une fracture de hanche ou une hypothermie installée nécessitent une évacuation et une prise en charge médicale.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

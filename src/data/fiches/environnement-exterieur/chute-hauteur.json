@@ -1,0 +1,133 @@
+{
+  "id": "chute-hauteur",
+  "titre": "Chute en Hauteur / Escalade",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "traumatologique",
+  "tags": ["harnais", "immobilisation", "hélitreuillage", "chute", "escalade", "rachis"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / PGHM",
+
+  "objectif": "Prendre en charge une victime de chute de hauteur en préservant sa colonne vertébrale, sans la déplacer, et coordonner l'intervention des secours spécialisés (montagne, hélitreuillage).",
+
+  "conditionsActivation": "Chute d'une hauteur significative (falaise, voie d'escalade, échelle, toit, pylône) : victime au sol ou suspendue à son harnais, avec suspicion de traumatisme du rachis, du bassin, des membres ou du crâne.",
+
+  "diagnosticRapide": {
+    "visuels": ["Victime au sol dans une position anormale ou suspendue à son harnais", "Déformations de membres, plaies, saignements", "Signes de traumatisme crânien (plaie, sang à l'oreille)", "Pâleur, immobilité"],
+    "auditifs": ["Plaintes de douleur dorsale, cervicale ou pelvienne", "La victime signale des fourmillements ou une impossibilité de bouger jambes/bras", "Absence de réponse si inconsciente"],
+    "comportementaux": ["Immobilité spontanée", "Confusion (traumatisme crânien)", "Détresse, agitation ou au contraire prostration"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Chute de pierres, terrain instable, hauteur", "Se mettre soi-même en danger sur une paroi ou en bord de falaise", "Environnement difficile d'accès (montagne, milieu vertical)"],
+    "equipementsRequis": ["Couverture de survie", "Matériel d'immobilisation improvisé", "Casque et sécurité si terrain vertical", "Téléphone / moyen d'alerte, sifflet, lampe"],
+    "regleUniverselle": "Toute chute de hauteur = suspicion d'atteinte du rachis : NE PAS déplacer la victime, maintenir la tête dans l'axe du corps. Sécuriser la zone et faire appel aux secours spécialisés.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "112 (ou 15 / 18) — en montagne, demander le secours spécialisé (PGHM / CRS montagne). Préciser besoin d'hélitreuillage",
+    "quoiDire": "Je suis [NOM], à [LIEU PRÉCIS + coordonnées GPS / voie / altitude]. Chute de [hauteur estimée]. Victime [consciente / inconsciente], [au sol / suspendue au harnais]. Suspicion d'atteinte du dos/nuque. Accès : [à pied / hélitreuillage nécessaire].",
+    "informationsAFournir": ["Localisation précise (coordonnées GPS, nom de voie, altitude)", "Hauteur de chute et mécanisme", "État de la victime (conscience, respiration, saignements)", "Conditions d'accès et météo (pour l'hélicoptère)"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER la zone et se protéger (chutes de pierres, hauteur)",
+    "NE PAS déplacer la victime — maintenir la tête dans l'axe du corps",
+    "ALERTER le 112 / secours en montagne, préciser accès et hélitreuillage",
+    "Contrôler conscience/respiration, comprimer une hémorragie, couvrir contre le froid"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser la zone : risque de nouvelle chute, chutes de pierres, se protéger avant d'approcher"},
+    {"etape": 2, "action": "Ne pas mobiliser la victime. Maintenir sa tête dans l'axe du tronc à deux mains si elle est consciente et accessible"},
+    {"etape": 3, "action": "Évaluer conscience et respiration. Arrêt respiratoire → RCP + 112 (en maintenant au mieux l'axe)"},
+    {"etape": 4, "action": "Comprimer toute hémorragie externe (compression directe, garrot sur membre si nécessaire, noter l'heure)"},
+    {"etape": 5, "action": "Victime SUSPENDUE à son harnais : la dégager/soulager le plus vite possible (syndrome du harnais = malaise par compression), mais uniquement si c'est réalisable sans danger ; sinon attendre les secours en surveillant"},
+    {"etape": 6, "action": "Alerter précisément le 112 / secours spécialisés : coordonnées, accès, besoin d'hélitreuillage, dégager une zone d'atterrissage si possible"},
+    {"etape": 7, "action": "Protéger la victime du froid et de l'humidité (isolation du sol, couverture de survie) : l'hypothermie aggrave le pronostic"},
+    {"etape": 8, "action": "Surveiller en continu conscience, respiration, coloration, motricité et sensibilité des membres"},
+    {"etape": 9, "action": "Ne pas donner à boire ni à manger (chirurgie possible). Rassurer, rester auprès de la victime"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Toute chute de hauteur",
+      "alors": "Suspicion d'atteinte du rachis → ne pas déplacer, maintenir l'axe tête-cou-tronc, secours spécialisés"
+    },
+    {
+      "condition": "Victime suspendue à son harnais, consciente",
+      "alors": "La soulager/redresser rapidement (syndrome de suspension) si possible sans danger, sinon la faire bouger les jambes ; alerter en urgence"
+    },
+    {
+      "condition": "Hémorragie externe importante",
+      "alors": "Compression directe / garrot sur membre + noter l'heure, en priorité"
+    },
+    {
+      "condition": "Victime inconsciente qui respire",
+      "alors": "Maintenir l'axe, PLS en bloc (retournement à plusieurs) uniquement si nécessaire pour protéger les voies aériennes, surveiller"
+    },
+    {
+      "condition": "Accès impossible à pied / terrain vertical",
+      "alors": "Demander un hélitreuillage, baliser, sécuriser une zone dégagée, ne pas tenter de descendre la victime soi-même"
+    }
+  ],
+
+  "notesCritiques": [
+    "Toute chute de hauteur = atteinte potentielle de la colonne : ne jamais mobiliser sans nécessité vitale, maintenir l'axe",
+    "Le syndrome du harnais (suspension prolongée immobile) peut être mortel : soulager/redresser la victime suspendue dès que possible sans danger",
+    "Donner des coordonnées GPS précises accélère et sécurise l'hélitreuillage",
+    "L'hypothermie s'installe vite en milieu naturel : isoler du sol et couvrir",
+    "Ne pas retirer le casque d'escalade s'il maintient la tête, sauf gêne aux voies aériennes",
+    "Ne rien donner à boire ni à manger (anesthésie / chirurgie probable)"
+  ],
+
+  "pointsControle": [
+    "La zone est sécurisée et l'intervenant protégé",
+    "La victime n'a pas été déplacée, l'axe tête-cou-tronc est respecté",
+    "Les secours spécialisés sont alertés avec localisation précise",
+    "Les hémorragies sont contrôlées",
+    "La victime est protégée du froid et surveillée (conscience, motricité, sensibilité)"
+  ],
+
+  "conditionsArretEscalade": [
+    "Terrain vertical / accès difficile → hélitreuillage, secours spécialisés",
+    "Arrêt respiratoire → RCP",
+    "Hémorragie / syndrome du harnais → prise en charge immédiate"
+  ],
+
+  "ressourcesNecessaires": [
+    "Couverture de survie, vêtements chauds, tapis / isolant du sol",
+    "Matériel de compression (compresses, garrot)",
+    "Moyens d'alerte (téléphone, GPS, sifflet, lampe, moyens de signalisation)",
+    "Matériel d'immobilisation improvisé",
+    "Casque et équipement de sécurité en terrain vertical"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent en milieu montagnard ou isolé, avant hélitreuillage",
+    "actions": [
+      "Maintenir l'immobilisation de la victime et surveiller conscience, respiration, motricité et sensibilité des membres",
+      "Protéger énergiquement du froid : isoler du sol, couvrir, abriter du vent et de la pluie (l'hypothermie tue les blessés)",
+      "Poursuivre la compression des hémorragies et la surveillance des garrots posés",
+      "Baliser et sécuriser une zone dégagée pour l'hélicoptère (repères visibles, personne à l'écart des pales)",
+      "Rassurer la victime, la garder éveillée si possible, noter l'évolution pour les secours"
+    ],
+    "ressourcesImprovises": [
+      "Objets roulés (sacs, vêtements) de part et d'autre de la tête pour la stabiliser",
+      "Couverture de survie, sac de couchage, vêtements pour la protection thermique",
+      "Vêtements de couleur vive, lampe, sifflet pour signaler la position aux secours aériens"
+    ],
+    "signesAggravation": [
+      "Perte ou baisse de la motricité / sensibilité des membres",
+      "Baisse de la conscience, vomissements (traumatisme crânien)",
+      "Pâleur, sueurs, pouls filant (choc, hémorragie interne)",
+      "Refroidissement progressif, frissons puis disparition des frissons"
+    ],
+    "limitesSansSecours": "Les lésions du rachis, du bassin et les hémorragies internes des chutes de hauteur nécessitent un plateau chirurgical. Les gestes de terrain préservent les chances mais un déplacement inadapté peut aggraver une lésion médullaire de façon définitive.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou de secours en montagne. En cas de doute, suivez les instructions du 112."
+}

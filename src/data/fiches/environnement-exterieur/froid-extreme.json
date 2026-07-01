@@ -1,0 +1,133 @@
+{
+  "id": "froid-extreme",
+  "titre": "Exposition au Froid Extrême (Montagne)",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "environnemental",
+  "tags": ["gelures", "hypothermie", "abri", "froid extrême", "montagne", "extrémités"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / PGHM",
+
+  "objectif": "Protéger une personne exposée au froid extrême, prévenir et prendre en charge gelures et hypothermie, s'abriter du vent et réchauffer prudemment sans provoquer de complications.",
+
+  "conditionsActivation": "Exposition prolongée au froid intense, au vent et à l'altitude (haute montagne, tempête, bivouac forcé) : extrémités qui blanchissent et s'engourdissent (gelures), frissons puis ralentissement (hypothermie).",
+
+  "diagnosticRapide": {
+    "visuels": ["Extrémités (doigts, orteils, nez, oreilles, joues) blanches, cireuses ou grises, dures au toucher (gelures)", "Peau pâle puis bleutée", "Cloques (gelures profondes, plus tardives)", "Démarche ralentie, gestes maladroits"],
+    "auditifs": ["Élocution lente et pâteuse (hypothermie)", "Plainte d'engourdissement, de fourmillements puis de perte de sensibilité", "Propos confus si hypothermie modérée"],
+    "comportementaux": ["Frissons intenses puis disparition des frissons (aggravation)", "Ralentissement, apathie, somnolence", "Confusion, désorientation, gestes incohérents"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Même exposition au froid, au vent et à l'altitude", "Épuisement, gelures du sauveteur", "Terrain dangereux, tempête, nuit"],
+    "equipementsRequis": ["Abri contre le vent (tente, trou à neige, paroi)", "Vêtements chauds secs, couvertures, sac de couchage, couverture de survie", "Boissons chaudes sucrées (si victime consciente)", "Réchaud / source de chaleur douce"],
+    "regleUniverselle": "S'abriter du vent d'abord : le refroidissement éolien accélère gelures et hypothermie. Réchauffer LENTEMENT. Ne pas frictionner une gelure ni la réchauffer s'il y a un risque de re-gel.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "112 (secours en montagne / PGHM) — alerter pour hypothermie modérée à sévère, gelures graves ou impossibilité de redescendre",
+    "quoiDire": "Je suis [NOM], à [LIEU + coordonnées GPS / altitude]. Personne exposée au froid extrême : gelures aux [extrémités], [frissonne encore / plus de frissons], [consciente / confuse]. Abri : [oui/non]. Accès / hélitreuillage : [préciser].",
+    "informationsAFournir": ["Localisation précise et altitude", "Signes présents (gelures, état des frissons, conscience)", "Conditions (vent, température, tempête)", "Possibilités d'abri et d'évacuation"]
+  },
+
+  "actionsImmédiates": [
+    "S'ABRITER du vent et du froid, isoler du sol",
+    "PROTÉGER les extrémités gelées (couvrir, réchauffer contre le corps) — NE PAS frictionner",
+    "RÉCHAUFFER lentement le tronc, retirer le mouillé, boissons chaudes sucrées si consciente",
+    "APPELER le 112 ; NE PAS réchauffer une gelure s'il y a risque de re-gel"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Mettre la victime à l'abri du vent et du froid (tente, trou à neige, derrière un rocher), l'isoler du sol"},
+    {"etape": 2, "action": "Retirer les vêtements mouillés ou trop serrés (qui gênent la circulation), enfiler des vêtements secs, envelopper dans couvertures / sac de couchage"},
+    {"etape": 3, "action": "GELURES : protéger les zones atteintes, retirer bagues et chaussures serrées, réchauffer doucement contre la peau (mains sous les aisselles, pieds contre le ventre d'un compagnon)"},
+    {"etape": 4, "action": "NE PAS frictionner ni masser une gelure (surtout pas avec de la neige), ne pas percer les cloques, ne pas exposer à une source de chaleur directe (feu, réchaud) — risque de brûlure sur peau insensible"},
+    {"etape": 5, "action": "NE PAS réchauffer une gelure s'il existe un risque de re-gel avant d'atteindre un abri définitif : un membre dégelé puis regelé est bien plus grave — mieux vaut marcher dessus gelé"},
+    {"etape": 6, "action": "HYPOTHERMIE : réchauffer en priorité le TRONC (chaleur corporelle, bouillottes tièdes enveloppées), manipuler avec douceur (risque de fibrillation), pas de friction des membres"},
+    {"etape": 7, "action": "Donner des boissons chaudes et sucrées si la victime est consciente et déglutit ; jamais d'alcool"},
+    {"etape": 8, "action": "Alerter le 112 / secours en montagne, préciser la localisation et les possibilités d'hélitreuillage"},
+    {"etape": 9, "action": "Surveiller conscience et respiration ; en cas d'arrêt cardiaque, RCP prolongée ('nul n'est mort tant qu'il n'est pas réchauffé et mort')"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Gelure superficielle (peau blanche, engourdie) avec abri définitif atteignable",
+      "alors": "Réchauffer doucement contre le corps (jamais de friction ni de chaleur directe), protéger, surveiller"
+    },
+    {
+      "condition": "Gelure avec risque de re-gel avant l'abri",
+      "alors": "NE PAS réchauffer : protéger et évacuer, quitte à marcher sur un membre gelé (le re-gel après dégel aggrave gravement les lésions)"
+    },
+    {
+      "condition": "Hypothermie associée (frissons disparus, confusion, somnolence)",
+      "alors": "Réchauffement doux du tronc, manipulation minimale, 112 — voir protocole hypothermie"
+    },
+    {
+      "condition": "Gelure profonde (peau dure, cloques, coloration foncée)",
+      "alors": "Protéger sans percer, ne pas réchauffer sur le terrain si évacuation possible, 112 (prise en charge spécialisée)"
+    },
+    {
+      "condition": "Perte de connaissance / arrêt cardiaque",
+      "alors": "PLS si respire ; RCP prolongée si arrêt + 112"
+    }
+  ],
+
+  "notesCritiques": [
+    "S'abriter du vent en priorité : le refroidissement éolien décuple le froid ressenti et accélère gelures et hypothermie",
+    "Ne JAMAIS frictionner une gelure (surtout pas avec de la neige) ni la réchauffer près d'une source de chaleur directe (peau insensible = brûlure)",
+    "Ne pas réchauffer une gelure s'il y a risque de re-gel : mieux vaut évacuer le membre gelé que de le dégeler puis le laisser regeler",
+    "Réchauffement LENT et progressif, en priorité le tronc",
+    "Hypothermie : manipuler avec douceur (risque de fibrillation), pas d'alcool, RCP prolongée si arrêt",
+    "Retirer bagues, montres et chaussures serrées avant que le gonflement ne s'installe"
+  ],
+
+  "pointsControle": [
+    "La victime est à l'abri du vent, isolée du sol, au sec",
+    "Les gelures sont protégées, sans friction ni chaleur directe",
+    "Aucune gelure n'a été réchauffée s'il existait un risque de re-gel",
+    "Le tronc est réchauffé en priorité, la victime manipulée avec douceur",
+    "Le 112 est alerté et la conscience / respiration surveillées"
+  ],
+
+  "conditionsArretEscalade": [
+    "Hypothermie modérée à sévère → 112, réchauffement doux, évacuation",
+    "Gelures profondes → protection + prise en charge spécialisée",
+    "Perte de connaissance / arrêt cardiaque → PLS ou RCP prolongée + 112"
+  ],
+
+  "ressourcesNecessaires": [
+    "Abri contre le vent (tente, trou à neige, paroi)",
+    "Vêtements chauds secs, couvertures, sac de couchage, couverture de survie",
+    "Boissons chaudes sucrées (non alcoolisées)",
+    "Réchaud / source de chaleur douce (à distance des gelures)",
+    "Moyen d'alerte (téléphone, radio) et GPS"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent en haute montagne, lors d'un bivouac forcé ou d'une tempête",
+    "actions": [
+      "Améliorer l'abri et l'isolation thermique, se regrouper pour partager la chaleur corporelle",
+      "Réchauffer progressivement le tronc et, une fois à l'abri définitif, les extrémités gelées (bain d'eau tiède à 37-39°C si disponible, jamais chaude, jamais de friction)",
+      "Ne réchauffer une gelure que si l'on est sûr qu'elle ne regèlera pas avant l'évacuation",
+      "Donner régulièrement des boissons chaudes et sucrées à une victime consciente ; s'alimenter pour produire de la chaleur",
+      "Surveiller conscience et respiration en continu ; RCP prolongée en cas d'arrêt, manipulation très douce"
+    ],
+    "ressourcesImprovises": [
+      "Trou à neige, abri de branchages ou paroi coupe-vent",
+      "Chaleur corporelle des compagnons (mains sous les aisselles, pieds contre un ventre)",
+      "Bouteilles d'eau tiède enveloppées, placées sur le tronc (jamais brûlantes ni sur une gelure)"
+    ],
+    "signesAggravation": [
+      "Extrémités qui deviennent dures, foncées, avec cloques (gelure profonde)",
+      "Frissons qui disparaissent, ralentissement, confusion (hypothermie qui progresse)",
+      "Somnolence, perte de connaissance",
+      "Respiration et pouls très lents et difficiles à percevoir"
+    ],
+    "limitesSansSecours": "Les gelures profondes et l'hypothermie sévère nécessitent un traitement hospitalier spécialisé (réchauffement contrôlé, soins des gelures). Sur le terrain, l'abri, l'isolation et le réchauffement prudent limitent les dégâts et gagnent un temps précieux, mais un réchauffement inadapté (friction, re-gel) peut coûter des membres.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou de secours en montagne. En cas de doute, suivez les instructions du 112."
+}

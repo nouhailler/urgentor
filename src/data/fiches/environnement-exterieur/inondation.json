@@ -1,0 +1,133 @@
+{
+  "id": "inondation",
+  "titre": "Inondation Soudaine",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "environnemental",
+  "tags": ["évacuation verticale", "courant", "eau contaminée", "inondation", "crue", "électricité"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / Sécurité Civile",
+
+  "objectif": "Se mettre à l'abri d'une montée des eaux rapide, éviter les dangers du courant, de l'électricité et de l'eau contaminée, et porter secours sans se mettre en danger.",
+
+  "conditionsActivation": "Montée des eaux rapide (crue soudaine, orage cévenol, rupture de digue, submersion) menaçant des personnes dans un véhicule, un bâtiment ou en extérieur.",
+
+  "diagnosticRapide": {
+    "visuels": ["Eau qui monte vite, courant chargé de débris", "Routes, sous-sols, passages submergés", "Véhicules emportés ou bloqués", "Câbles électriques dans l'eau, installations immergées"],
+    "auditifs": ["Grondement de l'eau, alertes (sirènes, radio)", "Appels de personnes bloquées", "Craquements de structures fragilisées"],
+    "comportementaux": ["Personnes cherchant à traverser ou à récupérer des biens (danger)", "Panique, désorientation", "Personnes réfugiées en hauteur appelant à l'aide"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Courant : 30 cm d'eau vive suffisent à emporter une personne, 50 cm un véhicule", "Électrocution (installations immergées, câbles)", "Eau contaminée (eaux usées, produits chimiques, hydrocarbures)", "Débris, effondrements, trous invisibles sous l'eau"],
+    "equipementsRequis": ["Point haut / étage pour évacuation verticale", "Objet flottant, corde", "Gants et bottes si contact avec l'eau contaminée", "Radio, téléphone, lampe"],
+    "regleUniverselle": "NE JAMAIS s'engager, à pied ou en véhicule, dans une eau courante de plus de 30 cm. Monter (évacuation verticale) plutôt que fuir horizontalement. Couper l'électricité si possible sans risque.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 (pompiers) ou 15 — alerter et suivre les consignes des autorités",
+    "quoiDire": "Je suis [NOM], à [ADRESSE / ÉTAGE PRÉCIS]. Inondation soudaine, eau à [hauteur], montée [rapide]. [Nombre] personne(s), dont [enfants / blessés / personnes vulnérables]. Réfugiés en [étage / toit]. Électricité [coupée / non].",
+    "informationsAFournir": ["Localisation précise et étage", "Nombre et état des personnes (vulnérables ?)", "Hauteur et vitesse de montée de l'eau", "Accès possible pour les secours (bateau, hélicoptère)"]
+  },
+
+  "actionsImmédiates": [
+    "NE PAS traverser une eau courante > 30 cm (à pied ou en voiture)",
+    "MONTER en hauteur (étage, toit) — évacuation verticale, pas horizontale",
+    "COUPER l'électricité et le gaz si possible sans danger",
+    "ALERTER le 18 / 112, se signaler, ne pas retourner chercher des biens"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Se mettre en sécurité en hauteur : étages supérieurs, toit — ne jamais se réfugier dans une cave ou un sous-sol"},
+    {"etape": 2, "action": "Ne PAS s'engager dans l'eau courante : 30 cm suffisent à emporter un adulte, 50 cm un véhicule. Abandonner le véhicule et gagner un point haut à pied si l'eau monte"},
+    {"etape": 3, "action": "Couper l'électricité et le gaz au compteur si l'on peut y accéder sans se mettre dans l'eau"},
+    {"etape": 4, "action": "Alerter le 18 / 112, écouter la radio / les consignes des autorités, se signaler aux secours (linge à la fenêtre, lampe)"},
+    {"etape": 5, "action": "Rassembler eau potable, vêtements chauds, papiers, traitements, lampe, téléphone chargé"},
+    {"etape": 6, "action": "Pour secourir une personne emportée : lui tendre/lancer une perche, une corde ou un objet flottant depuis un point stable — ne pas entrer dans le courant"},
+    {"etape": 7, "action": "Éviter tout contact avec l'eau contaminée (eaux usées, hydrocarbures, produits) ; en cas de plaie exposée, nettoyer dès que possible et surveiller"},
+    {"etape": 8, "action": "Prendre en charge les personnes vulnérables (enfants, personnes âgées, malades), les réchauffer, surveiller"},
+    {"etape": 9, "action": "Attendre les secours en hauteur ; ne retourner dans les zones inondées sous aucun prétexte (biens, animaux)"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Eau courante > 30 cm sur le chemin",
+      "alors": "NE PAS traverser (à pied ou en voiture) → chercher un point haut, attendre les secours"
+    },
+    {
+      "condition": "Véhicule cerné par la montée des eaux",
+      "alors": "Sortir immédiatement et gagner un point élevé à pied tant que c'est possible — ne pas rester dans le véhicule qui peut être emporté"
+    },
+    {
+      "condition": "Personne emportée par le courant",
+      "alors": "Tendre / lancer une corde ou un flotteur depuis un point stable, alerter les secours — ne pas entrer dans le courant"
+    },
+    {
+      "condition": "Installations électriques immergées",
+      "alors": "Couper le courant si possible sans risque, sinon ne pas toucher l'eau ni les appareils (risque d'électrocution)"
+    },
+    {
+      "condition": "Contact avec de l'eau contaminée / plaie exposée",
+      "alors": "Rincer/nettoyer dès que possible, surveiller l'infection, vérifier la vaccination tétanos"
+    }
+  ],
+
+  "notesCritiques": [
+    "30 cm d'eau courante emportent un adulte, 50 cm un véhicule : ne jamais s'y engager",
+    "Évacuer verticalement (monter) et non horizontalement (fuir), et JAMAIS vers une cave ou un sous-sol",
+    "L'eau d'inondation est souvent contaminée (eaux usées, chimie, hydrocarbures) et cache des dangers invisibles (trous, câbles)",
+    "Risque d'électrocution : couper l'électricité, ne pas toucher d'installations immergées",
+    "Ne jamais retourner chercher des biens ou des animaux dans la zone inondée",
+    "Suivre les consignes officielles (radio, autorités) et se signaler aux secours"
+  ],
+
+  "pointsControle": [
+    "Les personnes sont en hauteur, hors d'atteinte de l'eau et du courant",
+    "Aucune traversée d'eau courante > 30 cm n'a été tentée",
+    "L'électricité / le gaz sont coupés si l'accès était sûr",
+    "Les secours sont alertés et le groupe se signale",
+    "Les personnes vulnérables sont prises en charge et réchauffées"
+  ],
+
+  "conditionsArretEscalade": [
+    "Personnes bloquées / emportées → 18 / 112, secours nautiques ou hélitreuillage",
+    "Blessés ou malaises → 15",
+    "Montée continue de l'eau → évacuation vers un point plus haut, se signaler"
+  ],
+
+  "ressourcesNecessaires": [
+    "Point haut / étage pour l'évacuation verticale",
+    "Objet flottant, corde, perche",
+    "Radio, téléphone chargé, lampe, sifflet",
+    "Eau potable, vêtements chauds, traitements, papiers",
+    "Gants et bottes pour l'eau contaminée"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent et que la montée des eaux se prolonge, en zone isolée",
+    "actions": [
+      "Rester en hauteur, se signaler visiblement (linge de couleur, lampe la nuit) et de façon sonore (sifflet)",
+      "Économiser le téléphone (mode avion entre les appels), l'eau potable et la nourriture",
+      "Réchauffer et rassurer les personnes vulnérables, surveiller les plus fragiles",
+      "Ne jamais s'aventurer dans l'eau pour récupérer quoi que ce soit, même si le niveau semble baisser",
+      "Surveiller la stabilité de la structure ; si elle est menacée, gagner un point plus haut ou un toit"
+    ],
+    "ressourcesImprovises": [
+      "Bidons, bouteilles fermées, planches, glacières comme flotteurs ou aide à la flottaison",
+      "Draps / vêtements de couleur vive comme signal à une fenêtre ou sur un toit",
+      "Récipients propres pour stocker de l'eau potable avant contamination du réseau"
+    ],
+    "signesAggravation": [
+      "Montée des eaux qui se poursuit et menace l'étage refuge",
+      "Structure du bâtiment qui craque, se fissure ou s'affaisse",
+      "Personnes présentant hypothermie, malaise ou détresse",
+      "Signes d'infection sur des plaies au contact de l'eau souillée"
+    ],
+    "limitesSansSecours": "Face à une crue, l'évacuation verticale et l'attente des secours nautiques ou aériens sont souvent la seule option sûre. Toute tentative de traverser le courant met des vies en jeu ; la patience et la signalisation sauvent davantage que l'action précipitée.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas les consignes des autorités. Faites tout ce qui est possible pour obtenir de l'aide."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni les consignes officielles de sécurité civile. En cas de doute, suivez les instructions du 18 / 112."
+}

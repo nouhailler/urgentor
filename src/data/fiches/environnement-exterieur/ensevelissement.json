@@ -1,0 +1,133 @@
+{
+  "id": "ensevelissement",
+  "titre": "Ensevelissement / Avalanche",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "traumatologique",
+  "tags": ["DVA", "pelle", "sonde", "avalanche", "ensevelissement", "hypothermie"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / ANENA / PGHM",
+
+  "objectif": "Localiser et dégager au plus vite une victime ensevelie sous la neige (avalanche) ou un matériau, libérer ses voies aériennes en priorité et prendre en charge asphyxie et hypothermie.",
+
+  "conditionsActivation": "Personne emportée et ensevelie par une avalanche, un éboulement ou un effondrement. Le temps de survie sous la neige chute très vite : la rapidité de la recherche et du dégagement est vitale.",
+
+  "diagnosticRapide": {
+    "visuels": ["Coulée de neige / matériau, indices de surface (matériel, gant, ski qui dépasse)", "Zone d'arrêt de l'avalanche (souvent où chercher en priorité)", "Victime partiellement visible", "Signaux DVA à l'écran du détecteur"],
+    "auditifs": ["Appels étouffés (rarement audibles sous la neige)", "Bips du DVA en mode recherche", "Silence pesant de la zone d'avalanche"],
+    "comportementaux": ["Témoins paniqués, désorganisés", "Nécessité de compter et localiser les personnes emportées", "Une fois dégagée : victime consciente/agitée ou inconsciente selon la durée"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Sur-avalanche / nouvel effondrement", "Pente instable, autres coulées", "Froid extrême, épuisement des sauveteurs", "Ensevelissement du sauveteur"],
+    "equipementsRequis": ["DVA (Détecteur de Victime d'Avalanche) en mode recherche", "Sonde et pelle", "Vêtements chauds, couverture de survie", "Moyen d'alerte (téléphone, radio)"],
+    "regleUniverselle": "Assurer d'abord la sécurité du groupe (guetter une sur-avalanche, poster un guetteur). Rechercher immédiatement avec DVA/sonde/pelle : chaque minute compte. Dégager la TÊTE et les voies aériennes en premier.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "112 (secours en montagne / PGHM / CRS) — alerter au plus vite tout en débutant la recherche",
+    "quoiDire": "Je suis [NOM], à [LIEU + coordonnées GPS / altitude / massif]. Avalanche, [nombre] personne(s) ensevelie(s). Recherche DVA en cours. [X] sauveteurs sur place. Accès / zone d'atterrissage : [préciser].",
+    "informationsAFournir": ["Localisation précise et heure de l'avalanche", "Nombre de personnes emportées / ensevelies", "Moyens sur place (DVA, sonde, pelle, nombre de sauveteurs)", "Risque de sur-avalanche, accès pour l'hélicoptère"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER : guetteur pour sur-avalanche, compter les personnes emportées",
+    "ALERTER le 112 / secours en montagne (localisation précise)",
+    "RECHERCHER avec DVA → sonde → pelle, sans délai (chaque minute compte)",
+    "Au dégagement : LIBÉRER LA TÊTE et les voies aériennes en PREMIER, puis ventiler si besoin"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser : évaluer le risque de sur-avalanche, poster un guetteur, mémoriser le point de disparition et le point d'arrêt de la victime"},
+    {"etape": 2, "action": "Alerter le 112 / secours en montagne (ou faire alerter) sans interrompre la recherche"},
+    {"etape": 3, "action": "Basculer tous les DVA du groupe en mode RECHERCHE, quadriller la zone en suivant la flèche et la distance jusqu'au signal le plus fort"},
+    {"etape": 4, "action": "Recherche fine puis SONDAGE perpendiculaire à la pente pour localiser précisément la victime"},
+    {"etape": 5, "action": "PELLETER en attaquant en aval de la sonde, en dégageant un volume suffisant, sans piétiner au-dessus de la victime"},
+    {"etape": 6, "action": "Dès que possible, DÉGAGER LA TÊTE et libérer les voies aériennes en PRIORITÉ (retirer la neige de la bouche et du nez, chercher une poche d'air)"},
+    {"etape": 7, "action": "Évaluer la respiration : absente → 5 insufflations puis RCP 30:2 (asphyxie) + DAE si disponible ; présente → poursuivre le dégagement en douceur"},
+    {"etape": 8, "action": "Manipuler avec précaution (suspicion de traumatisme + hypothermie) : mouvements doux, maintien de l'axe si choc, isolation immédiate du froid"},
+    {"etape": 9, "action": "Réchauffer : retirer la neige des vêtements, isoler du sol, couvrir (couverture de survie), abriter du vent ; surveiller conscience et respiration"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime ensevelie détectée au DVA",
+      "alors": "Sondage puis pelletage rapide, dégager la tête et les voies aériennes en premier"
+    },
+    {
+      "condition": "Voies aériennes dégagées, victime ne respire pas",
+      "alors": "5 insufflations puis RCP 30:2 + DAE (asphyxie) — poursuivre longtemps en contexte d'hypothermie"
+    },
+    {
+      "condition": "Victime consciente ou respirant, poche d'air trouvée",
+      "alors": "Dégager en douceur, protéger du froid, surveiller, manipuler avec précaution (traumatisme possible)"
+    },
+    {
+      "condition": "Ensevelissement profond / prolongé avec hypothermie",
+      "alors": "Manipulation très douce (risque de fibrillation), réchauffement progressif, RCP prolongée si arrêt (nul n'est mort tant qu'il n'est pas réchauffé et mort)"
+    },
+    {
+      "condition": "Risque de sur-avalanche pendant la recherche",
+      "alors": "Maintenir un guetteur, prévoir une zone de repli, ne pas exposer inutilement les sauveteurs"
+    }
+  ],
+
+  "notesCritiques": [
+    "La survie chute très vite sous la neige : la rapidité DVA → sonde → pelle est vitale (les premières minutes sont décisives)",
+    "Dégager la TÊTE et les voies aériennes en PREMIER : la cause de décès la plus fréquente est l'asphyxie",
+    "La noyade/asphyxie impose de commencer la RCP par 5 insufflations",
+    "Hypothermie quasi systématique : manipuler avec douceur (risque de fibrillation), réchauffer, poursuivre longtemps la RCP",
+    "Ne pas piétiner au-dessus de la victime pendant le pelletage (compaction, poche d'air)",
+    "Sécurité du groupe d'abord : un sauveteur enseveli aggrave la situation"
+  ],
+
+  "pointsControle": [
+    "La sécurité du groupe est assurée (guetteur, risque de sur-avalanche évalué)",
+    "Les secours en montagne sont alertés",
+    "La recherche DVA / sonde / pelle a été menée sans délai",
+    "La tête et les voies aériennes ont été dégagées en priorité",
+    "La victime est protégée du froid, réchauffée et surveillée"
+  ],
+
+  "conditionsArretEscalade": [
+    "Ensevelissement → secours en montagne / hélitreuillage immédiats",
+    "Arrêt respiratoire → 5 insufflations + RCP + DAE",
+    "Hypothermie profonde → réchauffement + RCP prolongée + évacuation médicalisée"
+  ],
+
+  "ressourcesNecessaires": [
+    "DVA (détecteur de victime d'avalanche)",
+    "Sonde et pelle",
+    "Couverture de survie, vêtements chauds, isolant du sol",
+    "DAE si disponible",
+    "Moyen d'alerte (téléphone, radio) et GPS"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après dégagement, en haute montagne isolée",
+    "actions": [
+      "Poursuivre la RCP longtemps en cas d'arrêt (l'hypothermie profonde protège le cerveau : la réanimation reste possible)",
+      "Réchauffer progressivement en priorité le tronc, isoler totalement du froid, du sol et du vent",
+      "Manipuler la victime avec une extrême douceur pour éviter de déclencher une fibrillation",
+      "Surveiller conscience et respiration en continu, prise de pouls prolongée (jusqu'à 1 min)",
+      "Organiser l'évacuation et guider l'hélicoptère (zone dégagée, signalisation)"
+    ],
+    "ressourcesImprovises": [
+      "Sac de couchage, couvertures, vêtements secs pour l'isolation thermique",
+      "Abri creusé dans la neige ou paroi coupe-vent pour protéger la victime",
+      "Objets de couleur vive / lampe / sifflet pour signaler la position"
+    ],
+    "signesAggravation": [
+      "Disparition des frissons, peau glacée, rigidité",
+      "Pouls et respiration de plus en plus lents et difficiles à percevoir",
+      "Baisse de la conscience",
+      "Arrêt respiratoire ou cardiaque"
+    ],
+    "limitesSansSecours": "Au-delà des premières minutes d'ensevelissement, la survie dépend de l'existence d'une poche d'air et du degré d'hypothermie. Le réchauffement et la réanimation de terrain gagnent du temps, mais seule une prise en charge médicalisée (réchauffement contrôlé) offre les meilleures chances.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ni une formation avalanche (DVA). En cas de doute, suivez les instructions du 112."
+}

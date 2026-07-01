@@ -1,0 +1,133 @@
+{
+  "id": "noyade-eau-vive",
+  "titre": "Noyade en Eau Vive / Mer",
+  "categorie": "environnement-exterieur",
+  "sousCategorie": "aquatique",
+  "tags": ["courant", "sauvetage", "flottaison", "noyade", "mer", "eau vive"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / SNSM",
+
+  "objectif": "Porter secours à une victime en train de se noyer en eau vive ou en mer sans se mettre soi-même en danger, la sortir de l'eau et prendre en charge un éventuel arrêt respiratoire.",
+
+  "conditionsActivation": "Personne en difficulté dans l'eau (courant, vagues, fatigue, hydrocution) : elle s'agite, boit la tasse, appelle, coule, ou flotte inerte. Le sauvetage doit privilégier les moyens à distance avant tout contact.",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne qui se débat, tête basculée en arrière, bouche au ras de l'eau", "Mouvements désordonnés puis disparition sous la surface", "Corps inerte flottant ou dérivant", "Signes de panique, incapacité à avancer contre le courant"],
+    "auditifs": ["Appels à l'aide, cris (puis silence quand l'épuisement gagne)", "Bruits de suffocation, toux", "Souvent AUCUN cri : la vraie noyade est silencieuse"],
+    "comportementaux": ["Agitation puis épuisement rapide", "Regard paniqué, tête en extension pour respirer", "Immobilité et enfoncement si perte de connaissance"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Courant, vagues, rouleaux, contre-courant (baïnes)", "Hydrocution (choc thermique)", "Être agrippé et entraîné sous l'eau par la victime paniquée", "Eau froide, épuisement"],
+    "equipementsRequis": ["Objet flottant (bouée, ballon, bidon, planche, corde)", "Perche, branche ou vêtement à tendre", "Gilet de sauvetage pour l'intervenant si disponible", "Téléphone pour alerter"],
+    "regleUniverselle": "NE JAMAIS se mettre en danger. Tendre ou lancer avant d'entrer dans l'eau. N'entrer dans l'eau qu'en dernier recours, si l'on sait nager et de préférence avec un flotteur, jamais seul.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "112 (mer / littoral, aussi 196 CROSS pour le secours en mer), 18 ou 15 — alerter avant ou pendant le sauvetage",
+    "quoiDire": "Je suis [NOM], à [LIEU PRÉCIS / point de repère côtier]. Personne en train de se noyer en [mer / rivière], à [distance] du bord. Courant [fort/faible]. Victime [consciente qui se débat / inerte]. Je tente de lui lancer un flotteur.",
+    "informationsAFournir": ["Localisation précise (repère, plage, PK rivière)", "Nombre de victimes et distance du bord", "État (se débat / inerte / a coulé)", "Conditions (courant, vagues, température de l'eau)"]
+  },
+
+  "actionsImmédiates": [
+    "ALERTER (112 / 196 / 18) — ne pas se précipiter seul dans l'eau",
+    "TENDRE une perche/branche/corde ou LANCER un objet flottant à la victime",
+    "N'entrer dans l'eau qu'en DERNIER RECOURS, avec un flotteur, si l'on sait nager",
+    "Sortie de l'eau : vérifier respiration → 5 insufflations puis RCP si nécessaire"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Donner l'alerte (112 / 196 en mer / 18) ou la faire donner, repérer précisément le lieu"},
+    {"etape": 2, "action": "Parler à la victime, la rassurer, lui indiquer de faire la 'planche' et de se laisser flotter"},
+    {"etape": 3, "action": "TENDRE un objet depuis le bord (perche, branche, vêtement) si la victime est proche"},
+    {"etape": 4, "action": "Sinon LANCER un objet flottant relié à une corde si possible (bouée, bidon, planche, glacière)"},
+    {"etape": 5, "action": "En mer avec courant/baïne : ne pas lutter contre le courant, se laisser porter puis revenir parallèlement au rivage"},
+    {"etape": 6, "action": "N'entrer dans l'eau qu'en dernier recours : jamais seul, avec un flotteur, approcher la victime par derrière pour éviter d'être agrippé"},
+    {"etape": 7, "action": "Ramener la victime au bord en la maintenant tête hors de l'eau"},
+    {"etape": 8, "action": "Hors de l'eau : évaluer la respiration. Si elle ne respire pas → 5 insufflations initiales puis RCP 30:2 (la noyade est une asphyxie : commencer par les insufflations) + DAE dès que possible"},
+    {"etape": 9, "action": "Inconsciente qui respire → PLS, déshabiller, sécher, réchauffer (hypothermie fréquente), surveiller ; toute victime de noyade doit être vue par un médecin"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime consciente près du bord",
+      "alors": "Tendre une perche / lancer un flotteur — ne pas entrer dans l'eau"
+    },
+    {
+      "condition": "Victime au loin ou emportée par le courant",
+      "alors": "Lancer un objet flottant, alerter les secours spécialisés (CROSS / SNSM / pompiers), n'entrer dans l'eau qu'avec un flotteur et si l'on sait nager"
+    },
+    {
+      "condition": "Victime inerte sortie de l'eau, ne respire pas",
+      "alors": "5 insufflations initiales puis RCP 30:2 + DAE (asphyxie : priorité aux insufflations)"
+    },
+    {
+      "condition": "Victime inconsciente qui respire",
+      "alors": "PLS, sécher, réchauffer, surveiller — avis médical obligatoire (risque de noyade secondaire)"
+    },
+    {
+      "condition": "Suspicion de plongeon / traumatisme cervical (eau peu profonde)",
+      "alors": "Maintenir l'axe tête-cou-tronc pendant la sortie de l'eau et la mise en PLS"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS se jeter à l'eau sans réfléchir : le sauveteur imprudent devient la seconde victime",
+    "Tendre ou lancer AVANT d'entrer dans l'eau",
+    "La noyade est le plus souvent silencieuse : ne pas attendre des cris pour agir",
+    "En cas de courant (baïne, rivière) : ne pas lutter de front, se laisser porter et sortir latéralement",
+    "La noyade est une ASPHYXIE : commencer la RCP par 5 insufflations, pas par les compressions",
+    "Toute victime de noyade, même consciente, doit consulter (risque de détresse respiratoire retardée / noyade secondaire)"
+  ],
+
+  "pointsControle": [
+    "Les secours spécialisés ont été alertés avec un lieu précis",
+    "Un moyen de sauvetage à distance a été tenté avant tout contact",
+    "L'intervenant ne s'est pas mis en danger",
+    "La respiration a été évaluée à la sortie de l'eau (5 insufflations puis RCP si besoin)",
+    "La victime est séchée, réchauffée et orientée vers un avis médical"
+  ],
+
+  "conditionsArretEscalade": [
+    "Victime au loin / conditions dangereuses → secours spécialisés (CROSS, SNSM, pompiers)",
+    "Arrêt respiratoire → 5 insufflations + RCP + DAE",
+    "Hypothermie associée → réchauffement + surveillance médicale"
+  ],
+
+  "ressourcesNecessaires": [
+    "Objet flottant (bouée, bidon, planche, glacière)",
+    "Perche, corde, branche ou vêtement à tendre",
+    "Gilet de sauvetage pour l'intervenant si disponible",
+    "DAE et couverture de survie",
+    "Téléphone pour le 112 / 196 / 18"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après le sauvetage, en zone isolée (rivière de montagne, plage sans surveillance)",
+    "actions": [
+      "Poursuivre la RCP sans interruption en cas d'arrêt respiratoire (30 compressions / 2 insufflations, débutée par 5 insufflations)",
+      "Une fois la respiration reprise : PLS, déshabiller la victime mouillée, la sécher et la réchauffer activement (l'hypothermie est quasi constante)",
+      "Surveiller étroitement la respiration : une détresse respiratoire peut apparaître plusieurs heures après (noyade secondaire)",
+      "Isoler du vent et du froid, envelopper dans des couvertures / vêtements secs",
+      "Organiser l'évacuation vers un centre médical même si la victime semble récupérer"
+    ],
+    "ressourcesImprovises": [
+      "Bidons, bouteilles vides fermées, glacières, planches : tout ce qui flotte pour un sauvetage à distance",
+      "Vêtements noués en corde de fortune pour tendre à une victime proche",
+      "Vêtements secs et couvertures pour lutter contre l'hypothermie après sortie de l'eau"
+    ],
+    "signesAggravation": [
+      "Respiration qui redevient difficile, toux, crachats mousseux (œdème pulmonaire retardé)",
+      "Somnolence, confusion, agitation",
+      "Peau froide, cyanose, frissons (hypothermie)",
+      "Nouvel arrêt respiratoire"
+    ],
+    "limitesSansSecours": "Une victime réanimée après noyade peut développer une détresse respiratoire ou des complications plusieurs heures plus tard. Les gestes de secours sauvent la vie immédiate, mais une surveillance et une prise en charge hospitalières restent indispensables.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou de sauvetage aquatique. En cas de doute, suivez les instructions du 112 / 196."
+}
