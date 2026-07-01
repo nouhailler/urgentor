@@ -1,0 +1,133 @@
+{
+  "id": "agression",
+  "titre": "Agression / Violence en Milieu Professionnel",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "securite",
+  "tags": ["protection", "désescalade", "alerte discrète", "agression", "violence", "sécurité"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS",
+
+  "objectif": "Faire face à une situation d'agression ou de violence sur le lieu de travail en priorisant sa propre sécurité et celle des autres, en désamorçant si possible et en donnant l'alerte, sans s'exposer inutilement.",
+
+  "conditionsActivation": "Comportement menaçant, agressif ou violent d'une personne (client, usager, collègue, intrus) : insultes, menaces, gestes agressifs, arme éventuelle, mise en danger du personnel ou du public.",
+
+  "diagnosticRapide": {
+    "visuels": ["Attitude menaçante, gestes brusques", "Objet ou arme potentielle en main", "Tension corporelle, poings serrés, invasion de l'espace personnel", "Personnes environnantes apeurées"],
+    "auditifs": ["Ton qui monte, cris, insultes, menaces explicites", "Propos incohérents (alcool, drogue, détresse psychique)", "Appels à l'aide"],
+    "comportementaux": ["Agitation croissante, imprévisibilité", "Refus du dialogue, provocations", "Passage à l'acte (coups, jets d'objets)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Coups, blessures, arme", "Escalade si confrontation directe", "Isolement face à l'agresseur", "Prise à partie de plusieurs personnes"],
+    "equipementsRequis": ["Dispositif d'alerte discret (bouton, application, mot-code)", "Issue de repli identifiée", "Éventuellement dispositif de protection travailleur isolé (DATI/PTI)"],
+    "regleUniverselle": "La sécurité des personnes prime sur tout (biens, argent, matériel). Ne pas intervenir seul physiquement, garder ses distances, privilégier la désescalade et l'alerte discrète, préparer une issue de repli.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "17 (police) / 112 — et alerte interne (sécurité, responsable). Discrètement si possible",
+    "quoiDire": "Je suis [NOM], au [LIEU PRÉCIS]. Agression / personne violente [description, arme éventuelle]. [Nombre] personne(s) menacée(s) / blessée(s). Situation [en cours / maîtrisée]. Besoin police / secours.",
+    "informationsAFournir": ["Localisation précise", "Description de l'agresseur et présence d'une arme", "Nombre de personnes menacées ou blessées", "Évolution (en cours, agresseur parti, victimes)"]
+  },
+
+  "actionsImmédiates": [
+    "PROTÉGER : sa propre sécurité et celle des autres d'abord — se mettre à distance",
+    "ALERTER discrètement (sécurité interne, 17 / 112)",
+    "DÉSESCALADER : rester calme, parler doucement, ne pas provoquer",
+    "SE METTRE À L'ABRI / évacuer si danger ; céder les biens réclamés sans résister"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Évaluer le danger et se protéger : garder ses distances, se placer près d'une sortie, ne pas se laisser isoler ni acculer"},
+    {"etape": 2, "action": "Donner l'alerte le plus discrètement possible (bouton d'alerte, mot-code convenu, message à un collègue, appel au 17 / à la sécurité)"},
+    {"etape": 3, "action": "Tenter la désescalade verbale : rester calme, parler d'une voix posée, adopter une posture non menaçante, écouter, ne pas défier ni humilier, reformuler la demande"},
+    {"etape": 4, "action": "Ne pas résister pour des biens ou de l'argent : les céder — la vie et l'intégrité priment"},
+    {"etape": 5, "action": "Mettre à l'abri les personnes vulnérables (public, collègues), organiser une évacuation discrète si possible"},
+    {"etape": 6, "action": "Ne pas intervenir physiquement seul ; toute maîtrise éventuelle relève d'un personnel formé/de la sécurité, à plusieurs, en dernier recours"},
+    {"etape": 7, "action": "Si l'agresseur part : noter son signalement, la direction de fuite, préserver les lieux et les éventuelles preuves"},
+    {"etape": 8, "action": "Prendre en charge les victimes une fois la sécurité rétablie (blessures physiques : protocoles adaptés ; choc psychologique : mise au calme, écoute)"},
+    {"etape": 9, "action": "Signaler l'événement (hiérarchie, sécurité, dépôt de plainte, déclaration d'accident du travail) et proposer un soutien psychologique"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Agresseur menaçant mais pas de passage à l'acte",
+      "alors": "Désescalade verbale + alerte discrète + distance + issue de repli"
+    },
+    {
+      "condition": "Agresseur armé ou passage à l'acte violent",
+      "alors": "Se mettre à l'abri / évacuer, 17 / 112, ne pas affronter, céder les biens"
+    },
+    {
+      "condition": "Vol / racket",
+      "alors": "Céder ce qui est réclamé sans résister, mémoriser le signalement, alerter dès que possible"
+    },
+    {
+      "condition": "Personne en détresse psychique / sous emprise",
+      "alors": "Désescalade, ne pas être seul, alerter (15 pour volet médical, 17 si danger), sécuriser l'environnement"
+    },
+    {
+      "condition": "Victime blessée après l'agression",
+      "alors": "Sécuriser d'abord, puis premiers secours adaptés aux blessures + 15 ; soutien psychologique"
+    }
+  ],
+
+  "notesCritiques": [
+    "La sécurité des personnes prime sur les biens : ne jamais risquer sa vie pour de l'argent ou du matériel",
+    "Ne pas intervenir physiquement seul : privilégier distance, désescalade et alerte",
+    "Alerter discrètement (mot-code, bouton) pour ne pas provoquer l'escalade",
+    "Garder une issue de repli et ne jamais se laisser acculer",
+    "La désescalade repose sur le calme, l'écoute et une posture non menaçante — éviter provocation et humiliation",
+    "Après l'événement : signalement, accompagnement des victimes et soutien psychologique sont essentiels"
+  ],
+
+  "pointsControle": [
+    "L'intervenant et les autres personnes se sont mis en sécurité",
+    "L'alerte a été donnée (sécurité interne, 17 / 112)",
+    "La désescalade a été privilégiée à la confrontation",
+    "Aucune résistance dangereuse n'a été opposée pour des biens",
+    "Les victimes sont prises en charge et l'événement signalé"
+  ],
+
+  "conditionsArretEscalade": [
+    "Agresseur armé / violence physique → 17 / 112, se mettre à l'abri",
+    "Blessés → 15 après sécurisation",
+    "Détresse psychique → 15 / 17 selon le danger, ne pas rester seul"
+  ],
+
+  "ressourcesNecessaires": [
+    "Dispositif d'alerte discret (bouton, application, mot-code)",
+    "Issue de repli identifiée",
+    "Dispositif de protection du travailleur isolé (DATI/PTI) si applicable",
+    "Coordonnées sécurité interne, 17, 112, 15",
+    "Procédure interne de gestion des violences / soutien psychologique"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si la police / les secours tardent, la menace persistant ou après l'agression",
+    "actions": [
+      "Maintenir la distance et se tenir, avec les autres, dans un lieu sûr et fermé si possible, en gardant une issue",
+      "Poursuivre la désescalade si le contact est inévitable, gagner du temps, éviter toute provocation",
+      "Continuer à alerter et tenir informés les secours de l'évolution (déplacement de l'agresseur, blessés)",
+      "Une fois le danger passé : prendre en charge les blessés (physique et psychologique), sécuriser les lieux",
+      "Recueillir les informations utiles (signalement, témoins) et organiser le soutien des personnes touchées"
+    ],
+    "ressourcesImprovises": [
+      "Local pouvant être fermé / barricadé comme abri temporaire",
+      "Objets du quotidien pour créer une barrière/distance (mobilier), sans chercher l'affrontement",
+      "Signaux convenus entre collègues pour communiquer discrètement"
+    ],
+    "signesAggravation": [
+      "Escalade de la violence, apparition d'une arme",
+      "Prise d'otage, blessés",
+      "Agresseur qui cible plusieurs personnes",
+      "État de choc psychologique chez les victimes / témoins"
+    ],
+    "limitesSansSecours": "Face à une agression, la gestion appartient prioritairement aux forces de l'ordre. Le rôle de chacun est de se protéger, de protéger les autres et d'alerter. Toute tentative d'affrontement isolé aggrave généralement la situation.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence des forces de l'ordre. Elles ne remplacent pas une formation à la gestion des incivilités et de la violence. Votre sécurité passe avant tout."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation à la prévention des violences en milieu professionnel. En cas de danger, appelez le 17 / 112."
+}

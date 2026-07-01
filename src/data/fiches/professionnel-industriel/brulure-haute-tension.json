@@ -1,0 +1,132 @@
+{
+  "id": "brulure-haute-tension",
+  "titre": "Brûlure Électrique Haute Tension",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "traumatologique",
+  "tags": ["arc électrique", "brûlure interne", "arrêt cardiaque", "haute tension", "distance de sécurité", "coupure source"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS / HAS",
+
+  "objectif": "Sécuriser une zone haute tension avant tout secours, prendre en charge les brûlures électriques (souvent internes et graves) et l'arrêt cardiaque, sans exposer l'intervenant.",
+
+  "conditionsActivation": "Accident électrique haute tension (ligne, poste, caténaire, transformateur) : victime foudroyée par un arc électrique ou un contact, avec brûlures aux points d'entrée/sortie, projection, incendie ou arrêt cardiaque.",
+
+  "diagnosticRapide": {
+    "visuels": ["Arc électrique, flash, étincelles, fumée", "Brûlures profondes aux points de contact (entrée/sortie du courant)", "Vêtements brûlés, victime projetée", "Victime immobile près d'une installation HT"],
+    "auditifs": ["Détonation / claquement de l'arc électrique", "Grésillement des installations", "Aucune réponse si inconsciente"],
+    "comportementaux": ["Perte de connaissance", "Confusion, agitation (si consciente)", "Immobilité, tétanisation possible"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Arc électrique à distance : la HT peut amorcer sur plusieurs mètres sans contact", "Tension de pas (gradient de potentiel dans le sol)", "Ré-enclenchement automatique de la ligne", "Incendie, explosion"],
+    "equipementsRequis": ["Coupure et consignation par le gestionnaire du réseau (habilité)", "Périmètre de sécurité large", "DAE", "Moyens d'extinction adaptés si feu"],
+    "regleUniverselle": "NE JAMAIS approcher une victime en zone haute tension tant que la ligne n'est pas coupée ET consignée par une personne habilitée. Respecter une grande distance de sécurité (plusieurs mètres, au sol). Seuls les professionnels du réseau coupent la HT.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 (pompiers) et 15 — demander la coupure par le gestionnaire de réseau (Enedis/RTE/SNCF)",
+    "quoiDire": "Je suis [NOM], au [LIEU PRÉCIS]. Accident haute tension sur [ligne/poste/caténaire]. Victime [consciente / inconsciente / arrêt cardiaque]. Ligne NON coupée : je reste à distance. Demande de coupure réseau urgente. Feu : [oui/non].",
+    "informationsAFournir": ["Localisation et type d'installation HT", "État de la ligne (coupée ou non)", "État de la victime (conscience, respiration)", "Présence de feu / autres victimes"]
+  },
+
+  "actionsImmédiates": [
+    "RESTER À DISTANCE (plusieurs mètres) — la HT arc sans contact",
+    "ALERTER le 18 / 112 et demander la COUPURE par le gestionnaire réseau",
+    "Interdire l'approche, baliser ; NE PAS toucher la victime avant coupure confirmée",
+    "Après coupure/consignation : RCP + DAE si arrêt, sinon brûlures + surveillance cardiaque"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "NE PAS approcher : en haute tension, un arc peut amorcer à plusieurs mètres. Rester à distance de sécurité"},
+    {"etape": 2, "action": "Alerter le 18 / 112 et demander la coupure de la ligne par le gestionnaire du réseau (Enedis, RTE, SNCF selon le cas) — seul un habilité peut consigner la HT"},
+    {"etape": 3, "action": "Baliser et interdire la zone, éloigner les curieux, se déplacer à petits pas (pieds joints/glissés) pour limiter la tension de pas"},
+    {"etape": 4, "action": "Attendre la CONFIRMATION de coupure ET de consignation avant toute approche (attention aux ré-enclenchements automatiques)"},
+    {"etape": 5, "action": "Une fois la zone sûre, évaluer conscience et respiration de la victime"},
+    {"etape": 6, "action": "Arrêt cardiaque → RCP 30:2 + DAE + 15 (l'électrisation provoque souvent une fibrillation)"},
+    {"etape": 7, "action": "Rechercher les brûlures aux points d'entrée et de sortie du courant : les refroidir à l'eau tiède et les couvrir d'un pansement propre"},
+    {"etape": 8, "action": "Immobiliser en cas de chute/projection (suspicion de traumatisme du rachis)"},
+    {"etape": 9, "action": "15 systématique : les brûlures internes sur le trajet du courant et les troubles du rythme imposent une surveillance hospitalière"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Ligne haute tension non coupée",
+      "alors": "Rester à distance, baliser, demander la coupure au gestionnaire réseau — aucune approche"
+    },
+    {
+      "condition": "Coupure et consignation confirmées, victime en arrêt cardiaque",
+      "alors": "RCP + DAE + 15"
+    },
+    {
+      "condition": "Victime consciente avec brûlures d'entrée/sortie",
+      "alors": "Refroidir et couvrir les brûlures, 15 (brûlures internes probables, surveillance cardiaque)"
+    },
+    {
+      "condition": "Incendie / explosion associés",
+      "alors": "Périmètre élargi, pompiers, moyens d'extinction adaptés, ne pas s'exposer"
+    },
+    {
+      "condition": "Chute / projection",
+      "alors": "Suspecter un traumatisme du rachis, maintenir l'axe tête-cou-tronc"
+    }
+  ],
+
+  "notesCritiques": [
+    "La haute tension peut amorcer un arc à plusieurs mètres SANS contact : la distance de sécurité est vitale",
+    "Seul le gestionnaire de réseau (habilité) peut couper et consigner la HT — attention aux ré-enclenchements automatiques",
+    "La tension de pas peut électriser dans un rayon autour du point de contact : se déplacer pieds joints/glissés",
+    "Les brûlures externes visibles sous-estiment presque toujours des brûlures internes graves",
+    "L'arrêt cardiaque par électrisation (fibrillation) impose une RCP + DAE prioritaires une fois la zone sûre",
+    "Toute victime HT, même d'allure indemne, doit être hospitalisée (troubles du rythme retardés, lésions internes)"
+  ],
+
+  "pointsControle": [
+    "L'intervenant est resté à distance de sécurité tant que la ligne était sous tension",
+    "La coupure a été demandée au gestionnaire réseau et confirmée avant approche",
+    "La zone est balisée et l'accès interdit",
+    "Conscience/respiration évaluées, RCP + DAE si arrêt",
+    "Les brûlures sont traitées et le 15 alerté pour surveillance hospitalière"
+  ],
+
+  "conditionsArretEscalade": [
+    "Ligne non coupée → gestionnaire réseau + pompiers, aucune approche",
+    "Arrêt cardiaque (zone sûre) → RCP + DAE + 15",
+    "Brûlures / troubles du rythme → 15, hospitalisation"
+  ],
+
+  "ressourcesNecessaires": [
+    "Coordonnées du gestionnaire de réseau (coupure/consignation)",
+    "Moyens de balisage et de périmètre",
+    "DAE et téléphone pour le 18 / 112 / 15",
+    "Eau tiède et pansements pour les brûlures",
+    "Moyens d'extinction adaptés en cas de feu"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après sécurisation de la zone (ligne coupée et consignée)",
+    "actions": [
+      "Poursuivre la RCP sans interruption en cas d'arrêt cardiaque jusqu'à reprise ou arrivée des secours",
+      "Surveiller étroitement le rythme et la conscience : des troubles du rythme peuvent survenir à distance du choc",
+      "Refroidir puis protéger les brûlures externes, en sachant que les lésions internes sont souvent bien plus étendues",
+      "Immobiliser en cas de traumatisme lié à la chute/projection, réchauffer la victime",
+      "Ne jamais rouvrir la zone tant que la consignation n'est pas garantie"
+    ],
+    "ressourcesImprovises": [
+      "Linge propre pour couvrir les brûlures après refroidissement",
+      "Objets pour baliser et matérialiser le périmètre de sécurité"
+    ],
+    "signesAggravation": [
+      "Malaise, palpitations, syncope (trouble du rythme retardé)",
+      "Extension des douleurs profondes, membre qui gonfle (brûlures internes)",
+      "Urines foncées (destruction musculaire)",
+      "Baisse de la conscience, nouvel arrêt"
+    ],
+    "limitesSansSecours": "Les brûlures internes profondes et les troubles du rythme de la haute tension ne se traitent qu'en milieu hospitalier spécialisé (réanimation, chirurgie des brûlés). La sécurisation et la RCP sauvent la phase aiguë, mais l'hospitalisation est incontournable.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Ne mettez jamais votre vie en danger face à la haute tension."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation SST / habilitation électrique. En cas de doute, suivez les instructions du 18 / 112."
+}

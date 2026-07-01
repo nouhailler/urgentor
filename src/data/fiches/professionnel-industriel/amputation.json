@@ -1,0 +1,133 @@
+{
+  "id": "amputation",
+  "titre": "Amputation / Avulsion",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "traumatologique",
+  "tags": ["garrot", "conservation membre", "compression", "amputation", "avulsion", "réimplantation"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / SFAR",
+
+  "objectif": "Contrôler l'hémorragie d'une amputation ou avulsion, prévenir le choc hémorragique et conserver correctement le segment amputé pour une éventuelle réimplantation.",
+
+  "conditionsActivation": "Section complète (amputation) ou arrachement (avulsion) d'un membre, d'un doigt ou d'un segment, souvent en milieu industriel (machine, presse, scie) : hémorragie, moignon, segment détaché.",
+
+  "diagnosticRapide": {
+    "visuels": ["Membre ou segment sectionné / arraché", "Hémorragie abondante ou moignon", "Sang rouge vif pulsatile (artère)", "Pâleur, sueurs froides (choc)"],
+    "auditifs": ["Cris de douleur intense", "Victime qui se calme brutalement (signe de choc)", "Appels à l'aide, contexte machine"],
+    "comportementaux": ["Victime qui comprime spontanément le moignon", "Agitation puis prostration", "Confusion (choc hémorragique)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Machine encore en marche (arrêt d'urgence, consignation)", "Contact avec le sang (risque biologique)", "Pièces coupantes, énergie résiduelle"],
+    "equipementsRequis": ["Arrêt d'urgence / consignation de la machine", "Gants, compresses stériles, pansement compressif", "Garrot tourniquet", "Sacs plastiques propres, eau/glace pour conserver le segment"],
+    "regleUniverselle": "Arrêter et consigner la machine avant d'approcher. Contrôler l'hémorragie en priorité (compression puis garrot si nécessaire). Conserver le segment amputé au froid, JAMAIS directement au contact de la glace.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) / 18 / 112 — appeler immédiatement, préciser 'amputation' pour orientation vers un centre de réimplantation",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Amputation / avulsion de [membre/doigt] par [machine]. Hémorragie [contrôlée par compression / garrot posé à HEURE]. Segment récupéré et conservé au froid. Victime [consciente / signes de choc].",
+    "informationsAFournir": ["Segment amputé et mécanisme", "Contrôle de l'hémorragie (compression / garrot + heure)", "Segment récupéré et conservé ou non", "État de la victime (conscience, signes de choc)"]
+  },
+
+  "actionsImmédiates": [
+    "ARRÊTER / consigner la machine, mettre des gants",
+    "COMPRIMER le moignon ; si hémorragie incontrôlable → GARROT + noter l'heure",
+    "ALERTER le 15 (centre de réimplantation)",
+    "RÉCUPÉRER le segment : sac étanche propre → 2e sac avec eau + glace (jamais au contact direct de la glace)"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser : arrêt d'urgence et consignation de la machine, mettre des gants"},
+    {"etape": 2, "action": "Comprimer fortement le moignon avec des compresses / un pansement compressif"},
+    {"etape": 3, "action": "Si l'hémorragie reste incontrôlable : poser un garrot tourniquet en amont (5-7 cm au-dessus), serrer jusqu'à l'arrêt du saignement, NOTER L'HEURE — ne jamais le retirer sans ordre médical"},
+    {"etape": 4, "action": "Allonger la victime, jambes surélevées (position antichoc) si consciente, la couvrir (prévenir l'hypothermie)"},
+    {"etape": 5, "action": "Alerter le 15 en précisant l'amputation (orientation vers un centre de réimplantation microchirurgicale)"},
+    {"etape": 6, "action": "Récupérer le segment amputé sans le nettoyer ni le frotter, l'envelopper dans un tissu/compresse propre légèrement humide"},
+    {"etape": 7, "action": "Placer le segment dans un sac plastique propre et étanche, puis ce sac dans un 2e sac contenant de l'eau et de la glace : le froid conserve, le contact direct avec la glace gèle et détruit les tissus"},
+    {"etape": 8, "action": "Étiqueter (nom, heure) et remettre le segment aux secours en même temps que la victime"},
+    {"etape": 9, "action": "Surveiller conscience, respiration, coloration, pouls et signes de choc jusqu'à l'arrivée des secours"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Hémorragie contrôlée par compression",
+      "alors": "Maintenir la compression / pansement compressif, position antichoc, 15, conserver le segment"
+    },
+    {
+      "condition": "Hémorragie incontrôlable malgré la compression",
+      "alors": "Garrot en amont + noter l'heure + 15 (ne jamais desserrer)"
+    },
+    {
+      "condition": "Segment amputé récupérable",
+      "alors": "Sac étanche propre → 2e sac avec eau + glace (froid indirect), étiqueter, transmettre aux secours"
+    },
+    {
+      "condition": "Signes de choc hémorragique (pâleur, sueurs, pouls filant, confusion)",
+      "alors": "Position allongée jambes surélevées, couvrir, 15 immédiat"
+    },
+    {
+      "condition": "Amputation partielle (segment encore relié par un lambeau)",
+      "alors": "Ne pas achever la section, aligner et immobiliser dans l'axe, comprimer, protéger, 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "Consigner la machine avant toute action : risque de sur-accident",
+    "Le garrot sauve la vie en cas d'hémorragie incontrôlable : ne pas hésiter, noter l'heure, ne jamais le desserrer",
+    "Ne JAMAIS mettre le segment amputé au contact direct de la glace ou dans l'eau seule : double emballage, froid indirect",
+    "Ne pas nettoyer ni frotter le segment (préserver les tissus pour la réimplantation)",
+    "Une amputation partielle ne doit pas être complétée : aligner et immobiliser",
+    "Réchauffer la victime : l'hypothermie aggrave les troubles de la coagulation"
+  ],
+
+  "pointsControle": [
+    "La machine est arrêtée et consignée",
+    "L'hémorragie est contrôlée (compression ou garrot + heure notée)",
+    "La victime est en position antichoc et couverte",
+    "Le segment est conservé correctement (double sac, froid indirect, étiqueté)",
+    "Le 15 est alerté pour orientation vers un centre de réimplantation"
+  ],
+
+  "conditionsArretEscalade": [
+    "Hémorragie incontrôlable → garrot + 15",
+    "Choc hémorragique → position antichoc + 15 immédiat",
+    "Arrêt cardiaque → RCP après contrôle de l'hémorragie"
+  ],
+
+  "ressourcesNecessaires": [
+    "Moyen d'arrêt / consignation de la machine",
+    "Gants, compresses stériles, pansement compressif, garrot tourniquet",
+    "Sacs plastiques propres et étanches",
+    "Eau et glace pour la conservation au froid",
+    "Marqueur pour noter l'heure, couverture de survie, téléphone pour le 15"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une amputation, en site isolé",
+    "actions": [
+      "Maintenir le contrôle de l'hémorragie sans jamais relâcher (compression ou garrot)",
+      "Surveiller les signes de choc toutes les 5 minutes, garder la victime allongée, couverte et au chaud",
+      "Maintenir le segment amputé au froid indirect (double sac, eau + glace), renouveler la glace si besoin",
+      "Hydrater oralement si la victime est consciente et ne vomit pas (n'compense pas la perte sanguine mais limite la déshydratation)",
+      "Noter l'heure du garrot et l'évolution pour les transmettre aux secours / au chirurgien"
+    ],
+    "ressourcesImprovises": [
+      "Tissu propre serré comme pansement compressif, ceinture/sangle comme garrot de fortune",
+      "Deux sacs plastiques propres et une glacière / eau froide pour conserver le segment",
+      "Couverture ou vêtements pour lutter contre l'hypothermie"
+    ],
+    "signesAggravation": [
+      "Saignement qui reprend sous le pansement / le garrot",
+      "Pâleur, sueurs froides, pouls radial imperceptible (choc)",
+      "Confusion croissante puis somnolence",
+      "Respiration rapide et superficielle"
+    ],
+    "limitesSansSecours": "Le contrôle de l'hémorragie peut maintenir la victime en vie plusieurs heures, et un segment bien conservé au froid reste réimplantable durant plusieurs heures (souvent plus longtemps pour les doigts). Mais la réimplantation et la prise en charge du choc exigent un plateau chirurgical spécialisé.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 / SST. En cas de doute, suivez les instructions du 15."
+}

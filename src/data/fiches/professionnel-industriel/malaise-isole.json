@@ -1,0 +1,133 @@
+{
+  "id": "malaise-isole",
+  "titre": "Malaise en Milieu Isolé (Chantier, Offshore)",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "cardio-vasculaire",
+  "tags": ["évacuation", "téléconsultation", "héliport", "malaise", "isolement", "travailleur isolé"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / INRS",
+
+  "objectif": "Prendre en charge un malaise sur un site isolé (chantier éloigné, plateforme offshore, navire, site industriel distant) où les secours sont éloignés, en s'appuyant sur la téléconsultation médicale et en coordonnant une évacuation.",
+
+  "conditionsActivation": "Personne victime d'un malaise (douleur thoracique, essoufflement, malaise vagal, déficit neurologique, douleur abdominale intense…) sur un site où l'accès des secours est long ou complexe.",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne pâle, en sueur, qui s'assoit ou s'allonge", "Douleur exprimée (poitrine, ventre, tête)", "Difficulté à respirer, déformation d'un côté du visage (AVC)", "Malaise, perte d'équilibre"],
+    "auditifs": ["Plainte de douleur, d'oppression, de vertige", "Élocution difficile (AVC), essoufflement", "Description des symptômes par la victime"],
+    "comportementaux": ["Angoisse, sensation de malaise imminent", "Confusion, somnolence", "Perte de connaissance possible"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Environnement de travail dangereux (hauteur, machines, mer)", "Éloignement, conditions météo (offshore)", "Isolement du sauveteur"],
+    "equipementsRequis": ["Moyen de communication fiable (radio, téléphone satellite)", "Trousse de secours / DAE de site, oxygène si disponible", "Dossier / fiche médicale de la victime si disponible", "Moyens d'évacuation (hélicoptère, bateau, véhicule)"],
+    "regleUniverselle": "Sécuriser la victime, recueillir un bilan précis et contacter tôt le centre médical de régulation / la téléconsultation. Anticiper l'évacuation (héliport, moyens) dès les premiers signes de gravité, car les délais sont longs.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 / centre de consultation médicale maritime (CCMM Toulouse pour l'offshore/maritime) / dispositif de télémédecine du site — anticiper l'évacuation",
+    "quoiDire": "Je suis [NOM], sur [site isolé + position]. Personne de [âge] présentant [symptômes précis + heure de début]. Antécédents / traitements : [préciser]. Constantes : [pouls, conscience, respiration]. Moyens d'évacuation : [hélicoptère/bateau]. Je demande une régulation médicale.",
+    "informationsAFournir": ["Symptômes précis et heure de début", "Âge, antécédents et traitements de la victime", "Paramètres relevés (conscience, respiration, pouls, éventuelle glycémie/SpO2)", "Moyens et délais d'évacuation disponibles"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER et installer la victime au repos (position adaptée aux symptômes)",
+    "RECUEILLIR un bilan précis (symptômes, heure, antécédents, constantes)",
+    "CONTACTER tôt la régulation médicale / téléconsultation",
+    "ANTICIPER l'évacuation (héliport, moyens) dès les signes de gravité"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser la zone, écarter les dangers, installer la victime au repos dans la position où elle est le mieux (demi-assise si gêne respiratoire/douleur thoracique, allongée si malaise, PLS si inconsciente qui respire)"},
+    {"etape": 2, "action": "Réaliser un bilan structuré : que s'est-il passé, depuis quand, quels symptômes ? Antécédents, traitements, allergies ?"},
+    {"etape": 3, "action": "Mesurer et noter les paramètres disponibles : conscience, respiration, pouls, et si l'on dispose du matériel : SpO2, glycémie, tension"},
+    {"etape": 4, "action": "Contacter LE PLUS TÔT possible la régulation médicale (15) ou le service de téléconsultation du site (CCMM pour le maritime) : transmettre le bilan et suivre les consignes"},
+    {"etape": 5, "action": "Appliquer les gestes adaptés aux symptômes selon les protocoles (douleur thoracique, détresse respiratoire, AVC, hypoglycémie…) et les consignes du médecin régulateur"},
+    {"etape": 6, "action": "Utiliser les moyens du site si indiqués et disponibles (DAE, oxygène, médicaments de la trousse) sous régulation médicale"},
+    {"etape": 7, "action": "Anticiper et préparer l'évacuation dès les premiers signes de gravité : alerter les moyens (hélicoptère, bateau, véhicule), préparer une zone d'atterrissage / un accès, rassembler le dossier médical"},
+    {"etape": 8, "action": "Surveiller en continu et réévaluer régulièrement les constantes, transmettre l'évolution à la régulation"},
+    {"etape": 9, "action": "En cas d'aggravation (arrêt cardiaque → RCP + DAE ; inconscience → PLS) : appliquer les gestes d'urgence sans attendre l'évacuation"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Signes de gravité (douleur thoracique, déficit neurologique, détresse respiratoire, malaise grave)",
+      "alors": "Régulation médicale immédiate + anticipation de l'évacuation médicalisée (hélitreuillage) sans délai"
+    },
+    {
+      "condition": "Malaise bénin régressif",
+      "alors": "Repos, surveillance, bilan transmis à la régulation, décision d'évacuation selon avis médical"
+    },
+    {
+      "condition": "Victime inconsciente qui respire",
+      "alors": "PLS + surveillance + régulation + préparation évacuation"
+    },
+    {
+      "condition": "Arrêt cardiaque",
+      "alors": "RCP + DAE + alerte — poursuivre pendant l'organisation de l'évacuation"
+    },
+    {
+      "condition": "Moyens d'évacuation limités par la météo / la distance",
+      "alors": "Maintenir la téléconsultation, appliquer les traitements sous régulation, réévaluer en continu"
+    }
+  ],
+
+  "notesCritiques": [
+    "En milieu isolé, le temps d'accès aux secours est long : anticiper l'évacuation dès les premiers signes de gravité",
+    "Un bilan précis et des constantes chiffrées transmis à la régulation médicale conditionnent la bonne décision à distance",
+    "La téléconsultation (15, CCMM pour le maritime) est la clé : contacter tôt, suivre les consignes, réévaluer souvent",
+    "N'administrer des médicaments de la trousse de site que sous régulation médicale",
+    "Préparer la zone d'atterrissage / l'accès et rassembler le dossier médical accélèrent l'évacuation",
+    "Ne pas attendre l'évacuation pour faire les gestes d'urgence (RCP, PLS, garrot, resucrage…)"
+  ],
+
+  "pointsControle": [
+    "La victime est en sécurité et installée dans une position adaptée",
+    "Un bilan précis avec constantes a été recueilli et transmis",
+    "La régulation médicale / téléconsultation a été contactée tôt",
+    "L'évacuation est anticipée et préparée (moyens, accès, dossier)",
+    "La surveillance est continue et l'évolution transmise"
+  ],
+
+  "conditionsArretEscalade": [
+    "Signes de gravité → évacuation médicalisée immédiate + régulation",
+    "Aggravation (inconscience, arrêt) → PLS / RCP sans attendre",
+    "Impossibilité d'évacuer rapidement → téléconsultation renforcée, traitements sous régulation"
+  ],
+
+  "ressourcesNecessaires": [
+    "Moyen de communication fiable (radio, téléphone satellite)",
+    "Trousse de secours de site, DAE, oxygène si disponibles",
+    "Matériel de mesure (SpO2, glycémie, tension) si disponible",
+    "Dossier / fiche médicale de la victime",
+    "Moyens d'évacuation (hélicoptère, bateau, véhicule) et zone d'atterrissage"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'évacuation est retardée (météo offshore, éloignement, moyens indisponibles)",
+    "actions": [
+      "Maintenir un contact régulier avec la régulation médicale / téléconsultation et réévaluer les constantes à intervalles rapprochés",
+      "Appliquer et poursuivre les traitements indiqués par le médecin régulateur avec les moyens du site",
+      "Installer la victime confortablement, la réchauffer ou la rafraîchir selon le cas, la rassurer, la maintenir à jeun si une prise en charge chirurgicale est possible",
+      "Organiser des relais entre secouristes pour une surveillance continue sans épuisement",
+      "Tenir prête la logistique d'évacuation pour partir dès que les conditions le permettent"
+    ],
+    "ressourcesImprovises": [
+      "Point de communication le plus fiable du site (antenne, zone de couverture)",
+      "Aménagement d'un espace de soins au calme, à l'abri des dangers",
+      "Balisage d'une zone d'atterrissage / d'un accès pour les moyens d'évacuation"
+    ],
+    "signesAggravation": [
+      "Aggravation ou extension des symptômes (douleur, déficit, détresse respiratoire)",
+      "Baisse de la conscience, malaise répété",
+      "Dégradation des constantes (pouls, respiration, coloration)",
+      "Arrêt cardio-respiratoire"
+    ],
+    "limitesSansSecours": "En milieu isolé, la télémédecine et les moyens du site permettent de temporiser, mais le traitement définitif d'une urgence grave (infarctus, AVC, hémorragie) nécessite une structure hospitalière. L'anticipation de l'évacuation est le facteur déterminant du pronostic.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence de secours rapides. Elles ne remplacent pas un acte médical. Suivez les consignes de la régulation médicale et faites tout pour évacuer la victime."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation de sauveteur secouriste du travail (SST) ni la régulation médicale. En cas de doute, contactez le 15 ou le service de téléconsultation de votre site."
+}

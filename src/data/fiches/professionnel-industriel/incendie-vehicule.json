@@ -1,0 +1,133 @@
+{
+  "id": "incendie-vehicule",
+  "titre": "Incendie de Véhicule / Batterie Li-ion",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "incendie",
+  "tags": ["batterie", "fumées toxiques", "explosion", "véhicule", "lithium", "emballement thermique"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS / Sécurité Civile",
+
+  "objectif": "Réagir à un feu de véhicule ou de batterie lithium-ion en priorisant la mise à distance, l'évacuation et l'alerte, face à des risques d'emballement thermique, de fumées toxiques et d'explosion.",
+
+  "conditionsActivation": "Départ de feu sur un véhicule (thermique ou électrique), un engin, un chariot ou une batterie lithium-ion (outillage, stockage) : flammes, fumée épaisse, sifflements, projections, dégagement de chaleur intense.",
+
+  "diagnosticRapide": {
+    "visuels": ["Flammes, fumée épaisse et noire (véhicule) ou blanche/grise irritante (batterie)", "Batterie qui gonfle, fume, projette des étincelles", "Fuite de carburant enflammée", "Habitacle ou compartiment moteur en feu"],
+    "auditifs": ["Sifflements, crépitements, détonations (cellules de batterie, pneus, vérins)", "Explosions successives (emballement thermique)", "Alarmes"],
+    "comportementaux": ["Occupants cherchant à sortir / à récupérer des biens (danger)", "Panique, attroupement trop proche", "Personnes incommodées par les fumées"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Fumées très toxiques (dont acide fluorhydrique pour les batteries Li-ion)", "Explosion (réservoir, vérins, pneus, cellules de batterie)", "Emballement thermique : reprises de feu et projections violentes", "Chaleur intense, flaques de carburant"],
+    "equipementsRequis": ["Extincteur adapté (grande quantité d'eau pour Li-ion ; poudre/CO2 pour un départ classique ; classe D pour métaux)", "Périmètre de sécurité large", "Protection respiratoire (fumées toxiques)"],
+    "regleUniverselle": "La priorité est l'évacuation et la mise à distance, PAS l'extinction. Ne jamais inhaler les fumées. Une batterie Li-ion en emballement thermique ne s'éteint pas facilement (grandes quantités d'eau, refroidissement long) : reculer et laisser les pompiers agir.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 (pompiers) — préciser 'véhicule électrique / batterie lithium' le cas échéant",
+    "quoiDire": "Je suis [NOM], au [LIEU PRÉCIS]. Feu de [véhicule thermique / électrique / batterie lithium]. [Personnes évacuées / victime(s)]. Fumées abondantes. Risque d'explosion. Périmètre en place. [Autres véhicules / bâtiments menacés].",
+    "informationsAFournir": ["Type de véhicule / batterie (électrique = Li-ion)", "Présence de victimes / occupants", "Propagation et éléments menacés", "Nature des fumées et risques d'explosion"]
+  },
+
+  "actionsImmédiates": [
+    "ÉVACUER et ÉLOIGNER tout le monde (grand périmètre) — priorité aux personnes",
+    "NE PAS INHALER les fumées, se placer dos au vent",
+    "ALERTER le 18 / 112 (préciser véhicule électrique / batterie lithium)",
+    "Extinction seulement si départ TRÈS localisé et sûr — sinon reculer et attendre les pompiers"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Faire évacuer les occupants et éloigner le public : établir un large périmètre de sécurité (risque d'explosion et de projections)"},
+    {"etape": 2, "action": "Se placer dos au vent, à distance des fumées (très toxiques, surtout pour les batteries Li-ion)"},
+    {"etape": 3, "action": "Alerter le 18 / 112 en précisant s'il s'agit d'un véhicule électrique / d'une batterie lithium (moyens et tactiques spécifiques)"},
+    {"etape": 4, "action": "Couper le contact / la source d'énergie SEULEMENT si c'est accessible sans risque ; ne pas s'approcher d'une batterie en emballement"},
+    {"etape": 5, "action": "Tentative d'extinction UNIQUEMENT si le départ est très localisé, l'intervenant formé et équipé, et une issue de repli assurée : poudre/CO2 pour un feu classique, grande quantité d'eau pour refroidir une batterie Li-ion, classe D pour un feu de métal"},
+    {"etape": 6, "action": "NE JAMAIS s'acharner sur une batterie Li-ion en emballement thermique : elle peut se rallumer, projeter et exploser — reculer et laisser les pompiers"},
+    {"etape": 7, "action": "Éloigner les objets et véhicules menacés si possible sans risque, protéger les bâtiments proches"},
+    {"etape": 8, "action": "Prendre en charge les victimes une fois à distance : brûlures (refroidir/couvrir), inhalation de fumées (air frais, 15), RCP si arrêt"},
+    {"etape": 9, "action": "Maintenir le périmètre jusqu'à l'arrivée des pompiers et leur transmettre la nature du feu"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Feu naissant très localisé, intervenant formé et équipé, repli assuré",
+      "alors": "Tentative d'extinction avec l'extincteur adapté (poudre/CO2 classique, eau abondante pour Li-ion, classe D pour métaux)"
+    },
+    {
+      "condition": "Feu développé / batterie Li-ion en emballement thermique",
+      "alors": "Ne pas tenter d'éteindre → grand périmètre, évacuation, attendre les pompiers"
+    },
+    {
+      "condition": "Fumées abondantes",
+      "alors": "S'éloigner dos au vent, ne pas inhaler, évacuer les personnes incommodées vers l'air frais"
+    },
+    {
+      "condition": "Victime brûlée / intoxiquée par les fumées",
+      "alors": "Prise en charge à distance : refroidir les brûlures, air frais, 15 (voir protocoles brûlure et intoxication par inhalation)"
+    },
+    {
+      "condition": "Risque de propagation (autres véhicules, bâtiment, stockage)",
+      "alors": "Éloigner ce qui peut l'être sans risque, élargir le périmètre, prévenir les pompiers"
+    }
+  ],
+
+  "notesCritiques": [
+    "Priorité aux personnes : évacuer et mettre à distance plutôt que de vouloir éteindre",
+    "Les fumées de véhicule et surtout de batterie Li-ion sont très toxiques (dont composés fluorés) : ne jamais les inhaler",
+    "Une batterie lithium en emballement thermique se rallume, projette et explose : elle nécessite d'énormes quantités d'eau et un refroidissement prolongé — affaire de pompiers",
+    "Un extincteur classe D est destiné aux feux de métaux ; l'eau en grande quantité sert surtout à refroidir une batterie Li-ion",
+    "Risque d'explosion (réservoir, vérins de hayon/capot, pneus, cellules) : large périmètre",
+    "Ne jamais retourner chercher des biens dans un véhicule en feu"
+  ],
+
+  "pointsControle": [
+    "Les personnes sont évacuées et tenues à distance (périmètre large)",
+    "Personne n'inhale les fumées (positionnement dos au vent)",
+    "Les pompiers sont alertés avec la nature du feu (électrique / Li-ion)",
+    "Aucune tentative d'extinction risquée sur une batterie en emballement",
+    "Les victimes éventuelles sont prises en charge à distance"
+  ],
+
+  "conditionsArretEscalade": [
+    "Feu développé / batterie en emballement → périmètre + pompiers",
+    "Victimes (brûlures, fumées) → 15",
+    "Risque de propagation → élargir le périmètre, protéger l'environnement"
+  ],
+
+  "ressourcesNecessaires": [
+    "Extincteurs adaptés (poudre/CO2, eau en quantité, classe D pour métaux)",
+    "Moyens de balisage / périmètre",
+    "Protection respiratoire contre les fumées",
+    "Téléphone pour le 18 / 112",
+    "Moyens de refroidissement des brûlures"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les pompiers tardent, avec un feu de véhicule / batterie qui progresse",
+    "actions": [
+      "Maintenir et élargir le périmètre de sécurité, tenir le public et les intervenants à l'écart des fumées et des projections",
+      "Éloigner ce qui peut brûler ou exploser autour (véhicules, bouteilles, stockage) uniquement si c'est faisable sans risque",
+      "Refroidir à grande distance et à grande eau un environnement menacé (bâtiment voisin), sans s'exposer aux projections de la batterie",
+      "Prendre en charge les victimes à distance (brûlures, inhalation) et surveiller leur état",
+      "Se tenir prêt à des reprises de feu : une batterie Li-ion peut se rallumer plusieurs fois, même après extinction apparente"
+    ],
+    "ressourcesImprovises": [
+      "Points d'eau et lances pour arroser/refroidir de loin l'environnement menacé",
+      "Barrières, cônes, véhicules pour matérialiser le périmètre",
+      "Linges humides pour se protéger le visage lors d'un éloignement bref (jamais pour s'approcher du feu)"
+    ],
+    "signesAggravation": [
+      "Emballement thermique : détonations, projections de cellules, fumée qui s'intensifie",
+      "Propagation aux véhicules / structures voisins",
+      "Personnes incommodées par les fumées (toux, malaise)",
+      "Reprises de feu répétées de la batterie"
+    ],
+    "limitesSansSecours": "Un feu de batterie lithium-ion en emballement thermique est très difficile à éteindre sans les moyens des pompiers (eau en très grande quantité, immersion, refroidissement prolongé). La mise à distance et la protection de l'environnement sont souvent les seules actions sûres possibles.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas l'intervention des pompiers. Ne mettez jamais votre vie en danger pour un feu de véhicule."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation à la manipulation des extincteurs ni une formation SST. En cas de doute, suivez les instructions du 18 / 112."
+}

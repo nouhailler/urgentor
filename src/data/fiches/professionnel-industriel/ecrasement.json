@@ -1,0 +1,133 @@
+{
+  "id": "ecrasement",
+  "titre": "Écrasement / Syndrome de Crush",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "traumatologique",
+  "tags": ["libération contrôlée", "reins", "choc", "écrasement", "crush", "compression"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / SFAR",
+
+  "objectif": "Prendre en charge une victime dont un membre ou le tronc est comprimé, en anticipant le syndrome de compression (crush syndrome) qui peut survenir lors de la libération, et coordonner un dégagement médicalisé.",
+
+  "conditionsActivation": "Personne coincée sous une charge lourde (machine, effondrement, véhicule, éboulement) comprimant un membre ou le tronc, en particulier si la compression dure depuis plus de 15 minutes.",
+
+  "diagnosticRapide": {
+    "visuels": ["Victime coincée sous une charge, membre écrasé", "Membre pâle, froid, gonflé ou déformé en aval", "Plaies, saignements associés", "Pâleur, sueurs (choc)"],
+    "auditifs": ["Plaintes de douleur puis parfois membre insensible", "La victime décrit un engourdissement du membre comprimé", "Appels à l'aide, contexte d'effondrement / machine"],
+    "comportementaux": ["Angoisse, agitation", "Membre comprimé immobile", "Aggravation possible de l'état général à la libération (collapsus)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Instabilité de la charge / de la structure (sur-effondrement)", "Machine sous énergie", "Chute, poussière, environnement dégradé"],
+    "equipementsRequis": ["Moyens de stabilisation / consignation de la charge", "Gants, compresses, garrot", "Couverture, moyens d'immobilisation", "Moyens d'alerte"],
+    "regleUniverselle": "Si la compression dure depuis plus de 15 minutes, NE PAS libérer brutalement le membre sans médicalisation : la libération peut provoquer un collapsus mortel (libération de toxines vers le cœur et les reins). Coordonner un dégagement médicalisé.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 / 18 / 112 — appeler immédiatement, préciser 'écrasement / crush syndrome' et la durée de compression",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Victime écrasée sous [charge], [membre/tronc] comprimé depuis [DURÉE]. Victime [consciente / signes de choc]. Charge [stabilisée / instable]. Je n'ai pas libéré le membre : j'attends une équipe médicalisée.",
+    "informationsAFournir": ["Zone et durée de compression (capital : >15 min ?)", "Nature de la charge et stabilité", "État de la victime (conscience, choc, saignement)", "Moyens de dégagement disponibles sur place"]
+  },
+
+  "actionsImmédiates": [
+    "SÉCURISER / stabiliser la charge, ne pas provoquer de sur-effondrement",
+    "ALERTER le 15 / 18 en précisant la DURÉE de compression",
+    "NE PAS libérer brutalement si compression > 15 min sans médicalisation",
+    "Comprimer une hémorragie, rassurer, couvrir, surveiller conscience et urines"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser la zone et stabiliser la charge (caler, étayer) sans aggraver la compression ni risquer un sur-effondrement"},
+    {"etape": 2, "action": "Alerter le 15 / 18 immédiatement en précisant la durée de compression et le membre concerné"},
+    {"etape": 3, "action": "Évaluer conscience et respiration ; comprimer toute hémorragie externe (compression, garrot si nécessaire, noter l'heure)"},
+    {"etape": 4, "action": "Compression < 15 min et dégagement simple et sûr : libérer prudemment le membre, puis immobiliser et surveiller"},
+    {"etape": 5, "action": "Compression > 15 min ou charge importante : NE PAS libérer sans équipe médicalisée (risque de syndrome de reperfusion : hyperkaliémie, choc, atteinte rénale, arrêt cardiaque à la levée de la charge)"},
+    {"etape": 6, "action": "Maintenir la victime au chaud, la rassurer, l'hydrater par voie orale si consciente et sans vomissement, en attendant l'équipe médicale"},
+    {"etape": 7, "action": "Préparer le dégagement avec les secours : la médicalisation (perfusion, correction ionique) précède idéalement la levée de la charge"},
+    {"etape": 8, "action": "Après libération : immobiliser le membre, surveiller étroitement conscience, pouls, coloration, respiration et diurèse (urines foncées = signe rénal)"},
+    {"etape": 9, "action": "En cas d'arrêt cardiaque (fréquent à la reperfusion) : RCP + DAE + 15"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Compression courte (< 15 min) et dégagement simple/sûr",
+      "alors": "Libérer prudemment, immobiliser, surveiller"
+    },
+    {
+      "condition": "Compression prolongée (> 15 min) ou charge lourde",
+      "alors": "NE PAS libérer sans médicalisation → attendre l'équipe médicale, stabiliser, surveiller (risque de crush syndrome)"
+    },
+    {
+      "condition": "Hémorragie externe associée",
+      "alors": "Compression / garrot + noter l'heure, en priorité"
+    },
+    {
+      "condition": "Urines foncées / rares après écrasement",
+      "alors": "Signe d'atteinte rénale (myoglobine) → transmettre aux secours, urgence"
+    },
+    {
+      "condition": "Collapsus / arrêt cardiaque à la libération",
+      "alors": "RCP + DAE + 15 (syndrome de reperfusion)"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le danger du crush syndrome survient souvent À LA LIBÉRATION : ne pas lever brutalement une charge comprimant un membre depuis > 15 min sans médicalisation",
+    "La reperfusion relâche potassium et toxines vers le cœur (arrêt cardiaque) et les reins (insuffisance rénale)",
+    "Un membre comprimé peut paraître 'peu grave' au début : la gravité est différée",
+    "Surveiller la diurèse : des urines foncées signent une atteinte rénale (myoglobinurie)",
+    "Stabiliser la charge sans jamais provoquer de sur-effondrement",
+    "Garrot uniquement pour une hémorragie incontrôlable, pas comme geste systématique de l'écrasement"
+  ],
+
+  "pointsControle": [
+    "La charge est stabilisée et la zone sécurisée",
+    "Les secours sont alertés avec la durée de compression",
+    "Aucune libération brutale n'a été faite en cas de compression prolongée",
+    "Les hémorragies sont contrôlées, la victime couverte et surveillée",
+    "La diurèse et l'état général sont surveillés (avant et après dégagement)"
+  ],
+
+  "conditionsArretEscalade": [
+    "Compression > 15 min → dégagement médicalisé, ne pas libérer seul",
+    "Collapsus / arrêt à la reperfusion → RCP + DAE + 15",
+    "Signes rénaux (urines foncées) / choc → 15, urgence"
+  ],
+
+  "ressourcesNecessaires": [
+    "Moyens de stabilisation / étaiement de la charge",
+    "Gants, compresses, garrot",
+    "Couverture, moyens d'immobilisation",
+    "Eau pour hydratation orale si victime consciente",
+    "Téléphone pour le 15 / 18 / 112"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours médicalisés tardent, avec une victime comprimée depuis longtemps",
+    "actions": [
+      "Maintenir la charge stable et la victime au chaud, la rassurer, éviter tout mouvement brusque de la charge",
+      "Hydrater abondamment par voie orale si la victime est consciente et ne vomit pas (aide à protéger les reins)",
+      "Retarder autant que possible la levée de la charge jusqu'à l'arrivée d'une équipe médicalisée",
+      "Si la libération devient inévitable, la faire le plus progressivement possible et se préparer à une RCP immédiate (collapsus fréquent)",
+      "Après libération : immobiliser, surveiller conscience, pouls, respiration et couleur des urines en continu"
+    ],
+    "ressourcesImprovises": [
+      "Cales, madriers, crics pour stabiliser (jamais aggraver) la charge",
+      "Eau potable en quantité pour l'hydratation orale",
+      "Couverture et vêtements pour lutter contre l'hypothermie"
+    ],
+    "signesAggravation": [
+      "Malaise, pâleur, pouls filant à la libération (collapsus)",
+      "Urines foncées puis absence d'urines (atteinte rénale)",
+      "Troubles du rythme, arrêt cardiaque",
+      "Membre de plus en plus gonflé, froid et insensible"
+    ],
+    "limitesSansSecours": "Le syndrome de compression nécessite une prise en charge médicale (remplissage, correction du potassium, parfois dialyse) qui doit idéalement précéder la libération. Sans elle, la levée de la charge peut être immédiatement fatale ; l'hydratation et la stabilisation ne font que gagner du temps.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 / SST. En cas de doute, suivez les instructions du 15."
+}

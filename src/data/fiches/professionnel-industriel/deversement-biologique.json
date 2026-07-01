@@ -1,0 +1,133 @@
+{
+  "id": "deversement-biologique",
+  "titre": "Déversement de Produit Biologique",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "biologique",
+  "tags": ["sang", "EPI", "désinfection", "biologique", "AES", "hypochlorite"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS / HAS",
+
+  "objectif": "Gérer un déversement de produit biologique (sang, liquides biologiques, cultures, déchets contaminés) en limitant le risque de contamination des personnes et de l'environnement, avec confinement et désinfection adaptés.",
+
+  "conditionsActivation": "Déversement ou projection de sang, de liquides biologiques ou de matériel contaminé (laboratoire, milieu de soins, industrie du vivant, collecte de déchets) présentant un risque infectieux.",
+
+  "diagnosticRapide": {
+    "visuels": ["Flaque de sang ou de liquide biologique répandue", "Récipient / tube / poche cassé", "Éclaboussures sur surfaces, sol, équipements", "Déchets contaminés dispersés (aiguilles, compresses)"],
+    "auditifs": ["Signalement d'un bris de contenant", "Alerte d'un opérateur exposé", "Contexte laboratoire / soins"],
+    "comportementaux": ["Personne éclaboussée ou piquée (AES)", "Circulation de personnes dans la zone souillée", "Inquiétude liée au risque infectieux"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contamination cutanée, muqueuse ou par piqûre (accident d'exposition au sang - AES)", "Aérosolisation d'agents infectieux", "Coupure sur du verre / matériel souillé"],
+    "equipementsRequis": ["EPI complets : gants (double paire), surblouse, lunettes/visière, masque", "Désinfectant (eau de Javel / hypochlorite de sodium dilué, ou désinfectant adapté)", "Matériel absorbant, pince à usage unique, conteneur DASRI (déchets à risque infectieux)", "Signalisation / balisage"],
+    "regleUniverselle": "Ne jamais intervenir sans EPI complets. Confiner la zone, éviter toute dispersion et tout contact direct. En cas d'exposition (peau, muqueuse, piqûre) : appliquer immédiatement le protocole AES.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "scriptAlerte": {
+    "numero": "En interne : référent hygiène / sécurité, médecine du travail. En cas d'exposition (AES) ou de doute : 15 / SAMU. Numéro vert AES / dispositif local",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Déversement de [sang / liquide biologique / culture] sur [surface]. [Personne exposée : oui/non — type d'exposition]. Zone confinée, EPI en place. Besoin de [renfort / avis médical AES].",
+    "informationsAFournir": ["Nature et volume du produit biologique", "Personnes exposées et type d'exposition (peau, muqueuse, piqûre)", "Agent infectieux connu / suspecté", "Mesures de confinement déjà prises"]
+  },
+
+  "actionsImmédiates": [
+    "CONFINER la zone, écarter et interdire l'accès",
+    "METTRE des EPI complets (gants, surblouse, lunettes, masque) avant tout contact",
+    "Si EXPOSITION (peau/piqûre) : laver à l'eau+savon ; muqueuse/œil : rincer 15 min → protocole AES",
+    "ABSORBER puis DÉSINFECTER (hypochlorite), éliminer en DASRI, alerter le référent"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Baliser et confiner la zone, interdire l'accès et éviter de marcher/étendre la contamination"},
+    {"etape": 2, "action": "Mettre les EPI complets (double gants, surblouse, lunettes ou visière, masque) avant toute intervention"},
+    {"etape": 3, "action": "Prendre en charge en PRIORITÉ toute personne exposée (AES) : peau → laver à l'eau et au savon puis antiseptique ; œil/muqueuse → rincer abondamment 15 min ; piqûre/coupure → ne pas faire saigner en pressant, laver et antiseptique — puis avis médical AES en urgence (idéalement < 4h)"},
+    {"etape": 4, "action": "Recouvrir le déversement de matériel absorbant, puis verser le désinfectant (eau de Javel / hypochlorite de sodium à la concentration recommandée) et laisser agir le temps de contact requis"},
+    {"etape": 5, "action": "Ramasser les fragments coupants (verre, aiguilles) avec une pince / une pelle à usage unique, JAMAIS à mains nues, et les jeter dans un conteneur pour objets piquants/coupants"},
+    {"etape": 6, "action": "Éliminer absorbants, matériel et EPP souillés dans un conteneur DASRI (déchets d'activités de soins à risque infectieux)"},
+    {"etape": 7, "action": "Désinfecter à nouveau la surface, la nettoyer, puis retirer les EPI dans l'ordre correct (sans se contaminer) et se laver les mains"},
+    {"etape": 8, "action": "Alerter le référent hygiène/sécurité et la médecine du travail, tracer l'incident"},
+    {"etape": 9, "action": "Assurer le suivi médical de toute personne exposée (sérologies, prophylaxie éventuelle)"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Personne exposée (peau lésée, muqueuse, œil, piqûre)",
+      "alors": "Protocole AES immédiat (lavage / rinçage 15 min) + avis médical en urgence (< 4h) — priorité sur le nettoyage"
+    },
+    {
+      "condition": "Déversement sans exposition de personne",
+      "alors": "EPI, confinement, absorption, désinfection à l'hypochlorite, élimination DASRI"
+    },
+    {
+      "condition": "Présence de verre / aiguilles souillés",
+      "alors": "Ramassage à la pince / pelle à usage unique, conteneur pour objets piquants — jamais à mains nues"
+    },
+    {
+      "condition": "Agent infectieux à haut risque / gros volume",
+      "alors": "Renforcer le confinement, faire appel au référent / à une équipe spécialisée, adapter le désinfectant"
+    },
+    {
+      "condition": "Risque d'aérosolisation (culture, centrifugation)",
+      "alors": "Laisser retomber les aérosols, ventiler selon procédure, masque adapté, ne pas générer de projections"
+    }
+  ],
+
+  "notesCritiques": [
+    "La prise en charge d'une personne exposée (AES) prime sur le nettoyage : lavage/rinçage immédiat puis avis médical en urgence",
+    "Ne jamais intervenir sans EPI complets : le risque est infectieux (VIH, hépatites, autres agents)",
+    "Ne jamais ramasser du verre ou des aiguilles souillés à mains nues : pince/pelle à usage unique et conteneur adapté",
+    "L'hypochlorite de sodium (eau de Javel) à la bonne dilution est un désinfectant de référence, en respectant le temps de contact",
+    "Éliminer tous les déchets contaminés en filière DASRI, jamais avec les ordures classiques",
+    "Retirer les EPI dans le bon ordre pour ne pas se contaminer, puis hygiène des mains"
+  ],
+
+  "pointsControle": [
+    "La zone est confinée et l'accès interdit",
+    "L'intervenant porte des EPI complets",
+    "Toute personne exposée a bénéficié du protocole AES et d'un avis médical",
+    "Le déversement a été absorbé, désinfecté et les déchets éliminés en DASRI",
+    "L'incident est tracé et signalé au référent / à la médecine du travail"
+  ],
+
+  "conditionsArretEscalade": [
+    "Exposition d'une personne (AES) → avis médical urgent (< 4h)",
+    "Gros volume / agent à haut risque → référent, équipe spécialisée",
+    "Blessure avec matériel souillé → protocole AES + suivi"
+  ],
+
+  "ressourcesNecessaires": [
+    "EPI complets (double gants, surblouse, lunettes/visière, masque)",
+    "Désinfectant (hypochlorite de sodium / eau de Javel), matériel absorbant",
+    "Pince / pelle à usage unique, conteneur pour objets piquants-coupants",
+    "Conteneur DASRI, sacs pour déchets contaminés",
+    "Kit AES et coordonnées médecine du travail / référent hygiène"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'appui spécialisé ou l'avis médical tarde, en site isolé",
+    "actions": [
+      "Maintenir le confinement strict de la zone et empêcher tout passage",
+      "Poursuivre / renouveler la désinfection à l'hypochlorite en respectant les temps de contact",
+      "Pour une personne exposée : documenter précisément l'exposition (heure, produit, type) et organiser sans délai un avis médical / une téléconsultation pour une éventuelle prophylaxie post-exposition",
+      "Regrouper et sécuriser les déchets contaminés en attendant leur élimination en filière DASRI",
+      "Tracer l'ensemble des actions et surveiller l'état des personnes exposées"
+    ],
+    "ressourcesImprovises": [
+      "Eau de Javel domestique diluée selon les recommandations en l'absence de désinfectant dédié",
+      "Contenant rigide fermé et étiqueté à défaut de conteneur DASRI, en attendant la filière adaptée",
+      "Eau et savon pour le lavage immédiat en cas d'exposition cutanée"
+    ],
+    "signesAggravation": [
+      "Extension de la contamination (passages, aérosols)",
+      "Personne exposée non prise en charge dans les délais (fenêtre de prophylaxie)",
+      "Blessure profonde avec matériel souillé",
+      "Symptômes chez une personne exposée (à distinguer d'une infection ultérieure à surveiller)"
+    ],
+    "limitesSansSecours": "Le nettoyage-désinfection maîtrise le risque environnemental, mais la gestion d'un accident d'exposition au sang (sérologies, prophylaxie post-exposition) relève d'un avis médical urgent. Le respect des délais conditionne l'efficacité d'une éventuelle prophylaxie.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale d'appui spécialisé. Elles ne remplacent pas les procédures d'hygiène de l'établissement ni un avis médical. Faites tout ce qui est possible pour obtenir de l'aide."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas les procédures d'hygiène et de biosécurité de votre établissement ni une formation dédiée. En cas d'exposition, contactez sans délai la médecine du travail ou le 15."
+}

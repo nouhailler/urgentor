@@ -1,0 +1,133 @@
+{
+  "id": "intoxication-inhalation",
+  "titre": "Intoxication par Inhalation (CO, Solvants)",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "toxicologique",
+  "tags": ["monoxyde", "ventilation", "EPI", "inhalation", "solvants", "gaz toxique"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS / HAS / Centre Antipoison",
+
+  "objectif": "Extraire une victime d'une atmosphère toxique sans s'intoxiquer soi-même, l'amener à l'air frais et prendre en charge les effets de l'inhalation (CO, solvants, fumées, gaz).",
+
+  "conditionsActivation": "Personne exposée à un gaz ou une vapeur toxique (monoxyde de carbone, solvants, fumées d'incendie, gaz industriels) dans un local mal ventilé : maux de tête, vertiges, nausées, malaise, perte de connaissance, parfois plusieurs victimes.",
+
+  "diagnosticRapide": {
+    "visuels": ["Plusieurs personnes malades dans le même local (évocateur du CO)", "Victime effondrée près d'un appareil à combustion / d'une source de vapeurs", "Teint parfois rosé (CO) ou cyanosé", "Source identifiable (chauffage défectueux, groupe électrogène, cuve de solvant)"],
+    "auditifs": ["Plaintes de céphalées, de vertiges, de nausées", "Confusion, propos incohérents", "Alarme de détecteur de CO / gaz"],
+    "comportementaux": ["Somnolence, malaise, faiblesse", "Confusion, troubles du comportement", "Perte de connaissance, convulsions (formes graves)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["S'intoxiquer à son tour en entrant dans l'atmosphère toxique", "Atmosphère explosive (solvants, gaz)", "Manque d'oxygène", "Effet insidieux du CO (inodore, incolore)"],
+    "equipementsRequis": ["Appareil respiratoire isolant (ARI) pour entrer en atmosphère toxique", "Détecteur de gaz / CO", "Moyens de ventilation", "DAE, oxygène si disponible et personnel formé"],
+    "regleUniverselle": "NE PAS entrer dans une atmosphère toxique sans protection respiratoire adaptée. Aérer largement, couper la source si possible depuis l'extérieur, extraire la victime à l'air frais rapidement mais sans s'exposer.",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 (pompiers) + 15 + Centre Antipoison — préciser le toxique suspecté (CO, solvant, fumée)",
+    "quoiDire": "Je suis [NOM], au [LIEU]. [Nombre] personne(s) intoxiquée(s) par inhalation de [CO / solvant / fumée] dans un local. Victime(s) [consciente(s) / inconsciente(s)]. Local aéré, source [coupée / non]. Détecteur : [valeurs].",
+    "informationsAFournir": ["Toxique suspecté et source", "Nombre de victimes (plusieurs = évocateur du CO)", "État des victimes (conscience, respiration)", "Mesures prises (aération, coupure de la source)"]
+  },
+
+  "actionsImmédiates": [
+    "NE PAS entrer sans protection respiratoire (ARI)",
+    "AÉRER largement (ouvrir portes/fenêtres) et couper la source si possible de l'extérieur",
+    "EXTRAIRE la victime à l'AIR FRAIS sans s'exposer",
+    "ALERTER 18 / 112 / 15 ; RCP si arrêt, sinon PLS + oxygène + surveillance"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Ne pas se précipiter dans le local : le toxique qui a fait chuter la victime peut vous atteindre aussi"},
+    {"etape": 2, "action": "Aérer largement (ouvrir en grand portes et fenêtres) et couper la source de l'extérieur si possible (appareil, vanne) sans créer d'étincelle en atmosphère explosive"},
+    {"etape": 3, "action": "Couper toute source d'ignition (pas d'interrupteur, de flamme, de téléphone en zone de vapeurs de solvant)"},
+    {"etape": 4, "action": "Extraire la victime vers l'air frais le plus vite possible, en retenant sa respiration ou avec un ARI si l'on est équipé et formé — sinon attendre les pompiers"},
+    {"etape": 5, "action": "À l'air frais : évaluer conscience et respiration"},
+    {"etape": 6, "action": "Arrêt respiratoire → RCP 30:2 + DAE + 15"},
+    {"etape": 7, "action": "Inconsciente qui respire → PLS, desserrer les vêtements, air frais, surveillance"},
+    {"etape": 8, "action": "Administrer de l'oxygène si disponible et personnel formé (essentiel pour le CO), appeler le 15 et le Centre Antipoison"},
+    {"etape": 9, "action": "Rechercher et prendre en charge les autres victimes potentielles ; transmettre le toxique en cause aux secours"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime dans une atmosphère toxique",
+      "alors": "Aérer, couper la source, extraire à l'air frais sans s'exposer (ARI/pompiers) — ne pas entrer sans protection"
+    },
+    {
+      "condition": "Plusieurs victimes dans le même local",
+      "alors": "Forte suspicion de CO ou de gaz → évacuer tout le monde, ne pas entrer sans protection, pompiers"
+    },
+    {
+      "condition": "Victime extraite, ne respire pas",
+      "alors": "RCP + DAE + 15 + oxygène si disponible"
+    },
+    {
+      "condition": "Intoxication au CO confirmée / suspectée",
+      "alors": "Air frais + oxygène à fort débit (si formé) + 15 — l'hospitalisation (parfois caisson hyperbare) est nécessaire"
+    },
+    {
+      "condition": "Vapeurs de solvant / atmosphère explosive",
+      "alors": "Pas de source d'ignition, ventilation, périmètre, pompiers"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne jamais entrer dans une atmosphère toxique sans protection respiratoire (ARI) : on devient la victime suivante",
+    "Le monoxyde de carbone (CO) est inodore, incolore et mortel : plusieurs personnes malades dans un même local doivent alerter",
+    "Le teint 'rosé' du CO est trompeur : ne pas se fier à la coloration pour évaluer la gravité",
+    "L'oxygène est le traitement clé de l'intoxication au CO : l'administrer tôt si l'on est formé",
+    "En présence de vapeurs de solvant : atmosphère potentiellement explosive, pas d'étincelle ni de flamme",
+    "Toute intoxication au CO impose une hospitalisation (risque de séquelles neurologiques, parfois caisson hyperbare)"
+  ],
+
+  "pointsControle": [
+    "Personne n'est entré dans l'atmosphère toxique sans protection",
+    "Le local a été aéré et la source coupée de l'extérieur si possible",
+    "La victime a été extraite à l'air frais",
+    "Conscience/respiration évaluées (RCP + O2 si besoin)",
+    "18 / 112 / 15 et Centre Antipoison alertés, toxique identifié"
+  ],
+
+  "conditionsArretEscalade": [
+    "Atmosphère toxique / plusieurs victimes → pompiers (ARI), évacuation",
+    "Arrêt respiratoire → RCP + DAE + O2 + 15",
+    "Intoxication au CO → oxygène + hospitalisation"
+  ],
+
+  "ressourcesNecessaires": [
+    "Appareil respiratoire isolant (ARI)",
+    "Détecteur de gaz / CO",
+    "Moyens de ventilation",
+    "Oxygène et DAE si disponibles",
+    "Téléphone pour le 18 / 112 / 15 et numéro du Centre Antipoison"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après extraction de la victime, en site isolé",
+    "actions": [
+      "Maintenir la victime à l'air frais, au repos, et lui administrer de l'oxygène à fort débit si disponible (crucial pour le CO)",
+      "Poursuivre la RCP en cas d'arrêt respiratoire jusqu'à reprise ou arrivée des secours",
+      "Maintenir en PLS et surveiller la respiration si la victime est inconsciente mais respire",
+      "Contacter le Centre Antipoison / une téléconsultation pour des consignes adaptées au toxique",
+      "Surveiller l'apparition ou l'aggravation de troubles neurologiques (confusion, céphalées, malaise)"
+    ],
+    "ressourcesImprovises": [
+      "Grande aération et éloignement maximal de la source du toxique",
+      "Couverture pour éviter le refroidissement de la victime à l'air libre",
+      "Oxygène de poste de secours / défibrillateur avec bouteille si disponible"
+    ],
+    "signesAggravation": [
+      "Aggravation des céphalées, confusion, somnolence",
+      "Convulsions, perte de connaissance",
+      "Détresse respiratoire, cyanose",
+      "Nouvel arrêt respiratoire"
+    ],
+    "limitesSansSecours": "L'intoxication au CO et aux gaz toxiques nécessite oxygénothérapie et surveillance hospitalière (parfois caisson hyperbare). L'air frais et l'oxygène de terrain limitent les dégâts, mais les formes graves peuvent laisser des séquelles neurologiques sans traitement spécialisé.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Ne vous exposez jamais à une atmosphère toxique."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation SST. En cas de doute, appelez le 15, le 18 et le Centre Antipoison."
+}

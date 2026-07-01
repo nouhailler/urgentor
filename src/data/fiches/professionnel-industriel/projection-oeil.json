@@ -1,0 +1,133 @@
+{
+  "id": "projection-oeil",
+  "titre": "Projection Oculaire (Chimique / Métal)",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "traumatologique",
+  "tags": ["rinçage", "collyre", "protection", "œil", "projection", "ophtalmo"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / INRS",
+
+  "objectif": "Limiter les lésions oculaires après projection d'un produit chimique, d'une particule ou de métal en fusion par un rinçage immédiat et prolongé, et orienter vers un ophtalmologiste.",
+
+  "conditionsActivation": "Projection dans l'œil de produit chimique (acide, base, solvant), de poussière, de limaille, d'un corps étranger ou de métal en fusion, en atelier, sur chantier ou en laboratoire : douleur, larmoiement, rougeur, vision troublée.",
+
+  "diagnosticRapide": {
+    "visuels": ["Œil rouge, larmoyant, paupières gonflées", "Corps étranger ou particule visible sur l'œil", "Traces de produit sur le visage / les lunettes", "Blépharospasme (œil fermé de force)"],
+    "auditifs": ["Cri de douleur, plainte de brûlure oculaire", "La victime dit ne plus voir clair de cet œil", "Signalement du produit ou de la particule en cause"],
+    "comportementaux": ["Frottement réflexe de l'œil (à empêcher)", "Œil maintenu fermé, tête penchée", "Agitation liée à la douleur"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contamination par le produit projeté", "Vapeurs irritantes", "Environnement d'atelier (machines, projections)"],
+    "equipementsRequis": ["Rince-œil / douche oculaire ou eau propre à faible débit", "Gants et lunettes de protection pour l'intervenant", "Compresse stérile / pansement oculaire", "Sérum physiologique en dosettes à défaut"],
+    "regleUniverselle": "Rincer IMMÉDIATEMENT et abondamment l'œil, avant tout, pendant au moins 15 minutes. Ne pas frotter, ne pas tenter de retirer un corps étranger enclavé ou du métal fiché dans l'œil.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 / 112 (+ Centre Antipoison pour un produit) — appeler pour projection chimique, corps étranger enclavé, baisse de vision",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Projection oculaire de [produit / métal / particule] dans l'œil [droit/gauche]. Rinçage à l'eau en cours depuis [HEURE]. Vision [normale / trouble]. J'ai l'étiquette du produit.",
+    "informationsAFournir": ["Nature de la projection (produit et concentration, métal, particule)", "Œil atteint, durée de rinçage", "Baisse de vision éventuelle", "Corps étranger visible ou enclavé"]
+  },
+
+  "actionsImmédiates": [
+    "RINCER l'œil IMMÉDIATEMENT à l'eau/sérum, 15 min minimum",
+    "Écarter les paupières, faire rouler l'œil dans toutes les directions",
+    "NE PAS frotter, NE PAS retirer un corps étranger enclavé",
+    "COUVRIR l'œil après rinçage et consulter un ophtalmologiste / le 15"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Mettre des gants, éloigner la victime de la source de projection"},
+    {"etape": 2, "action": "Rincer l'œil sans attendre : rince-œil, douche oculaire, ou eau propre à faible débit / sérum physiologique, pendant 15 minutes minimum (davantage pour acide/base fort)"},
+    {"etape": 3, "action": "Maintenir les paupières écartées, faire regarder la victime dans toutes les directions pour rincer tout l'œil, tête inclinée pour que l'eau s'écoule vers l'extérieur (ne pas contaminer l'autre œil)"},
+    {"etape": 4, "action": "Retirer les lentilles de contact dès que possible pendant le rinçage"},
+    {"etape": 5, "action": "NE PAS frotter l'œil ; NE PAS tenter de retirer un corps étranger enclavé, une particule fichée ou du métal en fusion : rincer autour et stabiliser"},
+    {"etape": 6, "action": "Une poussière libre sous la paupière peut être évacuée par le rinçage ou le coin d'un linge propre, sans appuyer"},
+    {"etape": 7, "action": "Après rinçage, couvrir l'œil atteint d'une compresse stérile sans appuyer (couvrir les deux yeux si corps étranger, pour limiter les mouvements)"},
+    {"etape": 8, "action": "Conserver l'étiquette du produit, appeler le 15 / Centre Antipoison en cas de produit chimique, et orienter vers un ophtalmologiste en urgence"},
+    {"etape": 9, "action": "Surveiller la douleur et la vision jusqu'à la prise en charge"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Projection chimique (acide, base, solvant)",
+      "alors": "Rinçage abondant immédiat 15-20 min + retrait des lentilles + 15 / Centre Antipoison + ophtalmologiste en urgence"
+    },
+    {
+      "condition": "Corps étranger / métal enclavé ou fiché dans l'œil",
+      "alors": "NE PAS retirer, ne pas frotter, couvrir les deux yeux, immobiliser, ophtalmologiste / 15 en urgence"
+    },
+    {
+      "condition": "Poussière / particule libre sous la paupière",
+      "alors": "Rinçage doux ; évacuation avec le coin d'un linge propre si accessible, sinon avis médical"
+    },
+    {
+      "condition": "Métal en fusion / brûlure oculaire",
+      "alors": "Rinçage prolongé à l'eau, couvrir, 15, ophtalmologiste — ne pas décoller ce qui adhère"
+    },
+    {
+      "condition": "Baisse de vision, douleur intense persistante après rinçage",
+      "alors": "Urgence ophtalmologique, 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le rinçage précoce et prolongé (15 min minimum) est le geste qui préserve le plus la vision",
+    "Ne jamais frotter un œil atteint : risque d'aggraver une lésion de la cornée",
+    "Ne jamais retirer un corps étranger enclavé ni du métal fiché dans l'œil : rincer autour, couvrir, orienter",
+    "Retirer les lentilles de contact qui piègent le produit contre l'œil",
+    "Rincer de l'angle interne vers l'extérieur pour ne pas contaminer l'œil sain",
+    "Toute projection chimique ou baisse de vision impose un avis ophtalmologique en urgence"
+  ],
+
+  "pointsControle": [
+    "Le rinçage abondant a débuté immédiatement et duré au moins 15 minutes",
+    "Les lentilles de contact ont été retirées",
+    "L'œil n'a pas été frotté et aucun corps enclavé n'a été retiré",
+    "L'œil est couvert après rinçage",
+    "L'étiquette du produit est conservée et un avis ophtalmo / 15 est demandé"
+  ],
+
+  "conditionsArretEscalade": [
+    "Projection chimique / baisse de vision → 15 + ophtalmologiste en urgence",
+    "Corps étranger enclavé → immobilisation + ophtalmologiste",
+    "Douleur intense persistante → avis médical urgent"
+  ],
+
+  "ressourcesNecessaires": [
+    "Rince-œil / douche oculaire ou eau propre / sérum physiologique",
+    "Gants et lunettes de protection",
+    "Compresses stériles / pansement oculaire",
+    "Étiquette du produit et numéro du Centre Antipoison",
+    "Téléphone pour le 15 / 112"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si l'accès à un ophtalmologiste ou aux secours est retardé (chantier isolé, offshore)",
+    "actions": [
+      "Poursuivre le rinçage bien au-delà de 15 minutes pour les produits corrosifs forts (jusqu'à 30-60 min, surtout pour les bases)",
+      "Contacter le Centre Antipoison / une téléconsultation pour des consignes adaptées au produit",
+      "Garder l'œil couvert et au repos, limiter les mouvements oculaires (couvrir les deux yeux si corps étranger)",
+      "Surveiller l'évolution de la douleur et de la vision",
+      "Organiser une évacuation vers une structure ophtalmologique dès que possible"
+    ],
+    "ressourcesImprovises": [
+      "Eau propre en bouteille à faible débit ou dosettes de sérum physiologique pour le rinçage",
+      "Compresse propre ou tissu propre pour couvrir l'œil sans appuyer",
+      "Coque de protection improvisée (fond de gobelet propre) pour protéger un œil avec corps étranger"
+    ],
+    "signesAggravation": [
+      "Baisse ou perte de la vision",
+      "Douleur qui augmente malgré le rinçage",
+      "Œil de plus en plus rouge, opacité de la cornée",
+      "Écoulement, gonflement important des paupières"
+    ],
+    "limitesSansSecours": "Le rinçage limite les lésions mais ne les traite pas. Les brûlures chimiques de la cornée, les corps étrangers enclavés et les traumatismes du globe nécessitent une prise en charge ophtalmologique spécialisée, faute de quoi la vision peut être définitivement altérée.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 / SST ni un avis ophtalmologique. En cas de doute, appelez le 15 et le Centre Antipoison."
+}

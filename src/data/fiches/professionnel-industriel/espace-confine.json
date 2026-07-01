@@ -1,0 +1,133 @@
+{
+  "id": "espace-confine",
+  "titre": "Enfermement / Espace Confiné",
+  "categorie": "professionnel-industriel",
+  "sousCategorie": "environnemental",
+  "tags": ["asphyxie", "gaz", "harnais", "espace confiné", "atmosphère", "ventilation"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "INRS / HAS",
+
+  "objectif": "Porter secours à une victime dans un espace confiné (cuve, silo, fosse, égout, réservoir) sans devenir soi-même victime, en gérant le risque d'atmosphère asphyxiante ou toxique.",
+
+  "conditionsActivation": "Personne inconsciente ou en détresse dans un espace confiné ou mal ventilé (cuve, silo, puits, fosse, vide sanitaire, citerne) : risque majeur d'atmosphère pauvre en oxygène, toxique ou explosive.",
+
+  "diagnosticRapide": {
+    "visuels": ["Victime effondrée ou inconsciente à l'intérieur de l'espace confiné", "Accès étroit (trappe, regard, ouverture)", "Absence de mouvement", "Parfois un premier sauveteur déjà tombé en tentant d'aider (piège classique)"],
+    "auditifs": ["Absence de réponse aux appels", "Alarme de détecteur de gaz", "Silence dans un espace où quelqu'un travaillait"],
+    "comportementaux": ["Perte de connaissance rapide (asphyxie foudroyante possible)", "Confusion, gestes désordonnés avant l'effondrement", "Victime qui ne remonte pas / ne répond plus"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Atmosphère appauvrie en oxygène (asphyxie en quelques secondes)", "Gaz toxiques (H2S, CO, CO2) ou vapeurs", "Atmosphère explosive", "Chute, ensevelissement (silo), noyade"],
+    "equipementsRequis": ["Détecteur de gaz / d'oxygène", "Appareil respiratoire isolant (ARI) — l'air ambiant ne protège pas", "Harnais et système de récupération/treuil", "Ventilation forcée, moyens d'alerte"],
+    "regleUniverselle": "NE JAMAIS entrer dans un espace confiné pour secourir sans EPI adapté (ARI), sans mesure d'atmosphère et sans équipe formée. La majorité des morts en espace confiné sont des sauveteurs improvisés. Tenter la récupération depuis l'extérieur (treuil/harnais).",
+    "zoneChaudeInterditeSansEPI": true
+  },
+
+  "scriptAlerte": {
+    "numero": "18 / 112 (pompiers) et 15 — préciser 'espace confiné' pour envoi d'équipe spécialisée avec ARI",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Victime inconsciente dans un espace confiné ([type : cuve/silo/fosse]). Atmosphère suspecte : [gaz connu / inconnu]. Je NE PEUX PAS entrer sans protection. Accès : [trappe/ouverture]. Détecteur : [valeurs si disponibles].",
+    "informationsAFournir": ["Type d'espace confiné et nature du danger (gaz, produit, manque d'O2)", "Nombre de victimes (dont éventuels sauveteurs tombés)", "Mesures d'atmosphère si disponibles", "Accès et moyens de récupération sur place"]
+  },
+
+  "actionsImmédiates": [
+    "NE PAS ENTRER sans ARI, sans mesure d'atmosphère, sans équipe formée",
+    "ALERTER le 18 / 112 (équipe spécialisée espace confiné)",
+    "VENTILER l'espace et couper toute source de danger si possible depuis l'extérieur",
+    "TENTER la récupération depuis l'extérieur (treuil/harnais) sans s'exposer"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "STOP : ne pas entrer. La cause de l'effondrement de la victime est très probablement une atmosphère mortelle qui frappera aussi le sauveteur"},
+    {"etape": 2, "action": "Alerter immédiatement le 18 / 112 en précisant 'espace confiné' (équipe spécialisée, ARI, moyens de treuillage)"},
+    {"etape": 3, "action": "Sécuriser et baliser la zone, empêcher toute autre personne d'entrer, couper les sources de danger accessibles de l'extérieur (vannes, énergies)"},
+    {"etape": 4, "action": "Ventiler l'espace confiné (ventilation forcée) et mesurer l'atmosphère si un détecteur est disponible (O2, gaz toxiques, explosivité)"},
+    {"etape": 5, "action": "Si la victime est équipée d'un harnais relié à un système de récupération : la treuiller depuis l'extérieur SANS entrer"},
+    {"etape": 6, "action": "N'entrer qu'en dernier recours et UNIQUEMENT si l'on est formé, équipé d'un ARI, encordé, avec un surveillant à l'extérieur et l'atmosphère contrôlée"},
+    {"etape": 7, "action": "Une fois la victime extraite à l'air libre : évaluer conscience et respiration"},
+    {"etape": 8, "action": "Arrêt respiratoire → RCP + DAE + 15 ; inconsciente qui respire → PLS, air frais, surveillance"},
+    {"etape": 9, "action": "Transmettre aux secours la nature du danger (gaz, produit) pour la prise en charge (ex. intoxication au CO / H2S)"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime effondrée dans un espace confiné",
+      "alors": "NE PAS entrer → alerter équipe spécialisée, ventiler, récupération depuis l'extérieur"
+    },
+    {
+      "condition": "Victime reliée à un harnais / treuil",
+      "alors": "La treuiller depuis l'extérieur sans entrer, puis prise en charge à l'air libre"
+    },
+    {
+      "condition": "Sauveteur déjà tombé à l'intérieur",
+      "alors": "Ne pas s'ajouter aux victimes → renforcer l'alerte, attendre les équipes avec ARI"
+    },
+    {
+      "condition": "Victime extraite, ne respire pas",
+      "alors": "RCP + DAE + 15 (intoxication / anoxie possible)"
+    },
+    {
+      "condition": "Atmosphère explosive suspectée",
+      "alors": "Pas d'étincelle, pas d'appareil non ATEX, éloigner les sources d'ignition, périmètre, pompiers"
+    }
+  ],
+
+  "notesCritiques": [
+    "La majorité des décès en espace confiné sont des sauveteurs improvisés : NE JAMAIS entrer sans ARI, mesure d'atmosphère et équipe formée",
+    "Une atmosphère appauvrie en oxygène tue en quelques secondes, sans signe préalable",
+    "L'air libre ambiant et un simple masque anti-poussière ne protègent PAS : il faut un appareil respiratoire isolant",
+    "Privilégier toujours la récupération depuis l'extérieur (harnais/treuil)",
+    "Ventiler et mesurer avant toute entrée, même par une équipe équipée",
+    "Transmettre la nature du gaz aux secours (CO, H2S, CO2, vapeurs) oriente la prise en charge"
+  ],
+
+  "pointsControle": [
+    "Personne n'est entré sans protection ni équipe formée",
+    "Les secours spécialisés sont alertés (espace confiné, ARI)",
+    "La zone est balisée et les sources de danger coupées de l'extérieur",
+    "La ventilation est en marche et l'atmosphère mesurée si possible",
+    "La récupération a été tentée depuis l'extérieur ; la victime extraite est prise en charge à l'air libre"
+  ],
+
+  "conditionsArretEscalade": [
+    "Toute victime en espace confiné → équipe spécialisée + ARI",
+    "Atmosphère explosive → périmètre + pompiers, pas de source d'ignition",
+    "Victime extraite en arrêt → RCP + DAE + 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Appareil respiratoire isolant (ARI)",
+    "Détecteur de gaz / d'oxygène",
+    "Harnais et système de récupération / treuil",
+    "Ventilation forcée",
+    "DAE, moyens d'alerte et de balisage"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours spécialisés tardent, la victime restant dans l'espace confiné",
+    "actions": [
+      "Maintenir une ventilation forcée maximale de l'espace pour tenter d'assainir l'atmosphère",
+      "Continuer à mesurer l'atmosphère et n'envisager une entrée QUE si une équipe formée avec ARI et surveillant est disponible",
+      "Tenter/poursuivre la récupération depuis l'extérieur par harnais et treuil si la victime y est reliée",
+      "Empêcher absolument toute entrée improvisée supplémentaire (risque de multiplier les victimes)",
+      "Une fois la victime à l'air libre : RCP si arrêt, PLS et air frais si elle respire, surveillance continue"
+    ],
+    "ressourcesImprovises": [
+      "Ventilateur / soufflerie pour renouveler l'air (jamais de l'oxygène pur en atmosphère explosive)",
+      "Corde et point d'ancrage pour une extraction depuis l'extérieur",
+      "Moyens de balisage pour interdire l'accès"
+    ],
+    "signesAggravation": [
+      "Victime qui ne bouge plus, cyanose",
+      "Alarme de détecteur (O2 bas, gaz toxique élevé, explosivité)",
+      "Malaise chez les personnes restées près de l'ouverture (fuite de gaz)",
+      "Arrêt respiratoire une fois extraite"
+    ],
+    "limitesSansSecours": "Sans ARI ni équipe formée, il est impossible d'entrer sans risque mortel. La ventilation et la récupération extérieure sont les seuls leviers ; l'extraction et le traitement d'une intoxication grave nécessitent impérativement des moyens spécialisés.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas une équipe de secours spécialisée. Ne mettez jamais votre vie en danger."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation au travail en espace confiné (CATEC) ni une formation SST. En cas de doute, suivez les instructions du 18 / 112."
+}

@@ -25,6 +25,16 @@ import inondation from './fiches/environnement-exterieur/inondation.json'
 import glissade from './fiches/environnement-exterieur/glissade.json'
 import perteOrientation from './fiches/environnement-exterieur/perte-orientation.json'
 import froidExtreme from './fiches/environnement-exterieur/froid-extreme.json'
+import projectionOeil from './fiches/professionnel-industriel/projection-oeil.json'
+import amputation from './fiches/professionnel-industriel/amputation.json'
+import espaceConfine from './fiches/professionnel-industriel/espace-confine.json'
+import brulureHauteTension from './fiches/professionnel-industriel/brulure-haute-tension.json'
+import intoxicationInhalation from './fiches/professionnel-industriel/intoxication-inhalation.json'
+import ecrasement from './fiches/professionnel-industriel/ecrasement.json'
+import incendieVehicule from './fiches/professionnel-industriel/incendie-vehicule.json'
+import deversementBiologique from './fiches/professionnel-industriel/deversement-biologique.json'
+import agression from './fiches/professionnel-industriel/agression.json'
+import malaiseIsole from './fiches/professionnel-industriel/malaise-isole.json'
 import incendie from './fiches/incendie-evacuation/incendie.json'
 import evacuation from './fiches/incendie-evacuation/evacuation.json'
 import fuiteGaz from './fiches/chimique/fuite-gaz.json'
@@ -60,6 +70,16 @@ export const TOUTES_FICHES = [
   glissade,
   perteOrientation,
   froidExtreme,
+  projectionOeil,
+  amputation,
+  espaceConfine,
+  brulureHauteTension,
+  intoxicationInhalation,
+  ecrasement,
+  incendieVehicule,
+  deversementBiologique,
+  agression,
+  malaiseIsole,
   incendie,
   evacuation,
   fuiteGaz,
