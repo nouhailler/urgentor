@@ -272,11 +272,15 @@ function ImportFichesSection() {
   const handleDrop = (e) => { e.preventDefault(); setDragging(false); processFile(e.dataTransfer.files?.[0]) }
   const customFiches = allFiches.filter(f => isCustom(f.id))
   const customCount = customFiches.length
+  // On exporte les fiches personnalisées si l'utilisateur en a, sinon tout le catalogue.
+  const exportTarget = customCount > 0 ? customFiches : allFiches
+  const exportCount = exportTarget.length
 
   const handleExport = () => {
-    if (customCount === 0) return
-    exportFiches(customFiches)
-    setStatus({ ok: true, message: `${customCount} fiche${customCount > 1 ? 's' : ''} exportée${customCount > 1 ? 's' : ''} en JSON` })
+    if (exportCount === 0) return
+    exportFiches(exportTarget)
+    const quoi = customCount > 0 ? 'personnalisée' : 'du catalogue'
+    setStatus({ ok: true, message: `${exportCount} fiche${exportCount > 1 ? 's' : ''} ${quoi}${exportCount > 1 ? 's' : ''} exportée${exportCount > 1 ? 's' : ''} en JSON` })
   }
 
   return (
@@ -326,8 +330,8 @@ function ImportFichesSection() {
       {/* Export — juste en dessous du bouton d'import */}
       <button
         onClick={handleExport}
-        disabled={customCount === 0}
-        title={customCount === 0 ? 'Aucune fiche personnalisée à exporter' : 'Télécharger vos fiches personnalisées en JSON'}
+        disabled={exportCount === 0}
+        title={customCount > 0 ? 'Télécharger vos fiches personnalisées en JSON' : 'Télécharger toutes les fiches du catalogue en JSON'}
         style={{
           width: '100%',
           marginTop: '12px',
@@ -335,12 +339,12 @@ function ImportFichesSection() {
           borderRadius: 'var(--radius-control)',
           border: '1px solid var(--border-strong)',
           background: 'var(--surface-subtle)',
-          color: customCount === 0 ? 'var(--text-muted)' : 'var(--text)',
+          color: exportCount === 0 ? 'var(--text-muted)' : 'var(--text)',
           fontFamily: 'var(--font-display)',
           fontSize: '15px',
           fontWeight: 600,
-          cursor: customCount === 0 ? 'not-allowed' : 'pointer',
-          opacity: customCount === 0 ? 0.6 : 1,
+          cursor: exportCount === 0 ? 'not-allowed' : 'pointer',
+          opacity: exportCount === 0 ? 0.6 : 1,
           transition: 'all 0.15s ease',
         }}
         className="flex items-center justify-center gap-2"
@@ -350,7 +354,7 @@ function ImportFichesSection() {
           <polyline points="7 10 12 15 17 10"/>
           <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
-        Exporter mes fiches en JSON{customCount > 0 ? ` (${customCount})` : ''}
+        {customCount > 0 ? `Exporter mes fiches en JSON (${exportCount})` : `Exporter les fiches en JSON (${exportCount})`}
       </button>
 
       {status && (
