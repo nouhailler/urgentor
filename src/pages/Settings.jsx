@@ -244,7 +244,7 @@ function ProviderHeader({ providerId, config, isConfigured }) {
 
 /* ── Import de fiches ────────────────────────────────────────────── */
 function ImportFichesSection() {
-  const { importFiches, allFiches, isCustom } = useFiches()
+  const { importFiches, exportFiches, allFiches, isCustom } = useFiches()
   const fileRef = useRef()
   const [status, setStatus] = useState(null)
   const [dragging, setDragging] = useState(false)
@@ -270,13 +270,20 @@ function ImportFichesSection() {
 
   const handleFile = (e) => processFile(e.target.files?.[0])
   const handleDrop = (e) => { e.preventDefault(); setDragging(false); processFile(e.dataTransfer.files?.[0]) }
-  const customCount = allFiches.filter(f => isCustom(f.id)).length
+  const customFiches = allFiches.filter(f => isCustom(f.id))
+  const customCount = customFiches.length
+
+  const handleExport = () => {
+    if (customCount === 0) return
+    exportFiches(customFiches)
+    setStatus({ ok: true, message: `${customCount} fiche${customCount > 1 ? 's' : ''} exportée${customCount > 1 ? 's' : ''} en JSON` })
+  }
 
   return (
     <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-card)' }} className="p-5">
       <div className="flex items-center justify-between mb-1">
         <div style={{ fontFamily: 'var(--font-display)', color: 'var(--text)', fontSize: '17px', fontWeight: 700 }}>
-          Import de fiches
+          Import / Export de fiches
         </div>
         {customCount > 0 && (
           <Link to="/gestion" style={{ color: 'var(--accent)', fontSize: '12px', textDecoration: 'none' }} className="hover:underline">
@@ -285,7 +292,7 @@ function ImportFichesSection() {
         )}
       </div>
       <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '16px' }}>
-        Importez un fichier JSON exporté depuis un autre appareil ou préparé sur desktop.
+        Importez un fichier JSON exporté depuis un autre appareil, ou exportez vos fiches personnalisées pour les sauvegarder / les transférer.
       </p>
 
       <input ref={fileRef} type="file" accept=".json,application/json" onChange={handleFile} className="hidden" />
@@ -315,6 +322,36 @@ function ImportFichesSection() {
           Touchez pour parcourir · ou glissez-déposez un fichier .json
         </div>
       </div>
+
+      {/* Export — juste en dessous du bouton d'import */}
+      <button
+        onClick={handleExport}
+        disabled={customCount === 0}
+        title={customCount === 0 ? 'Aucune fiche personnalisée à exporter' : 'Télécharger vos fiches personnalisées en JSON'}
+        style={{
+          width: '100%',
+          marginTop: '12px',
+          minHeight: '48px',
+          borderRadius: 'var(--radius-control)',
+          border: '1px solid var(--border-strong)',
+          background: 'var(--surface-subtle)',
+          color: customCount === 0 ? 'var(--text-muted)' : 'var(--text)',
+          fontFamily: 'var(--font-display)',
+          fontSize: '15px',
+          fontWeight: 600,
+          cursor: customCount === 0 ? 'not-allowed' : 'pointer',
+          opacity: customCount === 0 ? 0.6 : 1,
+          transition: 'all 0.15s ease',
+        }}
+        className="flex items-center justify-center gap-2"
+      >
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Exporter mes fiches en JSON{customCount > 0 ? ` (${customCount})` : ''}
+      </button>
 
       {status && (
         <div
