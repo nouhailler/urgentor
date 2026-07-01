@@ -1,0 +1,133 @@
+{
+  "id": "hypothermie",
+  "titre": "Hypothermie",
+  "categorie": "secours-personne",
+  "sousCategorie": "environnemental",
+  "tags": ["réchauffement progressif", "couverture", "hypothermie", "froid", "tronc", "grand froid"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître un abaissement de la température corporelle, limiter les pertes de chaleur et réchauffer prudemment la victime en priorité au niveau du tronc, sans provoquer de complications.",
+
+  "conditionsActivation": "Exposition au froid, à l'eau froide, au vent, ou immobilisation prolongée : la victime est froide, frissonne, devient lente, confuse. Facteurs favorisants : personnes âgées, enfants, alcool, épuisement, blessure, noyade.",
+
+  "diagnosticRapide": {
+    "visuels": ["Peau froide, pâle, parfois bleutée", "Frissons intenses (hypothermie légère) puis disparition des frissons (aggravation)", "Lèvres et extrémités bleues", "Gestes lents, maladroits, chutes"],
+    "auditifs": ["Élocution lente, pâteuse", "Propos confus, incohérents", "Plainte de froid intense puis, paradoxalement, sensation de chaleur (signe de gravité)"],
+    "comportementaux": ["Ralentissement, apathie, somnolence", "Confusion, désorientation, comportement inadapté", "Déshabillage paradoxal (grave), puis perte de connaissance"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Exposition au même froid / à l'eau froide", "Terrain glissant, avalanche, glace", "Épuisement de l'intervenant"],
+    "equipementsRequis": ["Couvertures, couverture de survie (face argentée vers la victime)", "Vêtements secs", "Abri contre le vent et le froid", "Boissons chaudes sucrées (si victime consciente)"],
+    "regleUniverselle": "Manipuler la victime avec DOUCEUR (les mouvements brusques peuvent déclencher un arrêt cardiaque). Ne pas frictionner. Réchauffer en priorité le TRONC, isoler du sol et du vent.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU), 18 (pompiers) ou 112 — appeler pour hypothermie modérée à sévère (confusion, disparition des frissons, inconscience)",
+    "quoiDire": "Je suis [NOM], au [LIEU PRÉCIS]. Victime en hypothermie après [exposition]. Elle [frissonne encore / ne frissonne plus], est [consciente et confuse / inconsciente]. Réchauffement en cours. Accès difficile : [préciser].",
+    "informationsAFournir": ["Circonstances et durée d'exposition", "Présence ou disparition des frissons", "État de conscience", "Accessibilité du lieu"]
+  },
+
+  "actionsImmédiates": [
+    "METTRE À L'ABRI du froid, du vent et de l'humidité",
+    "RETIRER les vêtements mouillés, ISOLER du sol",
+    "RÉCHAUFFER doucement le TRONC (couvertures, couverture de survie, chaleur corporelle)",
+    "Manipuler avec DOUCEUR — ne pas frictionner ; appeler le 15 si confusion/inconscience"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Mettre la victime à l'abri du froid, du vent et de la pluie, l'isoler du sol (couverture, sac, branchages)"},
+    {"etape": 2, "action": "Retirer délicatement les vêtements mouillés et les remplacer par des vêtements/couvertures secs"},
+    {"etape": 3, "action": "Envelopper la victime, tête comprise, dans plusieurs couches, avec une couverture de survie (face argentée côté peau) par-dessus"},
+    {"etape": 4, "action": "Réchauffer en PRIORITÉ le tronc (poitrine, abdomen, aisselles, aine) : bouillottes tièdes enveloppées, contact peau à peau, jamais de source chaude directe"},
+    {"etape": 5, "action": "NE PAS frictionner les membres ni tremper dans l'eau chaude (risque d'afflux de sang froid vers le cœur = arrêt cardiaque)"},
+    {"etape": 6, "action": "Si la victime est consciente et peut avaler : donner des boissons chaudes et sucrées, PAS d'alcool"},
+    {"etape": 7, "action": "Manipuler avec une extrême douceur, limiter les mouvements (risque de fibrillation)"},
+    {"etape": 8, "action": "Surveiller conscience et respiration ; prendre le pouls longuement (jusqu'à 1 min) car il peut être très lent"},
+    {"etape": 9, "action": "Si arrêt cardiaque : RCP + 15 — poursuivre longtemps ('nul n'est mort tant qu'il n'est pas réchauffé et mort')"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Hypothermie légère : la victime frissonne, est consciente et cohérente",
+      "alors": "Abri, vêtements secs, réchauffement progressif du tronc, boissons chaudes sucrées, surveillance"
+    },
+    {
+      "condition": "Hypothermie modérée à sévère : frissons disparus, confusion, somnolence",
+      "alors": "15 immédiat, réchauffement doux du tronc, manipulation minimale, surveillance rapprochée"
+    },
+    {
+      "condition": "Victime inconsciente qui respire",
+      "alors": "PLS avec douceur + isolation thermique + 15, prise de pouls prolongée"
+    },
+    {
+      "condition": "Arrêt cardiaque",
+      "alors": "RCP + 15 — poursuivre longtemps, un cœur très froid peut repartir après réchauffement"
+    },
+    {
+      "condition": "Gelures associées (extrémités blanches, dures, insensibles)",
+      "alors": "Ne pas frictionner ni percer, protéger, réchauffer doucement, ne pas réchauffer s'il y a risque de re-gel"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS frictionner ni plonger dans l'eau chaude : afflux brutal de sang froid vers le cœur = risque d'arrêt cardiaque",
+    "Réchauffer en priorité le TRONC, pas les extrémités",
+    "Manipuler avec une extrême douceur : les mouvements brusques peuvent déclencher une fibrillation",
+    "La disparition des frissons est un signe d'AGGRAVATION, pas d'amélioration",
+    "Pas d'alcool (il aggrave la déperdition de chaleur)",
+    "En arrêt cardiaque, poursuivre longtemps la RCP : la réanimation reste possible après réchauffement"
+  ],
+
+  "pointsControle": [
+    "La victime est à l'abri du froid, du vent et de l'humidité, isolée du sol",
+    "Les vêtements mouillés ont été retirés",
+    "Le réchauffement porte en priorité sur le tronc, sans friction",
+    "La victime a été manipulée avec douceur",
+    "Le 15 est alerté en cas de confusion, disparition des frissons ou inconscience"
+  ],
+
+  "conditionsArretEscalade": [
+    "Confusion, disparition des frissons, inconscience → 15",
+    "Arrêt cardiaque → RCP prolongée + 15",
+    "Aggravation malgré réchauffement → évacuation médicalisée"
+  ],
+
+  "ressourcesNecessaires": [
+    "Couvertures et couverture de survie",
+    "Vêtements secs",
+    "Abri contre le vent et le froid",
+    "Bouillottes / sources de chaleur douce à envelopper",
+    "Boissons chaudes sucrées (non alcoolisées)"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent ou en zone isolée de montagne / grand froid",
+    "actions": [
+      "Poursuivre un réchauffement progressif et passif : plusieurs couches, isolation du sol et du vent, chaleur du tronc",
+      "Utiliser la chaleur corporelle d'un sauveteur (contact peau à peau sous les couvertures) pour réchauffer le tronc",
+      "Donner régulièrement des boissons chaudes et sucrées si la victime est consciente et déglutit",
+      "Limiter au maximum les mouvements et les efforts de la victime pour éviter la fibrillation",
+      "Surveiller conscience et respiration ; en cas d'arrêt, faire une RCP et la poursuivre longtemps"
+    ],
+    "ressourcesImprovises": [
+      "Feuilles, branchages, sacs, cartons pour isoler du sol",
+      "Bouteilles d'eau tiède (jamais brûlante) enveloppées dans un linge, placées sur le tronc",
+      "Chaleur corporelle d'un ou plusieurs sauveteurs à l'abri sous les couvertures"
+    ],
+    "signesAggravation": [
+      "Disparition des frissons",
+      "Confusion croissante, somnolence, déshabillage paradoxal",
+      "Pouls et respiration très lents et difficiles à percevoir",
+      "Perte de connaissance, arrêt cardiaque"
+    ],
+    "limitesSansSecours": "Le réchauffement de terrain est lent et limité. Les hypothermies sévères nécessitent un réchauffement médicalisé et une surveillance cardiaque. Le pronostic dépend de la rapidité de la prise en charge, mais un réchauffement prudent gagne un temps précieux.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

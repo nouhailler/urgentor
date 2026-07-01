@@ -1,0 +1,130 @@
+{
+  "id": "hypoglycemie",
+  "titre": "Hypoglycémie",
+  "categorie": "secours-personne",
+  "sousCategorie": "métabolique",
+  "tags": ["diabète", "sucre", "conscience", "hypoglycémie", "resucrage", "malaise"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître une baisse du taux de sucre dans le sang et la corriger rapidement par un apport de sucre adapté, avant l'évolution vers le coma hypoglycémique.",
+
+  "conditionsActivation": "Personne diabétique (ou à jeun, après effort, alcoolisation) présentant malaise, sueurs, tremblements, faim intense, confusion ou comportement inhabituel. Reconnaître les signes avant-coureurs pour agir avant la perte de connaissance.",
+
+  "diagnosticRapide": {
+    "visuels": ["Sueurs abondantes, pâleur", "Tremblements des mains", "Regard vague, gestes maladroits", "Teint moite et froid"],
+    "auditifs": ["Propos incohérents ou confus", "Élocution difficile ('comme ivre')", "Plainte de faim intense, de vertige"],
+    "comportementaux": ["Comportement inhabituel, irritabilité, agressivité", "Désorientation, confusion", "Somnolence pouvant évoluer vers la perte de connaissance"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Comportement agité ou agressif de la victime (lié à l'hypoglycémie, non intentionnel)", "Fausse route si resucrage chez une personne peu réactive"],
+    "equipementsRequis": ["Sucre rapide (morceaux de sucre, jus de fruit, soda sucré, pâte de fruits)", "Lecteur de glycémie de la victime si disponible", "Gants si disponibles"],
+    "regleUniverselle": "NE JAMAIS faire boire ou manger une personne inconsciente ou qui ne peut pas avaler : risque de fausse route. Le resucrage oral est réservé aux victimes conscientes.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler si inconscience, convulsions, ou pas d'amélioration après resucrage",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Personne diabétique en malaise hypoglycémique, [consciente et resucrée / inconsciente]. Glycémie mesurée : [valeur si connue]. Pas d'amélioration après resucrage.",
+    "informationsAFournir": ["Diabète connu et traitement (insuline ?)", "Glycémie mesurée si possible", "État de conscience", "Resucrage effectué et heure"]
+  },
+
+  "actionsImmédiates": [
+    "Si CONSCIENTE : donner du SUCRE RAPIDE (3 morceaux de sucre, un verre de jus/soda)",
+    "Installer la victime au calme, assise ou allongée",
+    "Si INCONSCIENTE : NE RIEN donner par la bouche → PLS + 15",
+    "Réévaluer après 10-15 min, resucrer une 2e fois si besoin"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Reconnaître les signes et interroger : diabétique ? A-t-elle mangé ? Fait un effort ? Pris son insuline ?"},
+    {"etape": 2, "action": "Si la victime est consciente et peut avaler : lui donner immédiatement du sucre rapide (15 g : 3 morceaux de sucre, ou 1 verre de jus de fruit / soda non light, ou du miel)"},
+    {"etape": 3, "action": "L'installer assise ou allongée, au repos, la rassurer"},
+    {"etape": 4, "action": "Mesurer la glycémie avec le lecteur de la victime si disponible et si l'on sait l'utiliser"},
+    {"etape": 5, "action": "Attendre 10 à 15 minutes puis réévaluer : si pas d'amélioration, redonner du sucre rapide"},
+    {"etape": 6, "action": "Une fois les signes disparus : donner un sucre lent (pain, biscuits, féculents) pour éviter la rechute"},
+    {"etape": 7, "action": "Si la victime est ou devient inconsciente : NE RIEN donner par la bouche, la mettre en PLS et alerter le 15"},
+    {"etape": 8, "action": "Surveiller la respiration et la conscience jusqu'à l'arrivée des secours ou la récupération complète"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime consciente et capable d'avaler",
+      "alors": "Resucrage rapide (15 g) → réévaluation à 15 min → sucre lent une fois rétablie"
+    },
+    {
+      "condition": "Pas d'amélioration 15 min après un resucrage bien conduit",
+      "alors": "Redonner du sucre rapide + appeler le 15"
+    },
+    {
+      "condition": "Victime inconsciente ou convulsions",
+      "alors": "RIEN par la bouche → PLS + 15 immédiat (le glucagon injectable peut être administré par un proche formé)"
+    },
+    {
+      "condition": "Doute entre hypoglycémie et hyperglycémie chez un diabétique",
+      "alors": "En cas de doute, resucrer si la victime est consciente : le risque de l'hypoglycémie non traitée est plus grave"
+    },
+    {
+      "condition": "Victime inconsciente qui ne respire pas",
+      "alors": "Débuter la RCP + 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS faire boire ou manger une personne inconsciente (fausse route)",
+    "En cas de doute hypo/hyperglycémie chez un diabétique conscient : resucrer — l'hypoglycémie non traitée est la plus dangereuse",
+    "Le sucre rapide corrige la crise ; le sucre lent qui suit évite la rechute",
+    "Une hypoglycémie sévère peut entraîner convulsions et coma en quelques minutes",
+    "Un comportement agressif ou confus peut être un signe d'hypoglycémie, pas de mauvaise volonté",
+    "Le glucagon injectable ne doit être administré que par une personne formée (proche du diabétique)"
+  ],
+
+  "pointsControle": [
+    "La victime consciente a reçu du sucre rapide",
+    "L'amélioration a été réévaluée à 15 minutes",
+    "Un sucre lent a été donné après récupération",
+    "Une victime inconsciente est en PLS, rien donné par la bouche, 15 alerté",
+    "La respiration et la conscience sont surveillées"
+  ],
+
+  "conditionsArretEscalade": [
+    "Inconscience, convulsions ou absence d'amélioration → 15 immédiat",
+    "Absence de respiration → RCP",
+    "Rechutes répétées malgré resucrage → avis médical"
+  ],
+
+  "ressourcesNecessaires": [
+    "Sucre rapide (morceaux de sucre, jus, soda, miel, pâte de fruits)",
+    "Sucre lent (pain, biscuits, féculents)",
+    "Lecteur de glycémie de la victime si disponible",
+    "Téléphone pour le 15 / 112"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent et la victime reste symptomatique en zone isolée",
+    "actions": [
+      "Répéter le resucrage rapide toutes les 15 minutes tant que la victime est consciente et symptomatique",
+      "Une fois stabilisée, faire manger un vrai repas ou des sucres lents pour prévenir la rechute",
+      "Si un proche dispose d'un kit de glucagon et sait l'utiliser, il peut l'administrer à une victime inconsciente",
+      "Maintenir une victime inconsciente en PLS et surveiller la respiration en continu",
+      "Rechercher et corriger la cause (repas sauté, dose d'insuline, effort, alcool)"
+    ],
+    "ressourcesImprovises": [
+      "Tout aliment très sucré fait l'affaire pour le resucrage rapide (confiture, bonbons, sirop)",
+      "Éviter les produits 'light' ou édulcorés qui ne contiennent pas de vrai sucre"
+    ],
+    "signesAggravation": [
+      "Confusion croissante puis somnolence",
+      "Apparition de convulsions",
+      "Perte de connaissance",
+      "Respiration anormale"
+    ],
+    "limitesSansSecours": "Une hypoglycémie corrigée précocement par voie orale se résout en général sans séquelle. Une hypoglycémie prolongée avec coma peut provoquer des lésions cérébrales et nécessite une injection de glucose ou de glucagon.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

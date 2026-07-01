@@ -1,0 +1,133 @@
+{
+  "id": "morsure-piqure",
+  "titre": "Morsure / Piqûre Animale",
+  "categorie": "secours-personne",
+  "sousCategorie": "environnemental",
+  "tags": ["venin", "infection", "rage", "tétanos", "morsure", "piqûre"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Prendre en charge une morsure ou une piqûre animale : nettoyer la plaie, limiter la diffusion d'un venin, surveiller la réaction allergique et l'infection, et déclencher les prophylaxies nécessaires (tétanos, rage).",
+
+  "conditionsActivation": "Morsure (chien, chat, rongeur, serpent, humain) ou piqûre (guêpe, abeille, méduse, scorpion, tique) : plaie, douleur, gonflement, rougeur. Surveiller une réaction allergique grave et les signes d'envenimation.",
+
+  "diagnosticRapide": {
+    "visuels": ["Plaie(s), traces de crocs ou de dard", "Rougeur, gonflement local qui s'étend", "Dard resté planté (abeille), tique accrochée", "Traînée rouge remontant le membre (lymphangite = infection)"],
+    "auditifs": ["Plainte de douleur, de brûlure au point de piqûre", "La victime décrit l'animal en cause", "Signalement de démangeaisons ou d'une gêne respiratoire (allergie)"],
+    "comportementaux": ["Anxiété liée à l'animal (serpent, chien)", "Agitation ou malaise (venin, allergie)", "Signes généraux : nausées, vertiges, difficulté à respirer (urgence)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Nouvelle attaque de l'animal (le mettre à distance sans le poursuivre)", "Contact avec le sang (risque infectieux)", "Piqûres multiples (essaim)"],
+    "equipementsRequis": ["Gants de protection", "Eau et savon pour nettoyer", "Antiseptique, pansement", "Poche de froid enveloppée", "Auto-injecteur d'adrénaline si allergie connue"],
+    "regleUniverselle": "Se mettre en sécurité et éloigner l'animal sans le poursuivre. Identifier l'animal si possible (utile pour le traitement) mais sans prendre de risque. Surveiller une réaction allergique grave.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 (+ Centre Antipoison pour venins) — appeler pour morsure de serpent, réaction allergique, plaie grave ou animal suspect de rage",
+    "quoiDire": "Je suis [NOM], au [LIEU]. [Morsure / piqûre] par [animal si connu] sur [localisation]. Signes : [douleur / gonflement / gêne respiratoire]. Victime [consciente / signes allergiques]. Vaccination tétanos [à jour / inconnue].",
+    "informationsAFournir": ["Animal en cause (espèce, domestique/sauvage, connu/inconnu)", "Localisation et aspect de la plaie", "Signes généraux (allergie, malaise)", "Statut vaccinal tétanos et contexte (pays pour la rage)"]
+  },
+
+  "actionsImmédiates": [
+    "Se METTRE EN SÉCURITÉ, éloigner l'animal sans le poursuivre",
+    "NETTOYER la plaie à l'eau et au savon (5-10 min), désinfecter",
+    "SURVEILLER une réaction allergique (gêne respiratoire, œdème) → protocole anaphylaxie",
+    "APPELER le 15 selon gravité ; vérifier tétanos / risque rage"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Se mettre en sécurité, mettre des gants"},
+    {"etape": 2, "action": "Nettoyer abondamment la plaie à l'eau et au savon pendant 5 à 10 minutes, puis appliquer un antiseptique"},
+    {"etape": 3, "action": "PIQÛRE d'abeille : retirer le dard en le raclant (ongle, carte), sans le pincer (pour ne pas injecter plus de venin)"},
+    {"etape": 4, "action": "Appliquer du froid enveloppé pour limiter douleur et gonflement (sauf morsure de serpent)"},
+    {"etape": 5, "action": "MORSURE DE SERPENT : allonger et immobiliser la victime, immobiliser le membre en position basse, retirer bagues/montres, NE PAS inciser/aspirer/poser de garrot, 15 immédiat"},
+    {"etape": 6, "action": "Surveiller l'apparition d'une réaction allergique grave (œdème du visage, gêne respiratoire, malaise) → passer au protocole choc anaphylactique, adrénaline si disponible"},
+    {"etape": 7, "action": "Couvrir la plaie d'un pansement propre, ne pas la refermer hermétiquement (risque d'infection en milieu fermé)"},
+    {"etape": 8, "action": "Vérifier la vaccination antitétanique ; évaluer le risque de rage (animal inconnu, mammifère mordeur, pays à risque)"},
+    {"etape": 9, "action": "Consulter un médecin : les morsures (surtout de chat et de main) s'infectent facilement et nécessitent souvent un antibiotique et parfois une prophylaxie rage/tétanos"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Réaction allergique grave (œdème, urticaire diffuse, gêne respiratoire, malaise)",
+      "alors": "Choc anaphylactique → adrénaline (auto-injecteur) + 15 immédiat"
+    },
+    {
+      "condition": "Morsure de serpent (vipère en France)",
+      "alors": "Immobiliser, allonger, membre en position basse, retirer bagues, 15 + Centre Antipoison — NE PAS inciser, aspirer, garrotter ni refroidir"
+    },
+    {
+      "condition": "Morsure de mammifère (chien, chat, rongeur, humain)",
+      "alors": "Nettoyage soigneux, avis médical (antibiotique fréquent, tétanos, risque de rage selon l'animal et le pays)"
+    },
+    {
+      "condition": "Piqûre d'hyménoptère (guêpe, abeille) sans allergie",
+      "alors": "Retirer le dard, froid, antiseptique — surveiller ; multiples piqûres ou piqûre dans la bouche/gorge → 15"
+    },
+    {
+      "condition": "Piqûre dans la bouche ou la gorge, ou piqûres multiples",
+      "alors": "Risque d'œdème des voies aériennes → 15 immédiat, sucer un glaçon si dans la bouche"
+    }
+  ],
+
+  "notesCritiques": [
+    "Morsure de serpent : NE JAMAIS inciser, aspirer, poser un garrot ni refroidir — immobiliser et alerter le 15",
+    "Retirer un dard d'abeille en le raclant, jamais en le pinçant (injection de venin supplémentaire)",
+    "Toute morsure peut transmettre le tétanos : vérifier la vaccination",
+    "La rage est mortelle une fois déclarée : morsure d'animal inconnu ou de pays à risque = avis médical urgent pour prophylaxie",
+    "Les morsures de chat et à la main s'infectent très souvent : consultation systématique",
+    "Surveiller toute réaction allergique grave, surtout chez les personnes déjà allergiques aux piqûres"
+  ],
+
+  "pointsControle": [
+    "L'animal a été éloigné et identifié si possible",
+    "La plaie a été nettoyée à l'eau et au savon puis désinfectée",
+    "Une réaction allergique a été recherchée et prise en charge",
+    "Le statut tétanos et le risque de rage ont été évalués",
+    "Un avis médical est prévu (infection, prophylaxies)"
+  ],
+
+  "conditionsArretEscalade": [
+    "Réaction allergique grave → adrénaline + 15",
+    "Morsure de serpent, piqûre dans la gorge, piqûres multiples → 15",
+    "Signes d'infection (fièvre, traînée rouge, pus) → avis médical rapide"
+  ],
+
+  "ressourcesNecessaires": [
+    "Gants de protection",
+    "Eau, savon, antiseptique, pansements",
+    "Poche de froid et linge de protection",
+    "Auto-injecteur d'adrénaline si allergie connue",
+    "Numéros du 15 et du Centre Antipoison"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une morsure/piqûre, en zone isolée",
+    "actions": [
+      "Nettoyer soigneusement et longuement la plaie à l'eau et au savon, refaire le pansement régulièrement",
+      "Pour une morsure de serpent : garder la victime au repos, membre immobilisé et en position basse, la rassurer (l'agitation accélère la diffusion du venin), et organiser une évacuation rapide",
+      "Surveiller étroitement l'apparition d'une réaction allergique (préparer l'adrénaline si la victime en possède)",
+      "Surveiller l'extension du gonflement, l'apparition de fièvre ou d'une traînée rouge (infection)",
+      "Noter l'heure de la morsure et l'évolution des symptômes pour les secours"
+    ],
+    "ressourcesImprovises": [
+      "Eau propre et savon pour un nettoyage prolongé",
+      "Attelle improvisée pour immobiliser un membre mordu par un serpent",
+      "Linge propre et froid (eau fraîche) pour les piqûres, sauf morsure de serpent"
+    ],
+    "signesAggravation": [
+      "Gêne respiratoire, œdème du visage ou de la gorge (allergie grave)",
+      "Gonflement qui s'étend rapidement, douleur intense (envenimation)",
+      "Fièvre, rougeur chaude, pus, traînée rouge (infection)",
+      "Malaise, troubles de la conscience"
+    ],
+    "limitesSansSecours": "Le nettoyage limite le risque infectieux mais ne remplace pas les prophylaxies (tétanos, rage), les antibiotiques ni, pour les envenimations graves, le sérum antivenimeux disponible uniquement en milieu hospitalier.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

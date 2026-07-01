@@ -1,0 +1,131 @@
+{
+  "id": "avc",
+  "titre": "AVC — Accident Vasculaire Cérébral",
+  "categorie": "secours-personne",
+  "sousCategorie": "neurologique",
+  "tags": ["FAST", "paralysie", "parole", "AVC", "cerveau", "fenêtre thérapeutique"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître précocement un AVC grâce au test FAST et déclencher l'alerte immédiate pour permettre une prise en charge dans la fenêtre thérapeutique (thrombolyse / thrombectomie).",
+
+  "conditionsActivation": "Apparition BRUTALE d'un déficit neurologique : bouche ou visage qui tombe d'un côté, faiblesse ou paralysie d'un bras/d'une jambe, troubles de la parole, de la vision ou de l'équilibre.",
+
+  "diagnosticRapide": {
+    "visuels": ["Asymétrie du visage (un coin de la bouche tombe)", "Un bras qui chute quand la victime tend les deux devant elle", "Regard dévié, trouble de la vision", "Perte d'équilibre soudaine"],
+    "auditifs": ["Parole pâteuse, mots déformés ou incompréhensibles", "Difficulté à trouver ses mots ou à répéter une phrase simple", "La victime ne comprend plus les consignes"],
+    "comportementaux": ["Confusion soudaine", "Maladresse d'un côté du corps", "Céphalée brutale et intense (AVC hémorragique)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Peu de risque direct pour l'intervenant", "Chute possible de la victime à sécuriser"],
+    "equipementsRequis": ["Téléphone pour alerter le 15", "Rien d'autre : la priorité absolue est l'alerte et le transport rapide"],
+    "regleUniverselle": "Chaque minute compte : 'time is brain'. Noter l'heure exacte d'apparition des premiers signes et alerter le 15 sans délai.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — impérativement, pour orientation directe vers une unité neuro-vasculaire (UNV)",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Suspicion d'AVC : [signes FAST observés]. Début des signes à [HEURE PRÉCISE]. Victime [consciente / inconsciente], glycémie [si connue].",
+    "informationsAFournir": ["HEURE EXACTE d'apparition des premiers signes (capital)", "Signes FAST constatés (visage, bras, parole)", "Antécédents et traitements (anticoagulants ?)", "État de conscience"]
+  },
+
+  "actionsImmédiates": [
+    "TEST FAST : Face (visage), Arm (bras), Speech (parole), Time (heure)",
+    "NOTER L'HEURE PRÉCISE d'apparition des premiers signes",
+    "APPELER LE 15 IMMÉDIATEMENT (unité neuro-vasculaire)",
+    "Installer la victime en position demi-assise, au repos, à jeun"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Réaliser le test FAST — Face : demander de sourire (bouche qui tombe d'un côté ?)"},
+    {"etape": 2, "action": "Arm : demander de lever les deux bras (un bras chute ?)"},
+    {"etape": 3, "action": "Speech : demander de répéter une phrase simple (parole déformée, incompréhensible ?)"},
+    {"etape": 4, "action": "Time : noter l'HEURE PRÉCISE du début des signes et appeler le 15 IMMÉDIATEMENT si un seul signe est présent"},
+    {"etape": 5, "action": "Installer la victime en position demi-assise (tête et tronc surélevés à ~30°)"},
+    {"etape": 6, "action": "Ne rien donner à boire ni à manger (risque de fausse route, chirurgie possible)"},
+    {"etape": 7, "action": "Rassurer, desserrer les vêtements, noter l'évolution des signes"},
+    {"etape": 8, "action": "Si la victime perd connaissance mais respire : PLS (côté paralysé vers le bas de préférence) + surveillance"},
+    {"etape": 9, "action": "Rassembler les traitements en cours (anticoagulants ++), rester joignable pour le SAMU"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Un seul signe FAST présent (visage, bras ou parole)",
+      "alors": "Suspicion d'AVC → 15 immédiat, noter l'heure de début, position demi-assise, à jeun"
+    },
+    {
+      "condition": "Signes régressifs / disparus en quelques minutes",
+      "alors": "Possible AIT (accident ischémique transitoire) → appeler le 15 quand même : urgence, risque d'AVC constitué"
+    },
+    {
+      "condition": "Victime inconsciente mais respire",
+      "alors": "PLS + 15 + surveillance de la respiration"
+    },
+    {
+      "condition": "Victime inconsciente qui ne respire pas",
+      "alors": "RCP + 15 immédiat"
+    },
+    {
+      "condition": "Céphalée brutale 'en coup de tonnerre' + vomissements",
+      "alors": "Possible AVC hémorragique → 15 immédiat, position demi-assise, calme absolu"
+    }
+  ],
+
+  "notesCritiques": [
+    "'Time is brain' : la fenêtre de thrombolyse est d'environ 4h30, la thrombectomie jusqu'à 6h (parfois plus) — l'heure de début conditionne le traitement",
+    "Noter l'HEURE PRÉCISE des premiers signes est l'information la plus utile aux secours",
+    "Ne JAMAIS faire boire, manger ou donner de médicament (aspirine notamment) : risque de fausse route et d'aggravation d'un saignement",
+    "Un déficit qui régresse (AIT) reste une urgence : appeler le 15",
+    "Position demi-assise sauf inconscience (alors PLS)",
+    "Appeler le 15 et non un transport personnel : orientation directe vers une unité neuro-vasculaire"
+  ],
+
+  "pointsControle": [
+    "Le test FAST a été réalisé",
+    "L'heure de début des signes est notée",
+    "Le 15 a été alerté immédiatement",
+    "La victime est en position demi-assise, à jeun",
+    "Les traitements en cours (anticoagulants) sont identifiés"
+  ],
+
+  "conditionsArretEscalade": [
+    "Tout signe FAST → 15 immédiat, orientation UNV",
+    "Perte de connaissance avec respiration → PLS + 15",
+    "Arrêt respiratoire → RCP"
+  ],
+
+  "ressourcesNecessaires": [
+    "Téléphone pour le 15",
+    "Support pour installer la victime en demi-assis (coussins, dossier)",
+    "Liste des traitements en cours de la victime",
+    "De quoi noter l'heure de début"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent ou en zone isolée éloignée d'une unité neuro-vasculaire",
+    "actions": [
+      "Organiser le transport le plus rapide possible vers un hôpital doté d'une UNV, en accord avec le 15",
+      "Maintenir la victime en position demi-assise, au calme, à jeun",
+      "Surveiller conscience, respiration et évolution des signes toutes les 5 minutes",
+      "Ne donner AUCUN médicament (ni aspirine ni anticoagulant) sans avis médical",
+      "Noter l'évolution horaire des signes pour la transmettre à l'équipe médicale"
+    ],
+    "ressourcesImprovises": [
+      "Coussins ou vêtements roulés pour maintenir la position demi-assise",
+      "Couverture pour éviter le refroidissement sans surchauffer"
+    ],
+    "signesAggravation": [
+      "Aggravation ou extension du déficit (paralysie qui gagne)",
+      "Baisse de la vigilance, somnolence, coma",
+      "Vomissements, céphalée croissante",
+      "Troubles respiratoires"
+    ],
+    "limitesSansSecours": "Aucun geste de secourisme ne traite l'AVC : seul l'hôpital peut réaliser la thrombolyse ou la thrombectomie. Le pronostic dépend directement de la rapidité de prise en charge — le retard se paie en neurones détruits.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

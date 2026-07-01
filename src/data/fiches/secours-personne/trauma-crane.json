@@ -1,0 +1,132 @@
+{
+  "id": "trauma-crane",
+  "titre": "Traumatisme Crânien",
+  "categorie": "secours-personne",
+  "sousCategorie": "traumatologique",
+  "tags": ["concussion", "surveillance", "traumatisme crânien", "commotion", "rachis", "conscience"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Évaluer un traumatisme crânien, détecter les signes d'aggravation neurologique, protéger le rachis cervical en cas de suspicion et orienter vers les secours.",
+
+  "conditionsActivation": "Choc à la tête (chute, accident, coup, sport) suivi d'une perte de connaissance même brève, d'une plaie du cuir chevelu, de maux de tête, de vomissements, de confusion ou de troubles du comportement.",
+
+  "diagnosticRapide": {
+    "visuels": ["Plaie ou bosse du cuir chevelu, saignement", "Pupilles inégales (anisocorie)", "Écoulement de sang ou de liquide clair par le nez ou l'oreille", "Ecchymoses autour des yeux ou derrière l'oreille (signe tardif)"],
+    "auditifs": ["Propos confus, répétitifs, désorientés", "Plainte de céphalées croissantes", "Nausées, la victime dit qu'elle voit double / flou"],
+    "comportementaux": ["Perte de connaissance initiale même brève", "Amnésie des faits (ne se souvient pas du choc)", "Somnolence croissante, agitation ou comportement inhabituel", "Vomissements"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Zone d'accident (trafic, hauteur)", "Contact avec le sang (plaie du cuir chevelu très hémorragique)"],
+    "equipementsRequis": ["Gants de protection", "Compresses / tissu propre pour une plaie", "Couverture"],
+    "regleUniverselle": "En cas de choc violent ou de suspicion d'atteinte de la colonne : NE PAS mobiliser la victime, maintenir la tête dans l'axe du corps et attendre les secours.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler si perte de connaissance, vomissements, confusion, ou aggravation",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Traumatisme crânien après [mécanisme]. Perte de connaissance [oui/non, durée]. Victime [consciente et orientée / confuse / somnolente]. Suspicion d'atteinte de la nuque : [oui/non].",
+    "informationsAFournir": ["Mécanisme et violence du choc", "Perte de connaissance et durée", "État de conscience et son évolution", "Vomissements, convulsions, pupilles"]
+  },
+
+  "actionsImmédiates": [
+    "Ne PAS mobiliser si choc violent : maintenir la tête dans l'axe",
+    "ÉVALUER la conscience et surveiller son évolution",
+    "COMPRIMER une plaie du cuir chevelu avec un tissu propre",
+    "APPELER le 15 si perte de connaissance, vomissements ou confusion"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser la zone, mettre des gants"},
+    {"etape": 2, "action": "Parler à la victime : est-elle consciente, orientée ? Se souvient-elle du choc ? Noter l'heure et l'état initial"},
+    {"etape": 3, "action": "En cas de choc violent, chute de hauteur ou douleur cervicale : NE PAS mobiliser, maintenir la tête dans l'axe du tronc à deux mains"},
+    {"etape": 4, "action": "Comprimer une plaie hémorragique du cuir chevelu avec une compresse ou un tissu propre (sans appuyer sur un éventuel enfoncement osseux)"},
+    {"etape": 5, "action": "Installer la victime consciente au repos, en position demi-assise si pas de suspicion rachidienne, et la garder éveillée"},
+    {"etape": 6, "action": "Appeler le 15 en présence de tout signe d'alerte (perte de connaissance, vomissements, confusion, céphalée intense)"},
+    {"etape": 7, "action": "Surveiller étroitement pendant 24-48h : conscience, pupilles, comportement, vomissements, maux de tête"},
+    {"etape": 8, "action": "Si perte de connaissance avec respiration : PLS en maintenant l'axe tête-cou-tronc (retournement à plusieurs si possible)"},
+    {"etape": 9, "action": "Si arrêt respiratoire : RCP + 15"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Choc violent, chute de hauteur, ou douleur/déformation de la nuque",
+      "alors": "Suspicion d'atteinte du rachis → NE PAS mobiliser, maintien tête dans l'axe, 15 immédiat"
+    },
+    {
+      "condition": "Perte de connaissance (même brève), vomissements, confusion, pupilles inégales, écoulement nez/oreille",
+      "alors": "Signes de gravité → 15 immédiat"
+    },
+    {
+      "condition": "Choc léger, victime consciente, orientée, sans signe d'alerte",
+      "alors": "Surveillance rapprochée 24-48h, consultation médicale, consignes de surveillance à l'entourage"
+    },
+    {
+      "condition": "Aggravation secondaire (somnolence, vomissements, céphalée croissante, comportement anormal)",
+      "alors": "15 immédiat — hématome intracrânien possible"
+    },
+    {
+      "condition": "Victime inconsciente",
+      "alors": "PLS en maintenant l'axe si respire ; RCP si arrêt respiratoire ; 15 dans tous les cas"
+    }
+  ],
+
+  "notesCritiques": [
+    "Un intervalle libre (la victime va bien puis se dégrade en quelques heures) évoque un hématome intracrânien : surveiller 24-48h",
+    "Ne jamais mobiliser une victime suspecte d'atteinte cervicale : maintenir la tête dans l'axe du corps",
+    "Des pupilles inégales, un écoulement clair par le nez ou l'oreille sont des signes de gravité",
+    "Vomissements répétés, somnolence et confusion croissante = alerter le 15 sans délai",
+    "Ne pas donner à boire, à manger ni de médicament (chirurgie possible, masque les signes)",
+    "Toute perte de connaissance, même de quelques secondes, justifie un avis médical"
+  ],
+
+  "pointsControle": [
+    "L'axe tête-cou-tronc a été respecté en cas de suspicion rachidienne",
+    "L'état de conscience initial est noté et surveillé",
+    "Une plaie éventuelle est comprimée",
+    "Le 15 est alerté en présence de signes de gravité",
+    "Des consignes de surveillance 24-48h sont données à l'entourage"
+  ],
+
+  "conditionsArretEscalade": [
+    "Signes de gravité neurologique → 15 immédiat",
+    "Aggravation secondaire (intervalle libre) → 15 immédiat",
+    "Inconscience / arrêt respiratoire → PLS ou RCP"
+  ],
+
+  "ressourcesNecessaires": [
+    "Gants de protection",
+    "Compresses / tissu propre pour une plaie",
+    "Couverture de survie",
+    "Téléphone pour le 15 / 112",
+    "De quoi noter l'heure et l'évolution de la conscience"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après un traumatisme crânien, en zone isolée",
+    "actions": [
+      "Surveiller la conscience toutes les 15 minutes (poser des questions simples : nom, lieu, date) et noter l'évolution",
+      "Maintenir l'immobilisation de la tête et du cou si un choc violent est suspecté, jusqu'à évacuation prudente à plusieurs",
+      "Comprimer et protéger toute plaie du cuir chevelu, réchauffer la victime",
+      "Ne rien donner par la bouche tant qu'un avis médical n'a pas exclu la chirurgie",
+      "En cas d'aggravation (somnolence, vomissements, pupilles inégales) : accélérer l'évacuation vers un hôpital"
+    ],
+    "ressourcesImprovises": [
+      "Objets roulés (vêtements, sacs) placés de part et d'autre de la tête pour la stabiliser",
+      "Compresse improvisée avec un tissu propre pour une plaie du cuir chevelu"
+    ],
+    "signesAggravation": [
+      "Baisse progressive de la vigilance, somnolence anormale",
+      "Vomissements répétés",
+      "Pupilles de tailles différentes",
+      "Céphalée croissante, convulsions, faiblesse d'un côté du corps"
+    ],
+    "limitesSansSecours": "Un hématome intracrânien peut comprimer le cerveau en quelques heures et devenir mortel sans neurochirurgie. La surveillance permet de détecter l'aggravation, mais seul l'hôpital (scanner, chirurgie) peut traiter les lésions graves.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

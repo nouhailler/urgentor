@@ -1,0 +1,131 @@
+{
+  "id": "convulsions",
+  "titre": "Convulsions / Crise d'Épilepsie",
+  "categorie": "secours-personne",
+  "sousCategorie": "neurologique",
+  "tags": ["épilepsie", "PLS", "protection tête", "convulsions", "crise", "neurologique"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Protéger la victime pendant une crise convulsive, éviter les blessures, sécuriser les voies aériennes après la crise et savoir quand appeler les secours.",
+
+  "conditionsActivation": "Personne qui perd brutalement connaissance, se raidit puis présente des secousses musculaires généralisées (crise tonico-clonique), parfois avec perte d'urines, morsure de langue et bave.",
+
+  "diagnosticRapide": {
+    "visuels": ["Chute brutale, corps raide puis secousses rythmiques", "Yeux révulsés, mâchoires serrées", "Bave, parfois teintée de sang (morsure de langue)", "Teint bleuté transitoire pendant la crise"],
+    "auditifs": ["Cri initial possible au début de la crise", "Respiration bruyante ou bloquée pendant la phase tonique", "Aucune réponse aux questions"],
+    "comportementaux": ["Perte de contact total", "Mouvements involontaires incontrôlables", "Confusion et somnolence après la crise (phase post-critique)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Coups involontaires de la victime pendant les secousses", "Environnement dangereux (objets durs, angles, escaliers, eau)"],
+    "equipementsRequis": ["Coussin, vêtement ou main pour protéger la tête", "Gants si disponibles"],
+    "regleUniverselle": "NE RIEN mettre dans la bouche, NE PAS immobiliser la victime. Protéger la tête et écarter les objets dangereux, laisser la crise se dérouler.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler si crise > 5 min, crises répétées, première crise, blessure, grossesse, ou eau/diabète",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Personne en crise convulsive depuis [HEURE de début], [première crise / épileptique connu]. La crise dure/est terminée. Victime [inconsciente / confuse].",
+    "informationsAFournir": ["Heure de début et durée de la crise", "Première crise ou épilepsie connue", "Blessures éventuelles", "État après la crise (respire, confus, inconscient)"]
+  },
+
+  "actionsImmédiates": [
+    "PROTÉGER la tête (coussin, vêtement) et écarter les objets dangereux",
+    "NE RIEN mettre dans la bouche, NE PAS retenir les mouvements",
+    "NOTER L'HEURE de début de la crise",
+    "APRÈS la crise : PLS + surveillance de la respiration"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Rester calme, noter l'heure de début de la crise"},
+    {"etape": 2, "action": "Écarter tout objet dur ou dangereux autour de la victime"},
+    {"etape": 3, "action": "Glisser quelque chose de mou sous la tête (coussin, vêtement plié) pour la protéger"},
+    {"etape": 4, "action": "NE PAS immobiliser, NE PAS mettre les doigts ni aucun objet dans la bouche"},
+    {"etape": 5, "action": "Desserrer col, cravate, ceinture pour faciliter la respiration"},
+    {"etape": 6, "action": "Laisser la crise se dérouler (généralement 1 à 3 minutes)"},
+    {"etape": 7, "action": "À la fin des secousses : mettre en Position Latérale de Sécurité (PLS) pour dégager les voies aériennes (bave, vomissements)"},
+    {"etape": 8, "action": "Vérifier la respiration — la surveiller en continu pendant la phase de récupération"},
+    {"etape": 9, "action": "Rester auprès de la victime, la rassurer à son réveil (confusion normale), rechercher les blessures"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Crise qui dure plus de 5 minutes OU crises qui s'enchaînent sans reprise de conscience",
+      "alors": "État de mal épileptique → 15 IMMÉDIAT, urgence vitale"
+    },
+    {
+      "condition": "Première crise connue, ou victime enceinte, diabétique, ou survenue dans l'eau",
+      "alors": "Appeler le 15 systématiquement"
+    },
+    {
+      "condition": "Épileptique connu, crise brève (< 5 min), récupération normale",
+      "alors": "Surveillance, PLS, repos — appel au 15 selon consignes habituelles / présence de blessure"
+    },
+    {
+      "condition": "Après la crise, la victime ne respire pas normalement",
+      "alors": "Débuter la RCP + 15 immédiat"
+    },
+    {
+      "condition": "Blessure lors de la chute (tête, membre)",
+      "alors": "Immobiliser si suspicion de traumatisme, appeler le 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "NE RIEN mettre dans la bouche : ni doigt, ni objet, ni médicament — risque d'étouffement et de morsure",
+    "Ne pas retenir les mouvements : cela ne stoppe pas la crise et peut blesser",
+    "Une crise de plus de 5 minutes est une URGENCE VITALE (état de mal épileptique)",
+    "La confusion et la somnolence après la crise sont normales (phase post-critique)",
+    "Noter l'heure de début est capital pour évaluer la durée",
+    "Une PLS après la crise protège les voies aériennes de la bave et des vomissements"
+  ],
+
+  "pointsControle": [
+    "La tête a été protégée et les objets dangereux écartés",
+    "Rien n'a été mis dans la bouche",
+    "L'heure de début de la crise est notée",
+    "La victime est en PLS et respire après la crise",
+    "Le 15 est alerté si crise longue, première crise ou blessure"
+  ],
+
+  "conditionsArretEscalade": [
+    "Crise > 5 min ou crises répétées → 15 immédiat (état de mal)",
+    "Absence de respiration après la crise → RCP",
+    "Blessure grave lors de la chute → immobilisation + 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Coussin ou vêtement pour protéger la tête",
+    "Téléphone pour le 15 / 112",
+    "Gants de protection si disponibles",
+    "Couverture pour la phase de récupération"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une crise ou en cas de crises répétées en zone isolée",
+    "actions": [
+      "Maintenir la victime en PLS et surveiller la respiration en continu",
+      "Si une nouvelle crise survient : reprotéger la tête, écarter les objets, noter l'heure",
+      "Ne pas donner à boire ni à manger tant que la conscience n'est pas totalement revenue",
+      "Rechercher un traitement anti-épileptique personnel et respecter la prescription connue de la victime",
+      "Rechercher une cause corrigeable (hypoglycémie chez un diabétique : resucrage si conscient et capable d'avaler)"
+    ],
+    "ressourcesImprovises": [
+      "Vêtements pliés en guise de coussin de protection de la tête",
+      "Couverture pour maintenir la victime au chaud pendant la récupération"
+    ],
+    "signesAggravation": [
+      "Crises qui s'enchaînent sans reprise de conscience (état de mal)",
+      "Respiration qui reste anormale après la crise",
+      "Coloration bleutée persistante des lèvres",
+      "Absence de réveil au bout de 15-20 minutes"
+    ],
+    "limitesSansSecours": "Une crise isolée cède généralement seule sans séquelle. En revanche l'état de mal épileptique (crises prolongées ou répétées) engage le pronostic vital et nécessite impérativement un traitement médicamenteux hospitalier.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

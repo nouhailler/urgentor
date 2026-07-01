@@ -1,0 +1,134 @@
+{
+  "id": "accouchement-urgence",
+  "titre": "Accouchement Inopiné",
+  "categorie": "secours-personne",
+  "sousCategorie": "obstétrique",
+  "tags": ["nouveau-né", "cordon", "chaleur", "accouchement", "délivrance", "urgence"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Accompagner un accouchement imminent qui ne peut être différé, accueillir le nouveau-né en toute sécurité (le sécher, le réchauffer, dégager ses voies aériennes) et prévenir les complications pour la mère et l'enfant.",
+
+  "conditionsActivation": "Contractions rapprochées et intenses, besoin irrépressible de pousser, tête du bébé visible à la vulve : l'accouchement est imminent et ne peut être retenu. Appeler le 15 sans délai pour être guidé.",
+
+  "diagnosticRapide": {
+    "visuels": ["Tête du bébé visible ou qui apparaît à chaque poussée", "Perte des eaux, saignements", "Vulve qui bombe pendant les contractions"],
+    "auditifs": ["La mère dit que 'le bébé arrive', envie de pousser incontrôlable", "Cris et gémissements rythmés par les contractions", "Contractions très rapprochées (moins de 2 min)"],
+    "comportementaux": ["Besoin de pousser irrépressible", "Agitation, panique", "Position instinctive (accroupie, allongée)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contact avec le sang et les liquides (risque biologique)", "Stress et gestion de deux patients (mère et enfant)"],
+    "equipementsRequis": ["Gants propres", "Linges propres, serviettes, couvertures (pour sécher et réchauffer le bébé)", "Draps propres sous la mère", "Bonnet ou linge pour la tête du nouveau-né"],
+    "regleUniverselle": "Rester calme et appeler le 15 pour être guidé en direct. Accompagner sans tirer : la nature fait l'essentiel. Sécher et réchauffer immédiatement le nouveau-né.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) — appeler impérativement et rester en ligne (haut-parleur) pour être guidé pendant tout l'accouchement",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Accouchement en cours, la tête du bébé [apparaît / est sortie]. Grossesse de [nombre de semaines si connu], [premier bébé ou non]. Restez en ligne pour me guider.",
+    "informationsAFournir": ["Adresse précise", "Terme de la grossesse si connu", "Stade (tête visible, bébé sorti)", "Nombre de bébés attendus, particularités connues"]
+  },
+
+  "actionsImmédiates": [
+    "APPELER le 15 et rester en ligne (haut-parleur) pour être guidé",
+    "Installer la mère allongée, hanches surélevées, sur des linges propres",
+    "ACCOMPAGNER la sortie du bébé SANS TIRER, soutenir la tête puis le corps",
+    "À la naissance : SÉCHER, RÉCHAUFFER et stimuler le bébé, le poser sur la mère"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Appeler le 15, mettre le haut-parleur, se laver les mains et mettre des gants propres"},
+    {"etape": 2, "action": "Installer la mère sur le dos, jambes fléchies et écartées, bassin légèrement surélevé, sur des linges/draps propres"},
+    {"etape": 3, "action": "Laisser la mère pousser pendant les contractions ; soutenir doucement la tête du bébé pour éviter une sortie trop brutale, SANS jamais tirer"},
+    {"etape": 4, "action": "Quand la tête est sortie, vérifier que le cordon n'entoure pas le cou : s'il est là et lâche, le faire glisser doucement par-dessus la tête"},
+    {"etape": 5, "action": "Accompagner la sortie des épaules puis du corps (le bébé est glissant : bien le tenir)"},
+    {"etape": 6, "action": "Noter l'heure de naissance. Sécher énergiquement le bébé avec un linge propre, le stimuler (frotter le dos, la plante des pieds), le couvrir et lui mettre un bonnet"},
+    {"etape": 7, "action": "Poser le nouveau-né sur le ventre nu de la mère (peau à peau), la tête légèrement plus basse, et les couvrir tous les deux pour les garder au chaud"},
+    {"etape": 8, "action": "NE PAS tirer sur le cordon, NE PAS le couper (attendre les secours). Laisser le placenta se décoller seul (délivrance), le conserver pour les secours"},
+    {"etape": 9, "action": "Surveiller la mère (saignements) et le bébé (respiration, coloration, cri) ; masser doucement le ventre de la mère au-dessus du pubis pour limiter l'hémorragie après la délivrance"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Bébé qui ne respire pas / ne crie pas après séchage et stimulation",
+      "alors": "Débuter la réanimation du nouveau-né (5 insufflations puis 3 compressions pour 1 insufflation, très douces) + 15, suivre les consignes"
+    },
+    {
+      "condition": "Cordon enroulé autour du cou",
+      "alors": "S'il est lâche, le faire glisser doucement par-dessus la tête ; ne pas tirer ni serrer"
+    },
+    {
+      "condition": "Présentation anormale (pieds, siège, main d'abord)",
+      "alors": "Ne pas tirer, soutenir, 15 en urgence absolue et suivre les instructions du médecin régulateur"
+    },
+    {
+      "condition": "Saignement abondant de la mère après la naissance",
+      "alors": "Masser le ventre au-dessus du pubis (utérus), allonger jambes surélevées, couvrir, 15 immédiat (hémorragie de la délivrance)"
+    },
+    {
+      "condition": "Placenta expulsé",
+      "alors": "Le conserver dans un sac/linge pour les secours, ne pas tirer sur le cordon, surveiller les saignements"
+    }
+  ],
+
+  "notesCritiques": [
+    "NE JAMAIS tirer sur le bébé ni sur le cordon : la nature fait l'essentiel, on accompagne seulement",
+    "La priorité après la naissance : SÉCHER et RÉCHAUFFER le bébé (il se refroidit très vite) — peau à peau + bonnet + couverture",
+    "Ne pas couper le cordon : attendre les secours",
+    "Noter l'heure de naissance",
+    "Surveiller les saignements de la mère : une hémorragie de la délivrance est une urgence vitale",
+    "Rester en ligne avec le 15 : le médecin régulateur guide chaque étape"
+  ],
+
+  "pointsControle": [
+    "Le 15 a été appelé et guide l'intervention",
+    "La mère est bien installée sur des linges propres",
+    "Le bébé est né, séché, réchauffé et respire/crie",
+    "Le cordon n'a été ni tiré ni coupé",
+    "Les saignements de la mère sont surveillés"
+  ],
+
+  "conditionsArretEscalade": [
+    "Bébé qui ne respire pas → réanimation du nouveau-né + 15",
+    "Présentation anormale → 15 en urgence absolue",
+    "Hémorragie de la mère → massage utérin + 15 immédiat"
+  ],
+
+  "ressourcesNecessaires": [
+    "Gants propres",
+    "Linges propres, serviettes, couvertures",
+    "Bonnet ou linge pour la tête du bébé",
+    "Draps propres pour la mère",
+    "Sac / linge pour conserver le placenta",
+    "Téléphone (haut-parleur) pour le 15"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après un accouchement inopiné, en zone isolée",
+    "actions": [
+      "Maintenir le bébé au chaud en peau à peau contre la mère, tous deux couverts, bonnet sur la tête du nouveau-né (la lutte contre le froid est la priorité absolue)",
+      "Encourager la mise au sein précoce : la succion aide l'utérus à se contracter et limite les saignements",
+      "Surveiller la respiration et la coloration du bébé ; le stimuler s'il devient mou ou pâle",
+      "Surveiller les saignements de la mère et masser régulièrement l'utérus au-dessus du pubis",
+      "Ne couper le cordon qu'en dernier recours et uniquement guidé par le 15 (matériel propre, double ligature) ; sinon le laisser intact"
+    ],
+    "ressourcesImprovises": [
+      "Vêtements ou linges propres et secs pour sécher et emmailloter le bébé",
+      "Bonnet improvisé (bonnet, écharpe) pour limiter la perte de chaleur par la tête",
+      "Sac plastique propre pour recueillir et conserver le placenta"
+    ],
+    "signesAggravation": [
+      "Bébé mou, pâle ou bleu, qui respire mal ou ne crie pas",
+      "Bébé qui se refroidit malgré les couvertures",
+      "Saignement abondant et continu chez la mère",
+      "Mère pâle, avec malaise (choc hémorragique)"
+    ],
+    "limitesSansSecours": "Un accouchement normal se déroule le plus souvent bien avec un accompagnement simple. Mais une détresse du nouveau-né, une présentation anormale ou une hémorragie de la délivrance sont des urgences vitales qui nécessitent une équipe médicale.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, restez en ligne avec le 15."
+}

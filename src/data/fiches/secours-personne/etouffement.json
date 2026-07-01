@@ -1,0 +1,128 @@
+{
+  "id": "etouffement",
+  "titre": "Étouffement (Adulte, Enfant, Nourrisson)",
+  "categorie": "secours-personne",
+  "sousCategorie": "respiratoire",
+  "tags": ["obstruction", "Heimlich", "nourrisson", "voies aériennes", "désobstruction", "corps étranger"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "ERC / HAS",
+
+  "objectif": "Reconnaître une obstruction des voies aériennes et rétablir le passage de l'air par des gestes adaptés à l'âge, avant l'arrêt cardiaque par asphyxie.",
+
+  "conditionsActivation": "Personne qui porte les mains à la gorge pendant un repas ou en jouant (enfant), ne peut plus parler, tousser efficacement ou respirer. Distinguer immédiatement obstruction PARTIELLE (toux efficace) et TOTALE (aucun son, panique).",
+
+  "diagnosticRapide": {
+    "visuels": ["Mains portées à la gorge (signe universel)", "Visage rouge puis bleuté (cyanose)", "Bouche ouverte, panique dans le regard", "Impossibilité de tousser ou de parler"],
+    "auditifs": ["Obstruction partielle : toux, sifflements, la victime parle encore", "Obstruction totale : AUCUN son, pas de toux, pas de voix"],
+    "comportementaux": ["Agitation puis épuisement", "Perte de connaissance si l'obstruction persiste", "Nourrisson qui devient mou, ne pleure plus"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Morsure réflexe si doigt en bouche", "Gestes trop violents pouvant blesser (côtes, abdomen)"],
+    "equipementsRequis": ["Aucun matériel requis — gestes manuels", "Gants si disponibles"],
+    "regleUniverselle": "NE JAMAIS mettre les doigts en bouche à l'aveugle : risque d'enfoncer le corps étranger. Adapter les gestes à l'âge de la victime.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler si obstruction totale ou si la victime perd connaissance",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. [Adulte / enfant / nourrisson] en étouffement, obstruction [partielle / totale]. Je pratique les claques dans le dos / compressions. Victime [consciente / inconsciente].",
+    "informationsAFournir": ["Âge de la victime", "Obstruction partielle ou totale", "Gestes déjà réalisés", "État de conscience"]
+  },
+
+  "actionsImmédiates": [
+    "OBSTRUCTION PARTIELLE (la victime tousse) : ENCOURAGER à tousser, ne rien faire d'autre",
+    "OBSTRUCTION TOTALE : 5 CLAQUES vigoureuses entre les omoplates",
+    "Si échec : 5 COMPRESSIONS (Heimlich abdominal adulte/enfant, thoraciques nourrisson)",
+    "Si perte de connaissance : ALERTER le 15 et débuter la RCP"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Évaluer : la victime peut-elle tousser, parler, respirer ? Si OUI (obstruction partielle) → l'encourager à tousser, surveiller, ne pas taper dans le dos"},
+    {"etape": 2, "action": "Obstruction TOTALE (adulte/enfant) : se placer sur le côté, pencher la victime en avant, donner 5 claques vigoureuses entre les omoplates avec le talon de la main"},
+    {"etape": 3, "action": "Vérifier après chaque claque si le corps étranger est expulsé"},
+    {"etape": 4, "action": "Si échec : 5 compressions abdominales (Heimlich) — poing au creux de l'estomac, tirer vers soi et vers le haut"},
+    {"etape": 5, "action": "Alterner 5 claques dorsales / 5 compressions abdominales jusqu'à expulsion ou perte de connaissance"},
+    {"etape": 6, "action": "NOURRISSON (< 1 an) : à califourchon sur l'avant-bras tête vers le bas, 5 claques dorsales, puis retourner et 5 compressions thoraciques (2 doigts au centre du sternum) — JAMAIS de Heimlich abdominal"},
+    {"etape": 7, "action": "Si perte de connaissance : allonger au sol, alerter le 15 / 112, débuter la RCP (les compressions peuvent déloger le corps étranger)"},
+    {"etape": 8, "action": "À chaque insufflation de la RCP, regarder dans la bouche et retirer un corps étranger SEULEMENT s'il est visible et accessible"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "La victime tousse, parle ou respire (obstruction partielle)",
+      "alors": "Encourager à tousser, ne PAS taper dans le dos, surveiller et se tenir prêt à agir"
+    },
+    {
+      "condition": "Adulte / enfant, obstruction totale, conscient",
+      "alors": "5 claques dorsales puis 5 compressions abdominales (Heimlich), en alternance jusqu'à expulsion"
+    },
+    {
+      "condition": "Nourrisson < 1 an, obstruction totale",
+      "alors": "5 claques dorsales tête en bas puis 5 compressions THORACIQUES — jamais de Heimlich abdominal"
+    },
+    {
+      "condition": "Victime enceinte ou très obèse",
+      "alors": "Remplacer les compressions abdominales par des compressions THORACIQUES (poing au milieu du sternum)"
+    },
+    {
+      "condition": "Perte de connaissance",
+      "alors": "Alerter le 15, allonger au sol et débuter la RCP immédiatement"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne JAMAIS taper dans le dos d'une victime qui tousse encore : risque d'aggraver l'obstruction",
+    "Ne JAMAIS pratiquer le Heimlich abdominal sur un nourrisson (risque de lésions internes)",
+    "Ne pas mettre les doigts en bouche à l'aveugle : risque d'enfoncer le corps étranger",
+    "Après un Heimlich réussi, une consultation médicale est recommandée (risque de lésion abdominale)",
+    "L'obstruction totale mène à l'arrêt cardiaque en quelques minutes — agir sans délai",
+    "Chez la femme enceinte et l'obèse : compressions thoraciques et non abdominales"
+  ],
+
+  "pointsControle": [
+    "Le type d'obstruction (partielle/totale) a été correctement identifié",
+    "Les gestes sont adaptés à l'âge de la victime",
+    "Le corps étranger est expulsé ou la RCP est en cours",
+    "Le 15 a été alerté en cas d'obstruction totale ou de perte de connaissance",
+    "Une consultation médicale est prévue après désobstruction"
+  ],
+
+  "conditionsArretEscalade": [
+    "Corps étranger expulsé et respiration normale → surveillance + consultation médicale",
+    "Perte de connaissance → RCP + 15 immédiat",
+    "Échec des manœuvres → poursuivre en alternance jusqu'aux secours"
+  ],
+
+  "ressourcesNecessaires": [
+    "Aucun matériel indispensable — gestes manuels",
+    "Téléphone pour le 15 / 112",
+    "Gants de protection si disponibles"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent et la désobstruction n'est pas obtenue en zone isolée",
+    "actions": [
+      "Poursuivre l'alternance 5 claques dorsales / 5 compressions sans s'arrêter tant que la victime est consciente",
+      "Dès la perte de connaissance : allonger et débuter la RCP (30 compressions / 2 insufflations) — les compressions aident à déloger le corps étranger",
+      "Regarder dans la bouche à chaque ouverture et retirer un corps étranger uniquement s'il est visible et saisissable",
+      "Ne pas abandonner : une désobstruction peut survenir tardivement",
+      "Réchauffer et surveiller la victime après reprise de la respiration"
+    ],
+    "ressourcesImprovises": [
+      "Aucune improvisation matérielle : ce sont les gestes qui comptent",
+      "Un appui stable (dossier de chaise) pour les auto-manœuvres de Heimlich si l'on est seul"
+    ],
+    "signesAggravation": [
+      "Cyanose croissante (lèvres et visage bleus)",
+      "Épuisement puis perte de connaissance",
+      "Nourrisson qui devient mou et cesse de réagir"
+    ],
+    "limitesSansSecours": "Une obstruction totale non levée conduit à l'arrêt cardiaque par asphyxie en 3 à 5 minutes. Les manœuvres manuelles restent la seule solution ; il faut les poursuivre sans relâche.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

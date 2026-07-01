@@ -1,0 +1,133 @@
+{
+  "id": "coup-chaleur",
+  "titre": "Coup de Chaleur / Hyperthermie",
+  "categorie": "secours-personne",
+  "sousCategorie": "environnemental",
+  "tags": ["refroidissement", "hydratation", "ombre", "coup de chaleur", "hyperthermie", "canicule"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître un coup de chaleur (urgence vitale) et faire chuter rapidement la température corporelle par un refroidissement actif, tout en surveillant la conscience.",
+
+  "conditionsActivation": "Exposition à la chaleur ou effort intense en ambiance chaude : peau très chaude, maux de tête, nausées, épuisement, confusion. Le coup de chaleur (température > 40°C, troubles neurologiques) est une urgence vitale, à différencier de l'épuisement à la chaleur.",
+
+  "diagnosticRapide": {
+    "visuels": ["Peau chaude, rouge (coup de chaleur classique : peau souvent sèche ; à l'effort : peau parfois moite)", "Visage congestionné", "Sueurs abondantes (épuisement) ou peau sèche (coup de chaleur avancé)", "Démarche titubante, chute"],
+    "auditifs": ["Propos confus, incohérents", "Plainte de maux de tête violents, de nausées, de vertiges", "Élocution difficile"],
+    "comportementaux": ["Agitation ou au contraire abattement", "Confusion, désorientation, comportement anormal", "Somnolence, convulsions, perte de connaissance (gravité)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Même exposition à la chaleur", "Effort de déplacement de la victime en plein soleil"],
+    "equipementsRequis": ["Zone ombragée / fraîche", "Eau (à boire et pour refroidir)", "Linges humides, brumisateur, ventilateur / éventail", "Poches de froid enveloppées"],
+    "regleUniverselle": "Mettre à l'ombre et refroidir SANS ATTENDRE : chaque minute au-dessus de 40°C aggrave l'atteinte des organes. Le refroidissement prime, même avant l'arrivée des secours.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler immédiatement en cas de confusion, peau sèche et brûlante, ou perte de connaissance",
+    "quoiDire": "Je suis [NOM], au [LIEU]. Victime en coup de chaleur : peau très chaude, [confuse / inconsciente], après [exposition/effort]. Refroidissement en cours (ombre, eau, ventilation). Température très élevée.",
+    "informationsAFournir": ["Circonstances (canicule, effort, véhicule fermé)", "État de conscience et signes neurologiques", "Peau sèche ou moite", "Mesures de refroidissement déjà entreprises"]
+  },
+
+  "actionsImmédiates": [
+    "METTRE À L'OMBRE / au frais, allonger, DÉSHABILLER",
+    "REFROIDIR activement : eau, linges humides, ventilation, froid sur tronc/aisselles/aine/cou",
+    "HYDRATER par petites gorgées SI la victime est consciente",
+    "APPELER le 15 si confusion, peau sèche brûlante ou inconscience"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Mettre la victime à l'ombre ou dans un endroit frais et aéré, l'allonger"},
+    {"etape": 2, "action": "Déshabiller la victime pour favoriser la déperdition de chaleur"},
+    {"etape": 3, "action": "Refroidir activement : asperger d'eau tiède/fraîche, appliquer des linges humides, ventiler (éventail, ventilateur) pour favoriser l'évaporation"},
+    {"etape": 4, "action": "Placer du froid enveloppé (poches, bouteilles fraîches, linges glacés) sur les zones à gros vaisseaux : cou, aisselles, aine"},
+    {"etape": 5, "action": "Si la victime est consciente et lucide : faire boire de l'eau fraîche par petites gorgées répétées"},
+    {"etape": 6, "action": "NE PAS donner à boire à une victime confuse ou inconsciente (fausse route)"},
+    {"etape": 7, "action": "Appeler le 15 en cas de confusion, peau sèche et brûlante, convulsions ou inconscience"},
+    {"etape": 8, "action": "Poursuivre le refroidissement jusqu'à l'arrivée des secours, surveiller conscience et respiration"},
+    {"etape": 9, "action": "Inconsciente qui respire → PLS ; arrêt respiratoire → RCP + 15"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Épuisement à la chaleur : sueurs abondantes, fatigue, crampes, conscience conservée",
+      "alors": "Repos au frais, hydratation par petites gorgées, refroidissement, surveillance — souvent réversible"
+    },
+    {
+      "condition": "Coup de chaleur : confusion, peau très chaude (souvent sèche), température > 40°C, troubles neurologiques",
+      "alors": "URGENCE VITALE → 15 immédiat + refroidissement actif intensif sans attendre"
+    },
+    {
+      "condition": "Victime confuse ou inconsciente",
+      "alors": "Ne rien faire boire, PLS si respire, refroidissement actif, 15 immédiat"
+    },
+    {
+      "condition": "Enfant ou nourrisson dans un véhicule fermé",
+      "alors": "Extraire immédiatement, refroidir, 15 — l'hyperthermie est très rapide chez l'enfant"
+    },
+    {
+      "condition": "Convulsions ou arrêt respiratoire",
+      "alors": "Protéger / RCP selon le cas + 15, poursuivre le refroidissement"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le coup de chaleur est une URGENCE VITALE : le refroidissement rapide prime, à débuter avant même l'arrivée des secours",
+    "Ne pas faire boire une victime confuse ou inconsciente (fausse route)",
+    "Refroidir en priorité le tronc et les zones à gros vaisseaux (cou, aisselles, aine)",
+    "Une peau devenue sèche et brûlante avec confusion est un signe de gravité (l'organisme ne transpire plus)",
+    "Ne pas administrer d'antipyrétique (paracétamol, aspirine) : inefficace et potentiellement dangereux dans le coup de chaleur",
+    "Les enfants et personnes âgées se déshydratent et surchauffent très vite — surveillance renforcée en canicule"
+  ],
+
+  "pointsControle": [
+    "La victime est à l'ombre / au frais et déshabillée",
+    "Le refroidissement actif est en cours (eau, ventilation, froid sur le tronc)",
+    "L'hydratation n'a été donnée qu'à une victime consciente et lucide",
+    "Le 15 est alerté en cas de signes neurologiques ou de peau sèche brûlante",
+    "La conscience et la respiration sont surveillées"
+  ],
+
+  "conditionsArretEscalade": [
+    "Confusion, peau sèche brûlante, inconscience → 15 immédiat",
+    "Convulsions → protéger + 15",
+    "Arrêt respiratoire → RCP"
+  ],
+
+  "ressourcesNecessaires": [
+    "Zone ombragée / fraîche / climatisée",
+    "Eau (boisson et refroidissement)",
+    "Linges humides, brumisateur, ventilateur ou éventail",
+    "Poches de froid / bouteilles fraîches à envelopper",
+    "Téléphone pour le 15 / 112"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent lors d'un coup de chaleur, en zone isolée ou en pleine canicule",
+    "actions": [
+      "Poursuivre un refroidissement actif et continu jusqu'à normalisation : aspersion d'eau + ventilation, froid sur cou/aisselles/aine, linges humides renouvelés",
+      "Surveiller la température si possible et cesser le refroidissement intensif une fois autour de 38-38,5°C pour éviter l'hypothermie",
+      "Hydrater par petites gorgées répétées uniquement si la victime est consciente et lucide (eau, éventuellement légèrement salée)",
+      "Maintenir la victime allongée au frais, jambes surélevées en cas de malaise",
+      "Surveiller conscience et respiration : PLS si inconsciente qui respire, RCP si arrêt"
+    ],
+    "ressourcesImprovises": [
+      "Immersion ou aspersion avec toute eau fraîche disponible (cours d'eau, douche, seau)",
+      "Éventail improvisé (carton, vêtement) pour ventiler et favoriser l'évaporation",
+      "Vêtements mouillés posés sur le corps et régulièrement ré-humidifiés"
+    ],
+    "signesAggravation": [
+      "Confusion croissante, agitation puis somnolence",
+      "Peau qui devient sèche et brûlante (arrêt de la transpiration)",
+      "Convulsions",
+      "Perte de connaissance, troubles respiratoires"
+    ],
+    "limitesSansSecours": "Un coup de chaleur non refroidi rapidement entraîne des défaillances d'organes (cerveau, foie, reins, coagulation) potentiellement mortelles. Le refroidissement de terrain est vital mais la prise en charge hospitalière reste indispensable pour traiter les complications.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

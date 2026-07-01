@@ -1,0 +1,134 @@
+{
+  "id": "fracture",
+  "titre": "Fracture / Entorse Grave",
+  "categorie": "secours-personne",
+  "sousCategorie": "traumatologique",
+  "tags": ["fracture", "entorse", "immobilisation", "glace", "élévation", "traumatisme"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Immobiliser un membre traumatisé, limiter la douleur et les complications (déplacement, atteinte vasculo-nerveuse) avant le transport et la prise en charge médicale.",
+
+  "conditionsActivation": "Après un choc, une chute ou une torsion : douleur vive localisée, gonflement, déformation, impossibilité de bouger ou d'appuyer, craquement ressenti. Distinguer fracture fermée, fracture ouverte (os visible/plaie) et entorse grave.",
+
+  "diagnosticRapide": {
+    "visuels": ["Déformation, angulation anormale du membre", "Gonflement et ecchymose rapides", "Plaie avec os visible (fracture ouverte)", "Membre en position anormale, raccourci ou tourné"],
+    "auditifs": ["Craquement entendu ou ressenti au moment du traumatisme", "Cri de douleur, plainte au moindre mouvement", "La victime dit ne pas pouvoir bouger / appuyer"],
+    "comportementaux": ["Immobilisation spontanée du membre par la victime", "Refus de tout mouvement (douleur)", "Pâleur, sueurs si douleur intense ou choc"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Zone d'accident (trafic, hauteur)", "Contact avec le sang en cas de fracture ouverte"],
+    "equipementsRequis": ["Gants de protection", "Attelle ou moyen d'immobilisation (écharpe, planche, coussin)", "Compresses / pansement stérile pour fracture ouverte", "Poche de froid"],
+    "regleUniverselle": "NE PAS chercher à remettre l'os en place ni à réduire une déformation. Immobiliser le membre dans la position trouvée, en bloquant les articulations sus- et sous-jacentes.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU), 18 (pompiers) ou 112 — pour fracture ouverte, déformation majeure, atteinte de la circulation, ou impossibilité de transport",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Traumatisme de [membre], suspicion de fracture [fermée / ouverte]. Déformation : [oui/non]. Extrémité [chaude et colorée / froide et pâle]. Victime consciente, douleur intense.",
+    "informationsAFournir": ["Localisation et mécanisme", "Fracture ouverte ou fermée", "État de l'extrémité (couleur, chaleur, sensibilité)", "Douleur et état général de la victime"]
+  },
+
+  "actionsImmédiates": [
+    "NE PAS remettre l'os en place, NE PAS mobiliser inutilement",
+    "IMMOBILISER le membre dans la position trouvée (attelle, écharpe)",
+    "Fracture OUVERTE : couvrir la plaie d'un pansement stérile, comprimer si saignement",
+    "GLACE (protégée) + ÉLÉVATION du membre, appeler les secours si besoin"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser la zone, mettre des gants, rassurer la victime"},
+    {"etape": 2, "action": "Ne pas déplacer inutilement — demander à la victime de ne plus bouger le membre"},
+    {"etape": 3, "action": "En cas de fracture ouverte : couvrir la plaie avec un pansement stérile, comprimer autour en cas de saignement (sans appuyer sur l'os saillant)"},
+    {"etape": 4, "action": "Immobiliser le membre dans la position où il se trouve, en bloquant l'articulation au-dessus ET en dessous de la fracture (attelle, écharpe, membre solidarisé au corps)"},
+    {"etape": 5, "action": "Vérifier l'extrémité après immobilisation : couleur, chaleur, sensibilité, mobilité des doigts/orteils (recherche d'atteinte vasculo-nerveuse)"},
+    {"etape": 6, "action": "Appliquer du froid enveloppé dans un linge (jamais directement sur la peau) pour limiter douleur et gonflement"},
+    {"etape": 7, "action": "Surélever le membre si possible (au-dessus du niveau du cœur) pour réduire l'œdème"},
+    {"etape": 8, "action": "Alerter le 15/18 selon la gravité, ou organiser un transport adapté vers une consultation si fracture simple stabilisée"},
+    {"etape": 9, "action": "Surveiller douleur, coloration et sensibilité jusqu'à la prise en charge"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Fracture ouverte (os visible ou plaie en regard)",
+      "alors": "Pansement stérile + compression du saignement + immobilisation + 15 (risque infectieux et hémorragique)"
+    },
+    {
+      "condition": "Extrémité froide, pâle, bleutée, ou insensible après le traumatisme",
+      "alors": "Atteinte vasculo-nerveuse → 15 immédiat, ne pas serrer l'immobilisation, urgence"
+    },
+    {
+      "condition": "Suspicion de fracture du fémur, du bassin ou de la colonne",
+      "alors": "NE PAS mobiliser, immobiliser sur place, 15 immédiat (risque hémorragique / neurologique)"
+    },
+    {
+      "condition": "Entorse ou fracture fermée d'un membre, extrémité normale",
+      "alors": "Protocole GREC : Glace, Repos, Élévation, Compression douce — immobilisation + consultation / radiographie"
+    },
+    {
+      "condition": "Douleur intense avec pâleur, sueurs, malaise",
+      "alors": "Surveiller un choc, allonger, 15"
+    }
+  ],
+
+  "notesCritiques": [
+    "NE JAMAIS tenter de réduire une fracture ou de remettre l'os en place : risque d'aggravation vasculo-nerveuse",
+    "Immobiliser en bloquant les articulations au-dessus ET en dessous du foyer de fracture",
+    "Ne jamais appliquer la glace directement sur la peau : l'envelopper (risque de gelure)",
+    "Une extrémité froide, pâle ou insensible signe une atteinte de la circulation : urgence",
+    "Fracture du fémur ou du bassin = risque d'hémorragie interne importante : 15 et immobilisation stricte",
+    "Ne pas donner à boire ni à manger si une chirurgie/anesthésie est probable"
+  ],
+
+  "pointsControle": [
+    "Le membre est immobilisé dans la position trouvée",
+    "L'os n'a pas été manipulé ni réduit",
+    "Une fracture ouverte est protégée par un pansement stérile",
+    "L'extrémité est vérifiée (couleur, chaleur, sensibilité)",
+    "Froid protégé et élévation appliqués, secours alertés si nécessaire"
+  ],
+
+  "conditionsArretEscalade": [
+    "Fracture ouverte, du fémur, du bassin ou du rachis → 15 immédiat",
+    "Atteinte de la circulation (extrémité froide/pâle/insensible) → 15 immédiat",
+    "Signes de choc → allonger + 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Gants de protection",
+    "Attelle ou moyens d'immobilisation (écharpe, planche, coussin, magazine roulé)",
+    "Pansement stérile pour fracture ouverte",
+    "Poche de froid et linge de protection",
+    "Téléphone pour le 15 / 18 / 112"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent ou en zone isolée nécessitant un transport autonome",
+    "actions": [
+      "Immobiliser solidement avec les moyens du bord avant tout déplacement (attelle improvisée bloquant les articulations sus- et sous-jacentes)",
+      "Vérifier régulièrement que l'immobilisation ne serre pas trop (extrémité qui doit rester chaude et colorée)",
+      "Surélever le membre et appliquer du froid par intermittence (20 min) les premières heures",
+      "Pour une fracture ouverte : maintenir le pansement propre, surveiller le saignement et les signes d'infection",
+      "Donner un antalgique simple si disponible et non contre-indiqué, sauf si chirurgie probable — dans le doute, laisser à jeun"
+    ],
+    "ressourcesImprovises": [
+      "Attelle de fortune : planche, bâton, magazine ou carton roulé, maintenu par des bandes ou des vêtements",
+      "Écharpe improvisée avec un tissu / vêtement pour soutenir un bras",
+      "Sac de vêtements ou coussin pour caler et surélever le membre",
+      "Poche de froid improvisée (linge humide, glace/neige enveloppée)"
+    ],
+    "signesAggravation": [
+      "Extrémité qui devient froide, pâle, bleutée ou insensible",
+      "Gonflement qui rend l'immobilisation trop serrée",
+      "Saignement persistant d'une fracture ouverte",
+      "Fièvre, rougeur, écoulement (infection d'une plaie)"
+    ],
+    "limitesSansSecours": "Une fracture fermée bien immobilisée peut attendre plusieurs heures. En revanche une fracture ouverte (risque d'infection), une atteinte vasculo-nerveuse ou une fracture du fémur/bassin (hémorragie) nécessitent une prise en charge chirurgicale rapide.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

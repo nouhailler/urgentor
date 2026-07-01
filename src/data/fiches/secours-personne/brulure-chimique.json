@@ -1,0 +1,132 @@
+{
+  "id": "brulure-chimique",
+  "titre": "Brûlure Chimique (Peau / Yeux)",
+  "categorie": "secours-personne",
+  "sousCategorie": "traumatologique",
+  "tags": ["rinçage", "décontamination", "EPI", "brûlure chimique", "acide", "base"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / INRS",
+
+  "objectif": "Stopper l'action corrosive d'un produit chimique sur la peau ou les yeux par un rinçage abondant et prolongé, et prévenir l'aggravation des lésions.",
+
+  "conditionsActivation": "Projection ou contact avec un produit chimique (acide, base, solvant, produit ménager ou industriel) sur la peau ou les yeux : douleur, brûlure, rougeur, cloques, larmoiement, vision trouble.",
+
+  "diagnosticRapide": {
+    "visuels": ["Rougeur, cloques, peau qui blanchit ou noircit", "Œil rouge, larmoyant, paupières gonflées", "Traces du produit sur la peau ou les vêtements", "Vêtements imbibés ou décolorés"],
+    "auditifs": ["Cris de douleur (brûlure intense)", "La victime dit ressentir une brûlure qui s'intensifie", "Plainte de vision floue si atteinte oculaire"],
+    "comportementaux": ["Frottement réflexe de la zone (à éviter, surtout les yeux)", "Agitation liée à la douleur", "Fermeture forcée de l'œil atteint (blépharospasme)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Contamination par le produit (projection, contact avec la peau/vêtements de la victime)", "Vapeurs toxiques du produit", "Réaction du produit avec l'eau (rare mais possible)"],
+    "equipementsRequis": ["Gants et lunettes de protection résistants aux produits chimiques", "Grande quantité d'eau (douche, robinet, rince-œil)", "Sacs pour isoler les vêtements contaminés"],
+    "regleUniverselle": "Se protéger AVANT d'intervenir (gants, lunettes). Rincer abondamment et immédiatement à l'eau. Retirer les vêtements et objets contaminés en évitant de contaminer les zones saines.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — et Centre Antipoison. Appeler pour tout produit inconnu, atteinte oculaire, ou brûlure étendue",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Brûlure chimique par [nom du produit si connu] sur [peau / yeux / localisation]. Rinçage à l'eau en cours depuis [HEURE]. Victime consciente. J'ai le contenant du produit avec moi.",
+    "informationsAFournir": ["Nom du produit et concentration (garder l'étiquette/le contenant)", "Zone et surface atteintes", "Œil concerné ou non", "Durée de rinçage déjà réalisée"]
+  },
+
+  "actionsImmédiates": [
+    "Se PROTÉGER (gants, lunettes) avant tout contact",
+    "RINCER abondamment à l'eau tiède, au moins 15 MINUTES (peau ET yeux)",
+    "RETIRER les vêtements, bijoux et lentilles contaminés pendant le rinçage",
+    "APPELER le 15 / Centre Antipoison, garder l'emballage du produit"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Mettre gants et lunettes de protection avant d'approcher"},
+    {"etape": 2, "action": "Éloigner la victime de la source, aérer si vapeurs"},
+    {"etape": 3, "action": "Rincer IMMÉDIATEMENT et ABONDAMMENT à l'eau tiède, à faible pression, pendant 15 minutes minimum (davantage pour bases/acides forts)"},
+    {"etape": 4, "action": "Retirer pendant le rinçage vêtements, chaussures, bijoux et lentilles de contact imbibés, sans contaminer les zones saines"},
+    {"etape": 5, "action": "ŒIL atteint : rincer de l'angle interne (nez) vers l'extérieur, paupière maintenue ouverte, pour ne pas contaminer l'autre œil — enlever les lentilles"},
+    {"etape": 6, "action": "Ne PAS chercher à neutraliser le produit (acide par base ou inverse) : réaction dangereuse — seulement de l'eau"},
+    {"etape": 7, "action": "Isoler les vêtements contaminés dans un sac fermé"},
+    {"etape": 8, "action": "Appeler le 15 et le Centre Antipoison, garder l'emballage/l'étiquette du produit"},
+    {"etape": 9, "action": "Après rinçage : couvrir la brûlure d'un pansement stérile non adhérent, surveiller, réchauffer la victime"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Projection oculaire",
+      "alors": "Rinçage oculaire immédiat 15-20 min (angle interne vers l'extérieur), retirer les lentilles, 15 systématique (risque de séquelles visuelles)"
+    },
+    {
+      "condition": "Produit inconnu, acide/base fort, ou brûlure étendue",
+      "alors": "Rinçage prolongé + 15 + Centre Antipoison, conserver l'étiquette"
+    },
+    {
+      "condition": "Chaux vive / poudre chimique sèche",
+      "alors": "Brosser/essuyer la poudre à sec AVANT de rincer (l'eau peut activer la réaction), puis rincer abondamment"
+    },
+    {
+      "condition": "Vêtements imbibés de produit",
+      "alors": "Les retirer pendant le rinçage, les isoler dans un sac, poursuivre le rinçage de la peau"
+    },
+    {
+      "condition": "Signes généraux (malaise, gêne respiratoire) après inhalation de vapeurs",
+      "alors": "Éloigner à l'air libre, position assise, 15 immédiat"
+    }
+  ],
+
+  "notesCritiques": [
+    "Le rinçage précoce et prolongé (15 min minimum) est le geste qui limite le plus les lésions",
+    "Ne JAMAIS neutraliser un acide par une base (ou l'inverse) : la réaction dégage de la chaleur et aggrave la brûlure",
+    "Pour les poudres/chaux vive : brosser à sec avant de rincer",
+    "Une brûlure chimique de l'œil est une urgence : rincer sans attendre et appeler le 15",
+    "Retirer les vêtements imbibés : le produit continue à agir tant qu'il est en contact",
+    "Toujours conserver l'emballage / l'étiquette du produit pour les secours et le Centre Antipoison"
+  ],
+
+  "pointsControle": [
+    "L'intervenant s'est protégé (gants, lunettes)",
+    "Le rinçage abondant a duré au moins 15 minutes",
+    "Vêtements, bijoux et lentilles contaminés ont été retirés",
+    "L'emballage du produit est conservé",
+    "Le 15 / Centre Antipoison est contacté en cas d'atteinte oculaire, produit fort ou inconnu"
+  ],
+
+  "conditionsArretEscalade": [
+    "Atteinte oculaire → 15 immédiat après début du rinçage",
+    "Produit fort/inconnu ou brûlure étendue → 15 + Centre Antipoison",
+    "Signes généraux (malaise, détresse respiratoire) → 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Gants et lunettes de protection chimique",
+    "Grande source d'eau (douche, robinet, rince-œil, bouteilles)",
+    "Sacs pour isoler les vêtements contaminés",
+    "Pansement stérile non adhérent",
+    "Numéro du Centre Antipoison / étiquette du produit"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une brûlure chimique, en zone isolée",
+    "actions": [
+      "Poursuivre le rinçage à l'eau bien au-delà de 15 minutes pour les produits corrosifs forts (jusqu'à 30-60 min, notamment pour les yeux et les bases)",
+      "Maintenir la victime au chaud (le rinçage prolongé refroidit) et couvrir la zone rincée d'un linge propre non adhérent",
+      "Contacter le Centre Antipoison pour des consignes adaptées au produit identifié",
+      "Surveiller l'apparition de signes généraux (malaise, gêne respiratoire) si inhalation ou absorption",
+      "Isoler soigneusement tout ce qui a été contaminé pour éviter de nouvelles expositions"
+    ],
+    "ressourcesImprovises": [
+      "Toute eau propre disponible en grande quantité (bouteilles, tuyau d'arrosage à faible pression, cours d'eau propre)",
+      "Un linge propre humide pour couvrir sans coller après rinçage"
+    ],
+    "signesAggravation": [
+      "Douleur et lésions qui progressent malgré le rinçage (produit non éliminé)",
+      "Baisse de la vision, œil de plus en plus rouge et douloureux",
+      "Gêne respiratoire, toux (inhalation de vapeurs)",
+      "Malaise général, signes d'intoxication systémique"
+    ],
+    "limitesSansSecours": "Le rinçage limite mais ne répare pas les lésions déjà constituées. Les brûlures chimiques profondes, oculaires ou par produits très corrosifs (acide fluorhydrique, bases fortes) nécessitent des traitements spécialisés et parfois une chirurgie.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, appelez le 15 et le Centre Antipoison."
+}

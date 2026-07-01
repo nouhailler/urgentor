@@ -1,0 +1,130 @@
+{
+  "id": "anaphylaxie",
+  "titre": "Choc Anaphylactique",
+  "categorie": "secours-personne",
+  "sousCategorie": "allergologique",
+  "tags": ["allergie", "adrénaline", "auto-injecteur", "anaphylaxie", "œdème", "urticaire"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître une réaction allergique grave (anaphylaxie) et permettre l'injection immédiate d'adrénaline pour éviter l'arrêt respiratoire et le collapsus circulatoire.",
+
+  "conditionsActivation": "Après un contact avec un allergène (aliment, piqûre d'insecte, médicament, latex) : apparition rapide de signes touchant plusieurs systèmes — peau (urticaire, œdème), respiration (gêne, sifflements), circulation (malaise, chute de tension).",
+
+  "diagnosticRapide": {
+    "visuels": ["Urticaire (plaques rouges qui démangent), rougeur diffuse", "Œdème du visage, des lèvres, des paupières, de la langue", "Pâleur, sueurs, marbrures (choc)", "Gonflement rapide après contact avec l'allergène"],
+    "auditifs": ["Voix rauque, modifiée (œdème du larynx)", "Respiration sifflante, difficulté à respirer", "Plainte de gorge qui serre, de démangeaisons"],
+    "comportementaux": ["Angoisse, sensation de mort imminente", "Malaise, vertiges (chute de tension)", "Agitation puis perte de connaissance"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Écarter l'allergène si c'est un danger commun (essaim, produit)", "Peu de risque direct pour l'intervenant"],
+    "equipementsRequis": ["Stylo auto-injecteur d'adrénaline de la victime (Epipen®, Jext®, Anapen®)", "Téléphone pour le 15"],
+    "regleUniverselle": "En cas de signe respiratoire ou de choc chez un allergique : injecter l'adrénaline SANS ATTENDRE. Le retard d'injection est la première cause de décès.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler impérativement, même après injection d'adrénaline",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Choc anaphylactique après [allergène]. Signes : [œdème / gêne respiratoire / malaise]. Adrénaline injectée à [HEURE] dans la cuisse. Victime [consciente / inconsciente].",
+    "informationsAFournir": ["Allergène en cause si connu", "Signes présents (respiration, peau, malaise)", "Adrénaline injectée : heure et dose", "Évolution et état de conscience"]
+  },
+
+  "actionsImmédiates": [
+    "INJECTER l'adrénaline (auto-injecteur) dans le MILIEU de la cuisse, sans attendre",
+    "APPELER LE 15 immédiatement",
+    "ALLONGER la victime, jambes surélevées (assise si gêne respiratoire)",
+    "Se tenir prêt à une 2e injection après 5-10 min si pas d'amélioration"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Écarter l'allergène si possible (retirer le dard d'abeille en raclant, arrêter un médicament en perfusion, éloigner l'aliment)"},
+    {"etape": 2, "action": "Aider la victime à utiliser son auto-injecteur d'adrénaline : retirer le capuchon de sécurité, appuyer fermement le stylo sur le MILIEU de la face externe de la CUISSE (au travers des vêtements possible), maintenir plusieurs secondes"},
+    {"etape": 3, "action": "Noter l'heure de l'injection et masser brièvement le point d'injection"},
+    {"etape": 4, "action": "Appeler le 15 immédiatement (l'anaphylaxie peut récidiver, l'hôpital est indispensable)"},
+    {"etape": 5, "action": "Position : allonger la victime jambes surélevées si malaise/choc ; position ASSISE si gêne respiratoire prédominante ; PLS si vomissements ou inconsciente qui respire"},
+    {"etape": 6, "action": "Réévaluer : si pas d'amélioration après 5 à 10 minutes, faire une 2e injection d'adrénaline si un second stylo est disponible"},
+    {"etape": 7, "action": "Surveiller en continu respiration, conscience et coloration"},
+    {"etape": 8, "action": "Si arrêt respiratoire ou cardiaque : débuter la RCP + 15"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Signe respiratoire (gêne, sifflements, voix rauque) OU signe de choc (malaise, pâleur) chez un allergique",
+      "alors": "Adrénaline IM immédiate dans la cuisse + 15 — ne pas attendre"
+    },
+    {
+      "condition": "Réaction cutanée isolée (urticaire, démangeaisons) sans signe respiratoire ni malaise",
+      "alors": "Surveillance rapprochée, antihistaminique si prescrit, appeler le 15 pour avis — se tenir prêt à injecter si aggravation"
+    },
+    {
+      "condition": "Pas d'amélioration 5-10 min après la 1re injection",
+      "alors": "2e injection d'adrénaline si disponible + réactualiser le 15"
+    },
+    {
+      "condition": "Gêne respiratoire prédominante",
+      "alors": "Position assise ; si asthmatique, associer son bronchodilatateur"
+    },
+    {
+      "condition": "Perte de connaissance",
+      "alors": "Allonger jambes surélevées + PLS si respire ; RCP si arrêt respiratoire ou cardiaque"
+    }
+  ],
+
+  "notesCritiques": [
+    "L'adrénaline est le SEUL traitement qui sauve : le retard d'injection est la première cause de décès",
+    "Injecter dans le MILIEU de la face externe de la cuisse, jamais dans la fesse ni dans une veine",
+    "Ne pas hésiter : en cas de doute avec signes respiratoires ou de choc, injecter",
+    "Toujours appeler le 15 même si les signes régressent : risque de récidive (réaction biphasique) plusieurs heures après",
+    "Ne jamais faire asseoir puis lever brutalement une victime en choc : risque d'arrêt cardiaque (garder allongée)",
+    "Une 2e dose peut être nécessaire après 5-10 min si pas d'amélioration"
+  ],
+
+  "pointsControle": [
+    "L'allergène a été écarté si possible",
+    "L'adrénaline a été injectée dans la cuisse, heure notée",
+    "Le 15 est alerté",
+    "La position est adaptée (allongée jambes surélevées, ou assise si gêne respiratoire)",
+    "Une 2e injection a été envisagée en l'absence d'amélioration"
+  ],
+
+  "conditionsArretEscalade": [
+    "Pas d'amélioration après adrénaline → 2e dose + 15",
+    "Arrêt respiratoire ou cardiaque → RCP",
+    "Récidive des signes (réaction biphasique) → nouvelle injection + 15"
+  ],
+
+  "ressourcesNecessaires": [
+    "Auto-injecteur d'adrénaline (Epipen®, Jext®, Anapen®) — idéalement 2",
+    "Téléphone pour le 15 / 112",
+    "Bronchodilatateur si victime asthmatique",
+    "Antihistaminique / corticoïde si prescrits (traitement complémentaire, jamais en remplacement de l'adrénaline)"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une anaphylaxie, en zone isolée",
+    "actions": [
+      "Répéter l'injection d'adrénaline toutes les 5 à 10 minutes en l'absence d'amélioration, si des stylos supplémentaires sont disponibles",
+      "Maintenir la position adaptée (allongée jambes surélevées en cas de choc, assise en cas de gêne respiratoire)",
+      "Surveiller en continu la respiration et la conscience",
+      "Ne pas relever brutalement la victime même si elle se sent mieux (risque de rechute et d'arrêt cardiaque)",
+      "Rester vigilant plusieurs heures : une réaction biphasique peut survenir après une amélioration initiale"
+    ],
+    "ressourcesImprovises": [
+      "Aucun substitut à l'adrénaline : les antihistaminiques et corticoïdes agissent trop lentement pour l'urgence vitale",
+      "Bronchodilatateur inhalé pour soulager la composante respiratoire en complément"
+    ],
+    "signesAggravation": [
+      "Œdème de la gorge et de la langue rendant la respiration difficile",
+      "Voix qui s'éteint, respiration de plus en plus sifflante",
+      "Chute de tension : pâleur, sueurs, malaise, perte de connaissance",
+      "Cyanose, arrêt respiratoire"
+    ],
+    "limitesSansSecours": "L'anaphylaxie peut tuer en quelques minutes par œdème des voies aériennes ou collapsus. Seule l'adrénaline injectable enraye la réaction ; sans elle et sans prise en charge hospitalière, le pronostic vital est engagé.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

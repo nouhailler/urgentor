@@ -1,0 +1,132 @@
+{
+  "id": "electrisation",
+  "titre": "Électrisation / Électrocution",
+  "categorie": "secours-personne",
+  "sousCategorie": "traumatologique",
+  "tags": ["coupure courant", "brûlure interne", "électrisation", "électrocution", "arrêt cardiaque", "sécurité"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS / INRS",
+
+  "objectif": "Sécuriser la source électrique avant tout contact, prendre en charge les conséquences (arrêt cardiaque, brûlures internes et externes) et surveiller les troubles du rythme.",
+
+  "conditionsActivation": "Personne au contact d'une source électrique (domestique, industrielle, ligne haute tension, foudre) : elle peut être collée au conducteur, inconsciente, en arrêt cardiaque, ou présenter des brûlures aux points d'entrée et de sortie du courant.",
+
+  "diagnosticRapide": {
+    "visuels": ["Victime en contact ou projetée près d'une source électrique", "Brûlures aux points de contact (entrée/sortie du courant)", "Victime immobile, inconsciente", "Étincelles, câble sectionné, appareil défectueux"],
+    "auditifs": ["Aucune réponse si inconsciente", "Bruit d'arc électrique, grésillement", "Plainte de douleur, de fourmillements, de crampes musculaires"],
+    "comportementaux": ["Impossibilité de lâcher le conducteur (tétanisation musculaire)", "Confusion, malaise", "Contractures, secousses musculaires"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Électrisation de l'intervenant s'il touche la victime encore sous tension", "Sol mouillé conducteur", "Haute tension : arc électrique à distance, danger mortel sans coupure"],
+    "equipementsRequis": ["Accès au disjoncteur / interrupteur / prise", "Objet isolant sec (manche en bois, plastique) pour la basse tension", "Gants isolants si disponibles"],
+    "regleUniverselle": "NE JAMAIS toucher la victime tant que le courant n'est pas coupé. Couper la source (disjoncteur, prise) ou, en basse tension seulement, écarter le conducteur avec un objet isolant sec. Haute tension : rester à distance (>50 m au sol) et attendre les pros.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU), 18 (pompiers) ou 112 — appeler systématiquement. Pour haute tension, préciser pour coupure par le gestionnaire réseau",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Électrisation par [source : domestique / industrielle / ligne HT / foudre]. Courant [coupé / non coupé]. Victime [consciente / inconsciente, respire / arrêt cardiaque]. Brûlures visibles.",
+    "informationsAFournir": ["Type de source (basse ou haute tension, foudre)", "Courant coupé ou non", "État de la victime (conscience, respiration)", "Localisation des brûlures (points d'entrée/sortie)"]
+  },
+
+  "actionsImmédiates": [
+    "COUPER LE COURANT avant tout contact (disjoncteur, prise, source)",
+    "Haute tension : RESTER À DISTANCE (>50 m), faire couper par les pros",
+    "Une fois sécurisé : vérifier conscience et respiration → RCP si arrêt cardiaque",
+    "APPELER le 15 / 18, surveiller le rythme cardiaque et refroidir les brûlures"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "NE PAS toucher la victime. Couper la source électrique : disjoncteur général, interrupteur, ou débrancher l'appareil"},
+    {"etape": 2, "action": "Si la coupure est impossible et qu'il s'agit de BASSE tension (domestique) : écarter la victime ou le conducteur avec un objet isolant SEC et non conducteur (manche à balai en bois, chaise plastique), sur un sol sec"},
+    {"etape": 3, "action": "HAUTE tension / ligne électrique / caténaire : ne jamais approcher à moins de 50 m au sol (risque d'arc et de tension de pas), interdire l'accès et attendre la coupure par le gestionnaire du réseau"},
+    {"etape": 4, "action": "Une fois la victime hors tension : vérifier conscience et respiration"},
+    {"etape": 5, "action": "Arrêt cardiaque (n'aucun signe de respiration) → RCP immédiate + DAE + 15 (le courant provoque souvent une fibrillation)"},
+    {"etape": 6, "action": "Inconsciente qui respire → PLS + surveillance"},
+    {"etape": 7, "action": "Consciente : rechercher les brûlures aux points d'entrée et de sortie, les refroidir à l'eau tiède et les couvrir"},
+    {"etape": 8, "action": "Immobiliser en cas de chute/projection avec suspicion de traumatisme (rachis)"},
+    {"etape": 9, "action": "Appeler le 15/18 systématiquement : surveillance cardiaque et recherche de brûlures internes obligatoires en milieu hospitalier"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Victime encore en contact avec la source",
+      "alors": "NE PAS toucher → couper le courant (basse tension) ou rester à distance et attendre les pros (haute tension)"
+    },
+    {
+      "condition": "Victime hors tension, inconsciente, ne respire pas",
+      "alors": "RCP + DAE + 15 (fibrillation fréquente après passage du courant)"
+    },
+    {
+      "condition": "Victime consciente avec brûlures aux points de contact",
+      "alors": "Refroidir et couvrir les brûlures, 15 pour surveillance cardiaque (brûlures internes possibles sur le trajet du courant)"
+    },
+    {
+      "condition": "Haute tension ou foudre",
+      "alors": "Périmètre de sécurité large, coupure par le gestionnaire réseau, prise en charge dès que la zone est sûre — plusieurs victimes possibles avec la foudre"
+    },
+    {
+      "condition": "Chute ou projection associée",
+      "alors": "Suspecter un traumatisme du rachis, immobiliser, maintenir l'axe tête-cou-tronc"
+    }
+  ],
+
+  "notesCritiques": [
+    "Se protéger d'abord : un sauveteur électrisé devient une seconde victime",
+    "Haute tension : la tension peut arc-er à plusieurs mètres — n'approcher qu'après coupure confirmée par le gestionnaire réseau",
+    "L'électrisation provoque fréquemment une fibrillation cardiaque : le DAE est prioritaire",
+    "Les brûlures externes visibles sous-estiment souvent des brûlures internes graves sur le trajet du courant",
+    "Une victime apparemment indemne doit être surveillée à l'hôpital (troubles du rythme retardés)",
+    "En cas de chute associée, protéger le rachis"
+  ],
+
+  "pointsControle": [
+    "Le courant a été coupé ou la victime écartée en sécurité",
+    "L'intervenant ne s'est pas mis en danger",
+    "Conscience et respiration ont été évaluées (RCP si arrêt)",
+    "Les brûlures d'entrée et de sortie ont été recherchées",
+    "Le 15/18 est alerté pour surveillance cardiaque hospitalière"
+  ],
+
+  "conditionsArretEscalade": [
+    "Arrêt cardiaque → RCP + DAE + 15",
+    "Haute tension → périmètre + coupure réseau avant toute action",
+    "Brûlures / troubles du rythme → 15, hospitalisation pour surveillance"
+  ],
+
+  "ressourcesNecessaires": [
+    "Accès au disjoncteur / interrupteur / prise",
+    "Objet isolant sec (manche en bois, plastique) pour la basse tension",
+    "DAE (défibrillateur) et téléphone pour le 15 / 18",
+    "Eau tiède et pansements pour les brûlures",
+    "Gants isolants si disponibles"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent après une électrisation, en zone isolée (la source ayant été sécurisée)",
+    "actions": [
+      "Poursuivre la RCP sans interruption en cas d'arrêt cardiaque, jusqu'à reprise ou arrivée des secours",
+      "Surveiller étroitement le rythme et la conscience : des troubles du rythme peuvent survenir à distance du choc",
+      "Refroidir puis protéger les brûlures externes, en gardant à l'esprit que les lésions internes peuvent être bien plus étendues",
+      "Immobiliser en cas de chute/projection avec suspicion de traumatisme",
+      "Réchauffer la victime, la rassurer, la maintenir au repos allongé"
+    ],
+    "ressourcesImprovises": [
+      "Objet en bois ou plastique parfaitement sec pour toute manipulation résiduelle",
+      "Linge propre pour couvrir les brûlures après refroidissement"
+    ],
+    "signesAggravation": [
+      "Malaise, palpitations, syncope (trouble du rythme retardé)",
+      "Extension des brûlures internes (douleurs profondes, membre qui gonfle)",
+      "Urines foncées (destruction musculaire) après électrisation importante",
+      "Détérioration de la conscience"
+    ],
+    "limitesSansSecours": "Les brûlures internes sur le trajet du courant et les troubles du rythme cardiaque ne se traitent qu'en milieu médical. Toute électrisation, même d'allure bénigne, justifie une surveillance hospitalière que les gestes de secours ne remplacent pas.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

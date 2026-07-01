@@ -1,0 +1,132 @@
+{
+  "id": "arret-cardiaque",
+  "titre": "Arrêt Cardiaque",
+  "categorie": "secours-personne",
+  "sousCategorie": "cardio-vasculaire",
+  "tags": ["RCP", "DAE", "massage", "arrêt cardiaque", "défibrillateur", "chaîne de survie"],
+  "niveauDanger": "critique",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "ILCOR / ERC / HAS",
+
+  "objectif": "Restaurer une circulation sanguine par la chaîne de survie (alerte précoce, RCP immédiate, défibrillation rapide) pour maximiser les chances de survie et limiter les séquelles cérébrales.",
+
+  "conditionsActivation": "Personne qui s'effondre, inconsciente, ne réagit pas et ne respire pas normalement (absence de respiration ou gasps agoniques). L'arrêt cardiaque est confirmé dès l'absence de respiration normale — ne pas chercher le pouls.",
+
+  "diagnosticRapide": {
+    "visuels": ["Personne effondrée, immobile", "Absence de soulèvement du thorax", "Teint pâle puis bleuté (cyanose des lèvres)"],
+    "auditifs": ["Aucune réponse à la voix", "Absence de bruit respiratoire", "Gasps : râles lents, bruyants et irréguliers = arrêt cardiaque, PAS une respiration"],
+    "comportementaux": ["Aucune réaction au pincement ou à la stimulation", "Corps totalement flasque", "Yeux fixes ou révulsés"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Zone dangereuse (trafic, électricité, eau)", "Sol glissant ou instable", "Risque biologique lors du bouche-à-bouche"],
+    "equipementsRequis": ["DAE (défibrillateur automatisé externe)", "Gants si disponibles", "Masque de poche / écran facial pour insufflations"],
+    "regleUniverselle": "Sécuriser la zone avant d'approcher. Une fois la sécurité assurée : reconnaître, alerter, masser sans attendre.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — mettre le haut-parleur",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Adulte/enfant inconscient, ne respire pas, je commence le massage cardiaque. Un DAE est [présent / recherché]. Restez en ligne pour me guider.",
+    "informationsAFournir": ["Adresse précise et point de repère", "Âge approximatif de la victime", "Depuis combien de temps la personne est effondrée", "Présence et emplacement d'un DAE"]
+  },
+
+  "actionsImmédiates": [
+    "VÉRIFIER conscience et respiration (10 s max)",
+    "APPELER le 15 / 112 en haut-parleur + faire chercher un DAE",
+    "MASSER : 30 compressions au centre du thorax, 5-6 cm, 100-120/min",
+    "DÉFIBRILLER dès l'arrivée du DAE en suivant les consignes vocales"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Sécuriser la zone et se protéger"},
+    {"etape": 2, "action": "Vérifier la conscience : secouer doucement les épaules, parler fort — pas de réponse ?"},
+    {"etape": 3, "action": "Libérer les voies aériennes : basculer la tête en arrière, élever le menton"},
+    {"etape": 4, "action": "Évaluer la respiration 10 secondes MAX (voir, écouter, sentir) — gasps = arrêt cardiaque"},
+    {"etape": 5, "action": "Alerter le 15 / 112 (haut-parleur) et envoyer chercher un DAE"},
+    {"etape": 6, "action": "Débuter la RCP : 30 compressions — talon d'une main au centre du sternum, l'autre par-dessus, bras tendus, 5-6 cm de profondeur, 100-120/min, relâchement complet"},
+    {"etape": 7, "action": "2 insufflations si formé et équipé (1 seconde chacune, le thorax se soulève) — sinon RCP mains seules en continu"},
+    {"etape": 8, "action": "Poursuivre les cycles 30:2 sans interruption"},
+    {"etape": 9, "action": "Dès le DAE : l'allumer, coller les électrodes sur peau nue et sèche, ne toucher personne pendant l'analyse, délivrer le choc si demandé"},
+    {"etape": 10, "action": "Reprendre immédiatement les compressions après le choc — relayer le masseur toutes les 2 minutes"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Inconscient + ne respire pas / gasps",
+      "alors": "Arrêt cardiaque → alerte 15 + RCP immédiate + DAE dès que possible"
+    },
+    {
+      "condition": "Inconscient MAIS respire normalement",
+      "alors": "Position Latérale de Sécurité (PLS) + alerte 15 + surveillance continue de la respiration"
+    },
+    {
+      "condition": "DAE : choc conseillé",
+      "alors": "S'écarter, personne ne touche la victime, délivrer le choc, puis reprendre les compressions sans délai"
+    },
+    {
+      "condition": "DAE : choc non conseillé",
+      "alors": "Reprendre immédiatement la RCP 30:2 — le DAE réanalysera dans 2 minutes"
+    },
+    {
+      "condition": "Nourrisson / enfant",
+      "alors": "5 insufflations initiales puis 15 compressions pour 2 insufflations — comprimer 1/3 de l'épaisseur du thorax (2 doigts nourrisson, 1 talon de main enfant)"
+    }
+  ],
+
+  "notesCritiques": [
+    "Chaque minute sans RCP ni défibrillation = environ -10 % de survie",
+    "Les gasps agoniques ne sont PAS une respiration — commencer la RCP",
+    "Le DAE ne délivre jamais de choc si le rythme ne le nécessite pas — sans danger, l'utiliser sans crainte",
+    "La RCP mains seules est efficace et recommandée si l'on ne peut/veut pas faire le bouche-à-bouche",
+    "Minimiser les interruptions des compressions : moins de 10 secondes",
+    "Surface dure sous le dos — comprimer sur un sol ferme, pas sur un matelas mou"
+  ],
+
+  "pointsControle": [
+    "Le 15 / 112 est alerté et en haut-parleur",
+    "Un DAE a été demandé et est en route",
+    "Les compressions sont profondes (5-6 cm) et rapides (100-120/min)",
+    "Le relais des masseurs est organisé toutes les 2 minutes",
+    "Les électrodes du DAE sont posées correctement sur peau nue"
+  ],
+
+  "conditionsArretEscalade": [
+    "Arrivée des secours médicalisés → transmettre le bilan et l'heure de début de RCP",
+    "Reprise d'une respiration normale → PLS + surveillance rapprochée",
+    "Épuisement total sans relai → poursuivre au maximum, signaler aux secours"
+  ],
+
+  "ressourcesNecessaires": [
+    "DAE (défibrillateur automatisé externe)",
+    "Téléphone (haut-parleur) pour le 15 / 112",
+    "Masque de poche / écran facial pour les insufflations",
+    "Gants de protection si disponibles",
+    "Surface dure et espace dégagé autour de la victime"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si aucun DAE ni secours ne peut intervenir avant 10 minutes ou plus (zone isolée, milieu rural, catastrophe)",
+    "actions": [
+      "Poursuivre la RCP sans jamais l'arrêter (30 compressions, 5-6 cm, 100-120/min)",
+      "Relayer le masseur toutes les 2 minutes pour maintenir la qualité des compressions",
+      "Si la victime reprend une respiration normale : PLS et surveiller en continu",
+      "En cas de nouvel arrêt : reprendre immédiatement les compressions",
+      "Poursuivre jusqu'à l'arrivée des secours, la reprise durable de la respiration ou l'épuisement total"
+    ],
+    "ressourcesImprovises": [
+      "Rien ne remplace un DAE — la RCP mains seules reste la seule option sans matériel",
+      "Une planche ou un sol dur sous le dos améliore l'efficacité des compressions"
+    ],
+    "signesAggravation": [
+      "Corps qui refroidit progressivement",
+      "Cyanose profonde (peau violacée, marbrée)",
+      "Pupilles fixes et dilatées (signe très tardif)"
+    ],
+    "limitesSansSecours": "La RCP maintient une circulation minimale mais ne substitue pas la défibrillation ni la prise en charge médicale. Les chances de survie chutent fortement au-delà de 10 minutes sans choc, mais toute RCP prolongée reste utile jusqu'à l'arrivée des secours.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}

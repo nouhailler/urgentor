@@ -1,0 +1,130 @@
+{
+  "id": "detresse-respiratoire",
+  "titre": "Détresse Respiratoire / Crise d'Asthme",
+  "categorie": "secours-personne",
+  "sousCategorie": "respiratoire",
+  "tags": ["inhalateur", "position", "oxygène", "asthme", "détresse respiratoire", "essoufflement"],
+  "niveauDanger": "élevé",
+  "dateCreation": "2026-07-01T00:00:00Z",
+  "source": "officielle",
+  "referentielSource": "HAS",
+
+  "objectif": "Reconnaître une détresse respiratoire, aider la victime à respirer, faciliter la prise de son traitement et alerter avant l'épuisement respiratoire.",
+
+  "conditionsActivation": "Personne qui a du mal à respirer : essoufflement au repos, respiration rapide et sifflante, impossibilité de parler en phrases complètes, sensation d'oppression thoracique.",
+
+  "diagnosticRapide": {
+    "visuels": ["Respiration rapide et superficielle, tirage (creux au cou et entre les côtes)", "Position penchée en avant, mains sur les cuisses", "Lèvres et ongles bleutés (cyanose) si sévère", "Sueurs, agitation"],
+    "auditifs": ["Sifflements expiratoires (wheezing)", "Difficulté à parler : phrases hachées, mot par mot", "Respiration bruyante"],
+    "comportementaux": ["Anxiété, sensation d'étouffer", "Agitation puis épuisement", "Somnolence = signe de gravité (fatigue respiratoire)"]
+  },
+
+  "securiteAvantAction": {
+    "risquesPourIntervenant": ["Peu de risque direct", "Écarter un allergène ou un irritant si c'est le déclencheur (fumée, produit)"],
+    "equipementsRequis": ["Traitement personnel de la victime (inhalateur bronchodilatateur, chambre d'inhalation)", "Support pour installer en position assise"],
+    "regleUniverselle": "Installer la victime dans la position où elle respire le mieux (souvent assise penchée en avant) et l'aider à prendre SON traitement. Ne pas l'allonger de force.",
+    "zoneChaudeInterditeSansEPI": false
+  },
+
+  "scriptAlerte": {
+    "numero": "15 (SAMU) ou 112 — appeler si crise sévère, pas d'amélioration après traitement, ou cyanose/épuisement",
+    "quoiDire": "Je suis [NOM], au [ADRESSE PRÉCISE]. Personne en détresse respiratoire / crise d'asthme, [parle par mots / ne peut plus parler]. Traitement pris à [HEURE] sans amélioration. Lèvres [normales / bleues].",
+    "informationsAFournir": ["Asthme ou pathologie respiratoire connue", "Traitement pris et heure", "Capacité à parler (indicateur de gravité)", "Coloration des lèvres, niveau de conscience"]
+  },
+
+  "actionsImmédiates": [
+    "INSTALLER assis, penché en avant (position qui soulage)",
+    "AIDER à prendre le traitement inhalé (bronchodilatateur + chambre)",
+    "RASSURER, faire ralentir la respiration, aérer",
+    "APPELER le 15 si pas d'amélioration ou signes de gravité"
+  ],
+
+  "procedureAction": [
+    {"etape": 1, "action": "Écarter un éventuel déclencheur (fumée, poussière, allergène, effort) et aérer"},
+    {"etape": 2, "action": "Installer la victime en position ASSISE, penchée en avant, ou dans la position où elle respire le mieux"},
+    {"etape": 3, "action": "L'aider à prendre son traitement de crise (bronchodilatateur type Ventoline®), avec une chambre d'inhalation si disponible : 2 bouffées, à renouveler selon prescription"},
+    {"etape": 4, "action": "La rassurer, l'inciter à respirer lentement et calmement, desserrer les vêtements"},
+    {"etape": 5, "action": "Réévaluer après quelques minutes : amélioration ? Capacité à parler ?"},
+    {"etape": 6, "action": "Appeler le 15 si absence d'amélioration, aggravation, ou signes de gravité (cyanose, épuisement, impossibilité de parler)"},
+    {"etape": 7, "action": "Surveiller en continu la respiration, la conscience et la coloration"},
+    {"etape": 8, "action": "Si perte de connaissance avec respiration : PLS ; si arrêt respiratoire : RCP + 15"}
+  ],
+
+  "arbresDecision": [
+    {
+      "condition": "Crise connue, amélioration après le bronchodilatateur",
+      "alors": "Repos, surveillance, poursuite du traitement selon prescription, consultation médicale"
+    },
+    {
+      "condition": "Pas d'amélioration après le traitement OU crise sévère (ne peut plus parler, cyanose)",
+      "alors": "15 immédiat — asthme aigu grave — répéter le bronchodilatateur en attendant"
+    },
+    {
+      "condition": "Première crise / pas de traitement personnel",
+      "alors": "15 immédiat, position assise, rassurer, ne pas donner de traitement d'autrui sans avis médical"
+    },
+    {
+      "condition": "Somnolence, épuisement, silence auscultatoire (plus de sifflement)",
+      "alors": "Signe de gravité extrême → 15 immédiat, se préparer à une RCP"
+    },
+    {
+      "condition": "Détresse respiratoire avec allergie/œdème (lèvres, gorge)",
+      "alors": "Suspecter une anaphylaxie → protocole choc anaphylactique, stylo d'adrénaline si disponible"
+    }
+  ],
+
+  "notesCritiques": [
+    "Ne jamais allonger de force une personne en détresse respiratoire : elle respire mieux assise",
+    "La disparition des sifflements avec aggravation de l'état = signe de GRAVITÉ (le poumon ne ventile presque plus), pas d'amélioration",
+    "L'incapacité à parler en phrases complètes traduit une crise sévère",
+    "La somnolence chez une personne en détresse respiratoire annonce l'épuisement : urgence vitale",
+    "Utiliser une chambre d'inhalation améliore nettement l'efficacité du bronchodilatateur",
+    "Penser à l'anaphylaxie si contexte allergique avec œdème du visage / de la gorge"
+  ],
+
+  "pointsControle": [
+    "La victime est installée dans la position où elle respire le mieux",
+    "Le traitement inhalé a été pris (avec chambre si possible)",
+    "La réponse au traitement a été réévaluée",
+    "Le 15 est alerté en cas de gravité ou d'absence d'amélioration",
+    "La respiration et la coloration sont surveillées en continu"
+  ],
+
+  "conditionsArretEscalade": [
+    "Absence d'amélioration ou aggravation → 15 immédiat",
+    "Cyanose, épuisement, somnolence → urgence vitale, 15",
+    "Arrêt respiratoire → RCP"
+  ],
+
+  "ressourcesNecessaires": [
+    "Traitement bronchodilatateur de la victime + chambre d'inhalation",
+    "Support pour la position assise (chaise, coussins)",
+    "Téléphone pour le 15 / 112",
+    "Environnement aéré, éloigné des irritants"
+  ],
+
+  "siSecoursTardent": {
+    "contexte": "Si les secours tardent lors d'une crise qui ne cède pas, en zone isolée",
+    "actions": [
+      "Répéter les bouffées de bronchodilatateur selon la prescription de la victime (souvent 2 bouffées toutes les 10-20 min en crise, avec chambre d'inhalation)",
+      "Maintenir la position assise penchée en avant, aérer, rassurer pour limiter la panique qui aggrave la détresse",
+      "Faire respirer lentement, lèvres pincées à l'expiration, pour améliorer la ventilation",
+      "Surveiller sans relâche la coloration et la conscience",
+      "En cas d'épuisement avec perte de connaissance : PLS si respire, RCP si arrêt respiratoire"
+    ],
+    "ressourcesImprovises": [
+      "Chambre d'inhalation improvisée avec une bouteille plastique propre percée (dernier recours, améliore la délivrance de l'aérosol)",
+      "Air frais et humide (fenêtre ouverte, pièce aérée)"
+    ],
+    "signesAggravation": [
+      "Impossibilité totale de parler",
+      "Cyanose des lèvres et des ongles",
+      "Disparition des sifflements avec aggravation clinique",
+      "Somnolence, confusion, épuisement respiratoire"
+    ],
+    "limitesSansSecours": "Une crise d'asthme sévère (asthme aigu grave) peut être mortelle en l'absence de traitement adapté (bronchodilatateurs répétés, corticoïdes, oxygène). Les gestes de secours gagnent du temps mais ne remplacent pas une prise en charge médicale urgente.",
+    "avertissement": "⚠️ Ces mesures sont des solutions de dernier recours en l'absence totale de secours professionnels. Elles ne remplacent pas un acte médical. Faites tout ce qui est possible pour obtenir de l'aide médicale."
+  },
+
+  "avertissement": "⚠️ Ce document est une aide-mémoire. Il ne remplace pas une formation PSC1 ou AFGSU. En cas de doute, suivez les instructions du 15."
+}
