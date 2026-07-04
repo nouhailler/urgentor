@@ -69,13 +69,13 @@ Chaque fiche couvre :
 - Une seule section parle à la fois — tap à nouveau pour stopper
 
 ### 📖 Bibliothèque de fiches
-- **10 fiches officielles** pré-chargées, validées sur références HAS / INRS / Ministère de l'Intérieur
+- **57 fiches officielles** pré-chargées, validées sur références HAS / INRS / Ministère de l'Intérieur
 - Filtrage par catégorie avec les 9 couleurs de danger
 - Affichage adapté aux situations NRBC (bandeau clignotant, code couleur critique)
 
 ### 🤖 Génération de fiches par IA
 - Génération automatique de nouvelles fiches à partir d'un titre et d'une catégorie
-- Compatible **Anthropic Claude** (Opus 4.7, Sonnet 4.6, Haiku 4.5), **OpenAI GPT** (GPT-4o, o3-mini), **OpenRouter** (modèles dynamiques)
+- Compatible **Anthropic Claude** (Opus 4.8, Sonnet 5, Haiku 4.5), **OpenAI GPT** (GPT-4o, o3-mini), **OpenRouter** (modèles dynamiques)
 - Prévisualisation avant sauvegarde
 
 ### 📥 Import / Export de fiches
@@ -152,7 +152,7 @@ Pour utiliser la génération de fiches par IA, configurez vos clés dans **Para
 
 | Fournisseur | Modèles disponibles | Format de clé |
 |-------------|---------------------|---------------|
-| 🟣 **Anthropic** | Claude Opus 4.7, Sonnet 4.6, Haiku 4.5 | `sk-ant-...` |
+| 🟣 **Anthropic** | Claude Opus 4.8, Sonnet 5, Haiku 4.5 | `sk-ant-...` |
 | 🟢 **OpenAI** | GPT-4o, GPT-4o Mini, o3-mini | `sk-proj-...` |
 | 🔵 **OpenRouter** | Tous les modèles (liste dynamique) | `sk-or-...` |
 
@@ -191,12 +191,17 @@ urgentor/
 │   │   └── useOpenRouterModels.js  # Modèles OpenRouter dynamiques
 │   └── data/
 │       ├── categories.js           # 9 catégories avec couleurs et icônes
-│       ├── ficheIndex.js           # Index des 10 fiches builtin
-│       └── fiches/
-│           ├── secours-personne/   # malaise, hémorragie, brûlure, noyade
-│           ├── incendie-evacuation/# incendie, évacuation
-│           ├── chimique/           # fuite-gaz, déversement-chimique
-│           └── nrbc/               # alerte-radiologique, alerte-chimique-nrbc
+│       ├── ficheIndex.js           # Index des 57 fiches builtin
+│       └── fiches/                    # 9 dossiers, un par catégorie
+│           ├── secours-personne/      # malaise, hémorragie, brûlure, noyade…
+│           ├── incendie-evacuation/   # incendie, évacuation
+│           ├── chimique/              # fuite-gaz, déversement-chimique
+│           ├── nrbc/                  # alerte-radiologique, alerte-chimique-nrbc
+│           ├── environnement-exterieur/ # hypothermie, avalanche, foudre…
+│           ├── professionnel-industriel/ # écrasement, chute, électrisation…
+│           ├── evenementiel-foule/    # mouvement de foule, bousculade…
+│           ├── pediatrie/             # réanimation nourrisson, convulsions…
+│           └── psychologique/         # état de choc, crise de panique…
 ├── CONTEXT.md                 # Documentation technique interne du projet
 ├── netlify.toml               # Config Netlify (build, redirects, headers)
 ├── vite.config.js             # Config Vite + PWA Workbox

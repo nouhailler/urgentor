@@ -8,8 +8,8 @@ export const PROVIDERS = {
     color: '#CC785C',
     placeholder: 'sk-ant-api03-...',
     models: [
-      { id: 'claude-opus-4-7', label: 'Claude Opus 4.7 (le plus puissant)' },
-      { id: 'claude-sonnet-4-6', label: 'Claude Sonnet 4.6 (recommandé)' },
+      { id: 'claude-opus-4-8', label: 'Claude Opus 4.8 (le plus puissant)' },
+      { id: 'claude-sonnet-5', label: 'Claude Sonnet 5 (recommandé)' },
       { id: 'claude-haiku-4-5-20251001', label: 'Claude Haiku 4.5 (rapide)' }
     ]
   },
@@ -32,9 +32,9 @@ export const PROVIDERS = {
 }
 
 const DEFAULTS = {
-  anthropic: { key: '', model: 'claude-sonnet-4-6' },
+  anthropic: { key: '', model: 'claude-sonnet-5' },
   openai: { key: '', model: 'gpt-4o' },
-  openrouter: { key: '', model: 'anthropic/claude-sonnet-4-5' }
+  openrouter: { key: '', model: 'anthropic/claude-sonnet-5' }
 }
 
 export function loadSettings() {
